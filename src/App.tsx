@@ -1,12 +1,16 @@
-import { Suspense } from "react"
+import { Suspense, useContext } from "react"
 import { NavLink, Route, Routes } from "react-router-dom"
-import "./index.scss"
+import "./styles/index.scss"
 import { CounterPageLazy } from "./pages/Counter/CounterPage.lazy"
 import { HomePageLazy } from "./pages/Home/HomePage.lazy"
+import useTheme from "./theme/useTheme"
 
 const App = () => {
+	const { theme, onThemeChange } = useTheme()
+
 	return (
-		<div className='App'>
+		<div className={`App ${theme}`}>
+			<button onClick={onThemeChange}>Theme toggle</button>
 			<ul>
 				<li>
 					<NavLink to={"/"}>Home</NavLink>
