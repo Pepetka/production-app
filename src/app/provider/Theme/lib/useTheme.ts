@@ -1,12 +1,12 @@
 import { useContext } from "react"
-import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from "./themeContext"
+import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from "./ThemeContext"
 
 export interface ThemeHook {
 	theme: Theme
 	onThemeChange: () => void
 }
 
-const useTheme = (): ThemeHook => {
+export const useTheme = (): ThemeHook => {
 	const { theme, setTheme } = useContext(ThemeContext)
 
 	const onThemeChange = () => {
@@ -22,5 +22,3 @@ const useTheme = (): ThemeHook => {
 		onThemeChange,
 	}
 }
-
-export default useTheme

@@ -1,10 +1,10 @@
 import { Suspense } from "react"
 import { NavLink, Route, Routes } from "react-router-dom"
-import "./styles/index.scss"
-import { CounterPageLazy } from "./pages/Counter/CounterPage.lazy"
-import { HomePageLazy } from "./pages/Home/HomePage.lazy"
-import useTheme from "./theme/useTheme"
-import { classNames } from "./helpers/classNames"
+import "app/styles/index.scss"
+import { classNames } from "shared/lib/classNames"
+import { useTheme } from "app/provider/Theme"
+import { HomePage } from "pages/HomePage"
+import { AboutPage } from "pages/AboutPage"
 
 const App = () => {
 	const { theme, onThemeChange } = useTheme()
@@ -17,13 +17,13 @@ const App = () => {
 					<NavLink to={"/"}>Home</NavLink>
 				</li>
 				<li>
-					<NavLink to={"/counter"}>Counter</NavLink>
+					<NavLink to={"/about"}>About</NavLink>
 				</li>
 			</ul>
 			<Suspense fallback={<div>Loading...</div>}>
 				<Routes>
-					<Route path='/' element={<HomePageLazy />} />
-					<Route path='/counter' element={<CounterPageLazy />} />
+					<Route path='/' element={<HomePage />} />
+					<Route path='/about' element={<AboutPage />} />
 				</Routes>
 			</Suspense>
 		</div>
