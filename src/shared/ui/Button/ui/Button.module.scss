@@ -1,0 +1,19 @@
+.Button {
+	cursor: pointer;
+}
+
+.primary {
+	background-color: var(--bg-color);
+}
+
+.secondary {
+	background-color: var(--invert-bg-color);
+}
+
+.clear {
+	border: none;
+	background-color: rgba(0, 0, 0, 0);
+	outline: none;
+	margin: 0;
+	padding: 0;
+}
