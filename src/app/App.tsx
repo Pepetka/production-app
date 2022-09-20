@@ -1,21 +1,25 @@
+import {Suspense} from "react";
 import "app/styles/index.scss"
-import { classNames } from "shared/lib/classNames"
-import { useTheme } from "app/provider/Theme"
-import { AppRouter } from "./provider/Router"
-import { NavBar } from "widgets/NavBar"
-import { SideBar } from "widgets/SideBar"
+import {classNames} from "shared/lib/classNames"
+import {useTheme} from "app/provider/Theme"
+import {AppRouter} from "./provider/Router"
+import {NavBar} from "widgets/NavBar"
+import {SideBar} from "widgets/SideBar"
+import 'shared/config/i18n/i18nConfig'
 
 const App = () => {
-	const { theme } = useTheme()
+	const {theme} = useTheme()
 
 	return (
-		<div className={classNames("App", {}, [theme])}>
-			<NavBar />
-			<div className='page-content'>
-				<SideBar />
-				<AppRouter />
+		<Suspense fallback="">
+			<div className={classNames("App", {}, [theme])}>
+				<NavBar/>
+				<div className='page-content'>
+					<SideBar/>
+					<AppRouter/>
+				</div>
 			</div>
-		</div>
+		</Suspense>
 	)
 }
 

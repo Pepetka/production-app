@@ -1,23 +1,27 @@
-import { routeConfig } from "shared/config/routeConfig/routeConfig"
-import { classNames } from "shared/lib/classNames"
-import { AppLink } from "shared/ui/AppLink"
-import { AppLinkTheme } from "shared/ui/AppLink/ui/AppLink"
+import {routeConfig} from "shared/config/routeConfig/routeConfig"
+import {classNames} from "shared/lib/classNames"
+import {AppLink} from "shared/ui/AppLink"
+import {AppLinkTheme} from "shared/ui/AppLink/ui/AppLink"
 import cls from "./NavBar.module.scss"
+import {useTranslation} from "react-i18next";
 
 interface NavBarProps {
 	className?: string
 }
 
-export const NavBar = ({ className }: NavBarProps) => {
+export function NavBar({className}: NavBarProps) {
+	const {t} = useTranslation()
+
 	return (
 		<div className={classNames(cls.NavBar, {}, [className])}>
 			<div className={classNames(cls.links)}>
-				{Object.entries(routeConfig).map(([routeName, { path }]) => (
+				{Object.entries(routeConfig).map(([routeName, {path}]) => (
 					<AppLink theme={AppLinkTheme.SECONDARY} key={path} to={path}>
-						{routeName}
+						{t(routeName)}
 					</AppLink>
 				))}
 			</div>
 		</div>
 	)
 }
+
