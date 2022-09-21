@@ -15,7 +15,7 @@ export function buildPlugins({ paths, isDev }: BuildOptions): WebpackPluginInsta
 			chunkFilename: 'css/[name].[contenthash].css',
 		}),
 		new webpack.DefinePlugin({
-			__IS_DEV_: JSON.stringify(isDev),
+			__IS_DEV__: JSON.stringify(isDev),
 		}),
 	];
 
