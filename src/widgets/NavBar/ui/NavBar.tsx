@@ -15,11 +15,15 @@ export function NavBar({ className }: NavBarProps) {
 	return (
 		<div className={classNames(cls.NavBar, {}, [className])}>
 			<div className={classNames(cls.links)}>
-				{Object.entries(routeConfig).map(([routeName, { path }]) => (
-					<AppLink theme={AppLinkTheme.SECONDARY} key={path} to={path}>
-						{t(routeName)}
-					</AppLink>
-				))}
+				{Object.entries(routeConfig).map(([routeName, { path }]) => {
+					if (path === '*') return null;
+
+					return (
+						<AppLink theme={AppLinkTheme.SECONDARY} key={path} to={path}>
+							{t(routeName)}
+						</AppLink>
+					);
+				})}
 			</div>
 		</div>
 	);
