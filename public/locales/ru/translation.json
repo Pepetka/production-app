@@ -4,5 +4,7 @@
 	"main": "Главная",
 	"about": "Описание",
 	"Loading": "Загрузка...",
-	"Not found": "Страница не найдена"
+	"Not found": "Страница не найдена",
+	"Something went wrong": "Произошла ошибка",
+	"Reload page": "Reload page"
 }
