@@ -5,9 +5,11 @@ module.exports = {
 		jest: true,
 	},
 	extends: [
-		'plugin:react/recommended',
 		'airbnb',
+		'plugin:react/recommended',
 		'plugin:i18next/recommended',
+		'plugin:import/errors',
+		'plugin:import/warnings',
 	],
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
@@ -46,6 +48,7 @@ module.exports = {
 		}],
 		'no-console': 'off',
 		'linebreak-style': ['error', 'windows'],
+		'react/display-name': 'off',
 	},
 	globals: {
 		__IS_DEV__: true,
