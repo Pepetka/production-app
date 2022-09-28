@@ -1,8 +1,6 @@
-import { addDecorator } from '@storybook/react';
 import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator/StyleDecorator';
-import { Theme } from '../../src/app/provider/Theme';
-import { LocalizationDecorator } from '../../src/shared/config/storybook/LocalizationDecorator/LocalizationDecorator';
 import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorator/RouterDecorator';
+import { LocalizationDecorator } from '../../src/shared/config/storybook/LocalizationDecorator/LocalizationDecorator';
 
 export const parameters = {
 	actions: { argTypesRegex: '^on[A-Z].*' },
@@ -14,6 +12,37 @@ export const parameters = {
 	},
 };
 
-addDecorator(StyleDecorator(Theme.LIGHT_THEME));
-addDecorator(LocalizationDecorator);
-addDecorator(RouterDecorator);
+export const globalTypes = {
+	globalLocale: {
+		name: 'Locale',
+		description: 'Internationalization locale',
+		defaultValue: 'en',
+		toolbar: {
+			icon: 'globe',
+			items: [
+				{ value: 'en', title: 'English' },
+				{ value: 'ru', title: 'Russian' },
+			],
+			showName: true,
+		},
+	},
+	globalTheme: {
+		name: 'Theme',
+		description: 'Global theme for components',
+		defaultValue: 'light',
+		toolbar: {
+			items: [
+				{ value: 'dark', title: 'Dark theme', icon: 'circle' },
+				{ value: 'light', title: 'Light theme', icon: 'circlehollow' },
+				{ value: 'side-by-side', title: 'Side by Side', icon: 'sidebar' },
+			],
+			showName: true,
+		},
+	},
+};
+
+export const decorators = [
+	StyleDecorator,
+	RouterDecorator,
+	LocalizationDecorator,
+];

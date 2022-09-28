@@ -1,9 +1,21 @@
-import { Story } from '@storybook/react';
+import { DecoratorFn } from '@storybook/react';
+import { Suspense, useEffect } from 'react';
 import { I18nextProvider } from 'react-i18next';
-import i18nConfigForTesting from 'shared/config/i18n/i18nConfigForTesting';
+import i18n from 'shared/config/i18n/i18nConfigForStorybook';
+import { Spinner } from 'shared/ui/Spinner/ui/Spinner';
 
-export const LocalizationDecorator = (StoryComponent: Story) => (
-	<I18nextProvider i18n={i18nConfigForTesting}>
-		<StoryComponent />
-	</I18nextProvider>
-);
+export const LocalizationDecorator: DecoratorFn = (StoryComponent, { globals }) => {
+	const { globalLocale } = globals;
+
+	useEffect(() => {
+		i18n.changeLanguage(globalLocale);
+	}, [globalLocale]);
+
+	return (
+		<Suspense fallback={<Spinner />}>
+			<I18nextProvider i18n={i18n}>
+				<StoryComponent />
+			</I18nextProvider>
+		</Suspense>
+	);
+};

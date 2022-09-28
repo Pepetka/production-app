@@ -8,6 +8,7 @@ module.exports = {
 		'@storybook/addon-interactions',
 	],
 	framework: '@storybook/react',
+	staticDirs: ['../../public'],
 	core: {
 		builder: '@storybook/builder-webpack5',
 	},

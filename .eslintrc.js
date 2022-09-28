@@ -6,6 +6,7 @@ module.exports = {
 	},
 	extends: [
 		'airbnb',
+		'plugin:jsx-a11y/recommended',
 		'plugin:react/recommended',
 		'plugin:i18next/recommended',
 		'plugin:import/errors',
@@ -21,6 +22,7 @@ module.exports = {
 	},
 	plugins: [
 		'react',
+		'jsx-a11y',
 		'@typescript-eslint',
 		'i18next',
 	],
@@ -55,7 +57,9 @@ module.exports = {
 	},
 	overrides: [
 		{
-			files: ['**/src/**/*.test.{ts,tsx}'],
+			files: [
+				'**/src/**/*.test.{ts,tsx}',
+			],
 			rules: {
 				'i18next/no-literal-string': 'off',
 			},

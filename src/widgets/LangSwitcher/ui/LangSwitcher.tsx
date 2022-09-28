@@ -12,8 +12,14 @@ export const LangSwitcher = ({ className }: LangSwitcherProps) => {
 	const { t, i18n } = useTranslation();
 
 	useEffect(() => {
-		document.documentElement.lang = i18n.language;
+		const storageLang = localStorage.getItem('i18nextLng');
+		console.log(storageLang);
+		if (storageLang) i18n.changeLanguage(storageLang);
 	}, []);
+
+	useEffect(() => {
+		document.documentElement.lang = i18n.language;
+	}, [i18n.language]);
 
 	const onToggle = () => {
 		const newLang = i18n.language === 'ru' ? 'en' : 'ru';

@@ -1,6 +1,4 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { StyleDecorator } from 'shared/config/storybook/StyleDecorator/StyleDecorator';
-import { Theme } from 'app/provider/Theme';
 import { SideBar } from './SideBar';
 
 export default {
@@ -13,11 +11,5 @@ export default {
 
 const Template: ComponentStory<typeof SideBar> = (args) => <SideBar {...args} />;
 
-export const SideBarLight = Template.bind({});
-SideBarLight.decorators = [
-	StyleDecorator(Theme.LIGHT_THEME),
-];
-export const SideBarDark = Template.bind({});
-SideBarDark.decorators = [
-	StyleDecorator(Theme.DARK_THEME),
-];
+export const SideBarStory = Template.bind({});
+SideBarStory.args = {};

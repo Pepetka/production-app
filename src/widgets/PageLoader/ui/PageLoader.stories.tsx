@@ -1,6 +1,4 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { StyleDecorator } from 'shared/config/storybook/StyleDecorator/StyleDecorator';
-import { Theme } from 'app/provider/Theme';
 import { PageLoader } from './PageLoader';
 
 export default {
@@ -13,11 +11,5 @@ export default {
 
 const Template: ComponentStory<typeof PageLoader> = (args) => <PageLoader {...args} />;
 
-export const PageLoaderLight = Template.bind({});
-PageLoaderLight.decorators = [
-	StyleDecorator(Theme.LIGHT_THEME),
-];
-export const PageLoaderDark = Template.bind({});
-PageLoaderDark.decorators = [
-	StyleDecorator(Theme.DARK_THEME),
-];
+export const PageLoaderStory = Template.bind({});
+PageLoaderStory.args = {};
