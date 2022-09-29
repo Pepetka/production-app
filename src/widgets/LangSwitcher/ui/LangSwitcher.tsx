@@ -7,7 +7,7 @@ import cls from './LangSwitcher.module.scss';
 
 enum Languages {
 	RU = 'ru',
-	EN = 'en-US'
+	EN = 'en'
 }
 
 interface LangSwitcherProps {

@@ -5,14 +5,14 @@ i18n
 	.use(initReactI18next)
 	.init({
 		lng: 'en',
-		fallbackLng: 'en-US',
+		fallbackLng: 'en',
 		debug: false,
 
 		interpolation: {
 			escapeValue: false,
 		},
 
-		resources: { 'en-US': { translations: {} } },
+		resources: { en: { translations: {} } },
 	});
 
 export default i18n;
