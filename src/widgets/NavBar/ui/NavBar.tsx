@@ -17,6 +17,13 @@ export function NavBar({ className }: NavBarProps) {
 			<div className={classNames(cls.links)}>
 				{Object.entries(routeConfig).map(([routeName, { path }]) => {
 					if (path === '*') return null;
+					if (path === '/') {
+						return (
+							<AppLink theme={AppLinkTheme.RED} key={path} to={path}>
+								{t(routeName)}
+							</AppLink>
+						);
+					}
 
 					return (
 						<AppLink theme={AppLinkTheme.SECONDARY} key={path} to={path}>

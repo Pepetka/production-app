@@ -25,3 +25,9 @@ AppLinkSecondary.args = {
 	theme: AppLinkTheme.SECONDARY,
 	children: 'Link',
 };
+
+export const AppLinkRed = Template.bind({});
+AppLinkRed.args = {
+	theme: AppLinkTheme.RED,
+	children: 'Link',
+};

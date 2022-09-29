@@ -35,7 +35,7 @@ export const LangSwitcher = ({ className }: LangSwitcherProps) => {
 
 	return (
 		<div className={classNames(cls.LangSwitcher, {}, [className])}>
-			<Button theme={ButtonTheme.CLEAR} onClick={onToggle}>{t('Translate')}</Button>
+			<Button theme={ButtonTheme.CLEAR} onClick={onToggle} inverted>{t('Translate')}</Button>
 		</div>
 	);
 };

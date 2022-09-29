@@ -22,8 +22,9 @@ export const SideBar = ({ className }: SideBarProps) => {
 				theme={ButtonTheme.CLEAR}
 				onClick={onCollapse}
 				data-testid="toggle"
+				inverted
 			>
-				{collapsed ? '->' : 'X'}
+				{collapsed ? '>' : '<'}
 			</Button>
 
 			<div className={cls.switchers}>

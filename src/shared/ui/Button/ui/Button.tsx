@@ -11,15 +11,17 @@ export enum ButtonTheme {
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	className?: string
 	theme?: ButtonTheme
+	inverted?: boolean
 }
 
 export const Button: FC<ButtonProps> = ({
 	className,
+	inverted,
 	theme = ButtonTheme.PRIMARY,
 	children,
 	...buttonProps
 }) => (
-	<button type="button" className={classNames(cls.Button, {}, [className, cls[theme]])} {...buttonProps}>
+	<button type="button" className={classNames(cls.Button, { [cls.inverted]: inverted }, [className, cls[theme]])} {...buttonProps}>
 		{children}
 	</button>
 );

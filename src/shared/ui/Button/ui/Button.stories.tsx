@@ -19,14 +19,33 @@ ButtonClear.args = {
 	children: 'Button',
 };
 
+export const ButtonClearInverted = Template.bind({});
+ButtonClearInverted.args = {
+	theme: ButtonTheme.CLEAR,
+	children: 'Button',
+	inverted: true,
+};
+
 export const ButtonPrimary = Template.bind({});
 ButtonPrimary.args = {
 	theme: ButtonTheme.PRIMARY,
 	children: 'Button',
+};
+export const ButtonPrimaryInverted = Template.bind({});
+ButtonPrimaryInverted.args = {
+	theme: ButtonTheme.PRIMARY,
+	children: 'Button',
+	inverted: true,
 };
 
 export const ButtonOutline = Template.bind({});
 ButtonOutline.args = {
 	theme: ButtonTheme.OUTLINE,
 	children: 'Button',
+};
+export const ButtonOutlineInverted = Template.bind({});
+ButtonOutlineInverted.args = {
+	theme: ButtonTheme.OUTLINE,
+	children: 'Button',
+	inverted: true,
 };
