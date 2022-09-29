@@ -11,7 +11,7 @@ enum Languages {
 }
 
 interface LangSwitcherProps {
-className?: string;
+	className?: string;
 }
 export const LangSwitcher = ({ className }: LangSwitcherProps) => {
 	const { t, i18n } = useTranslation();
@@ -35,7 +35,7 @@ export const LangSwitcher = ({ className }: LangSwitcherProps) => {
 
 	return (
 		<div className={classNames(cls.LangSwitcher, {}, [className])}>
-			<Button theme={ButtonTheme.CLEAR} onClick={onToggle} inverted>{t('Translate')}</Button>
+			<Button theme={ButtonTheme.CLEAR} onClick={onToggle} inverted>{t('en')}</Button>
 		</div>
 	);
 };

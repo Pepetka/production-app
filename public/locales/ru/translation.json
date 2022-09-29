@@ -1,10 +1,10 @@
 {
 	"Test translate": "Тестовый текст для перевода",
-	"Translate": "ru",
-	"main": "Главная",
-	"about": "Описание",
-	"Loading": "Загрузка...",
-	"Not found": "Страница не найдена",
+	"en": "ru",
+	"Main": "Главная",
+	"About": "Описание",
+	"Loading": "Загрузка",
+	"Page not found": "Страница не найдена",
 	"Something went wrong": "Произошла ошибка",
-	"Reload page": "Reload page"
+	"Reload page": "Перезагрузка"
 }

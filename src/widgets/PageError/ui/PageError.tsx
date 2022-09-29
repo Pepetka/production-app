@@ -5,7 +5,7 @@ import { useTheme } from 'app/provider/Theme';
 import cls from './PageError.module.scss';
 
 interface PageErrorProps {
-className?: string;
+	className?: string;
 }
 export const PageError = ({ className }: PageErrorProps) => {
 	const { t } = useTranslation();
