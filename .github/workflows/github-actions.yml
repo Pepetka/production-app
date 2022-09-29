@@ -32,4 +32,4 @@ jobs:
       - name: build storybook
         run: npm run storybook:build
       - name: testing ui screenshots
-        run: npm run test:ui
+        run: npm run test:ui:ci
