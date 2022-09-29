@@ -49,7 +49,7 @@ module.exports = {
 			ignoreAttribute: ['data-testid'],
 		}],
 		'no-console': 'off',
-		'linebreak-style': ['error', 'windows'],
+		'linebreak-style': ['error', 'unix'],
 		'react/display-name': 'off',
 	},
 	globals: {
