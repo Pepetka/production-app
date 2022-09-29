@@ -5,6 +5,11 @@ import { Button } from 'shared/ui/Button';
 import { ButtonTheme } from 'shared/ui/Button/ui/Button';
 import cls from './LangSwitcher.module.scss';
 
+enum Languages {
+	RU = 'ru',
+	EN = 'en-US'
+}
+
 interface LangSwitcherProps {
 className?: string;
 }
@@ -13,7 +18,7 @@ export const LangSwitcher = ({ className }: LangSwitcherProps) => {
 
 	useEffect(() => {
 		const storageLang = localStorage.getItem('i18nextLng');
-		console.log(storageLang);
+
 		if (storageLang) i18n.changeLanguage(storageLang);
 	}, []);
 
@@ -22,7 +27,7 @@ export const LangSwitcher = ({ className }: LangSwitcherProps) => {
 	}, [i18n.language]);
 
 	const onToggle = () => {
-		const newLang = i18n.language === 'ru' ? 'en' : 'ru';
+		const newLang = i18n.language === Languages.RU ? Languages.EN : Languages.RU;
 
 		i18n.changeLanguage(newLang);
 		document.documentElement.lang = newLang;

@@ -1,3 +1,4 @@
+import 'loki/configure-react';
 import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator/StyleDecorator';
 import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorator/RouterDecorator';
 import { LocalizationDecorator } from '../../src/shared/config/storybook/LocalizationDecorator/LocalizationDecorator';
@@ -16,11 +17,11 @@ export const globalTypes = {
 	globalLocale: {
 		name: 'Locale',
 		description: 'Internationalization locale',
-		defaultValue: 'en',
+		defaultValue: 'en-US',
 		toolbar: {
 			icon: 'globe',
 			items: [
-				{ value: 'en', title: 'English' },
+				{ value: 'en-US', title: 'English' },
 				{ value: 'ru', title: 'Russian' },
 			],
 			showName: true,
