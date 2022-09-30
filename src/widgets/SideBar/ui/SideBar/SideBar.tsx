@@ -4,17 +4,17 @@ import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
 import { Button } from 'shared/ui/Button';
 import { ButtonTheme } from 'shared/ui/Button/ui/Button';
-import cls from './SideBar.module.scss';
 import { AppRoutes, routeConfig } from 'shared/config/routeConfig/routeConfig';
 import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/ui/AppLink';
 import { useTranslation } from 'react-i18next';
-import AboutIcon from 'shared/assets/icons/about_icon.svg'
-import HomeIcon from 'shared/assets/icons/home_icon.svg'
+import AboutIcon from 'shared/assets/icons/about_icon.svg';
+import HomeIcon from 'shared/assets/icons/home_icon.svg';
+import cls from './SideBar.module.scss';
 
 const navIcons: Record<string, ReactNode> = {
 	[AppRoutes.MAIN]: <HomeIcon />,
-	[AppRoutes.ABOUT]: <AboutIcon />
-}
+	[AppRoutes.ABOUT]: <AboutIcon />,
+};
 
 interface SideBarProps {
 	className?: string
