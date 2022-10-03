@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { ErrorBoundary } from 'app/provider/ErrorBoundary';
 import { PageLoader } from 'widgets/PageLoader';
 
+import 'app/styles/index.scss';
 import 'shared/config/i18n/i18nConfig';
 
 render(
