@@ -17,7 +17,7 @@ export const componentTestRender = (component: ReactNode, options?: ComponentTes
 	if (options) route = options.route;
 
 	return render(
-		<StoreProvider initialState={options.initialState as StateSchema}>
+		<StoreProvider initialState={options?.initialState as StateSchema}>
 			<MemoryRouter initialEntries={[route]}>
 				<I18nextProvider i18n={i18nConfigForTesting}>
 					{component}
