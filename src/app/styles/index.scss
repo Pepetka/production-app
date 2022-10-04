@@ -3,8 +3,10 @@
 @import "./themes/light";
 @import "./variables/global";
 
-body {
+.App,
+.app_modal {
 	font: var(--font-m);
+	color: var(--primary-color);
 }
 
 .App {

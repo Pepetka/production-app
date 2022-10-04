@@ -3,6 +3,7 @@ import {
 } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Portal } from 'shared/ui/Portal/ui/Portal';
+import { useTheme } from 'app/provider/Theme';
 
 import cls from './Modal.module.scss';
 
@@ -17,6 +18,7 @@ export const Modal = ({
 }: ModalProps) => {
 	const [isClosing, setIsClosing] = useState(false);
 	const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
+	const { theme } = useTheme();
 
 	const onContentClick = (event: MouseEvent) => {
 		event.stopPropagation();
@@ -54,7 +56,7 @@ export const Modal = ({
 	return (
 		<Portal>
 			<div
-				className={classNames(cls.Modal, { [cls.open]: isOpen, [cls.close]: isClosing }, [className])}
+				className={classNames(cls.Modal, { [cls.open]: isOpen, [cls.close]: isClosing }, [className, theme, 'app_modal'])}
 			>
 				<div className={cls.overlay} onClick={onCloseHandler}>
 					<div className={cls.content} onClick={onContentClick}>
