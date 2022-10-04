@@ -1,6 +1,16 @@
 .storybook {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+
+	.App {
+		width: 100%;
+		padding: 10px;
+	}
+
 	&__wrapper {
-		display: inline-block;
 		width: 50%;
+		transform: scale(1);
 	}
 }

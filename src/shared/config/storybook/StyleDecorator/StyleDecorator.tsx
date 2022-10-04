@@ -10,7 +10,9 @@ const StoryComponentWithTheme = ({ StoryComponent, globalTheme }: {StoryComponen
 
 	useEffect(() => {
 		setTheme(globalTheme);
-	}, [globalTheme]);
+	}, [globalTheme, setTheme]);
+
+	document.body.className = globalTheme;
 
 	return (
 		<div className={`App ${theme}`}>
@@ -40,8 +42,10 @@ export const StyleDecorator: DecoratorFn = (StoryComponent, { globals }) => {
 	}
 
 	return (
-		<ThemeProvider>
-			<StoryComponentWithTheme StoryComponent={StoryComponent} globalTheme={globalTheme} />
-		</ThemeProvider>
+		<div className="storybook">
+			<ThemeProvider>
+				<StoryComponentWithTheme StoryComponent={StoryComponent} globalTheme={globalTheme} />
+			</ThemeProvider>
+		</div>
 	);
 };
