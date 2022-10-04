@@ -10,7 +10,7 @@ const StoryComponentWithTheme = ({ StoryComponent, globalTheme }: {StoryComponen
 
 	useEffect(() => {
 		setTheme(globalTheme);
-	}, [globalTheme]);
+	}, [globalTheme, setTheme]);
 
 	return (
 		<div className={`App ${theme}`}>

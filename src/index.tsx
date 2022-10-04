@@ -5,19 +5,22 @@ import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { ErrorBoundary } from 'app/provider/ErrorBoundary';
 import { PageLoader } from 'widgets/PageLoader';
+import { StoreProvider } from 'app/provider/Store';
 
 import 'app/styles/index.scss';
 import 'shared/config/i18n/i18nConfig';
 
 render(
 	<Suspense fallback={<PageLoader />}>
-		<ThemeProvider>
-			<BrowserRouter>
-				<ErrorBoundary>
-					<App />
-				</ErrorBoundary>
-			</BrowserRouter>
-		</ThemeProvider>
+		<StoreProvider>
+			<ThemeProvider>
+				<BrowserRouter>
+					<ErrorBoundary>
+						<App />
+					</ErrorBoundary>
+				</BrowserRouter>
+			</ThemeProvider>
+		</StoreProvider>
 	</Suspense>,
 	document.querySelector('#root'),
 );

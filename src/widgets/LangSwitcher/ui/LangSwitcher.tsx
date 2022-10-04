@@ -20,7 +20,7 @@ export const LangSwitcher = ({ className }: LangSwitcherProps) => {
 		const storageLang = localStorage.getItem('i18nextLng');
 
 		if (storageLang) i18n.changeLanguage(storageLang);
-	}, []);
+	}, [i18n]);
 
 	useEffect(() => {
 		document.documentElement.lang = i18n.language;
