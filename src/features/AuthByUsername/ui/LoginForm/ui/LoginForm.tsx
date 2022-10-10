@@ -23,14 +23,14 @@ export const LoginForm = ({ className }: LoginFormProps) => {
 			<div>
 				<Input
 					className={cls.input}
-					placeholder={t('Username')}
+					floatPlaceholder={t('Username')}
 					autoFocus
 					value={username}
 					onChange={(e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
 				/>
 				<Input
 					className={cls.input}
-					placeholder={t('Password')}
+					floatPlaceholder={t('Password')}
 					value={password}
 					onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
 				/>

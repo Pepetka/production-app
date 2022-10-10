@@ -10,11 +10,11 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement>{
 	value?: string
 	type?: HTMLInputTypeAttribute
 	autoFocus?: boolean
-	placeholder?: string
+	floatPlaceholder?: string
 }
 
 export const Input = ({
-	className, placeholder, autoFocus = false, value = '', type = 'text', onChange = () => {}, ...otherProps
+	className, floatPlaceholder, autoFocus = false, value = '', type = 'text', onChange = () => {}, ...otherProps
 }: InputProps) => {
 	const inputRef = useRef<HTMLInputElement>(null);
 	const [isFocused, setIsFocused] = useState(false);
@@ -27,9 +27,9 @@ export const Input = ({
 	}, [autoFocus]);
 
 	return (
-		<div className={classNames(cls.inputWrapper, { [cls.withPlaceholder]: placeholder }, [className])}>
+		<div className={classNames(cls.inputWrapper, { [cls.withPlaceholder]: floatPlaceholder }, [className])}>
 			<span className={classNames(cls.label, { [cls.placeholder]: !isFocused })}>
-				{placeholder}
+				{floatPlaceholder}
 			</span>
 			<input
 				ref={inputRef}
