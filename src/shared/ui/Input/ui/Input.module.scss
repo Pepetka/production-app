@@ -1,0 +1,31 @@
+.Input {
+	width: 100%;
+	background: var(--invert-bg-color);
+	color: var(--invert-primary-color);
+	border: solid 1px var(--invert-primary-color);
+	border-radius: 5px;
+	padding: 10px 15px;
+}
+
+.inputWrapper {
+	position: relative;
+}
+
+.label {
+	pointer-events: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	transform: translateY(5px);
+	color: var(--primary-color);
+	transition: all 0.3s ease-out;
+}
+
+.withPlaceholder {
+	padding-top: 35px;
+}
+
+.placeholder {
+	transform: translateY(45px) translateX(15px);
+	color: var(--inverted-secondary-color);
+}

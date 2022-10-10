@@ -12,13 +12,19 @@ interface ModalProps {
 	children?: ReactNode
 	isOpen: boolean
 	onCloseModal?: () => void
+	lazy?: boolean
 }
 export const Modal = ({
-	className, children, isOpen, onCloseModal,
+	className, children, isOpen, onCloseModal, lazy = false,
 }: ModalProps) => {
 	const [isClosing, setIsClosing] = useState(false);
+	const [isMounted, setIsMounted] = useState(false);
 	const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
 	const { theme } = useTheme();
+
+	useEffect(() => {
+		if (isOpen) setIsMounted(true);
+	}, [isOpen]);
 
 	const onContentClick = (event: MouseEvent) => {
 		event.stopPropagation();
@@ -52,6 +58,8 @@ export const Modal = ({
 			window.removeEventListener('keydown', onKeyDown);
 		};
 	}, [isOpen, onKeyDown]);
+
+	if (lazy && !isMounted) return null;
 
 	return (
 		<Portal>

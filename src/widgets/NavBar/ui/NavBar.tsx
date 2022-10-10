@@ -3,10 +3,10 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { AppLink } from 'shared/ui/AppLink';
 import { AppLinkTheme } from 'shared/ui/AppLink/ui/AppLink';
 import { useTranslation } from 'react-i18next';
-import { Modal } from 'shared/ui/Modal';
 import { Button } from 'shared/ui/Button';
 import { ButtonTheme } from 'shared/ui/Button/ui/Button';
 import { useState } from 'react';
+import { LoginModal } from 'features/AuthByUsername/ui/LoginModal';
 import cls from './NavBar.module.scss';
 
 interface NavBarProps {
@@ -17,15 +17,17 @@ export function NavBar({ className }: NavBarProps) {
 	const { t } = useTranslation();
 	const [isAuthModal, setIsAuthModal] = useState(false);
 
-	const onToggleAuth = () => {
-		setIsAuthModal((isAuthModal) => !isAuthModal);
+	const onCloseModal = () => {
+		setIsAuthModal(false);
+	};
+
+	const onOpenModal = () => {
+		setIsAuthModal(true);
 	};
 
 	return (
 		<div className={classNames(cls.NavBar, {}, [className])}>
-			<Modal isOpen={isAuthModal} onCloseModal={onToggleAuth}>{/* eslint-disable-line  */}
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa distinctio exercitationem illo quasi quo recusandae!
-			</Modal>
+			<LoginModal isOpen={isAuthModal} onCloseModal={onCloseModal} />
 			<div className={classNames(cls.links)}>
 				{Object.entries(routeConfig).map(([routeName, { path }]) => {
 					if (path === '*') return null;
@@ -43,7 +45,7 @@ export function NavBar({ className }: NavBarProps) {
 						</AppLink>
 					);
 				})}
-				<Button theme={ButtonTheme.OUTLINE} inverted onClick={onToggleAuth}>
+				<Button theme={ButtonTheme.OUTLINE} inverted onClick={onOpenModal}>
 					{t('LogIn')}
 				</Button>
 			</div>
