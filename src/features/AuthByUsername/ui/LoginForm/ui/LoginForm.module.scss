@@ -4,10 +4,17 @@
 	width: 400px;
 }
 
-.input {
-	width: 100%;
+.button {
+	align-self: flex-end;
+	margin-top: 35px;
 }
 
-.button {
-	margin-top: 35px;
+.error {
+	margin-top: 10px;
+}
+
+@media screen and (max-width: 768px) {
+	.LoginForm {
+		width: 100%;
+	}
 }

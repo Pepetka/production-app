@@ -29,3 +29,63 @@
 	transform: translateY(45px) translateX(15px);
 	color: var(--inverted-secondary-color);
 }
+
+.primary {
+	.Input {
+		background: var(--invert-bg-color);
+		color: var(--invert-primary-color);
+		border: solid 1px var(--invert-primary-color);
+	}
+
+	.label {
+		color: var(--primary-color);
+	}
+
+	.placeholder {
+		color: var(--inverted-secondary-color);
+	}
+}
+
+.invert {
+	.Input {
+		background: var(--bg-color);
+		color: var(--primary-color);
+		border: solid 1px var(--primary-color);
+	}
+
+	.label {
+		color: var(--invert-primary-color);
+	}
+
+	.placeholder {
+		color: var(--secondary-color);
+	}
+}
+
+.primary.textInvert {
+	.Input {
+		color: var(--invert-primary-color);
+	}
+
+	.label {
+		color: var(--invert-primary-color);
+	}
+
+	.placeholder {
+		color: var(--secondary-color);
+	}
+}
+
+.invert.textInvert {
+	.Input {
+		color: var(--primary-color);
+	}
+
+	.label {
+		color: var(--primary-color);
+	}
+
+	.placeholder {
+		color: var(--invert-secondary-color);
+	}
+}

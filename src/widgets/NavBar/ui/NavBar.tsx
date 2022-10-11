@@ -5,8 +5,12 @@ import { AppLinkTheme } from 'shared/ui/AppLink/ui/AppLink';
 import { useTranslation } from 'react-i18next';
 import { Button } from 'shared/ui/Button';
 import { ButtonTheme } from 'shared/ui/Button/ui/Button';
-import { useState } from 'react';
-import { LoginModal } from 'features/AuthByUsername/ui/LoginModal';
+import {
+	useCallback, useEffect, useRef, useState,
+} from 'react';
+import { LoginModal } from 'features/AuthByUsername';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAuthData, userActions } from 'entities/User';
 import cls from './NavBar.module.scss';
 
 interface NavBarProps {
@@ -15,7 +19,23 @@ interface NavBarProps {
 
 export function NavBar({ className }: NavBarProps) {
 	const { t } = useTranslation();
+	const authData = useSelector(getAuthData);
+	const dispatch = useDispatch();
 	const [isAuthModal, setIsAuthModal] = useState(false);
+	const [isAuth, setIsAuth] = useState(false);
+	const authRef = useRef<ReturnType<typeof setTimeout>>(null);
+
+	const onAuth = useCallback(() => setIsAuth(true), []);
+
+	useEffect(() => {
+		if (authData) {
+			authRef.current = setTimeout(onAuth, 3000);
+		}
+
+		return () => {
+			clearInterval(authRef.current);
+		};
+	}, [authData, onAuth]);
 
 	const onCloseModal = () => {
 		setIsAuthModal(false);
@@ -25,9 +45,15 @@ export function NavBar({ className }: NavBarProps) {
 		setIsAuthModal(true);
 	};
 
+	const onLogout = () => {
+		dispatch(userActions.removeAuthData());
+		setIsAuth(false);
+		setIsAuthModal(false);
+	};
+
 	return (
 		<div className={classNames(cls.NavBar, {}, [className])}>
-			<LoginModal isOpen={isAuthModal} onCloseModal={onCloseModal} />
+			{!isAuth && <LoginModal isOpen={isAuthModal} isClose={!!authData} onCloseModal={onCloseModal} />}
 			<div className={classNames(cls.links)}>
 				{Object.entries(routeConfig).map(([routeName, { path }]) => {
 					if (path === '*') return null;
@@ -45,9 +71,15 @@ export function NavBar({ className }: NavBarProps) {
 						</AppLink>
 					);
 				})}
-				<Button theme={ButtonTheme.OUTLINE} inverted onClick={onOpenModal}>
-					{t('LogIn')}
-				</Button>
+				{authData ? (
+					<Button theme={ButtonTheme.OUTLINE} inverted onClick={onLogout}>
+						{t('LogOut')}
+					</Button>
+				) : (
+					<Button theme={ButtonTheme.OUTLINE} inverted onClick={onOpenModal}>
+						{t('LogIn')}
+					</Button>
+				)}
 			</div>
 		</div>
 	);

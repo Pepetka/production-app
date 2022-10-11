@@ -9,5 +9,8 @@
 	"Reload page": "Reload page",
 	"LogIn": "LogIn",
 	"Username": "Username",
-	"Password": "Password"
+	"Password": "Password",
+	"Login error": "Login error",
+	"Auth form": "Auth form",
+	"LogOut": "LogOut"
 }

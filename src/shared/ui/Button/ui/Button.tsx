@@ -22,7 +22,11 @@ export const Button: FC<ButtonProps> = ({
 	children,
 	...buttonProps
 }) => (
-	<button type="button" className={classNames(cls.Button, { [cls.inverted]: inverted }, [className, cls[theme]])} {...buttonProps}>
+	<button
+		type="button"
+		className={classNames(cls.Button, { [cls.inverted]: inverted }, [className, cls[theme]])}
+		{...buttonProps}
+	>
 		{children}
 	</button>
 );

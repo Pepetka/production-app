@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Input } from './Input';
+import { Input, InputTheme } from './Input';
 
 export default {
 	title: 'shared/Input',
@@ -19,4 +19,16 @@ InputWithoutPlaceholder.args = {
 export const InputWithPlaceholder = Template.bind({});
 InputWithPlaceholder.args = {
 	floatPlaceholder: 'floatPlaceholder',
+};
+
+export const InputWithoutPlaceholderInvert = Template.bind({});
+InputWithoutPlaceholderInvert.args = {
+	placeholder: 'placeholder',
+	theme: InputTheme.INVERT,
+};
+
+export const InputWithPlaceholderInvert = Template.bind({});
+InputWithPlaceholderInvert.args = {
+	floatPlaceholder: 'floatPlaceholder',
+	theme: InputTheme.INVERT,
 };

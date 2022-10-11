@@ -9,5 +9,8 @@
 	"Reload page": "Перезагрузка",
 	"LogIn": "Войти",
 	"Username": "Логин",
-	"Password": "Пароль"
+	"Password": "Пароль",
+	"Login error": "Ошибка входа",
+	"Auth form": "Форма авторизации",
+	"LogOut": "Выйти"
 }

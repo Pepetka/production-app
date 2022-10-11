@@ -47,7 +47,7 @@ module.exports = {
 		'max-len': ['error', { code: 150 }],
 		'i18next/no-literal-string': ['error', {
 			markupOnly: true,
-			ignoreAttribute: ['data-testid'],
+			ignoreAttribute: ['data-testid', 'align'],
 		}],
 		'no-console': 'off',
 		'linebreak-style': ['error', 'unix'],
@@ -57,6 +57,7 @@ module.exports = {
 		'react-hooks/rules-of-hooks': 'error',
 		'react-hooks/exhaustive-deps': 'error',
 		'no-param-reassign': 'off',
+		'consistent-return': 'off',
 	},
 	globals: {
 		__IS_DEV__: true,
