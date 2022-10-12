@@ -1,4 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
+import { DeepPartial } from '@reduxjs/toolkit';
+import { StateSchema } from 'app/provider/Store';
 import { LoginForm } from './LoginForm';
 
 export default {
@@ -11,5 +14,47 @@ export default {
 
 const Template: ComponentStory<typeof LoginForm> = (args) => <LoginForm {...args} />;
 
+const initialState: DeepPartial<StateSchema> = {
+	login: {
+		loading: false,
+		error: null,
+		username: 'Username',
+		password: 'Password',
+	},
+};
+
+const initialStateError: DeepPartial<StateSchema> = {
+	login: {
+		loading: false,
+		error: 'Some Error message',
+		username: 'Username',
+		password: 'Password',
+	},
+};
+
+const initialStateLoading: DeepPartial<StateSchema> = {
+	login: {
+		loading: true,
+		error: null,
+		username: 'Username',
+		password: 'Password',
+	},
+};
+
 export const LoginFormStory = Template.bind({});
 LoginFormStory.args = {};
+LoginFormStory.decorators = [
+	StoreDecorator(initialState as StateSchema),
+];
+
+export const LoginFormError = Template.bind({});
+LoginFormError.args = {};
+LoginFormError.decorators = [
+	StoreDecorator(initialStateError as StateSchema),
+];
+
+export const LoginFormLoading = Template.bind({});
+LoginFormLoading.args = {};
+LoginFormLoading.decorators = [
+	StoreDecorator(initialStateLoading as StateSchema),
+];

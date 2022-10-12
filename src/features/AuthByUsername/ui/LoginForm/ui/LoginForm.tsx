@@ -39,29 +39,27 @@ export const LoginForm = ({ className }: LoginFormProps) => {
 	};
 
 	return (
-		<>
+		<form onSubmit={onSubmit} className={classNames(cls.LoginForm, {}, [className])}>
 			<Text title={t('Auth form')} align="center" />
-			<form onSubmit={onSubmit} className={classNames(cls.LoginForm, {}, [className])}>
-				<Input
-					theme={InputTheme.INVERT}
-					textInvert
-					floatPlaceholder={t('Username')}
-					autoFocus
-					value={username}
-					onChange={(e: ChangeEvent<HTMLInputElement>) => onChangeUsername(e.target.value)}
-				/>
-				<Input
-					theme={InputTheme.INVERT}
-					textInvert
-					floatPlaceholder={t('Password')}
-					value={password}
-					onChange={(e: ChangeEvent<HTMLInputElement>) => onChangePassword(e.target.value)}
-				/>
-				<Button disabled={loading} type="submit" className={cls.button} theme={ButtonTheme.OUTLINE}>
-					{loading ? `${t('Loading')}...` : t('LogIn')}
-				</Button>
-			</form>
+			<Input
+				theme={InputTheme.INVERT}
+				textInvert
+				floatPlaceholder={t('Username')}
+				autoFocus
+				value={username}
+				onChange={(e: ChangeEvent<HTMLInputElement>) => onChangeUsername(e.target.value)}
+			/>
+			<Input
+				theme={InputTheme.INVERT}
+				textInvert
+				floatPlaceholder={t('Password')}
+				value={password}
+				onChange={(e: ChangeEvent<HTMLInputElement>) => onChangePassword(e.target.value)}
+			/>
+			<Button disabled={loading} type="submit" className={cls.button} theme={ButtonTheme.OUTLINE}>
+				{loading ? `${t('Loading')}...` : t('LogIn')}
+			</Button>
 			{error && <Text text={t(error)} theme={TextTheme.ERROR} align="right" className={cls.error} />}
-		</>
+		</form>
 	);
 };
