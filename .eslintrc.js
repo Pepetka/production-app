@@ -47,7 +47,7 @@ module.exports = {
 		'max-len': ['error', { code: 150 }],
 		'i18next/no-literal-string': ['error', {
 			markupOnly: true,
-			ignoreAttribute: ['data-testid', 'align'],
+			ignoreAttribute: ['data-testid', 'align', 'reducerKey'],
 		}],
 		'no-console': 'off',
 		'linebreak-style': ['error', 'unix'],

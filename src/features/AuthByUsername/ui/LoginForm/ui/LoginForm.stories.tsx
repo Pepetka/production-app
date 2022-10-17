@@ -1,8 +1,9 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { DeepPartial } from '@reduxjs/toolkit';
+import { DeepPartial, ReducersMapObject } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/provider/Store';
-import { LoginForm } from './LoginForm';
+import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice';
+import LoginForm from './LoginForm';
 
 export default {
 	title: 'features/LoginForm',
@@ -41,20 +42,24 @@ const initialStateLoading: DeepPartial<StateSchema> = {
 	},
 };
 
+const asyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
+	login: loginReducer,
+};
+
 export const LoginFormStory = Template.bind({});
 LoginFormStory.args = {};
 LoginFormStory.decorators = [
-	StoreDecorator(initialState as StateSchema),
+	StoreDecorator(initialState as StateSchema, asyncReducers as ReducersMapObject<StateSchema>),
 ];
 
 export const LoginFormError = Template.bind({});
 LoginFormError.args = {};
 LoginFormError.decorators = [
-	StoreDecorator(initialStateError as StateSchema),
+	StoreDecorator(initialStateError as StateSchema, asyncReducers as ReducersMapObject<StateSchema>),
 ];
 
 export const LoginFormLoading = Template.bind({});
 LoginFormLoading.args = {};
 LoginFormLoading.decorators = [
-	StoreDecorator(initialStateLoading as StateSchema),
+	StoreDecorator(initialStateLoading as StateSchema, asyncReducers as ReducersMapObject<StateSchema>),
 ];

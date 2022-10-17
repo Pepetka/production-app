@@ -1,7 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { DeepPartial } from '@reduxjs/toolkit';
+import { DeepPartial, ReducersMapObject } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/provider/Store';
+import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice';
 import { LoginModal } from './LoginModal';
 
 export default {
@@ -23,11 +24,15 @@ const initialState: DeepPartial<StateSchema> = {
 	},
 };
 
+const asyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
+	login: loginReducer,
+};
+
 export const LoginModalStory = Template.bind({});
 LoginModalStory.args = {
 	isOpen: true,
 	onCloseModal: () => {},
 };
 LoginModalStory.decorators = [
-	StoreDecorator(initialState as StateSchema),
+	StoreDecorator(initialState as StateSchema, asyncReducers as ReducersMapObject<StateSchema>),
 ];
