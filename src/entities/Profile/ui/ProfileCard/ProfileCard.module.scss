@@ -1,0 +1,21 @@
+.ProfileCard {
+	height: auto;
+	display: flex;
+	gap: 15px;
+	padding-top: 20px;
+}
+
+.profileData {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	flex-grow: 1;
+}
+
+.profileAvatar {
+	width: 30%;
+
+	img {
+		width: 100%;
+	}
+}

@@ -5,7 +5,7 @@ import { loginActions, loginReducer } from './loginSlice';
 describe('loginSlice', () => {
 	test('setUsername', () => {
 		const state: LoginSchema = {
-			error: null,
+			error: undefined,
 			username: '',
 			loading: false,
 			password: '',
@@ -16,7 +16,7 @@ describe('loginSlice', () => {
 
 	test('setPassword', () => {
 		const state: LoginSchema = {
-			error: null,
+			error: undefined,
 			username: '',
 			loading: false,
 			password: '',
@@ -27,7 +27,7 @@ describe('loginSlice', () => {
 
 	test('setPassword', () => {
 		const state: LoginSchema = {
-			error: null,
+			error: undefined,
 			username: 'username',
 			loading: false,
 			password: 'password',

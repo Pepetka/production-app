@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { DeepPartial, ReducersMapObject } from '@reduxjs/toolkit';
+import { ReducersMapObject } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/provider/Store';
 import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice';
 import { LoginModal } from './LoginModal';
@@ -18,7 +18,7 @@ const Template: ComponentStory<typeof LoginModal> = (args) => <LoginModal {...ar
 const initialState: DeepPartial<StateSchema> = {
 	login: {
 		loading: false,
-		error: null,
+		error: undefined,
 		username: '',
 		password: '',
 	},

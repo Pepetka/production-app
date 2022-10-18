@@ -1,10 +1,18 @@
-import { configureStore, ReducersMapObject } from '@reduxjs/toolkit';
+import {
+	CombinedState, configureStore, Reducer, ReducersMapObject,
+} from '@reduxjs/toolkit';
 import { StateSchema } from 'app/provider/Store/config/StateSchema';
 import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
+import { $api } from 'shared/api/api';
+import { NavigateFunction } from 'react-router-dom';
 import { createReducerManager } from '../config/reducerManager';
 
-export const createReduxStore = (initialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) => {
+export const createReduxStore = (
+	initialState?: StateSchema,
+	asyncReducers?: ReducersMapObject<StateSchema>,
+	navigate?: NavigateFunction,
+) => {
 	const rootReducer: ReducersMapObject<StateSchema> = {
 		counter: counterReducer,
 		user: userReducer,
@@ -13,10 +21,18 @@ export const createReduxStore = (initialState?: StateSchema, asyncReducers?: Red
 
 	const reducerManager = createReducerManager(rootReducer);
 
-	const store = configureStore<StateSchema>({
-		reducer: reducerManager.reduce,
+	const store = configureStore({
+		reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
 		devTools: __IS_DEV__,
 		preloadedState: initialState,
+		middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+			thunk: {
+				extraArgument: {
+					api: $api,
+					navigate,
+				},
+			},
+		}),
 	});
 
 	// @ts-ignore
@@ -24,3 +40,5 @@ export const createReduxStore = (initialState?: StateSchema, asyncReducers?: Red
 
 	return store;
 };
+
+export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];

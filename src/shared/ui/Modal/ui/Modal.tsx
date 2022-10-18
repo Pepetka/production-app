@@ -21,8 +21,8 @@ export const Modal = ({
 	const [isClosing, setIsClosing] = useState(false);
 	const [isOpening, setIsOpening] = useState(false);
 	const [isMounted, setIsMounted] = useState(false);
-	const closeTimeoutRef = useRef<ReturnType<typeof setTimeout>>();
-	const openTimeoutRef = useRef<ReturnType<typeof setTimeout>>();
+	const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+	const openTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 	const { theme } = useTheme();
 
 	useEffect(() => {
@@ -33,7 +33,7 @@ export const Modal = ({
 		}
 
 		return () => {
-			clearTimeout(openTimeoutRef.current);
+			clearTimeout(openTimeoutRef.current!);
 		};
 	}, [isOpen]);
 
@@ -74,7 +74,7 @@ export const Modal = ({
 		}
 
 		return () => {
-			clearTimeout(closeTimeoutRef.current);
+			clearTimeout(closeTimeoutRef.current!);
 			window.removeEventListener('keydown', onKeyDown);
 		};
 	}, [isOpen, onKeyDown]);

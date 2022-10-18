@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { DeepPartial, ReducersMapObject } from '@reduxjs/toolkit';
+import { ReducersMapObject } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/provider/Store';
 import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice';
 import LoginForm from './LoginForm';
@@ -18,7 +18,7 @@ const Template: ComponentStory<typeof LoginForm> = (args) => <LoginForm {...args
 const initialState: DeepPartial<StateSchema> = {
 	login: {
 		loading: false,
-		error: null,
+		error: undefined,
 		username: 'Username',
 		password: 'Password',
 	},
@@ -36,7 +36,7 @@ const initialStateError: DeepPartial<StateSchema> = {
 const initialStateLoading: DeepPartial<StateSchema> = {
 	login: {
 		loading: true,
-		error: null,
+		error: undefined,
 		username: 'Username',
 		password: 'Password',
 	},

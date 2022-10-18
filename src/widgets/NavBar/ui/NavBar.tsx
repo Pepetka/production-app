@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { Button } from 'shared/ui/Button';
 import { ButtonTheme } from 'shared/ui/Button/ui/Button';
 import {
+	memo,
 	useCallback, useEffect, useRef, useState,
 } from 'react';
 import { LoginModal } from 'features/AuthByUsername';
@@ -17,13 +18,13 @@ interface NavBarProps {
 	className?: string
 }
 
-export function NavBar({ className }: NavBarProps) {
+export const NavBar = memo(({ className }: NavBarProps) => {
 	const { t } = useTranslation();
 	const authData = useSelector(getAuthData);
 	const dispatch = useDispatch();
 	const [isAuthModal, setIsAuthModal] = useState(false);
 	const [isAuth, setIsAuth] = useState(false);
-	const authRef = useRef<ReturnType<typeof setTimeout>>(null);
+	const authRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
 	const onAuth = useCallback(() => setIsAuth(true), []);
 
@@ -33,7 +34,7 @@ export function NavBar({ className }: NavBarProps) {
 		}
 
 		return () => {
-			clearInterval(authRef.current);
+			clearInterval(authRef.current!);
 		};
 	}, [authData, onAuth]);
 
@@ -66,7 +67,7 @@ export function NavBar({ className }: NavBarProps) {
 					}
 
 					return (
-						<AppLink theme={AppLinkTheme.SECONDARY} key={path} to={path}>
+						<AppLink theme={AppLinkTheme.SECONDARY} key={path} to={path!}>
 							{t(routeName)}
 						</AppLink>
 					);
@@ -83,4 +84,4 @@ export function NavBar({ className }: NavBarProps) {
 			</div>
 		</div>
 	);
-}
+});

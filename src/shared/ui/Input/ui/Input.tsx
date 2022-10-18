@@ -1,10 +1,5 @@
 import {
-	HTMLInputTypeAttribute,
-	InputHTMLAttributes,
-	useEffect,
-	useRef,
-	useState,
-	FocusEvent,
+	HTMLInputTypeAttribute, InputHTMLAttributes, memo, useEffect, useRef, useState,
 } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
@@ -24,7 +19,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement>{
 	value?: string
 }
 
-export const Input = ({
+export const Input = memo(({
 	className, floatPlaceholder, textInvert = false, value = '', theme = InputTheme.PRIMARY, autoFocus = false, type = 'text', ...otherProps
 }: InputProps) => {
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -32,7 +27,7 @@ export const Input = ({
 
 	useEffect(() => {
 		if (autoFocus) {
-			inputRef.current.focus();
+			inputRef.current?.focus();
 			setIsPlaceholder(false);
 		} else if (!value) {
 			setIsPlaceholder(true);
@@ -41,6 +36,14 @@ export const Input = ({
 		}
 		// eslint-disable-next-line
 	}, []);
+
+	useEffect(() => {
+		if (value) {
+			setIsPlaceholder(false);
+		} else {
+			setIsPlaceholder(true);
+		}
+	}, [value]);
 
 	const onBlur = () => {
 		if (!value) setIsPlaceholder(true);
@@ -74,4 +77,4 @@ export const Input = ({
 			/>
 		</div>
 	);
-};
+});

@@ -1,0 +1,18 @@
+.link {
+	display: flex;
+	gap: 10px;
+	color: var(--invert-primary-color);
+	fill: var(--invert-primary-color);
+}
+
+.collapsed {
+	.link {
+		gap: 0;
+	}
+
+	.text {
+		opacity: 0;
+		width: 0;
+		transition: 0.2s all linear;
+	}
+}

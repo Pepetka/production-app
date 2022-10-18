@@ -5,7 +5,16 @@
 	"comments": [
 		{ "id": 1, "body": "some comment", "postId": 1 }
 	],
-	"profile": { "name": "typicode" },
+	"profile": {
+		"first": "Vlad",
+		"lastname": "Kuznetsov",
+		"age": 22,
+		"currency": "RUB",
+		"country": "Russia",
+		"city": "Moscow",
+		"username": "admin",
+		"avatar": "https://img1.goodfon.ru/original/800x480/c/8b/blo0p-minimalizm-half-life.jpg"
+	},
 	"users": [
 		{
 			"username": "admin",

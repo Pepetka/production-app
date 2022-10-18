@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { memo, ReactNode } from 'react';
 import { NavLink } from 'react-router-dom';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './AppLink.module.scss';
@@ -13,14 +13,11 @@ interface AppLinkProps {
 	className?: string
 	to: string
 	theme?: AppLinkTheme
+	children: ReactNode
 }
-export const AppLink: FC<AppLinkProps> = ({
-	className,
-	to,
-	theme = AppLinkTheme.PRIMARY,
-	children,
-	...otherProps
-}) => (
+export const AppLink = memo(({
+	className, to, theme = AppLinkTheme.PRIMARY, children, ...otherProps
+}: AppLinkProps) => (
 	<NavLink
 		to={to}
 		className={classNames(cls.AppLink, {}, [className, cls[theme]])}
@@ -28,4 +25,4 @@ export const AppLink: FC<AppLinkProps> = ({
 	>
 		{children}
 	</NavLink>
-);
+));

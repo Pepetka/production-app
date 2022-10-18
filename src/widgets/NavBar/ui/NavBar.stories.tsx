@@ -1,6 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { DeepPartial } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/provider/Store';
 import { NavBar } from './NavBar';
 

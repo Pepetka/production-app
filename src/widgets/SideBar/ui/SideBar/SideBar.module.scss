@@ -29,13 +29,6 @@
 	margin-top: 50px;
 }
 
-.link {
-	display: flex;
-	gap: 10px;
-	color: var(--invert-primary-color);
-	fill: var(--invert-primary-color);
-}
-
 .collapsed {
 	width: var(--sidebar-width-collapsed);
 
@@ -45,15 +38,5 @@
 
 	.links {
 		align-items: center;
-	}
-
-	.link {
-		gap: 0;
-	}
-
-	.text {
-		opacity: 0;
-		width: 0;
-		transition: 0.2s all linear;
 	}
 }

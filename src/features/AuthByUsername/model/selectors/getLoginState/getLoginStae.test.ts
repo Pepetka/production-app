@@ -1,5 +1,4 @@
 import { describe, expect, test } from '@jest/globals';
-import { DeepPartial } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/provider/Store';
 import { getLoginState } from './getLoginState';
 

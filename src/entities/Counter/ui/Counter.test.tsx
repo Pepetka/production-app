@@ -1,6 +1,5 @@
 import { fireEvent, screen } from '@testing-library/react';
 import { componentTestRender } from 'shared/lib/componentTestRender/comopnentTestRender';
-import { DeepPartial } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/provider/Store';
 import { Counter } from './Counter';
 

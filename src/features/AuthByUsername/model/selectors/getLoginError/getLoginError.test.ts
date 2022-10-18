@@ -1,5 +1,4 @@
 import { describe, expect, test } from '@jest/globals';
-import { DeepPartial } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/provider/Store';
 import { getLoginError } from './getLoginError';
 
@@ -8,6 +7,9 @@ describe('getLoginError', () => {
 		const state: DeepPartial<StateSchema> = {
 			login: {
 				error: 'some error',
+				password: '',
+				username: '',
+				loading: false,
 			},
 		};
 

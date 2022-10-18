@@ -1,5 +1,4 @@
 import { describe, expect, test } from '@jest/globals';
-import { DeepPartial } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/provider/Store';
 import { getLoginUsername } from './getLoginUsername';
 
@@ -8,6 +7,8 @@ describe('getLoginUsername', () => {
 		const state: DeepPartial<StateSchema> = {
 			login: {
 				username: 'some username',
+				loading: false,
+				password: '',
 			},
 		};
 
