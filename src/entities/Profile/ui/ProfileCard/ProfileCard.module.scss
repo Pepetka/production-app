@@ -1,21 +1,33 @@
 .ProfileCard {
-	height: auto;
 	display: flex;
-	gap: 15px;
-	padding-top: 20px;
+	padding: 20px;
+	margin-block: 20px;
+	border-radius: 10px;
+	border: 2px solid var(--primary-color);
 }
 
 .profileData {
+	width: 66%;
 	display: flex;
-	flex-direction: column;
-	gap: 15px;
+	flex-direction: row;
+	gap: 30px;
 	flex-grow: 1;
 }
 
-.profileAvatar {
-	width: 30%;
+.column {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	justify-content: flex-start;
+	gap: 20px;
+}
 
-	img {
-		width: 100%;
-	}
+.template {
+	width: 100%;
+	height: 300px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	justify-content: center;
+	align-items: center;
 }

@@ -2,7 +2,6 @@ import {
 	CombinedState, configureStore, Reducer, ReducersMapObject,
 } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/provider/Store/config/StateSchema';
-import { counterReducer } from 'entities/Counter';
 import { userReducer } from 'entities/User';
 import { $api } from 'shared/api/api';
 import { NavigateFunction } from 'react-router-dom';
@@ -14,7 +13,6 @@ export const createReduxStore = (
 	navigate?: NavigateFunction,
 ) => {
 	const rootReducer: ReducersMapObject<StateSchema> = {
-		counter: counterReducer,
 		user: userReducer,
 		...asyncReducers,
 	};

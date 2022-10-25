@@ -1,14 +1,15 @@
-.Input {
+.Select {
 	width: 100%;
 	background: var(--invert-bg-color);
 	color: var(--invert-primary-color);
 	border: solid 1px var(--invert-primary-color);
 	border-radius: 5px;
-	padding: 10px 15px;
+	padding: 12px 15px;
 }
 
-.inputWrapper {
+.selectWrapper {
 	position: relative;
+	padding-top: 35px;
 }
 
 .label {
@@ -21,17 +22,13 @@
 	transition: all 0.3s ease-out;
 }
 
-.withPlaceholder {
-	padding-top: 35px;
-}
-
 .placeholder {
 	transform: translateY(45px) translateX(15px);
 	color: var(--inverted-secondary-color);
 }
 
 .primary {
-	.Input {
+	.Select {
 		background: var(--invert-bg-color);
 		color: var(--invert-primary-color);
 		border: solid 1px var(--invert-primary-color);
@@ -40,14 +37,10 @@
 	.label {
 		color: var(--primary-color);
 	}
-
-	.placeholder {
-		color: var(--inverted-secondary-color);
-	}
 }
 
 .invert {
-	.Input {
+	.Select {
 		background: var(--bg-color);
 		color: var(--primary-color);
 		border: solid 1px var(--primary-color);
@@ -56,40 +49,24 @@
 	.label {
 		color: var(--invert-primary-color);
 	}
-
-	.placeholder {
-		color: var(--secondary-color);
-	}
 }
 
 .primary.textInvert {
-	.Input {
+	.Select {
 		color: var(--invert-primary-color);
 	}
 
 	.label {
 		color: var(--invert-primary-color);
-	}
-
-	.placeholder {
-		color: var(--secondary-color);
 	}
 }
 
 .invert.textInvert {
-	.Input {
+	.Select {
 		color: var(--primary-color);
 	}
 
 	.label {
 		color: var(--primary-color);
 	}
-
-	.placeholder {
-		color: var(--invert-secondary-color);
-	}
-}
-
-.readOnly {
-	outline: none;
 }

@@ -1,25 +1,33 @@
 {
-	"posts": [
-		{ "id": 1, "title": "json-server", "author": "typicode" }
-	],
-	"comments": [
-		{ "id": 1, "body": "some comment", "postId": 1 }
-	],
-	"profile": {
-		"first": "Vlad",
-		"lastname": "Kuznetsov",
-		"age": 22,
-		"currency": "RUB",
-		"country": "Russia",
-		"city": "Moscow",
-		"username": "admin",
-		"avatar": "https://img1.goodfon.ru/original/800x480/c/8b/blo0p-minimalizm-half-life.jpg"
-	},
-	"users": [
-		{
-			"username": "admin",
-			"password": "123123",
-			"id": 1
-		}
-	]
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "first": "Vladislav",
+    "lastname": "Kuznetsov",
+    "age": "22",
+    "currency": "RUB",
+    "country": "Россия",
+    "city": "Moscow",
+    "username": "admin",
+    "avatar": "https://cdn1.iconfinder.com/data/icons/avatars-55/100/avatar_profile_user_music_headphones_shirt_cool-512.png"
+  },
+  "users": [
+    {
+      "username": "admin",
+      "password": "123123",
+      "id": 1
+    }
+  ]
 }
