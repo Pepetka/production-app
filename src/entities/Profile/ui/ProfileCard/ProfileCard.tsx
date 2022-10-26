@@ -7,12 +7,9 @@ import { Text } from 'shared/ui/Text';
 import { TextTheme } from 'shared/ui/Text/ui/Text';
 import { Button } from 'shared/ui/Button';
 import { InputTheme } from 'shared/ui/Input/ui/Input';
-import { ChangeEvent, memo, useMemo } from 'react';
-import DefaultAvatar from 'shared/assets/imgs/default_avatar.jpeg';
+import { ChangeEvent, memo } from 'react';
 import { Avatar, AvatarSize } from 'shared/ui/Avatar';
-import { Select, SelectTheme } from 'shared/ui/Select';
 import { CurrencySelect } from 'entities/Currency';
-import { Country } from 'entities/Country/model/types/country';
 import { CountrySelect } from 'entities/Country';
 import cls from './ProfileCard.module.scss';
 
@@ -84,7 +81,6 @@ export const ProfileCard = memo((
 				) : (
 					<Avatar
 						size={AvatarSize.SIZE_L}
-						avatar={DefaultAvatar}
 						loading={loading}
 					/>
 				)}

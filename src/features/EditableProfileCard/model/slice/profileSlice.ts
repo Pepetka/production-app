@@ -21,6 +21,7 @@ export const profileSlice = createSlice({
 		cancelEdit: (state) => {
 			state.readOnly = true;
 			state.formData = state.data;
+			state.validateErrors = undefined;
 		},
 		changeReadOnly: (state) => {
 			state.readOnly = !state.readOnly;
@@ -47,12 +48,19 @@ export const profileSlice = createSlice({
 			})
 			.addCase(updateProfileData.rejected, (state, action) => {
 				state.loading = false;
-				state.error = action.payload;
+				if (typeof action.payload === 'string') {
+					state.error = action.payload;
+				} else {
+					state.validateErrors = action.payload;
+					state.formData = state.data;
+				}
 			})
 			.addCase(updateProfileData.fulfilled, (state, action) => {
 				state.loading = false;
 				state.data = action.payload;
 				state.formData = action.payload;
+				state.validateErrors = undefined;
+				state.readOnly = true;
 			});
 	},
 });

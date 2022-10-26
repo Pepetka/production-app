@@ -16,5 +16,7 @@
 	"Avatar": "Аватар",
 	"Russia": "Россия",
 	"Ukraine": "Украина",
-	"Belarus": "Беларусь"
+	"Belarus": "Беларусь",
+	"Incorrect username": "Некорректное имя пользователя",
+	"Incorrect age": "Некорректный возраст"
 }

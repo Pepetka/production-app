@@ -5,13 +5,17 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import {
 	fetchProfileData,
 	getProfileError,
+	getProfileFormData,
 	getProfileLoading,
 	getProfileReadOnly,
-	getProfileFormData,
+	getProfileValidationErrors,
 	profileActions,
 	profileReducer,
 } from 'features/EditableProfileCard';
 import { useSelector } from 'react-redux';
+import { Text } from 'shared/ui/Text';
+import { TextTheme } from 'shared/ui/Text/ui/Text';
+import { useTranslation } from 'react-i18next';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 interface ProfilePageProps {
@@ -24,9 +28,11 @@ const ProfilePage = memo(({ className }: ProfilePageProps) => {
 	const loading = useSelector(getProfileLoading);
 	const error = useSelector(getProfileError);
 	const readonly = useSelector(getProfileReadOnly);
+	const validationErrors = useSelector(getProfileValidationErrors);
+	const { t } = useTranslation('profile');
 
 	useEffect(() => {
-		dispatch(fetchProfileData());
+		if (__PROJECT__ !== 'storybook') dispatch(fetchProfileData());
 	}, [dispatch]);
 
 	const onChangeFirstname = (event: ChangeEvent<HTMLInputElement>) => {
@@ -65,6 +71,9 @@ const ProfilePage = memo(({ className }: ProfilePageProps) => {
 		<DynamicModuleLoader reducerKey="profile" reducer={profileReducer}>
 			<div className={className}>
 				<ProfilePageHeader />
+				{validationErrors?.map(
+					(error) => <Text key={error} title={t(error)} theme={TextTheme.ERROR} align="center" />,
+				)}
 				<ProfileCard
 					data={profile}
 					error={error}

@@ -5,14 +5,14 @@ import { ButtonTheme } from 'shared/ui/Button/ui/Button';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getProfileReadOnly, profileActions, updateProfileData } from 'features/EditableProfileCard';
 import { useSelector } from 'react-redux';
-import { useCallback } from 'react';
+import { memo, useCallback } from 'react';
 import cls from './ProfilePageHeader.module.scss';
 
 interface ProfilePageHeaderProps {
 	className?: string;
 }
 
-export const ProfilePageHeader = ({ className }: ProfilePageHeaderProps) => {
+export const ProfilePageHeader = memo(({ className }: ProfilePageHeaderProps) => {
 	const { t } = useTranslation('profile');
 	const dispatch = useAppDispatch();
 	const readOnly = useSelector(getProfileReadOnly);
@@ -22,7 +22,6 @@ export const ProfilePageHeader = ({ className }: ProfilePageHeaderProps) => {
 	}, [dispatch]);
 
 	const onSave = useCallback(() => {
-		dispatch(profileActions.changeReadOnly());
 		dispatch(updateProfileData());
 	}, [dispatch]);
 
@@ -43,4 +42,4 @@ export const ProfilePageHeader = ({ className }: ProfilePageHeaderProps) => {
 				)}
 		</div>
 	);
-};
+});

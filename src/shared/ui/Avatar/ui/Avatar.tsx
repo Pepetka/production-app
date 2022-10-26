@@ -1,6 +1,8 @@
 import { Spinner } from 'shared/ui/Spinner/ui/Spinner';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
+import { memo } from 'react';
+import DefaultAvatar from 'shared/assets/imgs/default_avatar.jpeg';
 import cls from './Avatar.module.scss';
 
 export enum AvatarSize {
@@ -16,8 +18,8 @@ interface AvatarProps {
 	size?: AvatarSize
 }
 
-export const Avatar = ({
-	className, avatar, loading, size = AvatarSize.SIZE_M,
+export const Avatar = memo(({
+	className, avatar = DefaultAvatar, loading, size = AvatarSize.SIZE_M,
 }: AvatarProps) => {
 	const { t } = useTranslation('profile');
 
@@ -26,4 +28,4 @@ export const Avatar = ({
 			{loading ? <Spinner /> : <img src={avatar} alt={t('Profile avatar')} />}
 		</div>
 	);
-};
+});

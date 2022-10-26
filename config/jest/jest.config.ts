@@ -38,5 +38,6 @@ export default {
 	},
 	globals: {
 		__IS_DEV__: true,
+		__PROJECT__: 'jest',
 	},
 };
