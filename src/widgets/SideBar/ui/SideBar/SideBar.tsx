@@ -41,11 +41,18 @@ export const SideBar = memo(({ className }: SideBarProps) => {
 				</Button>
 
 				<div className={classNames(cls.links, {}, [])}>
-					{Object.entries(routeConfig).map(([routeName, { path }]) => {
+					{Object.entries(routeConfig).map(([routeName, { path, authOnly }]) => {
 						if (path === '*') return null;
 
 						return (
-							<SideBarLink key={path} path={path!} Icon={navIcons[routeName]} routeName={routeName} collapsed={collapsed} />
+							<SideBarLink
+								authOnly={authOnly}
+								key={path}
+								path={path!}
+								Icon={navIcons[routeName]}
+								routeName={routeName}
+								collapsed={collapsed}
+							/>
 						);
 					})}
 				</div>

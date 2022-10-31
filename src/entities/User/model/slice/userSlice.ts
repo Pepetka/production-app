@@ -4,6 +4,7 @@ import { User, UserSchema } from '../types/userSchema';
 
 const initialState: UserSchema = {
 	authData: undefined,
+	_init: false,
 };
 
 export const userSlice = createSlice({
@@ -17,6 +18,7 @@ export const userSlice = createSlice({
 			if (localStorage.getItem(LOCAL_STORAGE_AUTH_KEY)) {
 				state.authData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_AUTH_KEY)!);
 			}
+			state._init = true;
 		},
 		removeAuthData: (state) => {
 			state.authData = undefined;

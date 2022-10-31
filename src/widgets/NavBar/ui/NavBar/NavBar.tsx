@@ -1,18 +1,15 @@
 import { routeConfig } from 'shared/config/routeConfig/routeConfig';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { AppLink } from 'shared/ui/AppLink';
-import { AppLinkTheme } from 'shared/ui/AppLink/ui/AppLink';
 import { useTranslation } from 'react-i18next';
-import { Button } from 'shared/ui/Button';
-import { ButtonTheme } from 'shared/ui/Button/ui/Button';
 import {
-	memo,
-	useCallback, useEffect, useRef, useState,
+	memo, useCallback, useEffect, useRef, useState,
 } from 'react';
 import { LoginModal } from 'features/AuthByUsername';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAuthData, userActions } from 'entities/User';
+import { Button, ButtonTheme } from 'shared/ui/Button';
 import cls from './NavBar.module.scss';
+import { NavBarLink } from '../NavBarLink/NavBarLink';
 
 interface NavBarProps {
 	className?: string
@@ -56,22 +53,9 @@ export const NavBar = memo(({ className }: NavBarProps) => {
 		<div className={classNames(cls.NavBar, {}, [className])}>
 			{!isAuth && <LoginModal isOpen={isAuthModal} isClose={!!authData} onCloseModal={onCloseModal} />}
 			<div className={classNames(cls.links)}>
-				{Object.entries(routeConfig).map(([routeName, { path }]) => {
-					if (path === '*') return null;
-					if (path === '/') {
-						return (
-							<AppLink theme={AppLinkTheme.RED} key={path} to={path}>
-								{t(routeName)}
-							</AppLink>
-						);
-					}
-
-					return (
-						<AppLink theme={AppLinkTheme.SECONDARY} key={path} to={path!}>
-							{t(routeName)}
-						</AppLink>
-					);
-				})}
+				{Object.entries(routeConfig).map(([routeName, { path, authOnly }]) => (
+					<NavBarLink key={path} path={path} routeName={routeName} authOnly={authOnly} />
+				))}
 				{authData ? (
 					<Button theme={ButtonTheme.OUTLINE} inverted onClick={onLogout}>
 						{t('LogOut')}
