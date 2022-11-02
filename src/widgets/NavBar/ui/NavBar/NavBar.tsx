@@ -1,4 +1,4 @@
-import { routeConfig } from 'shared/config/routeConfig/routeConfig';
+import { AppRoutes, routeConfig } from 'shared/config/routeConfig/routeConfig';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import {
@@ -53,9 +53,16 @@ export const NavBar = memo(({ className }: NavBarProps) => {
 		<div className={classNames(cls.NavBar, {}, [className])}>
 			{!isAuth && <LoginModal isOpen={isAuthModal} isClose={!!authData} onCloseModal={onCloseModal} />}
 			<div className={classNames(cls.links)}>
-				{Object.entries(routeConfig).map(([routeName, { path, authOnly }]) => (
-					<NavBarLink key={path} path={path} routeName={routeName} authOnly={authOnly} />
-				))}
+				<NavBarLink
+					key={routeConfig.Main.path}
+					route={routeConfig.Main}
+					routeName={AppRoutes.MAIN}
+				/>
+				<NavBarLink
+					key={routeConfig.About.path}
+					route={routeConfig.About}
+					routeName={AppRoutes.ABOUT}
+				/>
 				{authData ? (
 					<Button theme={ButtonTheme.OUTLINE} inverted onClick={onLogout}>
 						{t('LogOut')}

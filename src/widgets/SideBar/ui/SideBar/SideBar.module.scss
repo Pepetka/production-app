@@ -1,6 +1,7 @@
 .SideBar {
+	flex: 0 0 var(--sidebar-width);
 	height: calc(100vh - var(--navbar-height));
-	width: var(--sidebar-width);
+	max-width: var(--sidebar-width);
 	background-color: var(--invert-bg-color);
 	display: flex;
 	flex-direction: column;
@@ -30,7 +31,8 @@
 }
 
 .collapsed {
-	width: var(--sidebar-width-collapsed);
+	max-width: var(--sidebar-width-collapsed);
+	flex: 0 0 var(--sidebar-width-collapsed);
 
 	.switchers {
 		flex-direction: column;

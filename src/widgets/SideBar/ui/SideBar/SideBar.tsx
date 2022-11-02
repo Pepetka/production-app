@@ -8,6 +8,7 @@ import { AppRoutes, routeConfig } from 'shared/config/routeConfig/routeConfig';
 import AboutIcon from 'shared/assets/icons/about_icon.svg';
 import HomeIcon from 'shared/assets/icons/home_icon.svg';
 import ProfileIcon from 'shared/assets/icons/profile_icon.svg';
+import ArticlesIcon from 'shared/assets/icons/articles_icon.svg';
 import { SideBarLink } from 'widgets/SideBar/ui/SideBarLink/SideBarLink';
 import cls from './SideBar.module.scss';
 
@@ -15,6 +16,7 @@ const navIcons: Record<string, ReactNode> = {
 	[AppRoutes.MAIN]: <HomeIcon />,
 	[AppRoutes.ABOUT]: <AboutIcon />,
 	[AppRoutes.PROFILE]: <ProfileIcon />,
+	[AppRoutes.ARTICLES]: <ArticlesIcon />,
 };
 
 interface SideBarProps {
@@ -42,7 +44,7 @@ export const SideBar = memo(({ className }: SideBarProps) => {
 
 				<div className={classNames(cls.links, {}, [])}>
 					{Object.entries(routeConfig).map(([routeName, { path, authOnly }]) => {
-						if (path === '*') return null;
+						if (routeName === AppRoutes.NOT_FOUND || routeName === AppRoutes.ARTICLE_DETAILS) return null;
 
 						return (
 							<SideBarLink

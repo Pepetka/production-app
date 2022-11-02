@@ -3,14 +3,6 @@
 	flex-direction: column;
 }
 
-.title {
-	font: var(--font-l);
-}
-
-.text {
-	font: var(--font-m);
-}
-
 .primary {
 	.title {
 		color: var(--primary-color);
@@ -41,4 +33,24 @@
 
 .right {
 	text-align: right;
+}
+
+.size_m {
+	.text {
+		font: var(--font-m);
+	}
+
+	.title {
+		font: var(--font-l);
+	}
+}
+
+.size_l {
+	.text {
+		font: var(--font-l);
+	}
+
+	.title {
+		font: var(--font-xl);
+	}
 }

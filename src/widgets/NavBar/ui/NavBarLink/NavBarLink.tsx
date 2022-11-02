@@ -3,33 +3,28 @@ import { AppLinkTheme } from 'shared/ui/AppLink/ui/AppLink';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { getAuthData } from 'entities/User';
+import { AppRoutesProps, routeConfig } from 'shared/config/routeConfig/routeConfig';
 
 interface NavBarLinkProps {
 	className?: string;
-	path?: string
+	route: AppRoutesProps
 	routeName: string
-	authOnly?: boolean
 }
 
 export const NavBarLink = ({
-	className, routeName, path, authOnly,
+	className, route, routeName,
 }: NavBarLinkProps) => {
 	const { t } = useTranslation();
 	const auth = useSelector(getAuthData);
 
-	if (!auth && authOnly) return null;
-
-	if (path === '*') return null;
-	if (path === '/') {
-		return (
-			<AppLink theme={AppLinkTheme.RED} to={path} className={className}>
-				{t(routeName)}
-			</AppLink>
-		);
-	}
+	if (!auth && route.authOnly) return null;
 
 	return (
-		<AppLink theme={AppLinkTheme.SECONDARY} to={path!} className={className}>
+		<AppLink
+			theme={route === routeConfig.Main ? AppLinkTheme.RED : AppLinkTheme.SECONDARY}
+			to={route.path!}
+			className={className}
+		>
 			{t(routeName)}
 		</AppLink>
 	);

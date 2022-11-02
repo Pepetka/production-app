@@ -14,18 +14,19 @@ export enum AvatarSize {
 interface AvatarProps {
 	className?: string;
 	avatar?: string
-	loading: boolean
+	loading?: boolean
 	size?: AvatarSize
+	alt?: string
 }
 
 export const Avatar = memo(({
-	className, avatar = DefaultAvatar, loading, size = AvatarSize.SIZE_M,
+	className, avatar = DefaultAvatar, loading, size = AvatarSize.SIZE_M, alt,
 }: AvatarProps) => {
 	const { t } = useTranslation('profile');
 
 	return (
 		<div className={classNames(cls.Avatar, {}, [className, cls[size]])}>
-			{loading ? <Spinner /> : <img src={avatar} alt={t('Profile avatar')} />}
+			{loading ? <Spinner /> : <img src={avatar} alt={alt ?? t('Profile avatar')} />}
 		</div>
 	);
 });
