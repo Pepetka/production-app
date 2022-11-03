@@ -11,7 +11,7 @@ interface SkeletonProps {
 }
 
 export const Skeleton = memo(({
-	className, height, circle, width, border,
+	className, circle, width, height = width, border,
 }: SkeletonProps) => {
 	const style: CSSProperties = useMemo(() => (
 		{

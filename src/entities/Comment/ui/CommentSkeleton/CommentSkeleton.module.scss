@@ -1,0 +1,15 @@
+.CommentSkeleton {
+	border: 2px solid var(--primary-color);
+	border-radius: 5px;
+	padding: 15px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.user {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	align-content: center;
+}

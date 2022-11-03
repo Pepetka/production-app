@@ -6,6 +6,7 @@ import DefaultAvatar from 'shared/assets/imgs/default_avatar.jpeg';
 import cls from './Avatar.module.scss';
 
 export enum AvatarSize {
+	SIZE_XS = 'size_xs',
 	SIZE_S = 'size_s',
 	SIZE_M = 'size_m',
 	SIZE_L = 'size_l',
