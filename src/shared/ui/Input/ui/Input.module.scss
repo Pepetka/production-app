@@ -2,7 +2,7 @@
 	width: 100%;
 	background: var(--invert-bg-color);
 	color: var(--invert-primary-color);
-	border: solid 1px var(--invert-primary-color);
+	border: solid 2px var(--invert-primary-color);
 	border-radius: 5px;
 	padding: 10px 15px;
 }
@@ -50,7 +50,7 @@
 	.Input {
 		background: var(--bg-color);
 		color: var(--primary-color);
-		border: solid 1px var(--primary-color);
+		border: solid 2px var(--primary-color);
 	}
 
 	.label {

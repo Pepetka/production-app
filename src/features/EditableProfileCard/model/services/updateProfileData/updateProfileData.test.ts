@@ -15,6 +15,7 @@ describe('updateProfileData', () => {
 		currency: Currency.RUB,
 		first: 'first',
 		lastname: 'last',
+		id: 'some id',
 		avatar: 'some avatar',
 	};
 

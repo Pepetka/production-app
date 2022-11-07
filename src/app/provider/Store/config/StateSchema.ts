@@ -8,6 +8,7 @@ import { NavigateFunction } from 'react-router-dom';
 import { ProfileSchema } from 'features/EditableProfileCard';
 import { ArticleSchema } from 'entities/Article';
 import { CommentsSchema } from 'features/ArticleCommentsList';
+import { AddCommentFormSchema } from 'features/AddCommentForm';
 
 export interface StateSchema {
 	user: UserSchema
@@ -15,6 +16,7 @@ export interface StateSchema {
 	profile?: ProfileSchema
 	article?: ArticleSchema
 	comments?: CommentsSchema
+	addCommentForm?: AddCommentFormSchema
 }
 
 export type StateSchemaKey = keyof StateSchema

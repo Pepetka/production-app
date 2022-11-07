@@ -1,11 +1,12 @@
 import { useTranslation } from 'react-i18next';
-import { memo, useEffect } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import { ArticleDetails } from 'entities/Article';
 import { useParams } from 'react-router-dom';
 import { CommentList } from 'entities/Comment';
 import { Text } from 'shared/ui/Text';
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import {
+	addCommentForArticle,
 	commentsReducer,
 	fetchCommentsByArticleId,
 	getComments,
@@ -14,6 +15,7 @@ import {
 } from 'features/ArticleCommentsList';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { AddCommentForm } from 'features/AddCommentForm';
 import cls from './ArticleDetailsPage.module.scss';
 
 const ArticleDetailsPage = memo(() => {
@@ -28,6 +30,10 @@ const ArticleDetailsPage = memo(() => {
 		dispatch(fetchCommentsByArticleId({ articleId: params.id! }));
 	}, [dispatch, params.id]);
 
+	const onSendComment = useCallback((text: string) => {
+		dispatch(addCommentForArticle(text));
+	}, [dispatch]);
+
 	if (error) {
 		return (
 			<Text title={t('Something wrong')} align="center" />
@@ -40,6 +46,7 @@ const ArticleDetailsPage = memo(() => {
 				<ArticleDetails id={params.id!} />
 				<div className={cls.comments}>
 					<Text title={t('Comments')} align="center" />
+					<AddCommentForm onSendComment={onSendComment} />
 					<CommentList
 						loading={loading}
 						comments={comments}

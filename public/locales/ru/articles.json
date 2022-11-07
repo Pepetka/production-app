@@ -2,5 +2,7 @@
 	"Server error": "Ошибка при загрузке статьи",
 	"Article img": "Картинка статьи",
 	"Comments": "Комментарии",
-	"Something wrong": "Что-то пошло не так"
+	"Something wrong": "Что-то пошло не так",
+	"Enter comment text": "Введите текст комментария",
+	"Send": "Отправить"
 }

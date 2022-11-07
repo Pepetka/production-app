@@ -2,7 +2,8 @@ import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 import { Comment } from 'entities/Comment';
 import { StateSchema } from 'app/provider/Store';
 import { CommentsSchema } from '../types/commentsSchema';
-import { fetchCommentsByArticleId } from '../services/fetchCommentsByArticleId';
+import { fetchCommentsByArticleId } from '../services/fetcCommentsByArticleId/fetchCommentsByArticleId';
+import { addCommentForArticle } from '../services/addCommentForArticle/addCommentForArticle';
 
 const initialState: CommentsSchema = {
 	loading: false,
@@ -36,6 +37,12 @@ export const commentsSlice = createSlice({
 				state.loading = false;
 				state.error = undefined;
 				commentsAdapter.setAll(state, action.payload);
+			})
+			.addCase(addCommentForArticle.rejected, (state, action) => {
+				state.error = action.payload;
+			})
+			.addCase(addCommentForArticle.fulfilled, (state) => {
+				state.error = undefined;
 			});
 	},
 });
