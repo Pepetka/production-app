@@ -18,6 +18,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { AddCommentForm } from 'features/AddCommentForm';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 import { routePaths } from 'shared/config/routeConfig/routeConfig';
+import { Page } from 'shared/ui/Page';
 import cls from './ArticleDetailsPage.module.scss';
 
 const ArticleDetailsPage = memo(() => {
@@ -52,24 +53,26 @@ const ArticleDetailsPage = memo(() => {
 	}
 
 	return (
-		<DynamicModuleLoader reducerKey="comments" reducer={commentsReducer}>
-			<div className={cls.ArticlesDetailsPage}>
-				<Button className={cls.btn} theme={ButtonTheme.OUTLINE} onClick={onBack}>
-					{t('Back to list')}
-				</Button>
-				<ArticleDetails id={params.id!} />
-				{!articleError && (
-					<div className={cls.comments}>
-						<Text title={t('Comments')} align="center" />
-						<AddCommentForm onSendComment={onSendComment} />
-						<CommentList
-							loading={loading}
-							comments={comments}
-						/>
-					</div>
-				)}
-			</div>
-		</DynamicModuleLoader>
+		<Page>
+			<DynamicModuleLoader reducerKey="comments" reducer={commentsReducer}>
+				<div className={cls.ArticlesDetailsPage}>
+					<Button className={cls.btn} theme={ButtonTheme.OUTLINE} onClick={onBack}>
+						{t('Back to list')}
+					</Button>
+					<ArticleDetails id={params.id!} />
+					{!articleError && (
+						<div className={cls.comments}>
+							<Text title={t('Comments')} align="center" />
+							<AddCommentForm onSendComment={onSendComment} />
+							<CommentList
+								loading={loading}
+								comments={comments}
+							/>
+						</div>
+					)}
+				</div>
+			</DynamicModuleLoader>
+		</Page>
 	);
 });
 

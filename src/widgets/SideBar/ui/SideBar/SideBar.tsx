@@ -33,7 +33,7 @@ export const SideBar = memo(({ className }: SideBarProps) => {
 	}, []);
 
 	return (
-		<div data-testid="sidebar" className={classNames(cls.SideBar, { [cls.collapsed]: collapsed }, [className])}>
+		<menu data-testid="sidebar" className={classNames(cls.SideBar, { [cls.collapsed]: collapsed }, [className])}>
 			<div>
 				<Button
 					theme={ButtonTheme.CLEAR}
@@ -45,7 +45,7 @@ export const SideBar = memo(({ className }: SideBarProps) => {
 					{collapsed ? '>' : '<'}
 				</Button>
 
-				<div className={classNames(cls.links, {}, [])}>
+				<nav className={classNames(cls.links, {}, [])}>
 					{Object.entries(routeConfig).map(([routeName, { path, authOnly }]) => {
 						if (routeName === AppRoutes.NOT_FOUND || routeName === AppRoutes.ARTICLE_DETAILS) return null;
 						if (routeName === AppRoutes.PROFILE) {
@@ -72,13 +72,13 @@ export const SideBar = memo(({ className }: SideBarProps) => {
 							/>
 						);
 					})}
-				</div>
+				</nav>
 			</div>
 
 			<div className={cls.switchers}>
 				<ThemeSwitcher />
 				<LangSwitcher />
 			</div>
-		</div>
+		</menu>
 	);
 });

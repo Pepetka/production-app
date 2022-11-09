@@ -50,9 +50,9 @@ export const NavBar = memo(({ className }: NavBarProps) => {
 	};
 
 	return (
-		<div className={classNames(cls.NavBar, {}, [className])}>
+		<header className={classNames(cls.NavBar, {}, [className])}>
 			{!isAuth && <LoginModal isOpen={isAuthModal} isClose={!!authData} onCloseModal={onCloseModal} />}
-			<div className={classNames(cls.links)}>
+			<nav className={classNames(cls.links)}>
 				<NavBarLink
 					key={routeConfig.Main.path}
 					route={routeConfig.Main}
@@ -72,7 +72,7 @@ export const NavBar = memo(({ className }: NavBarProps) => {
 						{t('LogIn')}
 					</Button>
 				)}
-			</div>
-		</div>
+			</nav>
+		</header>
 	);
 });

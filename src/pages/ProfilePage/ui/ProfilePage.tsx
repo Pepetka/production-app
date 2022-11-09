@@ -19,6 +19,7 @@ import { Text } from 'shared/ui/Text';
 import { TextTheme } from 'shared/ui/Text/ui/Text';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
+import { Page } from 'shared/ui/Page';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 interface ProfilePageProps {
@@ -76,28 +77,30 @@ const ProfilePage = memo(({ className }: ProfilePageProps) => {
 	}), [dispatch]);
 
 	return (
-		<DynamicModuleLoader reducerKey="profile" reducer={profileReducer}>
-			<div className={className}>
-				<ProfilePageHeader />
-				{validationErrors?.map(
-					(error) => <Text key={error} title={t(error)} theme={TextTheme.ERROR} align="center" />,
-				)}
-				<ProfileCard
-					data={profile}
-					error={error}
-					loading={loading}
-					readonly={readonly}
-					onChangeFirstname={onChangeFirstname}
-					onChangeLastname={onChangeLastname}
-					onChangeAge={onChangeAge}
-					onChangeUsername={onChangeUsername}
-					onChangeAvatar={onChangeAvatar}
-					onChangeCity={onChangeCity}
-					onChangeCountry={onChangeCountry}
-					onChangeCurrency={onChangeCurrency}
-				/>
-			</div>
-		</DynamicModuleLoader>
+		<Page>
+			<DynamicModuleLoader reducerKey="profile" reducer={profileReducer}>
+				<div className={className}>
+					<ProfilePageHeader />
+					{validationErrors?.map(
+						(error) => <Text key={error} title={t(error)} theme={TextTheme.ERROR} align="center" />,
+					)}
+					<ProfileCard
+						data={profile}
+						error={error}
+						loading={loading}
+						readonly={readonly}
+						onChangeFirstname={onChangeFirstname}
+						onChangeLastname={onChangeLastname}
+						onChangeAge={onChangeAge}
+						onChangeUsername={onChangeUsername}
+						onChangeAvatar={onChangeAvatar}
+						onChangeCity={onChangeCity}
+						onChangeCountry={onChangeCountry}
+						onChangeCurrency={onChangeCurrency}
+					/>
+				</div>
+			</DynamicModuleLoader>
+		</Page>
 	);
 });
 
