@@ -1,6 +1,4 @@
-import {
-	memo, ReactNode, useCallback, useState,
-} from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
@@ -16,11 +14,11 @@ import { useSelector } from 'react-redux';
 import { getAuthData } from 'entities/User';
 import cls from './SideBar.module.scss';
 
-const navIcons: Record<string, ReactNode> = {
-	[AppRoutes.MAIN]: <HomeIcon />,
-	[AppRoutes.ABOUT]: <AboutIcon />,
-	[AppRoutes.PROFILE]: <ProfileIcon />,
-	[AppRoutes.ARTICLES]: <ArticlesIcon />,
+const navIcons: Record<string, React.VFC<React.SVGProps<SVGSVGElement>>> = {
+	[AppRoutes.MAIN]: HomeIcon,
+	[AppRoutes.ABOUT]: AboutIcon,
+	[AppRoutes.PROFILE]: ProfileIcon,
+	[AppRoutes.ARTICLES]: ArticlesIcon,
 };
 
 interface SideBarProps {
@@ -56,7 +54,7 @@ export const SideBar = memo(({ className }: SideBarProps) => {
 									authOnly={authOnly}
 									key={path}
 									path={routePaths.Profile + userId}
-									Icon={navIcons[routeName]}
+									icon={navIcons[routeName]}
 									routeName={routeName}
 									collapsed={collapsed}
 								/>
@@ -68,7 +66,7 @@ export const SideBar = memo(({ className }: SideBarProps) => {
 								authOnly={authOnly}
 								key={path}
 								path={path!}
-								Icon={navIcons[routeName]}
+								icon={navIcons[routeName]}
 								routeName={routeName}
 								collapsed={collapsed}
 							/>

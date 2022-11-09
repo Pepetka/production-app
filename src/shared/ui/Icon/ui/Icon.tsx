@@ -4,7 +4,10 @@ import cls from './Icon.module.scss';
 
 export enum IconTheme {
 	PRIMARY = 'primary',
-	SECONDARY = 'secondary'
+	INVERT_PRIMARY = 'invert_primary',
+	SECONDARY = 'secondary',
+	INVERT_SECONDARY = 'invert_secondary',
+	RED = 'red'
 }
 
 interface IconProps {

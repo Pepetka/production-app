@@ -28,6 +28,7 @@ module.exports = {
 		'react-hooks',
 	],
 	rules: {
+		'react/no-array-index-key': 'off',
 		'react/jsx-indent': [2, 'tab'],
 		'react/jsx-indent-props': [2, 'tab'],
 		'no-tabs': 'off',

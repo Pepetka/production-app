@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback, useEffect } from 'react';
-import { ArticleDetails } from 'entities/Article';
-import { useParams } from 'react-router-dom';
+import { ArticleDetails, getArticleError } from 'entities/Article';
+import { useNavigate, useParams } from 'react-router-dom';
 import { CommentList } from 'entities/Comment';
 import { Text } from 'shared/ui/Text';
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
@@ -16,6 +16,8 @@ import {
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { AddCommentForm } from 'features/AddCommentForm';
+import { Button, ButtonTheme } from 'shared/ui/Button';
+import { routePaths } from 'shared/config/routeConfig/routeConfig';
 import cls from './ArticleDetailsPage.module.scss';
 
 const ArticleDetailsPage = memo(() => {
@@ -24,7 +26,9 @@ const ArticleDetailsPage = memo(() => {
 	const comments = useSelector(getComments.selectAll);
 	const loading = useSelector(getCommentsLoading);
 	const error = useSelector(getCommentsError);
+	const articleError = useSelector(getArticleError);
 	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		dispatch(fetchCommentsByArticleId({ articleId: params.id! }));
@@ -33,6 +37,13 @@ const ArticleDetailsPage = memo(() => {
 	const onSendComment = useCallback((text: string) => {
 		dispatch(addCommentForArticle(text));
 	}, [dispatch]);
+
+	const onBack = useCallback(
+		() => {
+			navigate(routePaths.Articles);
+		},
+		[navigate],
+	);
 
 	if (error) {
 		return (
@@ -43,15 +54,20 @@ const ArticleDetailsPage = memo(() => {
 	return (
 		<DynamicModuleLoader reducerKey="comments" reducer={commentsReducer}>
 			<div className={cls.ArticlesDetailsPage}>
+				<Button className={cls.btn} theme={ButtonTheme.OUTLINE} onClick={onBack}>
+					{t('Back to list')}
+				</Button>
 				<ArticleDetails id={params.id!} />
-				<div className={cls.comments}>
-					<Text title={t('Comments')} align="center" />
-					<AddCommentForm onSendComment={onSendComment} />
-					<CommentList
-						loading={loading}
-						comments={comments}
-					/>
-				</div>
+				{!articleError && (
+					<div className={cls.comments}>
+						<Text title={t('Comments')} align="center" />
+						<AddCommentForm onSendComment={onSendComment} />
+						<CommentList
+							loading={loading}
+							comments={comments}
+						/>
+					</div>
+				)}
 			</div>
 		</DynamicModuleLoader>
 	);
