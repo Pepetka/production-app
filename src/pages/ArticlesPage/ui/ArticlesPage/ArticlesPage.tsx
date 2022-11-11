@@ -34,7 +34,7 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
 	useAppEffect(callback);
 
 	const onScrollEnd = useCallback(() => {
-		dispatch(fetchNextArticles());
+		if (__PROJECT__ !== 'storybook') dispatch(fetchNextArticles());
 	}, [dispatch]);
 
 	const onChangeView = useCallback((view: ArticlesView) => {

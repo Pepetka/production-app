@@ -60,7 +60,7 @@ const state = (view: ArticlesView): DeepPartial<StateSchema> => {
 const stateLoading = (view: ArticlesView): DeepPartial<StateSchema> => ({
 	articlesPage: {
 		view,
-		loading: false,
+		loading: true,
 		ids: [],
 		entities: {},
 	},
