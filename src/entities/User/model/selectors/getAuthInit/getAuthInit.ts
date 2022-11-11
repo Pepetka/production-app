@@ -1,4 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { getAuthState, UserSchema } from 'entities/User';
+import { UserSchema } from '../../types/userSchema';
+import { getAuthState } from '../getAuthState/getAuthState';
 
 export const getAuthInit = createSelector(getAuthState, (state: UserSchema) => state._init);

@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { ArticleViewSelector } from 'features/ArticleViewSelector';
 import { Page } from 'shared/ui/Page';
+import { useAppEffect } from 'shared/lib/hooks/useAppEffect/useAppEffect';
 import { getArticlesPageLoading } from '../../model/selectors/getArticlesPageLoading/getArticlesPageLoading';
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 import { articlesPageActions, articlesPageReducer, getArticles } from '../../model/slice/articlesPageSlice';
@@ -23,12 +24,14 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
 	const loading = useSelector(getArticlesPageLoading);
 	const articles = useSelector(getArticles.selectAll);
 
-	useEffect(() => {
+	const callback = useCallback(() => {
 		dispatch(articlesPageActions.initView());
 		dispatch(fetchArticlesList({
 			page: 1,
 		}));
 	}, [dispatch]);
+
+	useAppEffect(callback);
 
 	const onScrollEnd = useCallback(() => {
 		dispatch(fetchNextArticles());

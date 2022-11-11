@@ -2,7 +2,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import {
 	memo, useCallback, useEffect, useRef, useState,
 } from 'react';
-import { Button, ButtonTheme } from 'shared/ui/Button/ui/Button';
+import { Button, ButtonTheme } from 'shared/ui/Button';
 import CopyIcon from 'shared/assets/icons/copy_icon.svg';
 import DoneIcon from 'shared/assets/icons/done_icon.svg';
 import { Icon } from 'shared/ui/Icon';
@@ -36,10 +36,10 @@ export const ArticleCodeBlockComponent = memo(({ className, block }: ArticleCode
 		<div className={classNames(cls.ArticleCodeBlockComponent, {}, [className])}>
 			<div className={cls.copy}>
 				{coped
-					?	<Icon SvgIcon={DoneIcon} />
+					?	<Icon stroke SvgIcon={DoneIcon} />
 					:	(
 						<Button onClick={onCopy} theme={ButtonTheme.CLEAR}>
-							<Icon SvgIcon={CopyIcon} />
+							<Icon stroke SvgIcon={CopyIcon} />
 						</Button>
 					)}
 			</div>

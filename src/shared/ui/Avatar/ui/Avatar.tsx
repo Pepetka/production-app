@@ -1,4 +1,4 @@
-import { Spinner } from 'shared/ui/Spinner/ui/Spinner';
+import { Spinner } from 'shared/ui/Spinner';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';

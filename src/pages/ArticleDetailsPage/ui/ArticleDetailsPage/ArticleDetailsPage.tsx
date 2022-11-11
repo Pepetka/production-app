@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { memo, useCallback, useEffect } from 'react';
+import { memo, useCallback } from 'react';
 import { ArticleDetails, getArticleError } from 'entities/Article';
 import { useNavigate, useParams } from 'react-router-dom';
 import { CommentList } from 'entities/Comment';
@@ -19,9 +19,15 @@ import { AddCommentForm } from 'features/AddCommentForm';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 import { routePaths } from 'shared/config/routeConfig/routeConfig';
 import { Page } from 'shared/ui/Page';
+import { useAppEffect } from 'shared/lib/hooks/useAppEffect/useAppEffect';
+import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './ArticleDetailsPage.module.scss';
 
-const ArticleDetailsPage = memo(() => {
+interface ArticleDetailsPageProps {
+	className?: string
+}
+
+const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
 	const { t } = useTranslation('articles');
 	const params = useParams<{id: string}>();
 	const comments = useSelector(getComments.selectAll);
@@ -31,9 +37,11 @@ const ArticleDetailsPage = memo(() => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 
-	useEffect(() => {
+	const callback = useCallback(() => {
 		dispatch(fetchCommentsByArticleId({ articleId: params.id! }));
 	}, [dispatch, params.id]);
+
+	useAppEffect(callback);
 
 	const onSendComment = useCallback((text: string) => {
 		dispatch(addCommentForArticle(text));
@@ -55,7 +63,7 @@ const ArticleDetailsPage = memo(() => {
 	return (
 		<Page>
 			<DynamicModuleLoader reducerKey="comments" reducer={commentsReducer}>
-				<div className={cls.ArticlesDetailsPage}>
+				<div className={classNames(cls.ArticlesDetailsPage, {}, [className])}>
 					<Button className={cls.btn} theme={ButtonTheme.OUTLINE} onClick={onBack}>
 						{t('Back to list')}
 					</Button>

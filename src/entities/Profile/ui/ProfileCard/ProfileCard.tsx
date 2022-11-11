@@ -1,12 +1,10 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Input } from 'shared/ui/Input';
-import { Spinner } from 'shared/ui/Spinner/ui/Spinner';
+import { Input, InputTheme } from 'shared/ui/Input';
+import { Spinner } from 'shared/ui/Spinner';
 import { Profile } from 'features/EditableProfileCard';
-import { Text } from 'shared/ui/Text';
-import { TextTheme } from 'shared/ui/Text/ui/Text';
+import { Text, TextTheme } from 'shared/ui/Text';
 import { Button } from 'shared/ui/Button';
-import { InputTheme } from 'shared/ui/Input/ui/Input';
 import { ChangeEvent, memo } from 'react';
 import { Avatar, AvatarSize } from 'shared/ui/Avatar';
 import { CurrencySelect } from 'entities/Currency';

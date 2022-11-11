@@ -1,8 +1,9 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { ArticlesView } from 'entities/Article';
 import { ArticlesListSkeleton } from './ArticlesListSkeleton';
 
 export default {
-	title: 'components/ArticlesListSkeleton',
+	title: 'entities/ArticlesListSkeleton',
 	component: ArticlesListSkeleton,
 	argTypes: {
 		backgroundColor: { control: 'color' },
@@ -11,5 +12,12 @@ export default {
 
 const Template: ComponentStory<typeof ArticlesListSkeleton> = (args) => <ArticlesListSkeleton {...args} />;
 
-export const ArticlesListSkeletonStory = Template.bind({});
-ArticlesListSkeletonStory.args = {};
+export const ArticlesListSkeletonSmall = Template.bind({});
+ArticlesListSkeletonSmall.args = {
+	view: ArticlesView.SMALL,
+};
+
+export const ArticlesListSkeletonBig = Template.bind({});
+ArticlesListSkeletonBig.args = {
+	view: ArticlesView.BIG,
+};

@@ -1,9 +1,9 @@
 import { memo } from 'react';
-import { Comment } from 'entities/Comment';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Text } from 'shared/ui/Text/ui/Text';
-import { CommentSkeleton } from 'entities/Comment/ui/CommentSkeleton/CommentSkeleton';
+import { Text } from 'shared/ui/Text';
+import { Comment } from '../../model/types/comment';
+import { CommentSkeleton } from '../CommentSkeleton/CommentSkeleton';
 import { CommentCard } from '../CommentCard/CommentCard';
 import cls from './CommentList.module.scss';
 

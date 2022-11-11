@@ -14,11 +14,14 @@ interface IconProps {
 	className?: string
 	SvgIcon: React.VFC<React.SVGProps<SVGSVGElement>>
 	theme?: IconTheme
+	stroke?: boolean
 }
 
 export const Icon = memo(
-	({ className, SvgIcon, theme = IconTheme.PRIMARY }: IconProps) => (
-		<div className={classNames(cls.Icon, {}, [className, cls[theme]])}>
+	({
+		className, SvgIcon, theme = IconTheme.PRIMARY, stroke,
+	}: IconProps) => (
+		<div className={classNames(cls.Icon, { [cls.stroke]: stroke }, [className, cls[theme]])}>
 			<SvgIcon />
 		</div>
 	),

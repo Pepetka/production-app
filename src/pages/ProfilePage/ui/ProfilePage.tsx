@@ -1,5 +1,5 @@
 import {
-	ChangeEvent, memo, useEffect, useMemo,
+	ChangeEvent, memo, useCallback, useEffect, useMemo,
 } from 'react';
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { ProfileCard } from 'entities/Profile';
@@ -15,11 +15,11 @@ import {
 	profileReducer,
 } from 'features/EditableProfileCard';
 import { useSelector } from 'react-redux';
-import { Text } from 'shared/ui/Text';
-import { TextTheme } from 'shared/ui/Text/ui/Text';
+import { Text, TextTheme } from 'shared/ui/Text';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import { Page } from 'shared/ui/Page';
+import { useAppEffect } from 'shared/lib/hooks/useAppEffect/useAppEffect';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 interface ProfilePageProps {
@@ -36,9 +36,11 @@ const ProfilePage = memo(({ className }: ProfilePageProps) => {
 	const params = useParams<{id: string}>();
 	const { t } = useTranslation('profile');
 
-	useEffect(() => {
-		if (__PROJECT__ !== 'storybook') dispatch(fetchProfileData(params.id!));
+	const callback = useCallback(() => {
+		dispatch(fetchProfileData(params.id!));
 	}, [dispatch, params.id]);
+
+	useAppEffect(callback);
 
 	const {
 		onChangeFirstname,

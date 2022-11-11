@@ -1,16 +1,16 @@
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { memo, useCallback, useEffect } from 'react';
+import { memo, useCallback } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { fetchArticleById } from 'entities/Article';
 import { useSelector } from 'react-redux';
-import { Text } from 'shared/ui/Text';
+import { Text, TextSize } from 'shared/ui/Text';
 import { useTranslation } from 'react-i18next';
 import { Avatar, AvatarSize } from 'shared/ui/Avatar';
 import EyeIcon from 'shared/assets/icons/eye_icon.svg';
 import CalendarIcon from 'shared/assets/icons/calendar_icon.svg';
-import { TextSize } from 'shared/ui/Text/ui/Text';
 import { Icon, IconTheme } from 'shared/ui/Icon';
+import { useAppEffect } from 'shared/lib/hooks/useAppEffect/useAppEffect';
+import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
 import { ArticleBlock, ArticleBlockType } from '../../model/types/article';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { ArticleImgBlockComponent } from '../ArticleImgBlockComponent/ArticleImgBlockComponent';
@@ -51,9 +51,11 @@ export const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
 		[],
 	);
 
-	useEffect(() => {
+	const effect = useCallback(() => {
 		dispatch(fetchArticleById({ id }));
-	}, [id, dispatch]);
+	}, [dispatch, id]);
+
+	useAppEffect(effect);
 
 	if (error) {
 		content = <Text title={t(error)} align="center" />;

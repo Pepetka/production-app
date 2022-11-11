@@ -11,6 +11,12 @@ export default {
 
 const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />;
 
+export const AvatarXS = Template.bind({});
+AvatarXS.args = {
+	loading: false,
+	size: AvatarSize.SIZE_XS,
+};
+
 export const AvatarS = Template.bind({});
 AvatarS.args = {
 	loading: false,

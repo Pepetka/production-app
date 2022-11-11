@@ -1,9 +1,9 @@
-import { AppLink } from 'shared/ui/AppLink';
-import { AppLinkTheme } from 'shared/ui/AppLink/ui/AppLink';
+import { AppLink, AppLinkTheme } from 'shared/ui/AppLink';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { getAuthData } from 'entities/User';
 import { AppRoutesProps, routeConfig } from 'shared/config/routeConfig/routeConfig';
+import { memo } from 'react';
 
 interface NavBarLinkProps {
 	className?: string;
@@ -11,7 +11,7 @@ interface NavBarLinkProps {
 	routeName: string
 }
 
-export const NavBarLink = ({
+export const NavBarLink = memo(({
 	className, route, routeName,
 }: NavBarLinkProps) => {
 	const { t } = useTranslation();
@@ -28,4 +28,4 @@ export const NavBarLink = ({
 			{t(routeName)}
 		</AppLink>
 	);
-};
+});

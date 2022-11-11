@@ -9,7 +9,6 @@ import { Avatar, AvatarSize } from 'shared/ui/Avatar';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { routePaths } from 'shared/config/routeConfig/routeConfig';
-import { ArticlesListSkeleton } from 'entities/Article/ui/ArticlesListSkeleton/ArticlesListSkeleton';
 import { AppLink } from 'shared/ui/AppLink';
 import {
 	Article, ArticleBlockType, ArticlesView, ArticleTextBlock,

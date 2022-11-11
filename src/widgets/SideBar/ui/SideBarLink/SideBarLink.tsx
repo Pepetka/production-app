@@ -1,4 +1,4 @@
-import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/ui/AppLink';
+import { AppLink, AppLinkTheme } from 'shared/ui/AppLink';
 import { classNames } from 'shared/lib/classNames/classNames';
 import React, { memo } from 'react';
 import { useTranslation } from 'react-i18next';
