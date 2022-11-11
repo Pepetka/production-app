@@ -3,9 +3,18 @@
 	"en": "ru",
 	"Main": "Главная",
 	"About": "Описание",
+	"Profile": "Профиль",
+	"Articles": "Статьи",
+	"Article_details": "Статья",
 	"Loading": "Загрузка",
 	"Page not found": "Страница не найдена",
 	"Something went wrong": "Произошла ошибка",
 	"Reload page": "Перезагрузка",
-	"LogIn": "Войти"
+	"LogIn": "Войти",
+	"Username": "Логин",
+	"Password": "Пароль",
+	"Login error": "Ошибка входа",
+	"Auth form": "Форма авторизации",
+	"LogOut": "Выйти",
+	"No comments": "Комментарии отсутствуют"
 }

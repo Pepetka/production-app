@@ -1,0 +1,44 @@
+.Icon {
+	display: flex;
+	align-items: center;
+
+	&.primary {
+		fill: var(--primary-color);
+
+		&.stroke {
+			stroke: var(--primary-color);
+		}
+	}
+
+	&.secondary {
+		fill: var(--secondary-color);
+
+		&.stroke {
+			stroke: var(--secondary-color);
+		}
+	}
+
+	&.invert_primary {
+		fill: var(--invert-primary-color);
+
+		&.stroke {
+			stroke: var(--invert-primary-color);
+		}
+	}
+
+	&.invert_secondary {
+		fill: var(--invert-secondary-color);
+
+		&.stroke {
+			stroke: var(--invert-secondary-color);
+		}
+	}
+
+	&.red {
+		fill: var(--red-primary-color);
+
+		&.stroke {
+			stroke: var(--red-primary-color);
+		}
+	}
+}

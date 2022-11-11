@@ -1,4 +1,3 @@
-import { loader } from 'mini-css-extract-plugin';
 import { RuleSetRule } from 'webpack';
 import { BuildOptions } from './types/config';
 import { buildCSSLoader } from './loaders/buildCSSLoader';
@@ -11,6 +10,9 @@ export function buildLoaders({ isDev }: BuildOptions): RuleSetRule[] {
 			loader: 'babel-loader',
 			options: {
 				presets: ['@babel/preset-env'],
+				plugins: [
+					isDev && require.resolve('react-refresh/babel'),
+				].filter(Boolean),
 			},
 		},
 	};

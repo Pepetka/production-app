@@ -3,7 +3,7 @@ import path from 'path';
 import { buildWebpackConfig } from './config/build/buildWebpackConfig';
 import { BuildEnv, BuildPaths } from './config/build/types/config';
 
-export default (env: BuildEnv) => {
+export default (env: BuildEnv): Configuration => {
 	const paths: BuildPaths = {
 		entry: path.resolve(__dirname, 'src', 'index.tsx'),
 		output: path.resolve(__dirname, 'build'),
@@ -15,12 +15,11 @@ export default (env: BuildEnv) => {
 	const port = env.port ?? 3000;
 	const isDev = mode === 'development';
 
-	const config: Configuration = buildWebpackConfig({
+	return buildWebpackConfig({
 		mode,
 		paths,
 		isDev,
 		port,
+		project: 'frontend',
 	});
-
-	return config;
 };

@@ -12,15 +12,15 @@ import 'shared/config/i18n/i18nConfig';
 
 render(
 	<Suspense fallback={<PageLoader />}>
-		<StoreProvider>
-			<ThemeProvider>
-				<BrowserRouter>
+		<BrowserRouter>
+			<StoreProvider>
+				<ThemeProvider>
 					<ErrorBoundary>
 						<App />
 					</ErrorBoundary>
-				</BrowserRouter>
-			</ThemeProvider>
-		</StoreProvider>
+				</ThemeProvider>
+			</StoreProvider>
+		</BrowserRouter>
 	</Suspense>,
 	document.querySelector('#root'),
 );

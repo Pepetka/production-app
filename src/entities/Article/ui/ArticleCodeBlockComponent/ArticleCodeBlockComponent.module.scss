@@ -1,0 +1,19 @@
+.ArticleCodeBlockComponent {
+	border: 2px solid var(--primary-color);
+	border-radius: 5px;
+	transform: scale(1);
+	background: var(--code-bgc);
+	width: 100%;
+}
+
+.copy {
+	position: fixed;
+	top: 20px;
+	right: 25px;
+}
+
+.codeWrapper {
+	padding: 20px;
+	width: 100%;
+	overflow-x: auto;
+}

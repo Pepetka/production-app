@@ -1,0 +1,22 @@
+{
+	"Profile page": "Профиль пользователя",
+	"Username": "Имя пользователя",
+	"Firstname": "Имя",
+	"Lastname": "Фамилия",
+	"Age": "Возраст",
+	"Country": "Страна",
+	"City": "Город",
+	"Currency": "Валюта",
+	"Profile avatar": "Аватар",
+	"Something went wrong": "Что-то пошло не так",
+	"Reload Page": "Перезагрузить страницу",
+	"Edit": "Изменить",
+	"Save": "Сохранить",
+	"Cancel": "Отменить",
+	"Avatar": "Аватар",
+	"Russia": "Россия",
+	"Ukraine": "Украина",
+	"Belarus": "Беларусь",
+	"Incorrect username": "Некорректное имя пользователя",
+	"Incorrect age": "Некорректный возраст"
+}

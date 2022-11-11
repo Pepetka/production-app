@@ -1,6 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { StyleDecorator } from 'shared/config/storybook/StyleDecorator/StyleDecorator';
-import { Theme } from 'app/provider/Theme';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Button, ButtonTheme } from './Button';
 
 export default {

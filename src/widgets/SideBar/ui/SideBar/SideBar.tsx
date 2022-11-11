@@ -1,34 +1,38 @@
-import { ReactNode, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
-import { Button } from 'shared/ui/Button';
-import { ButtonTheme } from 'shared/ui/Button/ui/Button';
-import { AppRoutes, routeConfig } from 'shared/config/routeConfig/routeConfig';
-import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/ui/AppLink';
-import { useTranslation } from 'react-i18next';
+import { Button, ButtonTheme } from 'shared/ui/Button';
+import { AppRoutes, routeConfig, routePaths } from 'shared/config/routeConfig/routeConfig';
 import AboutIcon from 'shared/assets/icons/about_icon.svg';
 import HomeIcon from 'shared/assets/icons/home_icon.svg';
+import ProfileIcon from 'shared/assets/icons/profile_icon.svg';
+import ArticlesIcon from 'shared/assets/icons/articles_icon.svg';
+import { useSelector } from 'react-redux';
+import { getAuthData } from 'entities/User';
+import { SideBarLink } from '../SideBarLink/SideBarLink';
 import cls from './SideBar.module.scss';
 
-const navIcons: Record<string, ReactNode> = {
-	[AppRoutes.MAIN]: <HomeIcon />,
-	[AppRoutes.ABOUT]: <AboutIcon />,
+const navIcons: Record<string, React.VFC<React.SVGProps<SVGSVGElement>>> = {
+	[AppRoutes.MAIN]: HomeIcon,
+	[AppRoutes.ABOUT]: AboutIcon,
+	[AppRoutes.PROFILE]: ProfileIcon,
+	[AppRoutes.ARTICLES]: ArticlesIcon,
 };
 
 interface SideBarProps {
 	className?: string
 }
-export const SideBar = ({ className }: SideBarProps) => {
+export const SideBar = memo(({ className }: SideBarProps) => {
 	const [collapsed, setCollapsed] = useState(true);
-	const { t } = useTranslation();
+	const userId = useSelector(getAuthData)?.id;
 
-	const onCollapse = () => {
+	const onCollapse = useCallback(() => {
 		setCollapsed((collapsed) => !collapsed);
-	};
+	}, []);
 
 	return (
-		<div data-testid="sidebar" className={classNames(cls.SideBar, { [cls.collapsed]: collapsed }, [className])}>
+		<menu data-testid="sidebar" className={classNames(cls.SideBar, { [cls.collapsed]: collapsed }, [className])}>
 			<div>
 				<Button
 					theme={ButtonTheme.CLEAR}
@@ -40,24 +44,40 @@ export const SideBar = ({ className }: SideBarProps) => {
 					{collapsed ? '>' : '<'}
 				</Button>
 
-				<div className={classNames(cls.links, {}, [])}>
-					{Object.entries(routeConfig).map(([routeName, { path }]) => {
-						if (path === '*') return null;
+				<nav className={classNames(cls.links, {}, [])}>
+					{Object.entries(routeConfig).map(([routeName, { path, authOnly }]) => {
+						if (routeName === AppRoutes.NOT_FOUND || routeName === AppRoutes.ARTICLE_DETAILS) return null;
+						if (routeName === AppRoutes.PROFILE) {
+							return (
+								<SideBarLink
+									authOnly={authOnly}
+									key={path}
+									path={routePaths.Profile + userId}
+									icon={navIcons[routeName]}
+									routeName={routeName}
+									collapsed={collapsed}
+								/>
+							);
+						}
 
 						return (
-							<AppLink className={cls.link} theme={AppLinkTheme.SECONDARY} key={path} to={path}>
-								{navIcons[routeName]}
-								<span className={cls.text}>{t(routeName)}</span>
-							</AppLink>
+							<SideBarLink
+								authOnly={authOnly}
+								key={path}
+								path={path!}
+								icon={navIcons[routeName]}
+								routeName={routeName}
+								collapsed={collapsed}
+							/>
 						);
 					})}
-				</div>
+				</nav>
 			</div>
 
 			<div className={cls.switchers}>
 				<ThemeSwitcher />
 				<LangSwitcher />
 			</div>
-		</div>
+		</menu>
 	);
-};
+});

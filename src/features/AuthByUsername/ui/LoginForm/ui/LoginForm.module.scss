@@ -1,0 +1,20 @@
+.LoginForm {
+	display: flex;
+	flex-direction: column;
+	width: 400px;
+}
+
+.button {
+	align-self: flex-end;
+	margin-top: 35px;
+}
+
+.error {
+	margin-top: 10px;
+}
+
+@media screen and (max-width: 768px) {
+	.LoginForm {
+		width: 100%;
+	}
+}

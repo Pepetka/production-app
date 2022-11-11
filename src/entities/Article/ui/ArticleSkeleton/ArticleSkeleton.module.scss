@@ -1,0 +1,13 @@
+.ArticleSkeleton {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 30px;
+
+	div {
+		&:not(:first-child) {
+			align-self: flex-start;
+		}
+	}
+}

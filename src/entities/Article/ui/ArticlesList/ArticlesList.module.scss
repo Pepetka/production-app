@@ -1,0 +1,14 @@
+.ArticlesList {
+	display: grid;
+	justify-content: center;
+}
+
+.small {
+	grid-template-columns: repeat(auto-fit, minmax(200px, max-content));
+	grid-gap: 16px 100px;
+}
+
+.big {
+	grid-template-columns: 100%;
+	grid-gap: 16px 100px;
+}

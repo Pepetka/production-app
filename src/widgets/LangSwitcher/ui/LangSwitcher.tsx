@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { useEffect } from 'react';
-import { Button } from 'shared/ui/Button';
-import { ButtonTheme } from 'shared/ui/Button/ui/Button';
+import { memo, useEffect } from 'react';
+import { Button, ButtonTheme } from 'shared/ui/Button';
+import { LOCAL_STORAGE_LANG_KEY } from 'shared/const/localstorage';
 import cls from './LangSwitcher.module.scss';
 
 enum Languages {
@@ -13,11 +13,11 @@ enum Languages {
 interface LangSwitcherProps {
 	className?: string;
 }
-export const LangSwitcher = ({ className }: LangSwitcherProps) => {
+export const LangSwitcher = memo(({ className }: LangSwitcherProps) => {
 	const { t, i18n } = useTranslation();
 
 	useEffect(() => {
-		const storageLang = localStorage.getItem('i18nextLng');
+		const storageLang = localStorage.getItem(LOCAL_STORAGE_LANG_KEY);
 
 		if (storageLang) i18n.changeLanguage(storageLang);
 	}, [i18n]);
@@ -38,4 +38,4 @@ export const LangSwitcher = ({ className }: LangSwitcherProps) => {
 			<Button theme={ButtonTheme.CLEAR} onClick={onToggle} inverted>{t('en')}</Button>
 		</div>
 	);
-};
+});

@@ -1,0 +1,15 @@
+.ArticlesDetailsPage {
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+}
+
+.comments {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.btn {
+	align-self: flex-start;
+}
