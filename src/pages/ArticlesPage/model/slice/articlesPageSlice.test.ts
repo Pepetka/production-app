@@ -96,6 +96,7 @@ describe('articlesPageSlice', () => {
 		view: ArticlesView.BIG,
 		hasMore: true,
 		loading: false,
+		_init: false,
 	};
 
 	test('changePage', () => {
@@ -110,6 +111,7 @@ describe('articlesPageSlice', () => {
 			...state,
 			limit: 8,
 			view: ArticlesView.SMALL,
+			_init: true,
 		});
 	});
 
@@ -143,6 +145,8 @@ describe('articlesPageSlice', () => {
 
 			page: 1,
 			hasMore: true,
+
+			_init: false,
 		};
 
 		expect(articlesPageReducer(undefined, articlesPageActions.changePage(10))).toEqual({
@@ -152,6 +156,7 @@ describe('articlesPageSlice', () => {
 		expect(articlesPageReducer(undefined, articlesPageActions.initView())).toEqual({
 			...initialState,
 			limit: 8,
+			_init: true,
 		});
 		expect(articlesPageReducer(undefined, articlesPageActions.changeView(ArticlesView.SMALL))).toEqual({
 			...initialState,

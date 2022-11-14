@@ -10,7 +10,6 @@ import { createReducerManager } from '../config/reducerManager';
 export const createReduxStore = (
 	initialState?: StateSchema,
 	asyncReducers?: ReducersMapObject<StateSchema>,
-	navigate?: NavigateFunction,
 ) => {
 	const rootReducer: ReducersMapObject<StateSchema> = {
 		user: userReducer,
@@ -27,7 +26,6 @@ export const createReduxStore = (
 			thunk: {
 				extraArgument: {
 					api: $api,
-					navigate,
 				},
 			},
 		}),
