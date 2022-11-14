@@ -5,7 +5,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { ArticleViewSelector } from 'features/ArticleViewSelector';
-import { Page } from 'shared/ui/Page';
+import { Page } from 'widgets/Page';
 import { useAppEffect } from 'shared/lib/hooks/useAppEffect/useAppEffect';
 import { getArticlesPageLoading } from '../../model/selectors/getArticlesPageLoading/getArticlesPageLoading';
 import { articlesPageActions, articlesPageReducer, getArticles } from '../../model/slice/articlesPageSlice';

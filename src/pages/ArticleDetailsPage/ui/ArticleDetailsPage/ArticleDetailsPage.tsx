@@ -18,7 +18,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { AddCommentForm } from 'features/AddCommentForm';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 import { routePaths } from 'shared/config/routeConfig/routeConfig';
-import { Page } from 'shared/ui/Page';
+import { Page } from 'widgets/Page';
 import { useAppEffect } from 'shared/lib/hooks/useAppEffect/useAppEffect';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './ArticleDetailsPage.module.scss';

@@ -18,7 +18,7 @@ import { useSelector } from 'react-redux';
 import { Text, TextTheme } from 'shared/ui/Text';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
-import { Page } from 'shared/ui/Page';
+import { Page } from 'widgets/Page';
 import { useAppEffect } from 'shared/lib/hooks/useAppEffect/useAppEffect';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 

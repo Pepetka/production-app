@@ -1,10 +1,10 @@
 import {
 	CombinedState, configureStore, Reducer, ReducersMapObject,
 } from '@reduxjs/toolkit';
-import { StateSchema } from 'app/provider/Store/config/StateSchema';
 import { userReducer } from 'entities/User';
 import { $api } from 'shared/api/api';
-import { NavigateFunction } from 'react-router-dom';
+import { scrollSafeReducer } from 'widgets/Page';
+import { StateSchema } from './StateSchema';
 import { createReducerManager } from '../config/reducerManager';
 
 export const createReduxStore = (
@@ -13,6 +13,7 @@ export const createReduxStore = (
 ) => {
 	const rootReducer: ReducersMapObject<StateSchema> = {
 		user: userReducer,
+		scrollSafe: scrollSafeReducer,
 		...asyncReducers,
 	};
 

@@ -4,15 +4,17 @@ import {
 	AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject,
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
-import { NavigateFunction } from 'react-router-dom';
 import { ProfileSchema } from 'features/EditableProfileCard';
 import { ArticleSchema } from 'entities/Article';
 import { CommentsSchema } from 'features/ArticleCommentsList';
 import { AddCommentFormSchema } from 'features/AddCommentForm';
 import { ArticlesPageSchema } from 'pages/ArticlesPage';
+import { ScrollSafeSchema } from 'widgets/Page';
 
 export interface StateSchema {
 	user: UserSchema
+	scrollSafe: ScrollSafeSchema
+
 	login?: LoginSchema
 	profile?: ProfileSchema
 	article?: ArticleSchema
