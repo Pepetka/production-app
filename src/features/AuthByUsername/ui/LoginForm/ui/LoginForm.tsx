@@ -1,4 +1,6 @@
-import { ChangeEvent, FormEvent, memo } from 'react';
+import {
+	ChangeEvent, FormEvent, memo, useMemo,
+} from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 import { useTranslation } from 'react-i18next';
@@ -33,13 +35,17 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
 		dispatch(loginByUsername({ username, password }));
 	};
 
-	const onChangeUsername = (value: string) => {
-		dispatch(loginActions.setUsername(value));
-	};
-
-	const onChangePassword = (value: string) => {
-		dispatch(loginActions.setPassword(value));
-	};
+	const {
+		onChangeUsername,
+		onChangePassword,
+	} = useMemo(() => ({
+		onChangeUsername: (value: string) => {
+			dispatch(loginActions.setUsername(value));
+		},
+		onChangePassword: (value: string) => {
+			dispatch(loginActions.setPassword(value));
+		},
+	}), [dispatch]);
 
 	return (
 		<DynamicModuleLoader reducerKey="login" reducer={loginReducer}>
@@ -51,14 +57,14 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
 					floatPlaceholder={t('Username')}
 					autoFocus
 					value={username}
-					onChange={(e: ChangeEvent<HTMLInputElement>) => onChangeUsername(e.target.value)}
+					onChange={onChangeUsername}
 				/>
 				<Input
 					theme={InputTheme.INVERT}
 					textInvert
 					floatPlaceholder={t('Password')}
 					value={password}
-					onChange={(e: ChangeEvent<HTMLInputElement>) => onChangePassword(e.target.value)}
+					onChange={onChangePassword}
 				/>
 				<Button disabled={loading} type="submit" className={cls.button} theme={ButtonTheme.OUTLINE}>
 					{loading ? `${t('Loading')}...` : t('LogIn')}

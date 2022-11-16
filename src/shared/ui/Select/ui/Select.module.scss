@@ -2,13 +2,16 @@
 	width: 100%;
 	background: var(--invert-bg-color);
 	color: var(--invert-primary-color);
-	border: solid 1px var(--invert-primary-color);
+	border: solid 2px var(--invert-primary-color);
 	border-radius: 5px;
 	padding: 12px 15px;
 }
 
 .selectWrapper {
 	position: relative;
+}
+
+.withLabel {
 	padding-top: 35px;
 }
 
@@ -22,6 +25,10 @@
 	transition: all 0.3s ease-out;
 }
 
+.option {
+	padding-block: 5px;
+}
+
 .placeholder {
 	transform: translateY(45px) translateX(15px);
 	color: var(--invert-secondary-color);
@@ -31,7 +38,7 @@
 	.Select {
 		background: var(--invert-bg-color);
 		color: var(--invert-primary-color);
-		border: solid 1px var(--invert-primary-color);
+		border: solid 2px var(--invert-primary-color);
 	}
 
 	.label {
@@ -43,7 +50,7 @@
 	.Select {
 		background: var(--bg-color);
 		color: var(--primary-color);
-		border: solid 1px var(--primary-color);
+		border: solid 2px var(--primary-color);
 	}
 
 	.label {

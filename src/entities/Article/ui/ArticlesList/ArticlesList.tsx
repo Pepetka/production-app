@@ -1,5 +1,7 @@
-import { memo } from 'react';
+import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { Text } from 'shared/ui/Text';
+import { useTranslation } from 'react-i18next';
 import { ArticlesListSkeleton } from '../ArticlesListSkeleton/ArticlesListSkeleton';
 import { ArticlesListItem } from '../ArticlesListItem/ArticlesListItem';
 import { Article, ArticlesView } from '../../model/types/article';
@@ -10,6 +12,7 @@ interface ArticlesListProps {
 	loading: boolean
 	view?: ArticlesView
 	articles: Array<Article>
+	target?: HTMLAttributeAnchorTarget
 }
 
 const getSkeletons = (view: ArticlesView) => (
@@ -22,9 +25,19 @@ const getSkeletons = (view: ArticlesView) => (
 
 export const ArticlesList = memo(
 	({
-		className, view = ArticlesView.SMALL, loading, articles,
+		className, view = ArticlesView.SMALL, loading, articles, target,
 	}: ArticlesListProps) => {
-		const renderArticle = (article: Article) => <ArticlesListItem key={article.id} view={view} article={article} />;
+		const { t } = useTranslation('articles');
+
+		const renderArticle = (article: Article) => <ArticlesListItem target={target} key={article.id} view={view} article={article} />;
+
+		if (!loading && !articles.length) {
+			return (
+				<div className={classNames(cls.ArticlesList, {}, [className, cls[view]])}>
+					<Text title={t('Articles not found')} />
+				</div>
+			);
+		}
 
 		return (
 			<div className={classNames(cls.ArticlesList, {}, [className, cls[view]])}>

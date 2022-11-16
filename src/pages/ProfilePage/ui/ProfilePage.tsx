@@ -1,6 +1,4 @@
-import {
-	ChangeEvent, memo, useCallback, useEffect, useMemo,
-} from 'react';
+import { memo, useCallback, useMemo } from 'react';
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { ProfileCard } from 'entities/Profile';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -20,6 +18,8 @@ import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import { Page } from 'widgets/Page';
 import { useAppEffect } from 'shared/lib/hooks/useAppEffect/useAppEffect';
+import { Country } from 'entities/Country';
+import { Currency } from 'entities/Currency';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 interface ProfilePageProps {
@@ -52,29 +52,29 @@ const ProfilePage = memo(({ className }: ProfilePageProps) => {
 		onChangeCity,
 		onChangeAvatar,
 	} = useMemo(() => ({
-		onChangeFirstname: (event: ChangeEvent<HTMLInputElement>) => {
-			dispatch(profileActions.setProfileData({ first: event.target.value }));
+		onChangeFirstname: (value: string) => {
+			dispatch(profileActions.setProfileData({ first: value }));
 		},
-		onChangeLastname: (event: ChangeEvent<HTMLInputElement>) => {
-			dispatch(profileActions.setProfileData({ lastname: event.target.value }));
+		onChangeLastname: (value: string) => {
+			dispatch(profileActions.setProfileData({ lastname: value }));
 		},
-		onChangeAge: (event: ChangeEvent<HTMLInputElement>) => {
-			dispatch(profileActions.setProfileData({ age: event.target.value.match(/\d+/g)?.join('') }));
+		onChangeAge: (value: string) => {
+			dispatch(profileActions.setProfileData({ age: value.match(/\d+/g)?.join('') }));
 		},
-		onChangeUsername: (event: ChangeEvent<HTMLInputElement>) => {
-			dispatch(profileActions.setProfileData({ username: event.target.value }));
+		onChangeUsername: (value: string) => {
+			dispatch(profileActions.setProfileData({ username: value }));
 		},
-		onChangeAvatar: (event: ChangeEvent<HTMLInputElement>) => {
-			dispatch(profileActions.setProfileData({ avatar: event.target.value }));
+		onChangeAvatar: (value: string) => {
+			dispatch(profileActions.setProfileData({ avatar: value }));
 		},
-		onChangeCity: (event: ChangeEvent<HTMLInputElement>) => {
-			dispatch(profileActions.setProfileData({ city: event.target.value }));
+		onChangeCity: (value: string) => {
+			dispatch(profileActions.setProfileData({ city: value }));
 		},
-		onChangeCountry: (event: ChangeEvent<HTMLSelectElement>) => {
-			dispatch(profileActions.setProfileData({ country: event.target.value }));
+		onChangeCountry: (value: Country) => {
+			dispatch(profileActions.setProfileData({ country: value }));
 		},
-		onChangeCurrency: (event: ChangeEvent<HTMLSelectElement>) => {
-			dispatch(profileActions.setProfileData({ currency: event.target.value }));
+		onChangeCurrency: (value: Currency) => {
+			dispatch(profileActions.setProfileData({ currency: value }));
 		},
 	}), [dispatch]);
 

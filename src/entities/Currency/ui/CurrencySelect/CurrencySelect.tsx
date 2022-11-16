@@ -1,21 +1,27 @@
 import { Select, SelectTheme } from 'shared/ui/Select';
-import { ChangeEvent } from 'react';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Currency } from '../../model/types/currency';
 
 interface CurrencySelectProps {
 	className?: string
 	readonly?: boolean
-	onChangeCurrency?: (e: ChangeEvent<HTMLSelectElement>) => void
-	selected?: string
+	onChangeCurrency?: (value: Currency) => void
+	selected?: Currency
 }
-
-const currencyOptions = Object.values(Currency).map((el) => el);
 
 export const CurrencySelect = ({
 	className, onChangeCurrency, selected, readonly,
 }: CurrencySelectProps) => {
 	const { t } = useTranslation('profile');
+
+	const currencyOptions: Record<Currency, string> = useMemo(() => (
+		{
+			[Currency.EUR]: 'EUR',
+			[Currency.RUB]: 'RUB',
+			[Currency.USD]: 'USD',
+		}
+	), []);
 
 	return (
 		<Select

@@ -24,8 +24,8 @@ const AddCommentForm = memo(
 		const { t } = useTranslation('articles');
 		const text = useSelector(getAddCommentFormText);
 
-		const onChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-			dispatch(addCommentFormActions.setText(event.target.value));
+		const onChange = useCallback((value: string) => {
+			dispatch(addCommentFormActions.setText(value));
 		}, [dispatch]);
 
 		const onSend = useCallback((event: FormEvent<HTMLFormElement>) => {

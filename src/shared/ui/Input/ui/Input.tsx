@@ -10,7 +10,9 @@ export enum InputTheme {
 	INVERT = 'invert'
 }
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement>{
+type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'>
+
+interface InputProps extends HTMLInputProps {
 	className?: string;
 	type?: HTMLInputTypeAttribute
 	autoFocus?: boolean
@@ -19,10 +21,10 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement>{
 	theme?: InputTheme
 	value?: string
 	readonly?: boolean
-	onChange?: (event: ChangeEvent<HTMLInputElement>) => void
+	onChange?: (value: string) => void
 }
 
-export const Input = memo((
+export const Input = (
 	{
 		className,
 		floatPlaceholder,
@@ -71,6 +73,10 @@ export const Input = memo((
 		setIsFocused(true);
 	};
 
+	const onHandleChange = (event: ChangeEvent<HTMLInputElement>) => {
+		onChange?.(event.target.value);
+	};
+
 	return (
 		<div
 			className={
@@ -92,9 +98,9 @@ export const Input = memo((
 				onFocus={onFocus}
 				value={value}
 				readOnly={readonly}
-				onChange={onChange}
+				onChange={onHandleChange}
 				{...otherProps}
 			/>
 		</div>
 	);
-});
+};

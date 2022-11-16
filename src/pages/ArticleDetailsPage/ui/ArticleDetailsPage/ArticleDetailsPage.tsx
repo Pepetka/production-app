@@ -21,6 +21,7 @@ import { routePaths } from 'shared/config/routeConfig/routeConfig';
 import { Page } from 'widgets/Page';
 import { useAppEffect } from 'shared/lib/hooks/useAppEffect/useAppEffect';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { ArticleRecommendations } from 'features/ArticleRecommendatopns';
 import cls from './ArticleDetailsPage.module.scss';
 
 interface ArticleDetailsPageProps {
@@ -69,14 +70,20 @@ const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
 					</Button>
 					<ArticleDetails id={params.id!} />
 					{!articleError && (
-						<div className={cls.comments}>
-							<Text title={t('Comments')} align="center" />
-							<AddCommentForm onSendComment={onSendComment} />
-							<CommentList
-								loading={loading}
-								comments={comments}
-							/>
-						</div>
+						<>
+							<div className={cls.recommendations}>
+								<Text title={t('Recommendations')} align="center" />
+								<ArticleRecommendations />
+							</div>
+							<div className={cls.comments}>
+								<Text title={t('Comments')} align="center" />
+								<AddCommentForm onSendComment={onSendComment} />
+								<CommentList
+									loading={loading}
+									comments={comments}
+								/>
+							</div>
+						</>
 					)}
 				</div>
 			</DynamicModuleLoader>

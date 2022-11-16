@@ -10,6 +10,7 @@ import { CommentsSchema } from 'features/ArticleCommentsList';
 import { AddCommentFormSchema } from 'features/AddCommentForm';
 import { ArticlesPageSchema } from 'pages/ArticlesPage';
 import { ScrollSafeSchema } from 'widgets/Page';
+import { ArticleRecommendationsSchema } from 'features/ArticleRecommendatopns';
 
 export interface StateSchema {
 	user: UserSchema
@@ -21,6 +22,7 @@ export interface StateSchema {
 	comments?: CommentsSchema
 	addCommentForm?: AddCommentFormSchema
 	articlesPage?: ArticlesPageSchema
+	articleRecommendations?: ArticleRecommendationsSchema
 }
 
 export type StateSchemaKey = keyof StateSchema

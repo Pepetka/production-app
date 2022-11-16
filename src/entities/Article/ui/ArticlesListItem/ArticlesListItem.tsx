@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react';
+import { HTMLAttributeAnchorTarget, memo, useMemo } from 'react';
 import { Text } from 'shared/ui/Text';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Icon, IconTheme } from 'shared/ui/Icon';
@@ -7,11 +7,10 @@ import { Card } from 'shared/ui/Card';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 import { Avatar, AvatarSize } from 'shared/ui/Avatar';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 import { routePaths } from 'shared/config/routeConfig/routeConfig';
 import { AppLink } from 'shared/ui/AppLink';
 import {
-	Article, ArticleBlockType, ArticlesView, ArticleTextBlock,
+	Article, ArticleBlockType, ArticlesView, ArticleTextBlock, ArticleType,
 } from '../../model/types/article';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import cls from './ArticlesListItem.module.scss';
@@ -20,19 +19,23 @@ interface ArticlesListItemProps {
 	className?: string
 	article: Article
 	view: ArticlesView
+	target?: HTMLAttributeAnchorTarget
 }
 
 export const ArticlesListItem = memo(
 	({
-		className, article, view,
+		className, article, view, target,
 	}: ArticlesListItemProps) => {
 		const { t } = useTranslation('articles');
 		const textContent = article.blocks.find((block) => block.type === ArticleBlockType.TEXT) as ArticleTextBlock;
-		const navigate = useNavigate();
 
-		const onOpenArticle = useCallback(() => {
-			navigate(routePaths.Article_details + article.id);
-		}, [article.id, navigate]);
+		const articleTranslatedTypes: OptionalRecord<ArticleType, string> = useMemo(() => ({
+			[ArticleType.IT]: t('IT'),
+			[ArticleType.MATH]: t('MATH'),
+			[ArticleType.ECONOMY]: t('ECONOMY'),
+		}), [t]);
+
+		const articleTypes = article.type.map((type) => articleTranslatedTypes[type]).join(', ');
 
 		if (view === ArticlesView.BIG) {
 			return (
@@ -45,7 +48,7 @@ export const ArticlesListItem = memo(
 						<Text text={article.createdAt} />
 					</div>
 					<Text title={article.title} />
-					<Text text={article.type.join(', ')} />
+					<Text text={articleTypes} />
 					<div className={cls.img}>
 						<img src={article.img} alt={t('Article img')} />
 					</div>
@@ -53,9 +56,11 @@ export const ArticlesListItem = memo(
 						{textContent && <ArticleTextBlockComponent block={textContent} />}
 					</div>
 					<div className={cls.info}>
-						<Button onClick={onOpenArticle} theme={ButtonTheme.OUTLINE}>
-							{t('Read more')}
-						</Button>
+						<AppLink target={target} to={routePaths.Article_details + article.id}>
+							<Button theme={ButtonTheme.OUTLINE}>
+								{t('Read more')}
+							</Button>
+						</AppLink>
 						<div className={cls.views}>
 							<Text text={article.views.toString()} />
 							<Icon SvgIcon={EyeIcon} theme={IconTheme.SECONDARY} />
@@ -66,22 +71,24 @@ export const ArticlesListItem = memo(
 		}
 
 		return (
-			<Card onClick={onOpenArticle} className={classNames(cls.Small, {}, [className])}>
-				<div className={cls.img}>
-					<Text className={cls.date} text={article.createdAt} />
-					<img src={article.img} alt={t('Article img')} />
-				</div>
-				<div className={cls.data}>
-					<div className={cls.info}>
-						<Text className={cls.types} text={article.type.join(', ')} />
-						<div className={cls.views}>
-							<Text text={article.views.toString()} />
-							<Icon SvgIcon={EyeIcon} theme={IconTheme.SECONDARY} />
-						</div>
+			<AppLink target={target} to={routePaths.Article_details + article.id}>
+				<Card className={classNames(cls.Small, {}, [className])}>
+					<div className={cls.img}>
+						<Text className={cls.date} text={article.createdAt} />
+						<img src={article.img} alt={t('Article img')} />
 					</div>
-					<Text className={cls.title} text={article.title} />
-				</div>
-			</Card>
+					<div className={cls.data}>
+						<div className={cls.info}>
+							<Text className={cls.types} text={articleTypes} />
+							<div className={cls.views}>
+								<Text text={article.views.toString()} />
+								<Icon SvgIcon={EyeIcon} theme={IconTheme.SECONDARY} />
+							</div>
+						</div>
+						<Text className={cls.title} text={article.title} />
+					</div>
+				</Card>
+			</AppLink>
 		);
 	},
 );

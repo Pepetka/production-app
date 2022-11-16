@@ -1,7 +1,8 @@
 import { describe, expect, test } from '@jest/globals';
 import { StateSchema } from 'app/provider/Store';
-import { ArticlesView } from 'entities/Article';
-import { ArticlesPageSchema } from 'pages/ArticlesPage';
+import { ArticlesView, ArticleType } from 'entities/Article';
+import { ArticleSortField } from 'entities/Article/model/types/article';
+import { ArticlesPageSchema } from '../types/articlesPageSchema';
 import { articlesPageActions, articlesPageReducer, getArticles } from './articlesPageSlice';
 
 describe('getArticles', () => {
@@ -145,6 +146,11 @@ describe('articlesPageSlice', () => {
 
 			page: 1,
 			hasMore: true,
+
+			order: 'asc',
+			search: '',
+			sort: ArticleSortField.CREATED_AT,
+			type: ArticleType.ALL,
 
 			_init: false,
 		};
