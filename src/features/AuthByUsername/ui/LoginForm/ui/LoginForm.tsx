@@ -66,7 +66,7 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
 					value={password}
 					onChange={onChangePassword}
 				/>
-				<Button disabled={loading} type="submit" className={cls.button} theme={ButtonTheme.OUTLINE}>
+				<Button disabled={loading} type="submit" className={cls.button} theme={ButtonTheme.OUTLINE_PRIMARY}>
 					{loading ? `${t('Loading')}...` : t('LogIn')}
 				</Button>
 				{error && <Text text={t(error)} theme={TextTheme.ERROR} align="right" className={cls.error} />}

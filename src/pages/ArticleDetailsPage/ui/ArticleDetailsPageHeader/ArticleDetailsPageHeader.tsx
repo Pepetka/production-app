@@ -1,4 +1,4 @@
-import { memo, useCallback, useMemo } from 'react';
+import { memo, useCallback } from 'react';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 import { useTranslation } from 'react-i18next';
 import { routePaths } from 'shared/config/routeConfig/routeConfig';
@@ -30,11 +30,11 @@ export const ArticleDetailsPageHeader = memo(
 
 		return (
 			<div className={classNames(cls.ArticleDetailsPageHeader, {}, [className])}>
-				<Button className={cls.btn} theme={ButtonTheme.OUTLINE} onClick={onBack}>
+				<Button className={cls.btn} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onBack}>
 					{t('Back to list')}
 				</Button>
 				{canEditArticle && (
-					<Button className={cls.btn} theme={ButtonTheme.OUTLINE} onClick={onEdit}>
+					<Button className={cls.btn} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onEdit}>
 						{t('Edit')}
 					</Button>
 				)}

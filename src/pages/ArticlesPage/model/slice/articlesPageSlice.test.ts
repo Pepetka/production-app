@@ -137,6 +137,34 @@ describe('articlesPageSlice', () => {
 		});
 	});
 
+	test('changeSort', () => {
+		expect(articlesPageReducer(state as ArticlesPageSchema, articlesPageActions.changeSort(ArticleSortField.TITLE))).toEqual({
+			...state,
+			sort: ArticleSortField.TITLE,
+		});
+	});
+
+	test('changeSearch', () => {
+		expect(articlesPageReducer(state as ArticlesPageSchema, articlesPageActions.changeSearch('search'))).toEqual({
+			...state,
+			search: 'search',
+		});
+	});
+
+	test('changeOrder', () => {
+		expect(articlesPageReducer(state as ArticlesPageSchema, articlesPageActions.changeOrder('desc'))).toEqual({
+			...state,
+			order: 'desc',
+		});
+	});
+
+	test('changeType', () => {
+		expect(articlesPageReducer(state as ArticlesPageSchema, articlesPageActions.changeType(ArticleType.ECONOMY))).toEqual({
+			...state,
+			type: ArticleType.ECONOMY,
+		});
+	});
+
 	test('undefined state', () => {
 		const initialState: ArticlesPageSchema = {
 			loading: false,
@@ -175,6 +203,22 @@ describe('articlesPageSlice', () => {
 		expect(articlesPageReducer(undefined, articlesPageActions.changeLimit(2))).toEqual({
 			...initialState,
 			limit: 2,
+		});
+		expect(articlesPageReducer(undefined, articlesPageActions.changeSort(ArticleSortField.TITLE))).toEqual({
+			...initialState,
+			sort: ArticleSortField.TITLE,
+		});
+		expect(articlesPageReducer(undefined, articlesPageActions.changeSearch('search'))).toEqual({
+			...initialState,
+			search: 'search',
+		});
+		expect(articlesPageReducer(undefined, articlesPageActions.changeOrder('desc'))).toEqual({
+			...initialState,
+			order: 'desc',
+		});
+		expect(articlesPageReducer(undefined, articlesPageActions.changeType(ArticleType.ECONOMY))).toEqual({
+			...initialState,
+			type: ArticleType.ECONOMY,
 		});
 	});
 });

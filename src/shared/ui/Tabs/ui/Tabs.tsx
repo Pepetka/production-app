@@ -24,7 +24,7 @@ export const Tabs =	<T extends string> ({
 				<Button
 					onClick={onHandleClick(key as T)}
 					key={key}
-					theme={key === selected ? ButtonTheme.OUTLINE_RED : ButtonTheme.OUTLINE}
+					theme={key === selected ? ButtonTheme.OUTLINE_RED : ButtonTheme.OUTLINE_PRIMARY}
 					inverted={inverted}
 				>
 					{value}

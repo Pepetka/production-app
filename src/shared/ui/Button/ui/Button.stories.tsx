@@ -36,14 +36,38 @@ ButtonPrimaryInverted.args = {
 	inverted: true,
 };
 
-export const ButtonOutline = Template.bind({});
-ButtonOutline.args = {
-	theme: ButtonTheme.OUTLINE,
+export const ButtonSecondary = Template.bind({});
+ButtonSecondary.args = {
+	theme: ButtonTheme.SECONDARY,
 	children: 'Button',
 };
-export const ButtonOutlineInverted = Template.bind({});
-ButtonOutlineInverted.args = {
-	theme: ButtonTheme.OUTLINE,
+export const ButtonSecondaryInverted = Template.bind({});
+ButtonSecondaryInverted.args = {
+	theme: ButtonTheme.SECONDARY,
+	children: 'Button',
+	inverted: true,
+};
+
+export const ButtonOutlinePrimary = Template.bind({});
+ButtonOutlinePrimary.args = {
+	theme: ButtonTheme.OUTLINE_PRIMARY,
+	children: 'Button',
+};
+export const ButtonOutlinePrimaryInverted = Template.bind({});
+ButtonOutlinePrimaryInverted.args = {
+	theme: ButtonTheme.OUTLINE_PRIMARY,
+	children: 'Button',
+	inverted: true,
+};
+
+export const ButtonOutlineSecondary = Template.bind({});
+ButtonOutlineSecondary.args = {
+	theme: ButtonTheme.OUTLINE_SECONDARY,
+	children: 'Button',
+};
+export const ButtonOutlineSecondaryInverted = Template.bind({});
+ButtonOutlineSecondaryInverted.args = {
+	theme: ButtonTheme.OUTLINE_SECONDARY,
 	children: 'Button',
 	inverted: true,
 };

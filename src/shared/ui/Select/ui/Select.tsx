@@ -1,7 +1,5 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import {
-	ChangeEvent, memo, SelectHTMLAttributes, useMemo,
-} from 'react';
+import { ChangeEvent } from 'react';
 import cls from './Select.module.scss';
 
 export enum SelectTheme {

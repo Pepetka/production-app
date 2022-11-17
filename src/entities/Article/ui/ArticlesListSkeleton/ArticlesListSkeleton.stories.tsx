@@ -3,7 +3,7 @@ import { ArticlesView } from 'entities/Article';
 import { ArticlesListSkeleton } from './ArticlesListSkeleton';
 
 export default {
-	title: 'entities/ArticlesListSkeleton',
+	title: 'entities/ArticlesList/ArticlesListSkeleton',
 	component: ArticlesListSkeleton,
 	argTypes: {
 		backgroundColor: { control: 'color' },

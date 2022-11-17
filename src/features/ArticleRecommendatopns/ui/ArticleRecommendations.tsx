@@ -44,6 +44,7 @@ export const ArticleRecommendations = memo(
 		return (
 			<DynamicModuleLoader reducerKey="articleRecommendations" reducer={articleRecommendationsReducer}>
 				<ArticlesList
+					skeletonNum={4}
 					target="_blank"
 					className={classNames(cls.ArticleRecommendations, {}, [className])}
 					loading={loading}

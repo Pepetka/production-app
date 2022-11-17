@@ -46,7 +46,7 @@ const AddCommentForm = memo(
 						value={text}
 						floatPlaceholder={t('Enter comment text')}
 					/>
-					<Button type="submit" theme={ButtonTheme.OUTLINE}>
+					<Button type="submit" theme={ButtonTheme.OUTLINE_PRIMARY}>
 						{t('Send')}
 					</Button>
 				</form>

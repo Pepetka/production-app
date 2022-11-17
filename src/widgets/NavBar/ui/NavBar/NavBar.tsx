@@ -73,11 +73,11 @@ export const NavBar = memo(({ className }: NavBarProps) => {
 					/>
 				))}
 				{authData ? (
-					<Button theme={ButtonTheme.OUTLINE} inverted onClick={onLogout}>
+					<Button theme={ButtonTheme.OUTLINE_PRIMARY} inverted onClick={onLogout}>
 						{t('LogOut')}
 					</Button>
 				) : (
-					<Button theme={ButtonTheme.OUTLINE} inverted onClick={onOpenModal}>
+					<Button theme={ButtonTheme.OUTLINE_PRIMARY} inverted onClick={onOpenModal}>
 						{t('LogIn')}
 					</Button>
 				)}

@@ -13,21 +13,22 @@ interface ArticlesListProps {
 	view?: ArticlesView
 	articles: Array<Article>
 	target?: HTMLAttributeAnchorTarget
+	skeletonNum?: number
 }
-
-const getSkeletons = (view: ArticlesView) => (
-	new Array(view === ArticlesView.SMALL ? 8 : 3)
-		.fill(0)
-		.map((el, i) => (
-			<ArticlesListSkeleton key={i} view={view} />
-		))
-);
 
 export const ArticlesList = memo(
 	({
-		className, view = ArticlesView.SMALL, loading, articles, target,
+		className, view = ArticlesView.SMALL, loading, articles, target, skeletonNum,
 	}: ArticlesListProps) => {
 		const { t } = useTranslation('articles');
+
+		const getSkeletons = (view: ArticlesView) => (
+			new Array(skeletonNum ?? (view === ArticlesView.SMALL ? 8 : 3))
+				.fill(0)
+				.map((el, i) => (
+					<ArticlesListSkeleton key={i} view={view} />
+				))
+		);
 
 		const renderArticle = (article: Article) => <ArticlesListItem target={target} key={article.id} view={view} article={article} />;
 

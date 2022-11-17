@@ -57,7 +57,7 @@ export const ArticlesListItem = memo(
 					</div>
 					<div className={cls.info}>
 						<AppLink target={target} to={routePaths.Article_details + article.id}>
-							<Button theme={ButtonTheme.OUTLINE}>
+							<Button theme={ButtonTheme.OUTLINE_PRIMARY}>
 								{t('Read more')}
 							</Button>
 						</AppLink>

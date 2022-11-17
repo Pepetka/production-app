@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ArticlesSortSelector } from './ArticlesSortSelector';
 
 export default {
-	title: 'components/ArticlesSortSelector',
+	title: 'features/ArticlesSortSelector',
 	component: ArticlesSortSelector,
 	argTypes: {
 		backgroundColor: { control: 'color' },
@@ -11,5 +11,5 @@ export default {
 
 const Template: ComponentStory<typeof ArticlesSortSelector> = (args) => <ArticlesSortSelector {...args} />;
 
-export const ArticlesSortSelectrStory = Template.bind({});
-ArticlesSortSelectrStory.args = {};
+export const ArticlesSortSelectorStory = Template.bind({});
+ArticlesSortSelectorStory.args = {};

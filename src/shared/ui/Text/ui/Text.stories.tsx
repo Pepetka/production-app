@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Text, TextTheme } from './Text';
+import { Text, TextSize, TextTheme } from './Text';
 
 export default {
 	title: 'shared/Text',
@@ -11,15 +11,45 @@ export default {
 
 const Template: ComponentStory<typeof Text> = (args) => <Text {...args} />;
 
-export const TextPrimary = Template.bind({});
-TextPrimary.args = {
+export const TextPrimaryM = Template.bind({});
+TextPrimaryM.args = {
 	title: 'Some text title',
 	text: 'Some text content',
 };
 
-export const TextError = Template.bind({});
-TextError.args = {
+export const TextPrimaryInvertM = Template.bind({});
+TextPrimaryInvertM.args = {
+	invert: true,
+	title: 'Some text title',
+	text: 'Some text content',
+};
+
+export const TextErrorM = Template.bind({});
+TextErrorM.args = {
 	theme: TextTheme.ERROR,
 	title: 'Some text title',
 	text: 'Some text content',
+};
+
+export const TextPrimaryL = Template.bind({});
+TextPrimaryL.args = {
+	title: 'Some text title',
+	text: 'Some text content',
+	size: TextSize.L,
+};
+
+export const TextPrimaryInvertL = Template.bind({});
+TextPrimaryInvertL.args = {
+	invert: true,
+	title: 'Some text title',
+	text: 'Some text content',
+	size: TextSize.L,
+};
+
+export const TextErrorL = Template.bind({});
+TextErrorL.args = {
+	theme: TextTheme.ERROR,
+	title: 'Some text title',
+	text: 'Some text content',
+	size: TextSize.L,
 };
