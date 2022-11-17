@@ -19,3 +19,23 @@
 	display: flex;
 	width: 100%;
 }
+
+* {
+	scrollbar-width: 10px;
+	scrollbar-color: var(--invert-primary-color) var(--card-bgc);
+}
+
+*::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+	background: var(--card-bgc);
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: var(--invert-primary-color);
+	border-radius: 5px;
+	border: 1px solid var(--primary-color);
+}

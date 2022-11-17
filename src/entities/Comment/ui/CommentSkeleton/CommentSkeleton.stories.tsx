@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { CommentSkeleton } from './CommentSkeleton';
 
 export default {
-	title: 'entities/CommentSkeleton',
+	title: 'entities/Comment/CommentSkeleton',
 	component: CommentSkeleton,
 	argTypes: {
 		backgroundColor: { control: 'color' },

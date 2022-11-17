@@ -5,7 +5,7 @@ import {
 import { ArticlesListItem } from './ArticlesListItem';
 
 export default {
-	title: 'entities/ArticlesListItem',
+	title: 'entities/ArticlesList/ArticlesListItem',
 	component: ArticlesListItem,
 	argTypes: {
 		backgroundColor: { control: 'color' },

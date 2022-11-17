@@ -6,7 +6,7 @@ import { ReducersMapObject } from '@reduxjs/toolkit';
 import { ProfilePageHeader } from './ProfilePageHeader';
 
 export default {
-	title: 'pages/ProfilePageHeader',
+	title: 'pages/ProfilePage/ProfilePageHeader',
 	component: ProfilePageHeader,
 	argTypes: {
 		backgroundColor: { control: 'color' },

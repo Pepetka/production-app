@@ -1,17 +1,17 @@
-import { memo, useCallback, useEffect } from 'react';
+import { memo, useCallback } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { ArticlesList, ArticlesView } from 'entities/Article';
+import { ArticlesList } from 'entities/Article';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { ArticleViewSelector } from 'features/ArticleViewSelector';
-import { Page } from 'shared/ui/Page';
+import { Page } from 'widgets/Page';
 import { useAppEffect } from 'shared/lib/hooks/useAppEffect/useAppEffect';
+import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
 import { getArticlesPageLoading } from '../../model/selectors/getArticlesPageLoading/getArticlesPageLoading';
-import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
-import { articlesPageActions, articlesPageReducer, getArticles } from '../../model/slice/articlesPageSlice';
+import { articlesPageReducer, getArticles } from '../../model/slice/articlesPageSlice';
 import { getArticlesPageView } from '../../model/selectors/getArticlesPageView/getArticlesPageView';
 import { fetchNextArticles } from '../../model/services/fetchNextArticles/fetchNextArticles';
+import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 import cls from './ArticlesPage.module.scss';
 
 interface ArticlesPageProps {
@@ -25,10 +25,7 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
 	const articles = useSelector(getArticles.selectAll);
 
 	const callback = useCallback(() => {
-		dispatch(articlesPageActions.initView());
-		dispatch(fetchArticlesList({
-			page: 1,
-		}));
+		dispatch(initArticlesPage());
 	}, [dispatch]);
 
 	useAppEffect(callback);
@@ -37,15 +34,11 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
 		if (__PROJECT__ !== 'storybook') dispatch(fetchNextArticles());
 	}, [dispatch]);
 
-	const onChangeView = useCallback((view: ArticlesView) => {
-		dispatch(articlesPageActions.changeView(view));
-	}, [dispatch]);
-
 	return (
 		<Page onScrollEnd={onScrollEnd}>
-			<DynamicModuleLoader reducerKey="articlesPage" reducer={articlesPageReducer}>
+			<DynamicModuleLoader removeOnUnmount={false} reducerKey="articlesPage" reducer={articlesPageReducer}>
 				<div className={classNames(cls.ArticlesPage, {}, [className])}>
-					<ArticleViewSelector activeView={view} onChangeView={onChangeView} />
+					<ArticlesPageFilters />
 					<ArticlesList
 						loading={loading}
 						view={view}

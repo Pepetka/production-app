@@ -1,7 +1,8 @@
 import { describe, expect, test } from '@jest/globals';
 import { StateSchema } from 'app/provider/Store';
-import { ArticlesView } from 'entities/Article';
-import { ArticlesPageSchema } from 'pages/ArticlesPage';
+import { ArticlesView, ArticleType } from 'entities/Article';
+import { ArticleSortField } from 'entities/Article/model/types/article';
+import { ArticlesPageSchema } from '../types/articlesPageSchema';
 import { articlesPageActions, articlesPageReducer, getArticles } from './articlesPageSlice';
 
 describe('getArticles', () => {
@@ -96,6 +97,7 @@ describe('articlesPageSlice', () => {
 		view: ArticlesView.BIG,
 		hasMore: true,
 		loading: false,
+		_init: false,
 	};
 
 	test('changePage', () => {
@@ -110,6 +112,7 @@ describe('articlesPageSlice', () => {
 			...state,
 			limit: 8,
 			view: ArticlesView.SMALL,
+			_init: true,
 		});
 	});
 
@@ -134,6 +137,34 @@ describe('articlesPageSlice', () => {
 		});
 	});
 
+	test('changeSort', () => {
+		expect(articlesPageReducer(state as ArticlesPageSchema, articlesPageActions.changeSort(ArticleSortField.TITLE))).toEqual({
+			...state,
+			sort: ArticleSortField.TITLE,
+		});
+	});
+
+	test('changeSearch', () => {
+		expect(articlesPageReducer(state as ArticlesPageSchema, articlesPageActions.changeSearch('search'))).toEqual({
+			...state,
+			search: 'search',
+		});
+	});
+
+	test('changeOrder', () => {
+		expect(articlesPageReducer(state as ArticlesPageSchema, articlesPageActions.changeOrder('desc'))).toEqual({
+			...state,
+			order: 'desc',
+		});
+	});
+
+	test('changeType', () => {
+		expect(articlesPageReducer(state as ArticlesPageSchema, articlesPageActions.changeType(ArticleType.ECONOMY))).toEqual({
+			...state,
+			type: ArticleType.ECONOMY,
+		});
+	});
+
 	test('undefined state', () => {
 		const initialState: ArticlesPageSchema = {
 			loading: false,
@@ -143,6 +174,13 @@ describe('articlesPageSlice', () => {
 
 			page: 1,
 			hasMore: true,
+
+			order: 'asc',
+			search: '',
+			sort: ArticleSortField.CREATED_AT,
+			type: ArticleType.ALL,
+
+			_init: false,
 		};
 
 		expect(articlesPageReducer(undefined, articlesPageActions.changePage(10))).toEqual({
@@ -152,6 +190,7 @@ describe('articlesPageSlice', () => {
 		expect(articlesPageReducer(undefined, articlesPageActions.initView())).toEqual({
 			...initialState,
 			limit: 8,
+			_init: true,
 		});
 		expect(articlesPageReducer(undefined, articlesPageActions.changeView(ArticlesView.SMALL))).toEqual({
 			...initialState,
@@ -164,6 +203,22 @@ describe('articlesPageSlice', () => {
 		expect(articlesPageReducer(undefined, articlesPageActions.changeLimit(2))).toEqual({
 			...initialState,
 			limit: 2,
+		});
+		expect(articlesPageReducer(undefined, articlesPageActions.changeSort(ArticleSortField.TITLE))).toEqual({
+			...initialState,
+			sort: ArticleSortField.TITLE,
+		});
+		expect(articlesPageReducer(undefined, articlesPageActions.changeSearch('search'))).toEqual({
+			...initialState,
+			search: 'search',
+		});
+		expect(articlesPageReducer(undefined, articlesPageActions.changeOrder('desc'))).toEqual({
+			...initialState,
+			order: 'desc',
+		});
+		expect(articlesPageReducer(undefined, articlesPageActions.changeType(ArticleType.ECONOMY))).toEqual({
+			...initialState,
+			type: ArticleType.ECONOMY,
 		});
 	});
 });

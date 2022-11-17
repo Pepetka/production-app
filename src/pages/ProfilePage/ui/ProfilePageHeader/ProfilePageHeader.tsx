@@ -40,10 +40,10 @@ export const ProfilePageHeader = memo(({ className }: ProfilePageHeaderProps) =>
 	if (params.id === userId) {
 		content = (
 			readOnly
-				? <Button onClick={onEdit} theme={ButtonTheme.OUTLINE}>{t('Edit')}</Button>
+				? <Button onClick={onEdit} theme={ButtonTheme.OUTLINE_PRIMARY}>{t('Edit')}</Button>
 				: (
 					<div className={cls.btnGroup}>
-						<Button onClick={onSave} theme={ButtonTheme.OUTLINE}>{t('Save')}</Button>
+						<Button onClick={onSave} theme={ButtonTheme.OUTLINE_PRIMARY}>{t('Save')}</Button>
 						<Button onClick={onCancelEdit} theme={ButtonTheme.OUTLINE_RED}>{t('Cancel')}</Button>
 					</div>
 				)

@@ -5,10 +5,10 @@ import { Spinner } from 'shared/ui/Spinner';
 import { Profile } from 'features/EditableProfileCard';
 import { Text, TextTheme } from 'shared/ui/Text';
 import { Button } from 'shared/ui/Button';
-import { ChangeEvent, memo } from 'react';
+import { memo } from 'react';
 import { Avatar, AvatarSize } from 'shared/ui/Avatar';
-import { CurrencySelect } from 'entities/Currency';
-import { CountrySelect } from 'entities/Country';
+import { Currency, CurrencySelect } from 'entities/Currency';
+import { Country, CountrySelect } from 'entities/Country';
 import cls from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
@@ -17,14 +17,14 @@ interface ProfileCardProps {
 	loading: boolean
 	error: string
 	readonly?: boolean
-	onChangeFirstname?: (e: ChangeEvent<HTMLInputElement>) => void
-	onChangeLastname?: (e: ChangeEvent<HTMLInputElement>) => void
-	onChangeAge?: (e: ChangeEvent<HTMLInputElement>) => void
-	onChangeUsername?: (e: ChangeEvent<HTMLInputElement>) => void
-	onChangeAvatar?: (e: ChangeEvent<HTMLInputElement>) => void
-	onChangeCity?: (e: ChangeEvent<HTMLInputElement>) => void
-	onChangeCountry?: (e: ChangeEvent<HTMLSelectElement>) => void
-	onChangeCurrency?: (e: ChangeEvent<HTMLSelectElement>) => void
+	onChangeFirstname?: (value: string) => void
+	onChangeLastname?: (value: string) => void
+	onChangeAge?: (value: string) => void
+	onChangeUsername?: (value: string) => void
+	onChangeAvatar?: (value: string) => void
+	onChangeCity?: (value: string) => void
+	onChangeCountry?: (value: Country) => void
+	onChangeCurrency?: (value: Currency) => void
 }
 
 export const ProfileCard = memo((

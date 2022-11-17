@@ -16,5 +16,7 @@
 	"Login error": "Ошибка входа",
 	"Auth form": "Форма авторизации",
 	"LogOut": "Выйти",
-	"No comments": "Комментарии отсутствуют"
+	"No comments": "Комментарии отсутствуют",
+	"Create article": "Создать статью",
+	"Prod App": "Prod App"
 }

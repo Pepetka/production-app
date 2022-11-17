@@ -3,7 +3,7 @@ import { ArticleBlockType } from 'entities/Article/model/types/article';
 import { ArticleCodeBlockComponent } from './ArticleCodeBlockComponent';
 
 export default {
-	title: 'entities/ArticleCodeBlockComponent',
+	title: 'entities/ArticleBlockComponent/ArticleCodeBlockComponent',
 	component: ArticleCodeBlockComponent,
 	argTypes: {
 		backgroundColor: { control: 'color' },

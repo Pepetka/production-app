@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { StateSchema } from 'app/provider/Store';
-import { Article, ArticlesView } from 'entities/Article';
+import { ArticlesView } from 'entities/Article';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ReducersMapObject } from '@reduxjs/toolkit';
 import { articlesPageReducer } from 'pages/ArticlesPage/model/slice/articlesPageSlice';
@@ -8,7 +8,7 @@ import { ArticleBlockType, ArticleType } from 'entities/Article/model/types/arti
 import ArticlesPage from './ArticlesPage';
 
 export default {
-	title: 'pages/ArticlesPage',
+	title: 'pages/ArticlesPage/ArticlesPage',
 	component: ArticlesPage,
 	argTypes: {
 		backgroundColor: { control: 'color' },

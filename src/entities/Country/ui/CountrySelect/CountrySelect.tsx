@@ -1,20 +1,27 @@
 import { Select, SelectTheme } from 'shared/ui/Select';
-import { ChangeEvent, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Country } from '../../model/types/country';
 
 interface CountrySelectProps {
 	className?: string
 	readonly?: boolean
-	onChangeCountry?: (e: ChangeEvent<HTMLSelectElement>) => void
-	selected?: string
+	onChangeCountry?: (value: Country) => void
+	selected?: Country
 }
 
 export const CountrySelect = ({
 	className, onChangeCountry, selected, readonly,
 }: CountrySelectProps) => {
 	const { t } = useTranslation('profile');
-	const countryOptions = useMemo(() => Object.values(Country).map((el) => t(el)), [t]);
+
+	const countryOptions: Record<Country, string> = useMemo(() => (
+		{
+			[Country.BELARUS]: t('Belarus'),
+			[Country.RUSSIA]: t('Russia'),
+			[Country.UKRAINE]: t('Ukraine'),
+		}
+	), [t]);
 
 	return (
 		<Select

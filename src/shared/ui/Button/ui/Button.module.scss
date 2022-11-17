@@ -22,6 +22,18 @@
 	color: var(--primary-color);
 }
 
+.secondary {
+	background: var(--invert-bg-color);
+	border: 2px solid var(--invert-secondary-color);
+	color: var(--invert-secondary-color);
+}
+
+.secondary.inverted {
+	background: var(--bg-color);
+	border: 2px solid var(--secondary-color);
+	color: var(--secondary-color);
+}
+
 .clear {
 	border: none;
 	background: none;
@@ -35,19 +47,30 @@
 	color: var(--invert-primary-color);
 }
 
-.outline {
+.outline_primary {
 	background: none;
 	border: 2px solid var(--primary-color);
 	color: var(--primary-color);
+}
+
+.outline_primary.inverted {
+	border: 2px solid var(--invert-primary-color);
+	color: var(--invert-primary-color);
+}
+
+.outline_secondary {
+	background: none;
+	border: 2px solid var(--secondary-color);
+	color: var(--secondary-color);
+}
+
+.outline_secondary.inverted {
+	border: 2px solid var(--invert-secondary-color);
+	color: var(--invert-secondary-color);
 }
 
 .outline_red {
 	background: none;
 	border: 2px solid var(--red-primary-color);
 	color: var(--red-primary-color);
-}
-
-.outline.inverted {
-	border: 2px solid var(--invert-primary-color);
-	color: var(--invert-primary-color);
 }

@@ -43,9 +43,9 @@
     },
     {
       "id": "1",
-      "title": "Javascript news",
-      "subtitle": "Что нового в JS за 2022 год?",
-      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
+      "title": "Python news",
+      "subtitle": "Что нового в pythin за 2022 год?",
+      "img": "https://fuzeservers.ru/wp-content/uploads/7/e/8/7e81772f936123cb6d9af13c5ef24925.png",
       "views": 1022,
       "userId": "0",
       "createdAt": "26.02.2022",
@@ -79,9 +79,9 @@
     },
     {
       "id": "2",
-      "title": "Javascript news",
-      "subtitle": "Что нового в JS за 2022 год?",
-      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
+      "title": "Python news",
+      "subtitle": "Что нового в pythin за 2022 год?",
+      "img": "https://fuzeservers.ru/wp-content/uploads/7/e/8/7e81772f936123cb6d9af13c5ef24925.png",
       "views": 1022,
       "userId": "1",
       "createdAt": "26.02.2022",
@@ -220,12 +220,12 @@
     },
     {
       "id": "6",
-      "title": "Javascript news",
-      "subtitle": "Что нового в JS за 2022 год?",
-      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
+      "title": "Python news",
+      "subtitle": "Что нового в pythin за 2022 год?",
+      "img": "https://fuzeservers.ru/wp-content/uploads/7/e/8/7e81772f936123cb6d9af13c5ef24925.png",
       "views": 1022,
       "userId": "0",
-      "createdAt": "26.02.2022",
+      "createdAt": "20.02.2022",
       "type": [
         "IT"
       ],
@@ -293,7 +293,7 @@
       "title": "Javascript news",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-      "views": 1022,
+      "views": 5022,
       "userId": "1",
       "createdAt": "26.02.2022",
       "type": [
@@ -325,9 +325,9 @@
     },
     {
       "id": "9",
-      "title": "Javascript news",
-      "subtitle": "Что нового в JS за 2022 год?",
-      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
+      "title": "Python news",
+      "subtitle": "Что нового в pythin за 2022 год?",
+      "img": "https://fuzeservers.ru/wp-content/uploads/7/e/8/7e81772f936123cb6d9af13c5ef24925.png",
       "views": 1022,
       "userId": "1",
       "createdAt": "26.02.2022",
@@ -430,12 +430,12 @@
     },
     {
       "id": "12",
-      "title": "Javascript news",
-      "subtitle": "Что нового в JS за 2022 год?",
-      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-      "views": 1022,
+      "title": "Python news",
+      "subtitle": "Что нового в pythin за 2022 год?",
+      "img": "https://fuzeservers.ru/wp-content/uploads/7/e/8/7e81772f936123cb6d9af13c5ef24925.png",
+      "views": 1,
       "userId": "1",
-      "createdAt": "26.02.2022",
+      "createdAt": "26.09.2022",
       "type": [
         "IT"
       ],
@@ -470,7 +470,7 @@
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
       "userId": "1",
-      "createdAt": "26.02.2022",
+      "createdAt": "26.02.2021",
       "type": [
         "IT"
       ],
@@ -538,7 +538,7 @@
       "title": "Javascript news",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-      "views": 1022,
+      "views": 51,
       "userId": "1",
       "createdAt": "26.02.2022",
       "type": [
@@ -573,9 +573,9 @@
       "title": "Javascript news",
       "subtitle": "Что нового в JS за 2022 год?",
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-      "views": 1022,
+      "views": 10012,
       "userId": "1",
-      "createdAt": "26.02.2022",
+      "createdAt": "26.02.2020",
       "type": [
         "IT"
       ],
@@ -640,12 +640,12 @@
     },
     {
       "id": "18",
-      "title": "Javascript news",
-      "subtitle": "Что нового в JS за 2022 год?",
-      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-      "views": 1022,
+      "title": "Python news",
+      "subtitle": "Что нового в pythin за 2022 год?",
+      "img": "https://fuzeservers.ru/wp-content/uploads/7/e/8/7e81772f936123cb6d9af13c5ef24925.png",
+      "views": 201,
       "userId": "1",
-      "createdAt": "26.02.2022",
+      "createdAt": "01.01.2022",
       "type": [
         "IT"
       ],
@@ -675,14 +675,15 @@
     },
     {
       "id": "19",
-      "title": "Javascript news",
-      "subtitle": "Что нового в JS за 2022 год?",
-      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
+      "title": "Python news",
+      "subtitle": "Что нового в pythin за 2022 год?",
+      "img": "https://fuzeservers.ru/wp-content/uploads/7/e/8/7e81772f936123cb6d9af13c5ef24925.png",
       "views": 1022,
       "userId": "1",
       "createdAt": "26.02.2022",
       "type": [
-        "IT"
+        "IT",
+        "Math"
       ],
       "blocks": [
         {
@@ -717,7 +718,9 @@
       "userId": "1",
       "createdAt": "26.02.2022",
       "type": [
-        "IT"
+        "IT",
+        "Math",
+        "Economy"
       ],
       "blocks": [
         {
@@ -752,7 +755,8 @@
       "userId": "1",
       "createdAt": "26.02.2022",
       "type": [
-        "IT"
+        "Math",
+        "Economy"
       ],
       "blocks": [
         {
@@ -815,9 +819,9 @@
     },
     {
       "id": "23",
-      "title": "Javascript news",
-      "subtitle": "Что нового в JS за 2022 год?",
-      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
+      "title": "Python news",
+      "subtitle": "Что нового в pythin за 2022 год?",
+      "img": "https://fuzeservers.ru/wp-content/uploads/7/e/8/7e81772f936123cb6d9af13c5ef24925.png",
       "views": 1022,
       "userId": "1",
       "createdAt": "26.02.2022",
@@ -885,12 +889,12 @@
     },
     {
       "id": "25",
-      "title": "Javascript news",
-      "subtitle": "Что нового в JS за 2022 год?",
-      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-      "views": 1022,
+      "title": "C++ news",
+      "subtitle": "Что нового в C++ за 2022 год?",
+      "img": "https://www.pngkit.com/png/detail/534-5342172_c-language-course-c-logo.png",
+      "views": 10220,
       "userId": "1",
-      "createdAt": "26.02.2022",
+      "createdAt": "03.12.2020",
       "type": [
         "IT"
       ],
@@ -920,14 +924,15 @@
     },
     {
       "id": "26",
-      "title": "Javascript news",
-      "subtitle": "Что нового в JS за 2022 год?",
-      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
+      "title": "C++ news",
+      "subtitle": "Что нового в C++ за 2022 год?",
+      "img": "https://www.pngkit.com/png/detail/534-5342172_c-language-course-c-logo.png",
       "views": 1022,
       "userId": "1",
       "createdAt": "26.02.2022",
       "type": [
-        "IT"
+        "IT",
+        "Economy"
       ],
       "blocks": [
         {
@@ -962,7 +967,7 @@
       "userId": "1",
       "createdAt": "26.02.2022",
       "type": [
-        "IT"
+        "Economy"
       ],
       "blocks": [
         {
@@ -997,7 +1002,8 @@
       "userId": "1",
       "createdAt": "26.02.2022",
       "type": [
-        "IT"
+        "IT",
+        "Math"
       ],
       "blocks": [
         {
@@ -1032,7 +1038,9 @@
       "userId": "1",
       "createdAt": "26.02.2022",
       "type": [
-        "IT"
+        "IT",
+        "Math",
+        "Economy"
       ],
       "blocks": [
         {
@@ -1060,14 +1068,15 @@
     },
     {
       "id": "30",
-      "title": "Javascript news",
-      "subtitle": "Что нового в JS за 2022 год?",
-      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-      "views": 1022,
+      "title": "C++ news",
+      "subtitle": "Что нового в C++ за 2022 год?",
+      "img": "https://www.pngkit.com/png/detail/534-5342172_c-language-course-c-logo.png",
+      "views": 100,
       "userId": "1",
-      "createdAt": "26.02.2022",
+      "createdAt": "12.05.2022",
       "type": [
-        "IT"
+        "Math",
+        "Economy"
       ],
       "blocks": [
         {
@@ -1102,7 +1111,9 @@
       "userId": "1",
       "createdAt": "26.02.2022",
       "type": [
-        "IT"
+        "IT",
+        "Math",
+        "Economy"
       ],
       "blocks": [
         {
@@ -1165,9 +1176,9 @@
     },
     {
       "id": "33",
-      "title": "Javascript news",
-      "subtitle": "Что нового в JS за 2022 год?",
-      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
+      "title": "C++ news",
+      "subtitle": "Что нового в C++ за 2022 год?",
+      "img": "https://www.pngkit.com/png/detail/534-5342172_c-language-course-c-logo.png",
       "views": 1022,
       "userId": "1",
       "createdAt": "26.02.2022",
@@ -1200,14 +1211,15 @@
     },
     {
       "id": "34",
-      "title": "Javascript news",
-      "subtitle": "Что нового в JS за 2022 год?",
-      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
-      "views": 1022,
+      "title": "C++ news",
+      "subtitle": "Что нового в C++ за 2022 год?",
+      "img": "https://www.pngkit.com/png/detail/534-5342172_c-language-course-c-logo.png",
+      "views": 101,
       "userId": "1",
-      "createdAt": "26.02.2022",
+      "createdAt": "30.04.2022",
       "type": [
-        "IT"
+        "IT",
+        "Math"
       ],
       "blocks": [
         {
@@ -1327,7 +1339,7 @@
       "lastname": "Kuznetsov",
       "age": "22",
       "currency": "RUB",
-      "country": "Россия",
+      "country": "Russia",
       "city": "Moscow",
       "username": "admin",
       "avatar": "https://cdn1.iconfinder.com/data/icons/avatars-55/100/avatar_profile_user_music_headphones_shirt_cool-512.png"
@@ -1338,7 +1350,7 @@
       "lastname": "Ivanov",
       "age": "18",
       "currency": "RUB",
-      "country": "Белорусь",
+      "country": "Belarus",
       "city": "Minsk",
       "username": "user",
       "avatar": "https://miro.medium.com/max/2400/1*1WCjO1iYMo7J7Upp8KMfLA@2x.jpeg"

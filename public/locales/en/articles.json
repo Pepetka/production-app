@@ -6,5 +6,20 @@
 	"Enter comment text": "Enter comment text",
 	"Send": "Send",
 	"Read more": "Read more",
-	"Back to list": "Back to list"
+	"Back to list": "Back to list",
+	"Sort by": "Sort by",
+	"Search": "Search",
+	"Views": "Views",
+	"Title": "Title",
+	"Created at": "Created at",
+	"By": "By",
+	"Asc": "Asc",
+	"Desc": "Desc",
+	"IT": "IT",
+	"MATH": "MATH",
+	"ECONOMY": "ECONOMY",
+	"ALL": "ALL",
+	"Articles not found": "Articles not found",
+	"Recommendations": "Recommendations",
+	"Edit": "Edit"
 }

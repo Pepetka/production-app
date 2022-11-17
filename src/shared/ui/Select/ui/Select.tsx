@@ -1,7 +1,5 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import {
-	ChangeEvent, memo, SelectHTMLAttributes, useMemo,
-} from 'react';
+import { ChangeEvent } from 'react';
 import cls from './Select.module.scss';
 
 export enum SelectTheme {
@@ -9,18 +7,19 @@ export enum SelectTheme {
 	INVERT = 'invert'
 }
 
-interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement>{
+interface SelectProps <T extends string>{
 	className?: string
 	placeholder?: string
 	textInvert?: boolean
 	theme?: SelectTheme
 	disabled?: boolean
-	onChange?: (event: ChangeEvent<HTMLSelectElement>) => void
-	options: Array<string>
-	selected?: string
+	onChange?: (value: T) => void
+	options: Record<string, string>
+	selected?: T
+	label?: string
 }
 
-export const Select = memo((
+export const Select = <T extends string>(
 	{
 		className,
 		placeholder,
@@ -30,37 +29,43 @@ export const Select = memo((
 		onChange,
 		options,
 		selected,
-		...otherProps
+		label,
 
-	}: SelectProps,
+	}: SelectProps<T>,
 ) => {
-	const optionsList = useMemo(
-		() => options.map((el) => <option key={el} value={el}>{el}</option>),
-		[options],
-	);
+	const optionsList = Object.entries(options).map(([key, value]) => <option className={cls.option} key={key} value={key}>{value}</option>);
+
+	const onHandleChange = (event: ChangeEvent<HTMLSelectElement>) => {
+		onChange?.(event.target.value as T);
+	};
 
 	return (
 		<div
 			className={
 				classNames(
 					cls.selectWrapper,
-					{ [cls.textInvert]: textInvert },
+					{
+						[cls.textInvert]: textInvert,
+						[cls.withLabel]: placeholder,
+					},
 					[className, cls[theme]],
 				)
 			}
 		>
-			<span className={classNames(cls.label)}>
-				{placeholder}
-			</span>
+			{placeholder && (
+				<span className={classNames(cls.label)}>
+					{placeholder}
+				</span>
+			)}
 			<select
 				disabled={disabled}
-				value={selected}
+				value={selected ?? ''}
 				className={classNames(cls.Select)}
-				onChange={onChange}
-				{...otherProps}
+				onChange={onHandleChange}
 			>
+				{label && <option value="" disabled>{label}</option>}
 				{optionsList}
 			</select>
 		</div>
 	);
-});
+};

@@ -9,6 +9,8 @@ export default ({ config }: {config: webpack.Configuration}) => {
 		html: '',
 		src: path.resolve(__dirname, '..', '..', 'src'),
 		output: '',
+		locales: '',
+		buildLocales: '',
 	};
 	config!.resolve!.modules!.push(paths.src);
 	config!.resolve!.extensions!.push('.ts', '.tsx');
@@ -30,6 +32,7 @@ export default ({ config }: {config: webpack.Configuration}) => {
 		new webpack.DefinePlugin({
 			__IS_DEV__: JSON.stringify(false),
 			__PROJECT__: JSON.stringify('storybook'),
+			__API__: JSON.stringify(''),
 		}),
 	);
 

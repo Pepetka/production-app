@@ -1,5 +1,5 @@
 import { memo, ReactNode } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, NavLinkProps } from 'react-router-dom';
 import { classNames } from 'shared/lib/classNames/classNames';
 import cls from './AppLink.module.scss';
 
@@ -9,7 +9,7 @@ export enum AppLinkTheme {
 	RED = 'red'
 }
 
-interface AppLinkProps {
+interface AppLinkProps extends NavLinkProps {
 	className?: string
 	to: string
 	theme?: AppLinkTheme

@@ -3,6 +3,7 @@ import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator
 import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorator/RouterDecorator';
 import { LocalizationDecorator } from '../../src/shared/config/storybook/LocalizationDecorator/LocalizationDecorator';
 import { Theme } from '../../src/app/provider/Theme';
+import { StoreDecorator } from '../../src/shared/config/storybook/StoreDecorator/StoreDecorator';
 
 export const parameters = {
 	actions: { argTypesRegex: '^on[A-Z].*' },
@@ -47,4 +48,9 @@ export const decorators = [
 	StyleDecorator,
 	RouterDecorator,
 	LocalizationDecorator,
+	StoreDecorator({
+		scrollSafe: {
+			scroll: {},
+		},
+	}),
 ];

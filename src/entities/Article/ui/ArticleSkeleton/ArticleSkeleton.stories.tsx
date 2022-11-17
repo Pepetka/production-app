@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ArticleSkeleton } from './ArticleSkeleton';
 
 export default {
-	title: 'entities/ArticleSkeleton',
+	title: 'entities/Article/ArticleSkeleton',
 	component: ArticleSkeleton,
 	argTypes: {
 		backgroundColor: { control: 'color' },

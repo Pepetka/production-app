@@ -1,0 +1,13 @@
+.Page {
+	flex: 1;
+	padding: 30px;
+	height: calc(100vh - var(--navbar-height));
+	overflow-y: auto;
+}
+
+.observer {
+	position: relative;
+	height: 20px;
+	width: 20px;
+	bottom: 1px;
+}

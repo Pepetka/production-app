@@ -35,6 +35,10 @@
 		background: var(--invert-bg-color);
 		color: var(--invert-primary-color);
 		border: solid 1px var(--invert-primary-color);
+
+		&::placeholder {
+			color: var(--invert-secondary-color);
+		}
 	}
 
 	.label {
@@ -51,6 +55,10 @@
 		background: var(--bg-color);
 		color: var(--primary-color);
 		border: solid 2px var(--primary-color);
+
+		&::placeholder {
+			color: var(--secondary-color);
+		}
 	}
 
 	.label {
@@ -72,7 +80,7 @@
 	}
 
 	.placeholder {
-		color: var(--secondary-color);
+		color: var(--invert-secondary-color);
 	}
 }
 
@@ -86,7 +94,7 @@
 	}
 
 	.placeholder {
-		color: var(--invert-secondary-color);
+		color: var(--secondary-color);
 	}
 }
 
