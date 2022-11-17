@@ -1,13 +1,14 @@
-import { AppRoutes, routeConfig } from 'shared/config/routeConfig/routeConfig';
+import { AppRoutes, routeConfig, routePaths } from 'shared/config/routeConfig/routeConfig';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import {
-	memo, useCallback, useEffect, useRef, useState,
+	memo, useCallback, useEffect, useMemo, useRef, useState,
 } from 'react';
 import { LoginModal } from 'features/AuthByUsername';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAuthData, userActions } from 'entities/User';
 import { Button, ButtonTheme } from 'shared/ui/Button';
+import { Text, TextTheme } from 'shared/ui/Text';
 import cls from './NavBar.module.scss';
 import { NavBarLink } from '../NavBarLink/NavBarLink';
 
@@ -35,34 +36,42 @@ export const NavBar = memo(({ className }: NavBarProps) => {
 		};
 	}, [authData, onAuth]);
 
-	const onCloseModal = () => {
-		setIsAuthModal(false);
-	};
+	const {
+		onOpenModal,
+		onCloseModal,
+	} = useMemo(() => ({
+		onCloseModal: () => {
+			setIsAuthModal(false);
+		},
+		onOpenModal: () => {
+			setIsAuthModal(true);
+		},
+	}), []);
 
-	const onOpenModal = () => {
-		setIsAuthModal(true);
-	};
-
-	const onLogout = () => {
+	const onLogout = useCallback(() => {
 		dispatch(userActions.removeAuthData());
 		setIsAuth(false);
 		setIsAuthModal(false);
-	};
+	}, [dispatch]);
+
+	const navLinks: DeepPartial<typeof routeConfig> = useMemo(() => ({
+		[AppRoutes.MAIN]: { path: routePaths.Main, authOnly: routeConfig.Main.authOnly },
+		[AppRoutes.ABOUT]: { path: routePaths.About, authOnly: routeConfig.About.authOnly },
+		[AppRoutes.ARTICLE_CREATE]: { path: routePaths.Article_create, authOnly: routeConfig.Article_create.authOnly },
+	}), []);
 
 	return (
 		<header className={classNames(cls.NavBar, {}, [className])}>
 			{!isAuth && <LoginModal isOpen={isAuthModal} isClose={!!authData} onCloseModal={onCloseModal} />}
+			<Text className={cls.logo} title={t('Prod App')} align="center" theme={TextTheme.PRIMARY} invert />
 			<nav className={classNames(cls.links)}>
-				<NavBarLink
-					key={routeConfig.Main.path}
-					route={routeConfig.Main}
-					routeName={AppRoutes.MAIN}
-				/>
-				<NavBarLink
-					key={routeConfig.About.path}
-					route={routeConfig.About}
-					routeName={AppRoutes.ABOUT}
-				/>
+				{Object.entries(navLinks).map(([name, route]) => (
+					<NavBarLink
+						key={name}
+						route={route}
+						routeName={name}
+					/>
+				))}
 				{authData ? (
 					<Button theme={ButtonTheme.OUTLINE} inverted onClick={onLogout}>
 						{t('LogOut')}

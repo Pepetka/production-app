@@ -3,9 +3,12 @@ import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack, { ProgressPlugin, WebpackPluginInstance } from 'webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import CopyPlugin from 'copy-webpack-plugin';
 import { BuildOptions } from './types/config';
 
-export function buildPlugins({ paths, isDev, project }: BuildOptions): WebpackPluginInstance[] {
+export function buildPlugins({
+	paths, isDev, project, apiUrl,
+}: BuildOptions): WebpackPluginInstance[] {
 	const plugins = [
 		new HTMLWebpackPlugin({
 			template: paths.html,
@@ -18,6 +21,12 @@ export function buildPlugins({ paths, isDev, project }: BuildOptions): WebpackPl
 		new webpack.DefinePlugin({
 			__IS_DEV__: JSON.stringify(isDev),
 			__PROJECT__: JSON.stringify(project),
+			__API__: JSON.stringify(apiUrl),
+		}),
+		new CopyPlugin({
+			patterns: [
+				{ from: paths.locales, to: paths.buildLocales },
+			],
 		}),
 	];
 

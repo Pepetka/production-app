@@ -31,6 +31,13 @@ export const SideBar = memo(({ className }: SideBarProps) => {
 		setCollapsed((collapsed) => !collapsed);
 	}, []);
 
+	const links: DeepPartial<typeof routeConfig> = {
+		[AppRoutes.MAIN]: { path: routePaths.Main, authOnly: routeConfig.Main.authOnly },
+		[AppRoutes.ABOUT]: { path: routePaths.About, authOnly: routeConfig.About.authOnly },
+		[AppRoutes.PROFILE]: { path: routePaths.Profile + userId, authOnly: routeConfig.Profile.authOnly },
+		[AppRoutes.ARTICLES]: { path: routePaths.Articles, authOnly: routeConfig.Articles.authOnly },
+	};
+
 	return (
 		<menu data-testid="sidebar" className={classNames(cls.SideBar, { [cls.collapsed]: collapsed }, [className])}>
 			<div>
@@ -45,32 +52,16 @@ export const SideBar = memo(({ className }: SideBarProps) => {
 				</Button>
 
 				<nav className={classNames(cls.links, {}, [])}>
-					{Object.entries(routeConfig).map(([routeName, { path, authOnly }]) => {
-						if (routeName === AppRoutes.NOT_FOUND || routeName === AppRoutes.ARTICLE_DETAILS) return null;
-						if (routeName === AppRoutes.PROFILE) {
-							return (
-								<SideBarLink
-									authOnly={authOnly}
-									key={path}
-									path={routePaths.Profile + userId}
-									icon={navIcons[routeName]}
-									routeName={routeName}
-									collapsed={collapsed}
-								/>
-							);
-						}
-
-						return (
-							<SideBarLink
-								authOnly={authOnly}
-								key={path}
-								path={path!}
-								icon={navIcons[routeName]}
-								routeName={routeName}
-								collapsed={collapsed}
-							/>
-						);
-					})}
+					{Object.entries(links).map(([routeName, { path, authOnly }]) => (
+						<SideBarLink
+							authOnly={authOnly}
+							key={path}
+							path={path!}
+							icon={navIcons[routeName]}
+							routeName={routeName}
+							collapsed={collapsed}
+						/>
+					))}
 				</nav>
 			</div>
 

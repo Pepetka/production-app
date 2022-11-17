@@ -40,5 +40,6 @@ export default {
 	globals: {
 		__IS_DEV__: true,
 		__PROJECT__: 'jest',
+		__API__: JSON.stringify(''),
 	},
 };
