@@ -12,13 +12,14 @@ interface ArticlesListProps {
 	loading: boolean
 	view?: ArticlesView
 	articles: Array<Article>
+	error?: string
 	target?: HTMLAttributeAnchorTarget
 	skeletonNum?: number
 }
 
 export const ArticlesList = memo(
 	({
-		className, view = ArticlesView.SMALL, loading, articles, target, skeletonNum,
+		className, view = ArticlesView.SMALL, loading, articles, target, skeletonNum, error,
 	}: ArticlesListProps) => {
 		const { t } = useTranslation('articles');
 
@@ -31,6 +32,14 @@ export const ArticlesList = memo(
 		);
 
 		const renderArticle = (article: Article) => <ArticlesListItem target={target} key={article.id} view={view} article={article} />;
+
+		if (error) {
+			return (
+				<div className={classNames(cls.ArticlesList, {}, [className, cls[view]])}>
+					<Text title={t('Something wrong')} />
+				</div>
+			);
+		}
 
 		if (!loading && !articles.length) {
 			return (

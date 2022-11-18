@@ -12,6 +12,7 @@ import { articlesPageReducer, getArticles } from '../../model/slice/articlesPage
 import { getArticlesPageView } from '../../model/selectors/getArticlesPageView/getArticlesPageView';
 import { fetchNextArticles } from '../../model/services/fetchNextArticles/fetchNextArticles';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
+import { getArticlesPageError } from '../../model/selectors/getArticlesPageError/getArticlesPageError';
 import cls from './ArticlesPage.module.scss';
 
 interface ArticlesPageProps {
@@ -22,6 +23,7 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
 	const dispatch = useAppDispatch();
 	const view = useSelector(getArticlesPageView);
 	const loading = useSelector(getArticlesPageLoading);
+	const error = useSelector(getArticlesPageError);
 	const articles = useSelector(getArticles.selectAll);
 
 	const callback = useCallback(() => {
@@ -35,11 +37,12 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
 	}, [dispatch]);
 
 	return (
-		<Page onScrollEnd={onScrollEnd}>
+		<Page noObserver={error !== undefined} onScrollEnd={onScrollEnd}>
 			<DynamicModuleLoader removeOnUnmount={false} reducerKey="articlesPage" reducer={articlesPageReducer}>
 				<div className={classNames(cls.ArticlesPage, {}, [className])}>
 					<ArticlesPageFilters />
 					<ArticlesList
+						error={error}
 						loading={loading}
 						view={view}
 						articles={articles}

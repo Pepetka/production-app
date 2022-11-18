@@ -17,9 +17,12 @@ interface PageProps {
 	className?: string
 	children: ReactNode
 	onScrollEnd?: () => void
+	noObserver?: boolean
 }
 
-export const Page = ({ className, children, onScrollEnd }: PageProps) => {
+export const Page = ({
+	className, children, onScrollEnd, noObserver,
+}: PageProps) => {
 	const wrapperRef = useRef() as MutableRefObject<HTMLElement>;
 	const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
 	const dispatch = useAppDispatch();
@@ -50,7 +53,7 @@ export const Page = ({ className, children, onScrollEnd }: PageProps) => {
 			onScroll={onScroll}
 		>
 			{children}
-			{onScrollEnd && <div className={cls.observer} ref={triggerRef} />}
+			{!noObserver ? onScrollEnd && <div className={cls.observer} ref={triggerRef} /> : null}
 		</section>
 	);
 };
