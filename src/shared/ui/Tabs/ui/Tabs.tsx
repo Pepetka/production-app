@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { memo, useCallback } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 import cls from './Tabs.module.scss';
@@ -11,7 +11,9 @@ interface TabsProps<T extends string> {
 	inverted?: boolean
 }
 
-export const Tabs =	<T extends string> ({
+const typedMemo: <T>(c: T) => T = memo;
+
+export const Tabs =	typedMemo(<T extends string> ({
 	className, tabs, selected, onClick, inverted,
 }: TabsProps<T>) => {
 	const onHandleClick = useCallback((tab: T) => () => {
@@ -32,4 +34,4 @@ export const Tabs =	<T extends string> ({
 			))}
 		</div>
 	);
-};
+});

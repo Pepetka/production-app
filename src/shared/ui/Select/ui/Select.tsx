@@ -1,5 +1,5 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { ChangeEvent } from 'react';
+import { ChangeEvent, memo } from 'react';
 import cls from './Select.module.scss';
 
 export enum SelectTheme {
@@ -19,7 +19,9 @@ interface SelectProps <T extends string>{
 	label?: string
 }
 
-export const Select = <T extends string>(
+const typedMemo: <T>(c: T) => T = memo;
+
+export const Select = typedMemo(<T extends string>(
 	{
 		className,
 		placeholder,
@@ -68,4 +70,4 @@ export const Select = <T extends string>(
 			</select>
 		</div>
 	);
-};
+});
