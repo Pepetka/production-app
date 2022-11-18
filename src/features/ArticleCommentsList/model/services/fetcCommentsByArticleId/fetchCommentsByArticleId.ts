@@ -17,7 +17,7 @@ export const fetchCommentsByArticleId = createAsyncThunk<Array<Comment>, FetchCo
 				},
 			});
 
-			if (response.statusText !== 'OK') {
+			if (!response.data) {
 				throw new Error('error');
 			}
 

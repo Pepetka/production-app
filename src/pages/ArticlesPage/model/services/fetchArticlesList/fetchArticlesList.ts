@@ -40,7 +40,7 @@ export const fetchArticlesList = createAsyncThunk<Array<Article>, FetchArticlesL
 				},
 			});
 
-			if (response.statusText !== 'OK') {
+			if (!response.data) {
 				throw new Error('error');
 			}
 

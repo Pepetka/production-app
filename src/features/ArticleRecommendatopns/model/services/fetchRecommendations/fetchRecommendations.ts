@@ -12,7 +12,7 @@ export const fetchRecommendations = createAsyncThunk<Array<Article>, void, Thunk
 				},
 			});
 
-			if (response.statusText !== 'OK') {
+			if (!response.data) {
 				throw new Error('error');
 			}
 
