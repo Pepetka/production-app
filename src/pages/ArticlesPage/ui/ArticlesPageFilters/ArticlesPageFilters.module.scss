@@ -1,7 +1,8 @@
 .ArticlesPageFilters {
 	display: flex;
 	flex-direction: column;
-	gap: 10px;
+	height: var(--filters-height);
+	justify-content: space-between;
 }
 
 .sortPanel {

@@ -37,7 +37,7 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
 	}, [dispatch]);
 
 	return (
-		<Page noObserver={error !== undefined} onScrollEnd={onScrollEnd}>
+		<Page noObserver={error !== undefined}>
 			<DynamicModuleLoader removeOnUnmount={false} reducerKey="articlesPage" reducer={articlesPageReducer}>
 				<div className={classNames(cls.ArticlesPage, {}, [className])}>
 					<ArticlesPageFilters />
@@ -46,6 +46,7 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
 						loading={loading}
 						view={view}
 						articles={articles}
+						onScrollEnd={onScrollEnd}
 					/>
 				</div>
 			</DynamicModuleLoader>

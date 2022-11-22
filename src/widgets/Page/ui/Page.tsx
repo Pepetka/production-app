@@ -24,7 +24,7 @@ export const Page = ({
 	className, children, onScrollEnd, noObserver,
 }: PageProps) => {
 	const wrapperRef = useRef() as MutableRefObject<HTMLElement>;
-	const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
+	// const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
 	const dispatch = useAppDispatch();
 	const location = useLocation();
 	const scroll = useSelector((state: StateSchema) => getScrollSafeScrollByPath(state, location.pathname));
@@ -33,11 +33,11 @@ export const Page = ({
 		wrapperRef.current.scrollTop = scroll;
 	});
 
-	useInfiniteScroll({
-		wrapperRef,
-		triggerRef,
-		callback: onScrollEnd,
-	});
+	// useInfiniteScroll({
+	// 	wrapperRef,
+	// 	triggerRef,
+	// 	callback: onScrollEnd,
+	// });
 
 	const onScroll = useThrottle((event: UIEvent<HTMLDivElement>) => {
 		dispatch(scrollSafeActions.setScroll({
@@ -53,7 +53,7 @@ export const Page = ({
 			onScroll={onScroll}
 		>
 			{children}
-			{!noObserver ? onScrollEnd && <div className={cls.observer} ref={triggerRef} /> : null}
+			{/* {!noObserver ? onScrollEnd && <div className={cls.observer} ref={triggerRef} /> : null} */}
 		</section>
 	);
 };

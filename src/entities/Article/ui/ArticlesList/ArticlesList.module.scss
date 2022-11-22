@@ -1,14 +1,24 @@
 .ArticlesList {
+	margin-inline: auto;
 	display: grid;
 	justify-content: center;
+	padding: 10px;
+}
+
+.wrapper {
+	height: calc(100vh - var(--navbar-height) - var(--filters-height) - var(--page-padding) - 15px);
+}
+
+.recommendations {
+	height: 260px;
 }
 
 .small {
 	grid-template-columns: repeat(auto-fit, minmax(200px, max-content));
-	grid-gap: 16px 100px;
+	grid-gap: 15px 100px;
 }
 
 .big {
 	grid-template-columns: 100%;
-	grid-gap: 16px 100px;
+	grid-gap: 15px 100px;
 }

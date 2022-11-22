@@ -1,6 +1,6 @@
 .Page {
 	flex: 1;
-	padding: 30px;
+	padding: var(--page-padding) var(--page-padding) 0;
 	height: calc(100vh - var(--navbar-height));
 	overflow-y: auto;
 }
