@@ -5,6 +5,10 @@
 	overflow-y: auto;
 }
 
+.padding {
+	padding-bottom: var(--page-padding);
+}
+
 .observer {
 	position: relative;
 	height: 20px;

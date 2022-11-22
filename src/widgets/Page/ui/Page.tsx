@@ -18,10 +18,11 @@ interface PageProps {
 	children: ReactNode
 	onScrollEnd?: () => void
 	noObserver?: boolean
+	withBottomPadding?: boolean
 }
 
 export const Page = ({
-	className, children, onScrollEnd, noObserver,
+	className, children, onScrollEnd, noObserver, withBottomPadding = true,
 }: PageProps) => {
 	const wrapperRef = useRef() as MutableRefObject<HTMLElement>;
 	// const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
@@ -49,7 +50,7 @@ export const Page = ({
 	return (
 		<section
 			ref={wrapperRef}
-			className={classNames(cls.Page, {}, [className])}
+			className={classNames(cls.Page, { [cls.padding]: withBottomPadding }, [className])}
 			onScroll={onScroll}
 		>
 			{children}

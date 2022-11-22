@@ -37,7 +37,7 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
 	}, [dispatch]);
 
 	return (
-		<Page noObserver={error !== undefined}>
+		<Page noObserver={error !== undefined} withBottomPadding={false}>
 			<DynamicModuleLoader removeOnUnmount={false} reducerKey="articlesPage" reducer={articlesPageReducer}>
 				<div className={classNames(cls.ArticlesPage, {}, [className])}>
 					<ArticlesPageFilters />
