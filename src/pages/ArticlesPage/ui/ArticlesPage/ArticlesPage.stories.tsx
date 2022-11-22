@@ -3,8 +3,8 @@ import { StateSchema } from 'app/provider/Store';
 import { ArticlesView } from 'entities/Article';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ReducersMapObject } from '@reduxjs/toolkit';
-import { articlesPageReducer } from 'pages/ArticlesPage/model/slice/articlesPageSlice';
 import { ArticleBlockType, ArticleType } from 'entities/Article/model/types/article';
+import { articlesPageReducer } from '../../model/slice/articlesPageSlice';
 import ArticlesPage from './ArticlesPage';
 
 export default {

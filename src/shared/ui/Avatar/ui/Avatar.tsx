@@ -1,8 +1,8 @@
-import { Spinner } from 'shared/ui/Spinner';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import DefaultAvatar from 'shared/assets/imgs/default_avatar.jpeg';
+import { Spinner } from '../../Spinner';
 import cls from './Avatar.module.scss';
 
 export enum AvatarSize {

@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { LoginSchema } from 'features/AuthByUsername';
+import { LoginSchema } from '../types/loginSchema';
 import { loginActions, loginReducer } from './loginSlice';
 
 describe('loginSlice', () => {

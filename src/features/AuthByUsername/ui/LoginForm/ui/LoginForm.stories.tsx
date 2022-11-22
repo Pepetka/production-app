@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ReducersMapObject } from '@reduxjs/toolkit';
 import { StateSchema } from 'app/provider/Store';
-import { loginReducer } from 'features/AuthByUsername/model/slice/loginSlice';
+import { loginReducer } from '../../../model/slice/loginSlice';
 import LoginForm from './LoginForm';
 
 export default {

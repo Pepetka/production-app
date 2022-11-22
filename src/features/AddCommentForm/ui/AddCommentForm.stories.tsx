@@ -1,8 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { addCommentFormReducer } from 'features/AddCommentForm/model/slice/addCommentFormSlice';
 import { StateSchema } from 'app/provider/Store';
 import { ReducersMapObject } from '@reduxjs/toolkit';
+import { addCommentFormReducer } from '../model/slice/addCommentFormSlice';
 import AddCommentForm from './AddCommentForm';
 
 export default {

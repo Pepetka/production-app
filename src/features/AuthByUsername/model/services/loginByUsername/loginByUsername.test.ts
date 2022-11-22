@@ -1,7 +1,7 @@
 import { describe, expect, test } from '@jest/globals';
 import { User, userActions } from 'entities/User';
-import { loginActions } from 'features/AuthByUsername/model/slice/loginSlice';
 import { TestAsyncThunk } from 'shared/lib/testAsyncThunk/testAsyncThunk';
+import { loginActions } from '../../slice/loginSlice';
 import { loginByUsername } from './loginByUsername';
 
 describe('loginByUsername', () => {

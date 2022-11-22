@@ -1,15 +1,13 @@
-import {
-	ChangeEvent, FormEvent, memo, useMemo,
-} from 'react';
+import { FormEvent, memo, useMemo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 import { useTranslation } from 'react-i18next';
 import { Input, InputTheme } from 'shared/ui/Input';
 import { useSelector } from 'react-redux';
-import { loginByUsername } from 'features/AuthByUsername/model/services/loginByUsername/loginByUsername';
 import { Text, TextTheme } from 'shared/ui/Text';
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { loginByUsername } from '../../../model/services/loginByUsername/loginByUsername';
 import { getLoginUsername } from '../../../model/selectors/getLoginUsername/getLoginUsername';
 import { getLoginPassword } from '../../../model/selectors/getLoginPassword/getLoginPassword';
 import { getLoginError } from '../../../model/selectors/getLoginError/getLoginError';

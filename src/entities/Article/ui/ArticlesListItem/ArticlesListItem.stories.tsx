@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import {
 	Article, ArticleBlockType, ArticlesView, ArticleType,
-} from 'entities/Article/model/types/article';
+} from '../../model/types/article';
 import { ArticlesListItem } from './ArticlesListItem';
 
 export default {

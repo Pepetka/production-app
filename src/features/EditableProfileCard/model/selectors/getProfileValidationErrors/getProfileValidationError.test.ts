@@ -1,6 +1,6 @@
 import { describe, expect, test } from '@jest/globals';
 import { StateSchema } from 'app/provider/Store';
-import { ValidateProfileError } from 'features/EditableProfileCard/model/types/profileSchema';
+import { ValidateProfileError } from '../../types/profileSchema';
 import { getProfileValidationErrors } from './getProfileValidationErrors';
 
 describe('getProfileValidationErrors', () => {

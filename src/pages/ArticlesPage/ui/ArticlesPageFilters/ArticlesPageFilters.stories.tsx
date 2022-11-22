@@ -2,8 +2,8 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { StateSchema } from 'app/provider/Store';
 import { ReducersMapObject } from '@reduxjs/toolkit';
-import { articlesPageReducer } from 'pages/ArticlesPage/model/slice/articlesPageSlice';
 import { ArticleSortField, ArticlesView, ArticleType } from 'entities/Article';
+import { articlesPageReducer } from '../../model/slice/articlesPageSlice';
 import { ArticlesPageFilters } from './ArticlesPageFilters';
 
 export default {

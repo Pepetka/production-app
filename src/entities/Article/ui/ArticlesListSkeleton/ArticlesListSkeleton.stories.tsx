@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { ArticlesView } from 'entities/Article';
+import { ArticlesView } from '../../model/types/article';
 import { ArticlesListSkeleton } from './ArticlesListSkeleton';
 
 export default {

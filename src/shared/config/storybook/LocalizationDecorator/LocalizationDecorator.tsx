@@ -1,8 +1,8 @@
 import { DecoratorFn } from '@storybook/react';
 import { Suspense, useEffect } from 'react';
 import { I18nextProvider } from 'react-i18next';
-import i18n from 'shared/config/i18n/i18nConfigForStorybook';
 import { Spinner } from 'shared/ui/Spinner/ui/Spinner';
+import i18n from '../../i18n/i18nConfigForStorybook';
 
 export const LocalizationDecorator: DecoratorFn = (StoryComponent, { globals }) => {
 	const { globalLocale } = globals;
