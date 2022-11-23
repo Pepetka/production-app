@@ -18,9 +18,8 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { AddCommentForm } from 'features/AddCommentForm';
 import { Page } from 'widgets/Page';
 import { useAppEffect } from 'shared/lib/hooks/useAppEffect/useAppEffect';
-import { classNames } from 'shared/lib/classNames/classNames';
 import { ArticleRecommendations } from 'features/ArticleRecommendatopns';
-import cls from './ArticleDetailsPage.module.scss';
+import { VStack } from 'shared/ui/Stack';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 
 interface ArticleDetailsPageProps {
@@ -55,26 +54,26 @@ const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
 	return (
 		<Page>
 			<DynamicModuleLoader reducerKey="comments" reducer={commentsReducer}>
-				<div className={classNames(cls.ArticlesDetailsPage, {}, [className])}>
+				<VStack w100 align="start" gap="32" className={className}>
 					<ArticleDetailsPageHeader />
 					<ArticleDetails id={params.id!} />
 					{!articleError && (
 						<>
-							<div className={cls.recommendations}>
+							<VStack w100 gap="16">
 								<Text title={t('Recommendations')} align="center" />
 								<ArticleRecommendations />
-							</div>
-							<div className={cls.comments}>
+							</VStack>
+							<VStack w100 gap="16">
 								<Text title={t('Comments')} align="center" />
 								<AddCommentForm onSendComment={onSendComment} />
 								<CommentList
 									loading={loading}
 									comments={comments}
 								/>
-							</div>
+							</VStack>
 						</>
 					)}
-				</div>
+				</VStack>
 			</DynamicModuleLoader>
 		</Page>
 	);

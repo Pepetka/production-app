@@ -9,8 +9,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAuthData, userActions } from 'entities/User';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 import { Text, TextTheme } from 'shared/ui/Text';
-import cls from './NavBar.module.scss';
+import { HStack } from 'shared/ui/Stack';
 import { NavBarLink } from '../NavBarLink/NavBarLink';
+import cls from './NavBar.module.scss';
 
 interface NavBarProps {
 	className?: string
@@ -61,10 +62,10 @@ export const NavBar = memo(({ className }: NavBarProps) => {
 	}), []);
 
 	return (
-		<header className={classNames(cls.NavBar, {}, [className])}>
+		<HStack justify="between" className={classNames(cls.NavBar, {}, [className])}>
 			{!isAuth && <LoginModal isOpen={isAuthModal} isClose={!!authData} onCloseModal={onCloseModal} />}
 			<Text className={cls.logo} title={t('Prod App')} align="center" theme={TextTheme.PRIMARY} invert />
-			<nav className={classNames(cls.links)}>
+			<HStack gap="16" justify="end" className={classNames(cls.links)}>
 				{Object.entries(navLinks).map(([name, route]) => (
 					<NavBarLink
 						key={name}
@@ -81,7 +82,7 @@ export const NavBar = memo(({ className }: NavBarProps) => {
 						{t('LogIn')}
 					</Button>
 				)}
-			</nav>
-		</header>
+			</HStack>
+		</HStack>
 	);
 });

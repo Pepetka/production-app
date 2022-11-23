@@ -3,6 +3,7 @@ import {
 } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTheme } from 'app/provider/Theme';
+import { HStack } from '../../Stack';
 import { Portal } from '../../Portal';
 
 import cls from './Modal.module.scss';
@@ -86,10 +87,12 @@ export const Modal = ({
 			<div
 				className={classNames(cls.Modal, { [cls.open]: isOpening, [cls.close]: isClosing }, [className, theme, 'app_modal'])}
 			>
-				<div className={cls.overlay} onClick={onCloseHandler}>
-					<div className={cls.content} onClick={onContentClick}>
-						{children}
-					</div>
+				<div onClick={onCloseHandler} className={cls.overlay}>
+					<HStack justify="center" className={cls.contentWrapper}>
+						<div className={cls.content} onClick={onContentClick}>
+							{children}
+						</div>
+					</HStack>
 				</div>
 			</div>
 		</Portal>

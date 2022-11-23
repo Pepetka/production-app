@@ -1,4 +1,3 @@
-import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -7,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { memo, useCallback, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { getAuthData } from 'entities/User';
-import cls from './ProfilePageHeader.module.scss';
+import { HStack } from 'shared/ui/Stack';
 
 interface ProfilePageHeaderProps {
 	className?: string;
@@ -42,18 +41,18 @@ export const ProfilePageHeader = memo(({ className }: ProfilePageHeaderProps) =>
 			readOnly
 				? <Button onClick={onEdit} theme={ButtonTheme.OUTLINE_PRIMARY}>{t('Edit')}</Button>
 				: (
-					<div className={cls.btnGroup}>
+					<HStack gap="16">
 						<Button onClick={onSave} theme={ButtonTheme.OUTLINE_PRIMARY}>{t('Save')}</Button>
 						<Button onClick={onCancelEdit} theme={ButtonTheme.OUTLINE_RED}>{t('Cancel')}</Button>
-					</div>
+					</HStack>
 				)
 		);
 	}
 
 	return (
-		<div className={classNames(cls.ProfilePageHeader, {}, [className])}>
+		<HStack gap="16" align="start" justify="between" className={className}>
 			<h1>{t('Profile page')}</h1>
 			{content}
-		</div>
+		</HStack>
 	);
 });

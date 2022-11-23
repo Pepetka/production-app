@@ -2,6 +2,7 @@ import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text } from 'shared/ui/Text';
+import { VStack } from 'shared/ui/Stack';
 import { Comment } from '../../model/types/comment';
 import { CommentSkeleton } from '../CommentSkeleton/CommentSkeleton';
 import { CommentCard } from '../CommentCard/CommentCard';
@@ -19,20 +20,20 @@ export const CommentList = memo(
 
 		if (loading) {
 			return (
-				<div className={classNames(cls.CommentList, {}, [className])}>
+				<VStack gap="16" className={classNames(cls.CommentList, {}, [className])}>
 					<CommentSkeleton />
 					<CommentSkeleton />
 					<CommentSkeleton />
-				</div>
+				</VStack>
 			);
 		}
 
 		return (
-			<div className={classNames(cls.CommentList, {}, [className])}>
+			<VStack gap="16" className={classNames(cls.CommentList, {}, [className])}>
 				{comments?.length
 					? comments?.map((comment) => <CommentCard key={comment.id} comment={comment} />)
 					: <Text text={t('No comments')} align="center" />}
-			</div>
+			</VStack>
 		);
 	},
 );

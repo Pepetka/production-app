@@ -20,7 +20,7 @@ import { Page } from 'widgets/Page';
 import { useAppEffect } from 'shared/lib/hooks/useAppEffect/useAppEffect';
 import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
-import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
+import { ProfilePageHeader } from '../ProfilePageHeader/ProfilePageHeader';
 
 interface ProfilePageProps {
 	className?: string;

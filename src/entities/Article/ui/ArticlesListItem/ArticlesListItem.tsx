@@ -9,6 +9,7 @@ import { Avatar, AvatarSize } from 'shared/ui/Avatar';
 import { useTranslation } from 'react-i18next';
 import { routePaths } from 'shared/config/routeConfig/routeConfig';
 import { AppLink } from 'shared/ui/AppLink';
+import { HStack, VStack } from 'shared/ui/Stack';
 import {
 	Article, ArticleBlockType, ArticlesView, ArticleTextBlock, ArticleType,
 } from '../../model/types/article';
@@ -40,32 +41,34 @@ export const ArticlesListItem = memo(
 		if (view === ArticlesView.BIG) {
 			return (
 				<Card className={classNames(cls.Big, {}, [className])}>
-					<div className={cls.data}>
-						<AppLink to={routePaths.Profile + article.user.id} className={cls.user}>
-							<Avatar avatar={article.user.avatar} size={AvatarSize.SIZE_XS} />
-							<Text text={article.user.username} />
+					<HStack className={cls.bigWrapper} justify="between">
+						<AppLink to={routePaths.Profile + article.user.id}>
+							<HStack gap="8">
+								<Avatar avatar={article.user.avatar} size={AvatarSize.SIZE_XS} />
+								<Text text={article.user.username} />
+							</HStack>
 						</AppLink>
 						<Text text={article.createdAt} />
-					</div>
+					</HStack>
 					<Text title={article.title} />
 					<Text text={articleTypes} />
-					<div className={cls.img}>
+					<HStack justify="center" className={cls.img}>
 						<img src={article.img} alt={t('Article img')} />
-					</div>
+					</HStack>
 					<div className={cls.content}>
 						{textContent && <ArticleTextBlockComponent block={textContent} />}
 					</div>
-					<div className={cls.info}>
+					<HStack justify="between">
 						<AppLink target={target} to={routePaths.Article_details + article.id}>
 							<Button theme={ButtonTheme.OUTLINE_PRIMARY}>
 								{t('Read more')}
 							</Button>
 						</AppLink>
-						<div className={cls.views}>
+						<HStack gap="8">
 							<Text text={article.views.toString()} />
 							<Icon SvgIcon={EyeIcon} theme={IconTheme.SECONDARY} />
-						</div>
-					</div>
+						</HStack>
+					</HStack>
 				</Card>
 			);
 		}
@@ -73,20 +76,22 @@ export const ArticlesListItem = memo(
 		return (
 			<AppLink target={target} to={routePaths.Article_details + article.id}>
 				<Card className={classNames(cls.Small, {}, [className])}>
-					<div className={cls.img}>
-						<Text className={cls.date} text={article.createdAt} />
-						<img src={article.img} alt={t('Article img')} />
-					</div>
-					<div className={cls.data}>
-						<div className={cls.info}>
-							<Text className={cls.types} text={articleTypes} />
-							<div className={cls.views}>
-								<Text text={article.views.toString()} />
-								<Icon SvgIcon={EyeIcon} theme={IconTheme.SECONDARY} />
-							</div>
+					<VStack className={cls.smallWrapper}>
+						<HStack justify="center" className={cls.img}>
+							<Text className={cls.date} text={article.createdAt} />
+							<img src={article.img} alt={t('Article img')} />
+						</HStack>
+						<div className={cls.data}>
+							<HStack justify="between">
+								<Text className={cls.types} text={articleTypes} />
+								<HStack gap="8">
+									<Text text={article.views.toString()} />
+									<Icon SvgIcon={EyeIcon} theme={IconTheme.SECONDARY} />
+								</HStack>
+							</HStack>
+							<Text className={cls.title} text={article.title} />
 						</div>
-						<Text className={cls.title} text={article.title} />
-					</div>
+					</VStack>
 				</Card>
 			</AppLink>
 		);

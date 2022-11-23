@@ -1,4 +1,6 @@
-import React, { memo, useCallback, useState } from 'react';
+import {
+	memo, SVGProps, useCallback, useState, VFC,
+} from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
@@ -10,10 +12,11 @@ import ProfileIcon from 'shared/assets/icons/profile_icon.svg';
 import ArticlesIcon from 'shared/assets/icons/articles_icon.svg';
 import { useSelector } from 'react-redux';
 import { getAuthData } from 'entities/User';
+import { Flex, VStack } from 'shared/ui/Stack';
 import { SideBarLink } from '../SideBarLink/SideBarLink';
 import cls from './SideBar.module.scss';
 
-const navIcons: Record<string, React.VFC<React.SVGProps<SVGSVGElement>>> = {
+const navIcons: Record<string, VFC<SVGProps<SVGSVGElement>>> = {
 	[AppRoutes.MAIN]: HomeIcon,
 	[AppRoutes.ABOUT]: AboutIcon,
 	[AppRoutes.PROFILE]: ProfileIcon,
@@ -39,8 +42,8 @@ export const SideBar = memo(({ className }: SideBarProps) => {
 	};
 
 	return (
-		<menu data-testid="sidebar" className={classNames(cls.SideBar, { [cls.collapsed]: collapsed }, [className])}>
-			<div>
+		<VStack justify="between" className={classNames(cls.SideBar, { [cls.collapsed]: collapsed }, [className])}>
+			<div data-testid="sidebar">
 				<Button
 					theme={ButtonTheme.CLEAR}
 					className={cls.toggle}
@@ -51,24 +54,26 @@ export const SideBar = memo(({ className }: SideBarProps) => {
 					{collapsed ? '>' : '<'}
 				</Button>
 
-				<nav className={classNames(cls.links, {}, [])}>
-					{Object.entries(links).map(([routeName, { path, authOnly }]) => (
-						<SideBarLink
-							authOnly={authOnly}
-							key={path}
-							path={path!}
-							icon={navIcons[routeName]}
-							routeName={routeName}
-							collapsed={collapsed}
-						/>
-					))}
+				<nav className={cls.links}>
+					<VStack gap="16" align="start">
+						{Object.entries(links).map(([routeName, { path, authOnly }]) => (
+							<SideBarLink
+								authOnly={authOnly}
+								key={path}
+								path={path!}
+								icon={navIcons[routeName]}
+								routeName={routeName}
+								collapsed={collapsed}
+							/>
+						))}
+					</VStack>
 				</nav>
 			</div>
 
-			<div className={cls.switchers}>
+			<Flex direction={collapsed ? 'column' : 'row'} justify="between" gap="8">
 				<ThemeSwitcher />
 				<LangSwitcher />
-			</div>
-		</menu>
+			</Flex>
+		</VStack>
 	);
 });

@@ -2,6 +2,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import DefaultAvatar from 'shared/assets/imgs/default_avatar.jpeg';
+import { HStack } from '../../Stack';
 import { Spinner } from '../../Spinner';
 import cls from './Avatar.module.scss';
 
@@ -26,8 +27,8 @@ export const Avatar = memo(({
 	const { t } = useTranslation('profile');
 
 	return (
-		<div className={classNames(cls.Avatar, {}, [className, cls[size]])}>
+		<HStack justify="center" className={classNames(cls.Avatar, {}, [className, cls[size]])}>
 			{loading ? <Spinner /> : <img src={avatar} alt={alt ?? t('Profile avatar')} />}
-		</div>
+		</HStack>
 	);
 });

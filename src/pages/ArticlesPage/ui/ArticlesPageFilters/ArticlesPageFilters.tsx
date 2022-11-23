@@ -10,6 +10,7 @@ import { ArticlesSortSelector } from 'features/ArticlesSortSelector';
 import { SortOrder } from 'shared/types';
 import { useDebounce } from 'shared/lib/hooks/useDebounce/useDebounce';
 import { ArticlesTypeTabs } from 'features/ArticlesTypeTabs';
+import { HStack, VStack } from 'shared/ui/Stack';
 import { fetchArticlesList } from '../../model/services/fetchArticlesList/fetchArticlesList';
 import { getArticlesPageSearch } from '../../model/selectors/getArticlesPageSearch/getArticlesPageSearch';
 import { getArticlesPageView } from '../../model/selectors/getArticlesPageView/getArticlesPageView';
@@ -72,16 +73,14 @@ export const ArticlesPageFilters = memo(
 		}, [dispatch]);
 
 		return (
-			<div className={classNames(cls.ArticlesPageFilters, {}, [className])}>
-				<div className={cls.sortPanel}>
+			<VStack w100 justify="between" align="start" className={classNames(cls.ArticlesPageFilters, {}, [className])}>
+				<HStack justify="between" w100>
 					<ArticlesSortSelector sort={sort} order={order} onChangeSort={onChangeSort} onChangeOrder={onChangeOrder} />
 					<ArticleViewSelector activeView={view} onChangeView={onChangeView} />
-				</div>
-				<div>
-					<Input theme={InputTheme.INVERT} value={search} onChange={onChangeSearch} placeholder={t('Search')} />
-				</div>
+				</HStack>
+				<Input theme={InputTheme.INVERT} value={search} onChange={onChangeSearch} placeholder={t('Search')} />
 				<ArticlesTypeTabs type={type} onChangeType={onChangeType} />
-			</div>
+			</VStack>
 		);
 	},
 );

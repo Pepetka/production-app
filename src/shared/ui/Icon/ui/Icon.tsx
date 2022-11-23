@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { HStack } from '../../Stack';
 import cls from './Icon.module.scss';
 
 export enum IconTheme {
@@ -21,8 +22,8 @@ export const Icon = memo(
 	({
 		className, SvgIcon, theme = IconTheme.PRIMARY, stroke,
 	}: IconProps) => (
-		<div className={classNames(cls.Icon, { [cls.stroke]: stroke }, [className, cls[theme]])}>
+		<HStack className={classNames('', { [cls.stroke]: stroke }, [className, cls[theme]])}>
 			<SvgIcon />
-		</div>
+		</HStack>
 	),
 );

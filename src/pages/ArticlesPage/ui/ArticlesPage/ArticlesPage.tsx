@@ -1,11 +1,11 @@
 import { memo, useCallback } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
 import { ArticlesList } from 'entities/Article';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { Page } from 'widgets/Page';
 import { useAppEffect } from 'shared/lib/hooks/useAppEffect/useAppEffect';
+import { VStack } from 'shared/ui/Stack';
 import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
 import { getArticlesPageLoading } from '../../model/selectors/getArticlesPageLoading/getArticlesPageLoading';
 import { articlesPageReducer, getArticles } from '../../model/slice/articlesPageSlice';
@@ -13,7 +13,6 @@ import { getArticlesPageView } from '../../model/selectors/getArticlesPageView/g
 import { fetchNextArticles } from '../../model/services/fetchNextArticles/fetchNextArticles';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 import { getArticlesPageError } from '../../model/selectors/getArticlesPageError/getArticlesPageError';
-import cls from './ArticlesPage.module.scss';
 
 interface ArticlesPageProps {
 	className?: string
@@ -39,7 +38,7 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
 	return (
 		<Page noObserver={error !== undefined} withBottomPadding={false}>
 			<DynamicModuleLoader removeOnUnmount={false} reducerKey="articlesPage" reducer={articlesPageReducer}>
-				<div className={classNames(cls.ArticlesPage, {}, [className])}>
+				<VStack w100 align="start" gap="16" className={className}>
 					<ArticlesPageFilters />
 					<ArticlesList
 						error={error}
@@ -48,7 +47,7 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
 						articles={articles}
 						onScrollEnd={onScrollEnd}
 					/>
-				</div>
+				</VStack>
 			</DynamicModuleLoader>
 		</Page>
 	);

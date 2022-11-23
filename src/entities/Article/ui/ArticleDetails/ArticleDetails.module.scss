@@ -1,28 +1,4 @@
 .ArticleDetails {
 	min-height: 100%;
-}
-
-.loader {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-.article {
-	display: flex;
-	flex-direction: column;
-	gap: 40px;
-}
-
-.views,
-.calendar {
-	display: flex;
-	align-items: center;
-	gap: 7px;
-}
-
-.header {
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
+	width: 100%;
 }

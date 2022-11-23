@@ -3,6 +3,8 @@ import { useTranslation } from 'react-i18next';
 import { Button } from 'shared/ui/Button';
 import { useTheme } from 'app/provider/Theme';
 import { memo } from 'react';
+import { VStack } from 'shared/ui/Stack';
+import { Text } from 'shared/ui/Text';
 import cls from './PageError.module.scss';
 
 interface PageErrorProps {
@@ -18,12 +20,12 @@ export const PageError = memo(({ className }: PageErrorProps) => {
 
 	return (
 		<div className={`App ${theme}`}>
-			<div className={classNames(cls.PageError, {}, [className])}>
-				<p>{t('Something went wrong')}</p>
+			<VStack justify="center" gap="8" className={classNames(cls.PageError, {}, [className])}>
+				<Text title={t('Something went wrong')} />
 				<Button onClick={onReload}>
 					{t('Reload page')}
 				</Button>
-			</div>
+			</VStack>
 		</div>
 	);
 });

@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { getAuthData } from 'entities/User';
 import { Icon, IconTheme } from 'shared/ui/Icon';
+import { HStack } from 'shared/ui/Stack';
 import cls from './SideBarLink.module.scss';
 
 interface SideBarLinkProps {
@@ -27,8 +28,10 @@ export const SideBarLink = memo(({
 	return (
 		<div className={classNames('', { [cls.collapsed]: collapsed })}>
 			<AppLink className={classNames(cls.link, {}, [className])} theme={AppLinkTheme.SECONDARY} to={path}>
-				<Icon theme={IconTheme.INVERT_PRIMARY} SvgIcon={icon} />
-				<span className={cls.text}>{t(routeName)}</span>
+				<HStack gap={collapsed ? undefined : '8'}>
+					<Icon theme={IconTheme.INVERT_PRIMARY} SvgIcon={icon} />
+					<span className={cls.text}>{t(routeName)}</span>
+				</HStack>
 			</AppLink>
 		</div>
 	);

@@ -9,6 +9,7 @@ import { memo } from 'react';
 import { Avatar, AvatarSize } from 'shared/ui/Avatar';
 import { Currency, CurrencySelect } from 'entities/Currency';
 import { Country, CountrySelect } from 'entities/Country';
+import { HStack, VStack } from 'shared/ui/Stack';
 import cls from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
@@ -52,39 +53,32 @@ export const ProfileCard = memo((
 
 	if (loading) {
 		return (
-			<div className={cls.template}>
+			<HStack justify="center" className={cls.template}>
 				<Spinner />
-			</div>
+			</HStack>
 		);
 	}
 
 	if (error) {
 		return (
-			<div className={cls.template}>
+			<VStack gap="16" justify="center" className={cls.template}>
 				<Text align="center" title={t('Something went wrong')} theme={TextTheme.ERROR} />
 				<Button onClick={onReloadPage}>{t('Reload Page')}</Button>
-			</div>
+			</VStack>
 		);
 	}
 
 	return (
-		<div className={classNames(cls.ProfileCard, {}, [className])}>
-			<div className={cls.column}>
-				{data?.avatar ? (
-					<Avatar
-						size={AvatarSize.SIZE_L}
-						avatar={data?.avatar}
-						loading={loading}
-					/>
-				) : (
-					<Avatar
-						size={AvatarSize.SIZE_L}
-						loading={loading}
-					/>
-				)}
-			</div>
-			<div className={cls.profileData}>
-				<div className={cls.column}>
+		<HStack align="start" className={classNames(cls.ProfileCard, {}, [className])}>
+			<VStack gap="16" justify="start" className={cls.column}>
+				<Avatar
+					size={AvatarSize.SIZE_L}
+					avatar={data?.avatar}
+					loading={loading}
+				/>
+			</VStack>
+			<HStack gap="32" align="start" className={cls.profileData}>
+				<VStack gap="16" justify="start" className={cls.column}>
 					<Input
 						readonly={readonly}
 						textInvert={readonly}
@@ -117,8 +111,8 @@ export const ProfileCard = memo((
 						value={data?.age}
 						floatPlaceholder={t('Age')}
 					/>
-				</div>
-				<div className={cls.column}>
+				</VStack>
+				<VStack gap="16" justify="start" className={cls.column}>
 					<Input
 						readonly={readonly}
 						textInvert={readonly}
@@ -137,8 +131,8 @@ export const ProfileCard = memo((
 					/>
 					<CountrySelect selected={data?.country} onChangeCountry={onChangeCountry} readonly={readonly} />
 					<CurrencySelect selected={data?.currency} onChangeCurrency={onChangeCurrency} readonly={readonly} />
-				</div>
-			</div>
-		</div>
+				</VStack>
+			</HStack>
+		</HStack>
 	);
 });
