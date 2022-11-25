@@ -1,4 +1,6 @@
-import { memo, useCallback } from 'react';
+import {
+	memo, useCallback, useEffect, useRef,
+} from 'react';
 import { ArticlesList } from 'entities/Article';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
@@ -24,6 +26,7 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
 	const loading = useSelector(getArticlesPageLoading);
 	const error = useSelector(getArticlesPageError);
 	const articles = useSelector(getArticles.selectAll);
+	const wrapperRef = useRef<HTMLElement | null>(null);
 
 	const callback = useCallback(() => {
 		dispatch(initArticlesPage());
@@ -36,7 +39,7 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
 	}, [dispatch]);
 
 	return (
-		<Page noObserver={error !== undefined} withBottomPadding={false}>
+		<Page ref={wrapperRef} withBottomPadding={false} safeScroll>
 			<DynamicModuleLoader removeOnUnmount={false} reducerKey="articlesPage" reducer={articlesPageReducer}>
 				<VStack w100 align="start" gap="16" className={className}>
 					<ArticlesPageFilters />
@@ -46,6 +49,7 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
 						view={view}
 						articles={articles}
 						onScrollEnd={onScrollEnd}
+						wrapperRef={wrapperRef}
 					/>
 				</VStack>
 			</DynamicModuleLoader>

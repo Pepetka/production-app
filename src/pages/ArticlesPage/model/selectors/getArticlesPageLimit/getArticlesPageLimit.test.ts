@@ -16,6 +16,6 @@ describe('getArticlesPageLimit', () => {
 	test('empty state', () => {
 		const state: DeepPartial<StateSchema> = {};
 
-		expect(getArticlesPageLimit(state as StateSchema)).toEqual(8);
+		expect(getArticlesPageLimit(state as StateSchema)).toEqual(10);
 	});
 });
