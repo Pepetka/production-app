@@ -1,7 +1,6 @@
 import { describe, expect, test } from '@jest/globals';
 import { StateSchema } from 'app/provider/Store';
-import { ArticlesView, ArticleType } from 'entities/Article';
-import { ArticleSortField } from 'entities/Article/model/types/article';
+import { ArticlesView, ArticleType, ArticleSortField } from 'entities/Article';
 import { ArticlesPageSchema } from '../types/articlesPageSchema';
 import { articlesPageActions, articlesPageReducer, getArticles } from './articlesPageSlice';
 

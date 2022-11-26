@@ -59,7 +59,6 @@ export const ArticlesList = memo(
 		const { t } = useTranslation('articles');
 		const virtuoso = useRef<VirtuosoGridHandle>(null);
 		const [_, setRerender] = useState(0);
-		const [isCanceled, setIsCanceled] = useState(false);
 		const { scroll } = useSafeScroll(wrapperRef!, 100);
 
 		useEffect(() => {
@@ -67,15 +66,11 @@ export const ArticlesList = memo(
 		}, [wrapperRef]);
 
 		const callback = useCallback(() => {
-			if (virtuoso.current && !isCanceled) {
+			if (virtuoso.current) {
 				virtuoso.current.scrollTo({
-					top: scroll,
+					top: scroll - 211,
 				});
 			}
-
-			return () => {
-				setIsCanceled(true);
-			};
 		}, []);
 
 		useAppEffect(callback);
