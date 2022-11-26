@@ -50,7 +50,7 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
 		<DynamicModuleLoader reducerKey="login" reducer={loginReducer}>
 			<form onSubmit={onSubmit} className={classNames(cls.LoginForm, {}, [className])}>
 				<VStack>
-					<Text title={t('Auth form')} align="center" />
+					<Text TitleTag="h3" title={t('Auth form')} align="center" />
 					<Input
 						theme={InputTheme.INVERT}
 						textInvert

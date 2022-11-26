@@ -7,6 +7,7 @@ import { memo, useCallback, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { getAuthData } from 'entities/User';
 import { HStack } from 'shared/ui/Stack';
+import { Text, TextSize } from 'shared/ui/Text';
 
 interface ProfilePageHeaderProps {
 	className?: string;
@@ -51,7 +52,7 @@ export const ProfilePageHeader = memo(({ className }: ProfilePageHeaderProps) =>
 
 	return (
 		<HStack gap="16" align="start" justify="between" className={className}>
-			<h1>{t('Profile page')}</h1>
+			<Text size={TextSize.L} title={t('Profile page')} TitleTag="h1" />
 			{content}
 		</HStack>
 	);

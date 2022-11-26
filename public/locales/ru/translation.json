@@ -18,5 +18,7 @@
 	"LogOut": "Выйти",
 	"No comments": "Комментарии отсутствуют",
 	"Create article": "Создать статью",
-	"Prod App": "Prod App"
+	"Prod App": "Prod App",
+	"Article New Page": "Страница создания статьи",
+	"Article Edit Page": "Страница редактирования статьи"
 }

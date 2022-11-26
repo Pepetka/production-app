@@ -9,7 +9,7 @@ export default {
 	},
 } as ComponentMeta<typeof NotFoundPage>;
 
-const Template: ComponentStory<typeof NotFoundPage> = (args) => <NotFoundPage {...args} />;
+const Template: ComponentStory<typeof NotFoundPage> = (args) => <NotFoundPage />;
 
 export const NotFoundPageStory = Template.bind({});
 NotFoundPageStory.args = {};

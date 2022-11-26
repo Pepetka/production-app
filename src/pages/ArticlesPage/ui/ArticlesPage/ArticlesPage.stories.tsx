@@ -15,7 +15,7 @@ export default {
 	},
 } as ComponentMeta<typeof ArticlesPage>;
 
-const Template: ComponentStory<typeof ArticlesPage> = (args) => <ArticlesPage {...args} />;
+const Template: ComponentStory<typeof ArticlesPage> = (args) => <ArticlesPage />;
 
 const state = (view: ArticlesView): DeepPartial<StateSchema> => {
 	const entities: Record<string, any> = {};

@@ -13,6 +13,8 @@ export enum TextSize {
 	L = 'size_l',
 }
 
+type TagType = 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+
 interface TextProps {
 	className?: string
 	title?: string
@@ -21,13 +23,14 @@ interface TextProps {
 	align?: TextAlign
 	size?: TextSize
 	invert?: boolean
+	TitleTag?: TagType
 }
 
 export const Text = memo(({
-	className, text, title, align = 'left', theme = TextTheme.PRIMARY, size = TextSize.M, invert,
+	className, text, title, align = 'left', theme = TextTheme.PRIMARY, size = TextSize.M, invert, TitleTag = 'p',
 }: TextProps) => (
 	<div className={classNames('', { [cls.invert]: invert }, [className, cls[theme], cls[size], cls[align]])}>
-		{title && <p className={cls.title}>{title}</p>}
+		{title && <TitleTag className={cls.title}>{title}</TitleTag>}
 		{text && <p className={cls.text}>{text}</p>}
 	</div>
 ));

@@ -16,11 +16,7 @@ import { fetchNextArticles } from '../../model/services/fetchNextArticles/fetchN
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 import { getArticlesPageError } from '../../model/selectors/getArticlesPageError/getArticlesPageError';
 
-interface ArticlesPageProps {
-	className?: string
-}
-
-const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
+const ArticlesPage = memo(() => {
 	const dispatch = useAppDispatch();
 	const view = useSelector(getArticlesPageView);
 	const loading = useSelector(getArticlesPageLoading);
@@ -41,7 +37,7 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
 	return (
 		<Page ref={wrapperRef} withBottomPadding={false} safeScroll>
 			<DynamicModuleLoader removeOnUnmount={false} reducerKey="articlesPage" reducer={articlesPageReducer}>
-				<VStack w100 align="start" gap="16" className={className}>
+				<VStack w100 align="start" gap="16">
 					<ArticlesPageFilters />
 					<ArticlesList
 						error={error}

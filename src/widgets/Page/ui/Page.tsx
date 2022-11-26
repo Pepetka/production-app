@@ -35,13 +35,13 @@ export const Page = forwardRef<HTMLElement, PageProps>(({
 	useImperativeHandle(ref, () => wrapperRef.current);
 
 	return (
-		<section
+		<main
 			ref={wrapperRef}
 			className={classNames(cls.Page, { [cls.padding]: withBottomPadding }, [className])}
 			onScroll={safeScroll ? onScroll : () => {}}
 		>
 			{children}
 			{infiniteScroll ? (onScrollEnd && <div className={cls.observer} ref={triggerRef} />) : null}
-		</section>
+		</main>
 	);
 });

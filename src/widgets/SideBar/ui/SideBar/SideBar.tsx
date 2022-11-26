@@ -42,7 +42,7 @@ export const SideBar = memo(({ className }: SideBarProps) => {
 	};
 
 	return (
-		<VStack justify="between" className={classNames(cls.SideBar, { [cls.collapsed]: collapsed }, [className])}>
+		<VStack Tag="aside" justify="between" className={classNames(cls.SideBar, { [cls.collapsed]: collapsed }, [className])}>
 			<div data-testid="sidebar">
 				<Button
 					theme={ButtonTheme.CLEAR}
@@ -54,20 +54,18 @@ export const SideBar = memo(({ className }: SideBarProps) => {
 					{collapsed ? '>' : '<'}
 				</Button>
 
-				<nav className={cls.links}>
-					<VStack gap="16" align="start">
-						{Object.entries(links).map(([routeName, { path, authOnly }]) => (
-							<SideBarLink
-								authOnly={authOnly}
-								key={path}
-								path={path!}
-								icon={navIcons[routeName]}
-								routeName={routeName}
-								collapsed={collapsed}
-							/>
-						))}
-					</VStack>
-				</nav>
+				<VStack Tag="nav" gap="16" align="start" className={cls.links}>
+					{Object.entries(links).map(([routeName, { path, authOnly }]) => (
+						<SideBarLink
+							authOnly={authOnly}
+							key={path}
+							path={path!}
+							icon={navIcons[routeName]}
+							routeName={routeName}
+							collapsed={collapsed}
+						/>
+					))}
+				</VStack>
 			</div>
 
 			<Flex direction={collapsed ? 'column' : 'row'} justify="between" gap="8">

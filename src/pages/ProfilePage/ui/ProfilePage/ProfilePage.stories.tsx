@@ -16,7 +16,7 @@ export default {
 	},
 } as ComponentMeta<typeof ProfilePage>;
 
-const Template: ComponentStory<typeof ProfilePage> = (args) => <ProfilePage {...args} />;
+const Template: ComponentStory<typeof ProfilePage> = (args) => <ProfilePage />;
 
 const state: DeepPartial<StateSchema> = {
 	profile: {

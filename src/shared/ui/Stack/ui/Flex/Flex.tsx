@@ -33,6 +33,8 @@ const gapClasses: Record<FlexGap, string> = {
 	32: cls.gap32,
 };
 
+type TagType = 'a' | 'div' | 'nav' | 'aside' | 'button' | 'header' | 'footer'
+
 export interface FlexProps {
 	className?: string
 	children: ReactNode
@@ -41,10 +43,12 @@ export interface FlexProps {
 	direction: FlexDirection
 	gap?: FlexGap
 	w100?: boolean
+	h100?: boolean
+	Tag?: TagType
 }
 
 export const Flex = ({
-	className, children, align = 'center', direction, justify = 'start', gap, w100,
+	className, children, align = 'center', direction, justify = 'start', gap, w100, h100, Tag = 'div',
 }: FlexProps) => {
 	const classes = [
 		alignClasses[align],
@@ -54,8 +58,8 @@ export const Flex = ({
 	];
 
 	return (
-		<div className={classNames(cls.Flex, { [gapClasses[gap!]]: gap, [cls.w100]: w100 }, classes)}>
+		<Tag className={classNames(cls.Flex, { [gapClasses[gap!]]: gap, [cls.w100]: w100, [cls.h100]: h100 }, classes)}>
 			{children}
-		</div>
+		</Tag>
 	);
 };

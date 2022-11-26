@@ -22,11 +22,7 @@ import { ArticleRecommendations } from 'features/ArticleRecommendatopns';
 import { VStack } from 'shared/ui/Stack';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 
-interface ArticleDetailsPageProps {
-	className?: string
-}
-
-const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
+const ArticleDetailsPage = memo(() => {
 	const { t } = useTranslation('articles');
 	const params = useParams<{id: string}>();
 	const comments = useSelector(getComments.selectAll);
@@ -54,7 +50,7 @@ const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
 	return (
 		<Page>
 			<DynamicModuleLoader reducerKey="comments" reducer={commentsReducer}>
-				<VStack w100 align="start" gap="32" className={className}>
+				<VStack w100 align="start" gap="32">
 					<ArticleDetailsPageHeader />
 					<ArticleDetails id={params.id!} />
 					{!articleError && (

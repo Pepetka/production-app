@@ -22,11 +22,7 @@ import { Country } from 'entities/Country';
 import { Currency } from 'entities/Currency';
 import { ProfilePageHeader } from '../ProfilePageHeader/ProfilePageHeader';
 
-interface ProfilePageProps {
-	className?: string;
-}
-
-const ProfilePage = memo(({ className }: ProfilePageProps) => {
+const ProfilePage = memo(() => {
 	const dispatch = useAppDispatch();
 	const profile = useSelector(getProfileFormData);
 	const loading = useSelector(getProfileLoading);
@@ -81,26 +77,24 @@ const ProfilePage = memo(({ className }: ProfilePageProps) => {
 	return (
 		<Page>
 			<DynamicModuleLoader reducerKey="profile" reducer={profileReducer}>
-				<div className={className}>
-					<ProfilePageHeader />
-					{validationErrors?.map(
-						(error) => <Text key={error} title={t(error)} theme={TextTheme.ERROR} align="center" />,
-					)}
-					<ProfileCard
-						data={profile}
-						error={error}
-						loading={loading}
-						readonly={readonly}
-						onChangeFirstname={onChangeFirstname}
-						onChangeLastname={onChangeLastname}
-						onChangeAge={onChangeAge}
-						onChangeUsername={onChangeUsername}
-						onChangeAvatar={onChangeAvatar}
-						onChangeCity={onChangeCity}
-						onChangeCountry={onChangeCountry}
-						onChangeCurrency={onChangeCurrency}
-					/>
-				</div>
+				<ProfilePageHeader />
+				{validationErrors?.map(
+					(error) => <Text key={error} title={t(error)} theme={TextTheme.ERROR} align="center" />,
+				)}
+				<ProfileCard
+					data={profile}
+					error={error}
+					loading={loading}
+					readonly={readonly}
+					onChangeFirstname={onChangeFirstname}
+					onChangeLastname={onChangeLastname}
+					onChangeAge={onChangeAge}
+					onChangeUsername={onChangeUsername}
+					onChangeAvatar={onChangeAvatar}
+					onChangeCity={onChangeCity}
+					onChangeCountry={onChangeCountry}
+					onChangeCurrency={onChangeCurrency}
+				/>
 			</DynamicModuleLoader>
 		</Page>
 	);
