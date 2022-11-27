@@ -1,5 +1,8 @@
+import { memo, useMemo } from 'react';
+import { Listbox } from '@headlessui/react';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { ChangeEvent, memo } from 'react';
+import { HStack } from '../../Stack';
+import { Button, ButtonTheme } from '../../Button';
 import cls from './Select.module.scss';
 
 export enum SelectTheme {
@@ -35,11 +38,11 @@ export const Select = typedMemo(<T extends string>(
 
 	}: SelectProps<T>,
 ) => {
-	const optionsList = Object.entries(options).map(([key, value]) => <option className={cls.option} key={key} value={key}>{value}</option>);
+	const optionsList = useMemo(() => {
+		if (!label) return Object.entries(options);
 
-	const onHandleChange = (event: ChangeEvent<HTMLSelectElement>) => {
-		onChange?.(event.target.value as T);
-	};
+		return [['label', label], ...Object.entries(options)];
+	}, [label, options]);
 
 	return (
 		<div
@@ -59,15 +62,36 @@ export const Select = typedMemo(<T extends string>(
 					{placeholder}
 				</span>
 			)}
-			<select
-				disabled={disabled}
-				value={selected ?? ''}
-				className={classNames(cls.Select)}
-				onChange={onHandleChange}
-			>
-				{label && <option value="" disabled>{label}</option>}
-				{optionsList}
-			</select>
+			<Listbox value={selected} defaultValue={label} onChange={onChange} disabled={disabled}>
+				{({ open }) => (
+					<>
+						<Listbox.Button as="div" className={cls.trigger}>
+							<Button hover={false} theme={ButtonTheme.PRIMARY} inverted={theme === SelectTheme.INVERT}>
+								<HStack w100 justify="between">
+									{selected ? options[selected] : label}
+									<div className={classNames(cls.arrow, { [cls.open]: open })}>{'<'}</div>
+								</HStack>
+							</Button>
+						</Listbox.Button>
+						<Listbox.Options className={cls.options}>
+							{optionsList.map(([key, value]) => (
+								<Listbox.Option
+									key={key}
+									value={key}
+									disabled={key === 'label'}
+								>
+									{({ active, selected, disabled }) => (
+										<div className={classNames(cls.option, { [cls.selected]: selected, [cls.disabled]: disabled })}>
+											{value}
+											{active && ' <'}
+										</div>
+									)}
+								</Listbox.Option>
+							))}
+						</Listbox.Options>
+					</>
+				)}
+			</Listbox>
 		</div>
 	);
 });

@@ -1,0 +1,64 @@
+.Menu {
+	position: relative;
+	display: inline-block;
+}
+
+.trigger {
+	background: none;
+	border: none;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.items {
+	padding: 10px;
+	position: absolute;
+	z-index: 2;
+	border-radius: 5px;
+	border: 2px solid var(--invert-bg-color);
+	background: var(--invert-options-bgc);
+	color: var(--invert-primary-color);
+}
+
+.item {
+	text-align: left;
+	padding: 15px;
+	cursor: pointer;
+	border-radius: 5px;
+	white-space: nowrap;
+}
+
+.arrow {
+	transform: rotateZ(-90deg);
+	transition: transform 0.2s linear;
+}
+
+.open {
+	transform: rotateZ(0deg);
+}
+
+.active {
+	background: var(--bg-color);
+	color: var(--primary-color);
+}
+
+.top_right {
+	bottom: 100%;
+	left: 0;
+}
+
+.top_left {
+	bottom: 100%;
+	right: 0;
+}
+
+.bottom_right {
+	top: 100%;
+	left: 0;
+}
+
+.bottom_left {
+	top: 100%;
+	right: 0;
+}

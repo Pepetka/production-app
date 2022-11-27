@@ -8,10 +8,11 @@ interface CurrencySelectProps {
 	readonly?: boolean
 	onChangeCurrency?: (value: Currency) => void
 	selected?: Currency
+	theme?: SelectTheme
 }
 
 export const CurrencySelect = ({
-	className, onChangeCurrency, selected, readonly,
+	className, onChangeCurrency, selected, readonly, theme,
 }: CurrencySelectProps) => {
 	const { t } = useTranslation('profile');
 
@@ -30,7 +31,7 @@ export const CurrencySelect = ({
 			textInvert={readonly}
 			onChange={onChangeCurrency}
 			className={className}
-			theme={readonly ? SelectTheme.INVERT : SelectTheme.PRIMARY}
+			theme={theme}
 			options={currencyOptions}
 			selected={selected}
 		/>

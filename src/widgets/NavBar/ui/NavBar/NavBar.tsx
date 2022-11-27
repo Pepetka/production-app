@@ -1,4 +1,4 @@
-import { AppRoutes, routeConfig, routePaths } from 'shared/config/routeConfig/routeConfig';
+import { AppRoutes, routePaths } from 'shared/config/routeConfig/routeConfig';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import {
@@ -10,7 +10,8 @@ import { getAuthData, userActions } from 'entities/User';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 import { Text, TextTheme } from 'shared/ui/Text';
 import { HStack } from 'shared/ui/Stack';
-import { NavBarLink } from '../NavBarLink/NavBarLink';
+import { Menu, MenuItem } from 'shared/ui/Menu';
+import { Avatar, AvatarSize } from 'shared/ui/Avatar';
 import cls from './NavBar.module.scss';
 
 interface NavBarProps {
@@ -55,28 +56,47 @@ export const NavBar = memo(({ className }: NavBarProps) => {
 		setIsAuthModal(false);
 	}, [dispatch]);
 
-	const navLinks: DeepPartial<typeof routeConfig> = useMemo(() => ({
-		[AppRoutes.MAIN]: { path: routePaths.Main, authOnly: routeConfig.Main.authOnly },
-		[AppRoutes.ABOUT]: { path: routePaths.About, authOnly: routeConfig.About.authOnly },
-		[AppRoutes.ARTICLE_CREATE]: { path: routePaths.Article_create, authOnly: routeConfig.Article_create.authOnly },
-	}), []);
+	const nameWithTranslation: OptionalRecord<AppRoutes, string> = {
+		[AppRoutes.MAIN]: t('Main'),
+		[AppRoutes.ABOUT]: t('About'),
+		[AppRoutes.PROFILE]: t('Profile'),
+		[AppRoutes.ARTICLE_CREATE]: t('Create article'),
+	};
+
+	const menuItems: Array<MenuItem> = useMemo(() => ([
+		{
+			content: nameWithTranslation.Main!,
+			href: routePaths.Main,
+		},
+		{
+			content: nameWithTranslation.About!,
+			href: routePaths.About,
+		},
+		{
+			content: nameWithTranslation.Profile!,
+			href: routePaths.Profile + authData!.id,
+		},
+		{
+			content: nameWithTranslation.Article_create!,
+			href: routePaths.Article_create,
+		},
+		{
+			content: t('LogOut'),
+			onClick: onLogout,
+		},
+	]), []);
 
 	return (
 		<HStack Tag="header" justify="between" className={classNames(cls.NavBar, {}, [className])}>
 			{!isAuth && <LoginModal isOpen={isAuthModal} isClose={!!authData} onCloseModal={onCloseModal} />}
 			<Text className={cls.logo} title={t('Prod App')} align="center" theme={TextTheme.PRIMARY} invert />
 			<HStack Tag="nav" gap="16" justify="end" className={classNames(cls.links)}>
-				{Object.entries(navLinks).map(([name, route]) => (
-					<NavBarLink
-						key={name}
-						route={route}
-						routeName={name}
-					/>
-				))}
 				{authData ? (
-					<Button theme={ButtonTheme.OUTLINE_PRIMARY} inverted onClick={onLogout}>
-						{t('LogOut')}
-					</Button>
+					<Menu
+						popupPosition="bottom_left"
+						trigger={<Avatar inverted avatar={authData.avatar} size={AvatarSize.SIZE_XS} />}
+						menuItems={menuItems}
+					/>
 				) : (
 					<Button theme={ButtonTheme.OUTLINE_PRIMARY} inverted onClick={onOpenModal}>
 						{t('LogIn')}

@@ -66,7 +66,7 @@ export const ArticlesList = memo(
 		}, [wrapperRef]);
 
 		const callback = useCallback(() => {
-			if (virtuoso.current) {
+			if (virtuoso.current && wrapperRef?.current) {
 				virtuoso.current.scrollTo({
 					top: scroll - 211,
 				});

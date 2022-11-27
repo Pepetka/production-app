@@ -1,12 +1,3 @@
-.Select {
-	width: 100%;
-	background: var(--invert-bg-color);
-	color: var(--invert-primary-color);
-	border: solid 2px var(--invert-primary-color);
-	border-radius: 5px;
-	padding: 12px 15px;
-}
-
 .selectWrapper {
 	width: 100%;
 	position: relative;
@@ -23,58 +14,86 @@
 	top: 0;
 	transform: translateY(5px);
 	color: var(--primary-color);
-	transition: all 0.3s ease-out;
+}
+
+.trigger {
+	background: none;
+	border: none;
+	position: relative;
+
+	button {
+		width: 100%;
+	}
+}
+
+.options {
+	padding: 10px;
+	width: 100%;
+	position: absolute;
+	z-index: 2;
+	border-radius: 5px;
+	border: 2px solid var(--bg-color);
 }
 
 .option {
-	padding-block: 5px;
+	padding: 15px;
+	cursor: pointer;
+	border-radius: 5px;
 }
 
-.placeholder {
-	transform: translateY(45px) translateX(15px);
-	color: var(--invert-secondary-color);
+.disabled {
+	opacity: 0.7;
 }
 
 .primary {
-	.Select {
-		background: var(--invert-bg-color);
-		color: var(--invert-primary-color);
-		border: solid 2px var(--invert-primary-color);
+	.label {
+		color: var(--primary-color);
 	}
 
-	.label {
+	.options {
+		background: var(--invert-options-bgc);
+		color: var(--invert-primary-color);
+	}
+
+	.selected {
+		background: var(--bg-color);
 		color: var(--primary-color);
 	}
 }
 
 .invert {
-	.Select {
-		background: var(--bg-color);
-		color: var(--primary-color);
-		border: solid 2px var(--primary-color);
+	.label {
+		color: var(--invert-primary-color);
 	}
 
-	.label {
+	.options {
+		background: var(--options-bgc);
+		color: var(--primary-color);
+	}
+
+	.selected {
+		background: var(--invert-bg-color);
 		color: var(--invert-primary-color);
 	}
 }
 
 .primary.textInvert {
-	.Select {
-		color: var(--invert-primary-color);
-	}
-
 	.label {
 		color: var(--invert-primary-color);
 	}
 }
 
 .invert.textInvert {
-	.Select {
-		color: var(--primary-color);
-	}
-
 	.label {
 		color: var(--primary-color);
 	}
+}
+
+.arrow {
+	transform: rotateZ(-90deg);
+	transition: transform 0.2s linear;
+}
+
+.open {
+	transform: rotateZ(0deg);
 }

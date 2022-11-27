@@ -10,6 +10,7 @@ import { Avatar, AvatarSize } from 'shared/ui/Avatar';
 import { Currency, CurrencySelect } from 'entities/Currency';
 import { Country, CountrySelect } from 'entities/Country';
 import { HStack, VStack } from 'shared/ui/Stack';
+import { SelectTheme } from 'shared/ui/Select';
 import cls from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
@@ -129,8 +130,18 @@ export const ProfileCard = memo((
 						onChange={onChangeCity}
 						floatPlaceholder={t('City')}
 					/>
-					<CountrySelect selected={data?.country} onChangeCountry={onChangeCountry} readonly={readonly} />
-					<CurrencySelect selected={data?.currency} onChangeCurrency={onChangeCurrency} readonly={readonly} />
+					<CountrySelect
+						selected={data?.country}
+						onChangeCountry={onChangeCountry}
+						readonly={readonly}
+						theme={readonly ? SelectTheme.INVERT : SelectTheme.PRIMARY}
+					/>
+					<CurrencySelect
+						selected={data?.currency}
+						onChangeCurrency={onChangeCurrency}
+						readonly={readonly}
+						theme={readonly ? SelectTheme.INVERT : SelectTheme.PRIMARY}
+					/>
 				</VStack>
 			</HStack>
 		</HStack>
