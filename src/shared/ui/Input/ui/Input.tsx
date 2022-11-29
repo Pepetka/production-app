@@ -95,7 +95,7 @@ export const Input = (
 				type={type}
 				onBlur={onBlur}
 				onFocus={onFocus}
-				value={value}
+				value={value ?? ''}
 				readOnly={readonly}
 				onChange={onHandleChange}
 				{...otherProps}

@@ -42,4 +42,13 @@ export default {
 		__PROJECT__: 'jest',
 		__API__: JSON.stringify(''),
 	},
+	reporters: [
+		'default',
+		['jest-html-reporters', {
+			publicPath: '<rootDir>/html-report',
+			filename: 'report.html',
+			openReport: true,
+			inlineSource: true,
+		}],
+	],
 };

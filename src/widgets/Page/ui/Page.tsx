@@ -1,5 +1,5 @@
 import {
-	forwardRef, MutableRefObject, ReactNode, useEffect, useImperativeHandle, useRef,
+	forwardRef, MutableRefObject, ReactNode, useImperativeHandle, useRef,
 } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useSafeScroll } from 'shared/lib/hooks/useSafeScroll/useSafeScroll';
@@ -11,12 +11,11 @@ interface PageProps {
 	children: ReactNode
 	onScrollEnd?: () => void
 	infiniteScroll?: boolean
-	withBottomPadding?: boolean
 	safeScroll?: boolean
 }
 
 export const Page = forwardRef<HTMLElement, PageProps>(({
-	className, children, onScrollEnd, infiniteScroll, withBottomPadding = true, safeScroll = false,
+	className, children, onScrollEnd, infiniteScroll, safeScroll = false,
 }, ref) => {
 	const wrapperRef = useRef() as MutableRefObject<HTMLElement>;
 	const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
@@ -37,7 +36,7 @@ export const Page = forwardRef<HTMLElement, PageProps>(({
 	return (
 		<main
 			ref={wrapperRef}
-			className={classNames(cls.Page, { [cls.padding]: withBottomPadding }, [className])}
+			className={classNames(cls.Page, {}, [className])}
 			onScroll={safeScroll ? onScroll : () => {}}
 		>
 			{children}

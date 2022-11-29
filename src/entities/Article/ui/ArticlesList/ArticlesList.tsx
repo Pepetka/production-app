@@ -20,7 +20,7 @@ interface FooterProps {
 
 const ListFooter = memo(({ view, loading, recommendations }: FooterProps) => {
 	const getSkeletons = (view: ArticlesView) => {
-		const skeletonNum = recommendations ? 5 : null;
+		const skeletonNum = recommendations ? 4 : null;
 
 		if (!loading) return null;
 
@@ -106,7 +106,7 @@ export const ArticlesList = memo(
 			);
 		}
 
-		if (!loading && !articles.length) {
+		if (!loading && articles.length === 0) {
 			return (
 				<div className={classNames(cls.ArticlesList, {}, [className, cls[view]])}>
 					<Text title={t('Articles not found')} />
@@ -116,24 +116,26 @@ export const ArticlesList = memo(
 
 		return (
 			<div className={classNames('', { [cls.wrapper]: !recommendations, [cls.recommendations]: recommendations })}>
-				<VirtuosoGrid
-					totalCount={articles.length}
-					endReached={loading ? undefined : onScrollEnd}
-					overscan={view === ArticlesView.SMALL ? 5 : 1}
-					listClassName={classNames(cls.ArticlesList, {}, [className, cls[view]])}
-					components={{
-						ScrollSeekPlaceholder,
-						Footer,
-					}}
-					customScrollParent={!recommendations ? wrapperRef?.current! : undefined}
-					itemContent={ItemContent}
-					ref={virtuoso}
-					scrollSeekConfiguration={{
-						enter: (velocity: number) => Math.abs(velocity) > 500,
-						exit: (velocity: number) => Math.abs(velocity) < 100,
-						change: (_, range: ListRange) => console.log({ range }),
-					}}
-				/>
+				{((recommendations && !loading) || !recommendations) && (
+					<VirtuosoGrid
+						data={articles}
+						endReached={loading ? undefined : onScrollEnd}
+						overscan={view === ArticlesView.SMALL ? 5 : 1}
+						listClassName={classNames(cls.ArticlesList, {}, [className, cls[view]])}
+						components={{
+							ScrollSeekPlaceholder,
+						}}
+						customScrollParent={!recommendations ? wrapperRef?.current! : undefined}
+						itemContent={ItemContent}
+						ref={virtuoso}
+						scrollSeekConfiguration={{
+							enter: (velocity: number) => Math.abs(velocity) > 500,
+							exit: (velocity: number) => Math.abs(velocity) < 100,
+							change: (_, range: ListRange) => console.log({ range }),
+						}}
+					/>
+				)}
+				{loading && <Footer />}
 			</div>
 		);
 	},

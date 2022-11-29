@@ -6,23 +6,21 @@ import {
 import { AxiosInstance } from 'axios';
 import { ProfileSchema } from 'features/EditableProfileCard';
 import { ArticleSchema } from 'entities/Article';
-import { CommentsSchema } from 'features/ArticleCommentsList';
-import { AddCommentFormSchema } from 'features/AddCommentForm';
 import { ArticlesPageSchema } from 'pages/ArticlesPage';
 import { ScrollSafeSchema } from 'widgets/Page';
-import { ArticleRecommendationsSchema } from 'features/ArticleRecommendatopns';
+import { CommentFormSchema } from 'entities/Comment';
+import { rtkApi } from 'shared/api/rtkApi';
 
 export interface StateSchema {
 	user: UserSchema
 	scrollSafe: ScrollSafeSchema
+	[rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
 
 	login?: LoginSchema
 	profile?: ProfileSchema
 	article?: ArticleSchema
-	comments?: CommentsSchema
-	addCommentForm?: AddCommentFormSchema
+	commentForm?: CommentFormSchema
 	articlesPage?: ArticlesPageSchema
-	articleRecommendations?: ArticleRecommendationsSchema
 }
 
 export type StateSchemaKey = keyof StateSchema

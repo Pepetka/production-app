@@ -4,7 +4,6 @@ import { StateSchema } from 'app/provider/Store';
 import { ArticleBlockType, ArticleType } from 'entities/Article/model/types/article';
 import { ReducersMapObject } from '@reduxjs/toolkit';
 import { articleReducer } from 'entities/Article/model/slice/articleSlice';
-import { commentsReducer } from 'features/ArticleCommentsList';
 import ArticleDetailsPage from './ArticleDetailsPage';
 
 export default {
@@ -44,42 +43,11 @@ const state = (loading: boolean, error?: string): DeepPartial<StateSchema> => ({
 			],
 		},
 	},
-	comments: {
-		ids: ['1', '2', '3'],
-		loading,
-		error,
-		entities: {
-			1: {
-				id: '1',
-				user: {
-					id: '1',
-					username: 'username',
-				},
-				text: 'some comment',
-			},
-			2: {
-				id: '2',
-				user: {
-					id: '2',
-					username: 'username',
-				},
-				text: 'some comment',
-			},
-			3: {
-				id: '3',
-				user: {
-					id: '3',
-					username: 'username',
-				},
-				text: 'some comment',
-			},
-		},
-	},
+
 });
 
 const reducers: DeepPartial<ReducersMapObject<StateSchema>> = {
 	article: articleReducer,
-	comments: commentsReducer,
 };
 
 export const ArticleDetailsPageStory = Template.bind({});

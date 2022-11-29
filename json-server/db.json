@@ -1348,6 +1348,30 @@
       "userId": "0",
       "articleId": "6",
       "id": "9wrLxq8"
+    },
+    {
+      "text": "Some comment",
+      "userId": "0",
+      "articleId": "18",
+      "id": "2xVYbDS"
+    },
+    {
+      "text": "Comment",
+      "userId": "0",
+      "articleId": "18",
+      "id": "u0_B_DB"
+    },
+    {
+      "text": "Some text",
+      "userId": "0",
+      "articleId": "18",
+      "id": "6BJp6H8"
+    },
+    {
+      "text": "Hi",
+      "userId": "1",
+      "articleId": "18",
+      "id": "gaBDbC4"
     }
   ],
   "profile": [

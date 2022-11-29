@@ -75,7 +75,6 @@ export const ProfileCard = memo((
 				<Avatar
 					size={AvatarSize.SIZE_L}
 					avatar={data?.avatar}
-					loading={loading}
 				/>
 			</VStack>
 			<HStack gap="32" align="start" className={cls.profileData}>
