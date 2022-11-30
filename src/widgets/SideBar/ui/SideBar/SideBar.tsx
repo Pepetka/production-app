@@ -42,19 +42,19 @@ export const SideBar = memo(({ className }: SideBarProps) => {
 	};
 
 	return (
-		<VStack Tag="aside" justify="between" className={classNames(cls.SideBar, { [cls.collapsed]: collapsed }, [className])}>
-			<div data-testid="sidebar">
+		<VStack data-testid="SideBar" Tag="aside" justify="between" className={classNames(cls.SideBar, { [cls.collapsed]: collapsed }, [className])}>
+			<VStack w100 gap="32">
 				<Button
 					theme={ButtonTheme.CLEAR}
 					className={cls.toggle}
 					onClick={onCollapse}
-					data-testid="toggle"
+					data-testid="SideBar.Toggle"
 					inverted
 				>
 					{collapsed ? '>' : '<'}
 				</Button>
 
-				<VStack Tag="nav" gap="16" align="start" className={cls.links}>
+				<VStack Tag="nav" gap="16" align="start">
 					{Object.entries(links).map(([routeName, { path, authOnly }]) => (
 						<SideBarLink
 							authOnly={authOnly}
@@ -66,7 +66,7 @@ export const SideBar = memo(({ className }: SideBarProps) => {
 						/>
 					))}
 				</VStack>
-			</div>
+			</VStack>
 
 			<Flex direction={collapsed ? 'column' : 'row'} justify="between" gap="8">
 				<ThemeSwitcher />

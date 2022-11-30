@@ -21,6 +21,7 @@ interface InputProps extends HTMLInputProps {
 	value?: string
 	readonly?: boolean
 	onChange?: (value: string) => void
+	'data-testid'?: string
 }
 
 export const Input = (
@@ -34,6 +35,7 @@ export const Input = (
 		autoFocus = false,
 		type = 'text',
 		onChange,
+		'data-testid': dataTestId,
 		...otherProps
 	}: InputProps,
 ) => {
@@ -90,6 +92,7 @@ export const Input = (
 				{floatPlaceholder}
 			</span>
 			<input
+				data-testid={dataTestId}
 				ref={inputRef}
 				className={classNames(cls.Input, { [cls.readOnly]: readonly })}
 				type={type}

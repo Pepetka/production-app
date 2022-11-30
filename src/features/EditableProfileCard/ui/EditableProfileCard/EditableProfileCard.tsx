@@ -8,13 +8,16 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { getProfileFormData } from '../model/selectors/getProfileFormData/getProfileFormData';
-import { getProfileLoading } from '../model/selectors/getProfileLoading/getProfileLoading';
-import { getProfileError } from '../model/selectors/getProfileError/getProfileError';
-import { getProfileValidationErrors } from '../model/selectors/getProfileValidationErrors/getProfileValidationErrors';
-import { getProfileReadOnly } from '../model/selectors/getProfileReadOnly/getProfileReadOnly';
-import { fetchProfileData } from '../model/services/fetchProfileData/fetchProfileData';
-import { profileActions } from '../model/slice/profileSlice';
+import { getProfileFormData } from '../../model/selectors/getProfileFormData/getProfileFormData';
+import { getProfileLoading } from '../../model/selectors/getProfileLoading/getProfileLoading';
+import { getProfileError } from '../../model/selectors/getProfileError/getProfileError';
+import { getProfileValidationErrors } from '../../model/selectors/getProfileValidationErrors/getProfileValidationErrors';
+import { getProfileReadOnly } from '../../model/selectors/getProfileReadOnly/getProfileReadOnly';
+import { fetchProfileData } from '../../model/services/fetchProfileData/fetchProfileData';
+import { profileActions } from '../../model/slice/profileSlice';
+import {
+	EditableProfileCardHeader,
+} from '../EditableProfileCardHeader/EditableProfileCardHeader';
 
 export const EditableProfileCard = memo(
 	() => {
@@ -71,10 +74,14 @@ export const EditableProfileCard = memo(
 
 		return (
 			<>
+				<EditableProfileCardHeader />
 				{validationErrors?.map(
-					(error) => <Text key={error} title={t(error)} theme={TextTheme.ERROR} align="center" />,
+					(error) => (
+						<Text data-testid={`EditableProfileCard.${error}`} key={error} title={t(error)} theme={TextTheme.ERROR} align="center" />
+					),
 				)}
 				<ProfileCard
+					data-testid="EditableProfileCard"
 					data={profile}
 					error={error}
 					loading={loading}

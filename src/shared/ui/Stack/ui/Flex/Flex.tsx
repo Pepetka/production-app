@@ -45,10 +45,11 @@ export interface FlexProps {
 	w100?: boolean
 	h100?: boolean
 	Tag?: TagType
+	'data-testid'?: string
 }
 
 export const Flex = ({
-	className, children, align = 'center', direction, justify = 'start', gap, w100, h100, Tag = 'div',
+	className, children, align = 'center', direction, justify = 'start', gap, w100, h100, Tag = 'div', 'data-testid': dataTestId,
 }: FlexProps) => {
 	const classes = [
 		alignClasses[align],
@@ -58,7 +59,7 @@ export const Flex = ({
 	];
 
 	return (
-		<Tag className={classNames(cls.Flex, { [gapClasses[gap!]]: gap, [cls.w100]: w100, [cls.h100]: h100 }, classes)}>
+		<Tag data-testid={dataTestId} className={classNames(cls.Flex, { [gapClasses[gap!]]: gap, [cls.w100]: w100, [cls.h100]: h100 }, classes)}>
 			{children}
 		</Tag>
 	);

@@ -24,12 +24,16 @@ interface TextProps {
 	size?: TextSize
 	invert?: boolean
 	TitleTag?: TagType
+	'data-testid'?: string
 }
 
 export const Text = memo(({
-	className, text, title, align = 'left', theme = TextTheme.PRIMARY, size = TextSize.M, invert, TitleTag = 'p',
+	className, text, title, align = 'left', theme = TextTheme.PRIMARY, size = TextSize.M, invert, TitleTag = 'p', 'data-testid': dataTestId,
 }: TextProps) => (
-	<div className={classNames('', { [cls.invert]: invert }, [className, cls[theme], cls[size], cls[align]])}>
+	<div
+		data-testid={dataTestId}
+		className={classNames('', { [cls.invert]: invert }, [className, cls[theme], cls[size], cls[align]])}
+	>
 		{title && <TitleTag className={cls.title}>{title}</TitleTag>}
 		{text && <p className={cls.text}>{text}</p>}
 	</div>

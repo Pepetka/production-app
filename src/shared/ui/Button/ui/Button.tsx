@@ -1,5 +1,5 @@
 import {
-	ButtonHTMLAttributes, ForwardedRef, forwardRef, memo, ReactNode,
+	ButtonHTMLAttributes, ForwardedRef, forwardRef, ReactNode,
 } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 
@@ -21,12 +21,14 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	children: ReactNode
 	hover?: boolean
 	w100?: boolean
+	'data-testid'?: string
 }
 
 export const Button = forwardRef(({
-	className, inverted, theme = ButtonTheme.PRIMARY, children, hover = true, w100 = false, ...buttonProps
+	className, inverted, theme = ButtonTheme.PRIMARY, children, hover = true, w100 = false, 'data-testid': dataTestId, ...buttonProps
 }: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) => (
 	<button
+		data-testid={dataTestId}
 		ref={ref}
 		type="button"
 		className={classNames(cls.Button, { [cls.inverted]: inverted, [cls.hover]: hover, [cls.w100]: w100 }, [className, cls[theme]])}

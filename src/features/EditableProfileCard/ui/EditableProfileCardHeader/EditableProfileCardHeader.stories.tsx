@@ -1,19 +1,19 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { StateSchema } from 'app/provider/Store';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { profileReducer } from 'features/EditableProfileCard';
 import { ReducersMapObject } from '@reduxjs/toolkit';
-import { ProfilePageHeader } from './ProfilePageHeader';
+import { profileReducer } from '../../model/slice/profileSlice';
+import { EditableProfileCardHeader } from './EditableProfileCardHeader';
 
 export default {
-	title: 'pages/ProfilePage/ProfilePageHeader',
-	component: ProfilePageHeader,
+	title: 'features/EditableProfileCard/EditableProfileCardHeader',
+	component: EditableProfileCardHeader,
 	argTypes: {
 		backgroundColor: { control: 'color' },
 	},
-} as ComponentMeta<typeof ProfilePageHeader>;
+} as ComponentMeta<typeof EditableProfileCardHeader>;
 
-const Template: ComponentStory<typeof ProfilePageHeader> = (args) => <ProfilePageHeader {...args} />;
+const Template: ComponentStory<typeof EditableProfileCardHeader> = (args) => <EditableProfileCardHeader {...args} />;
 
 const state: DeepPartial<StateSchema> = {
 	profile: {

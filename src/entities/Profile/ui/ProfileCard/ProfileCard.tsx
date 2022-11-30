@@ -27,6 +27,7 @@ interface ProfileCardProps {
 	onChangeCity?: (value: string) => void
 	onChangeCountry?: (value: Country) => void
 	onChangeCurrency?: (value: Currency) => void
+	'data-testid'?: string
 }
 
 export const ProfileCard = memo((
@@ -44,6 +45,7 @@ export const ProfileCard = memo((
 		onChangeCity,
 		onChangeCurrency,
 		onChangeCountry,
+		'data-testid': dataTestId,
 	}: ProfileCardProps,
 ) => {
 	const { t } = useTranslation('profile');
@@ -70,7 +72,7 @@ export const ProfileCard = memo((
 	}
 
 	return (
-		<HStack align="start" className={classNames(cls.ProfileCard, {}, [className])}>
+		<HStack data-testid={dataTestId} align="start" className={classNames(cls.ProfileCard, {}, [className])}>
 			<VStack gap="16" justify="start" className={cls.column}>
 				<Avatar
 					size={AvatarSize.SIZE_L}
@@ -80,6 +82,7 @@ export const ProfileCard = memo((
 			<HStack gap="32" align="start" className={cls.profileData}>
 				<VStack gap="16" justify="start" className={cls.column}>
 					<Input
+						data-testid={`${dataTestId}.Username`}
 						readonly={readonly}
 						textInvert={readonly}
 						theme={readonly ? InputTheme.INVERT : InputTheme.PRIMARY}
@@ -104,6 +107,7 @@ export const ProfileCard = memo((
 						floatPlaceholder={t('Lastname')}
 					/>
 					<Input
+						data-testid={`${dataTestId}.Age`}
 						readonly={readonly}
 						textInvert={readonly}
 						theme={readonly ? InputTheme.INVERT : InputTheme.PRIMARY}

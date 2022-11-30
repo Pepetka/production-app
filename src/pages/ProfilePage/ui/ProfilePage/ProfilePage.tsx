@@ -2,12 +2,10 @@ import { memo } from 'react';
 import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { EditableProfileCard, profileReducer } from 'features/EditableProfileCard';
 import { Page } from 'widgets/Page';
-import { ProfilePageHeader } from '../ProfilePageHeader/ProfilePageHeader';
 
 const ProfilePage = memo(() => (
 	<Page>
 		<DynamicModuleLoader reducerKey="profile" reducer={profileReducer}>
-			<ProfilePageHeader />
 			<EditableProfileCard />
 		</DynamicModuleLoader>
 	</Page>
