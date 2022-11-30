@@ -6,7 +6,7 @@ import {
 } from 'react';
 import { LoginModal } from 'features/AuthByUsername';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAuthData, userActions } from 'entities/User';
+import { getAuthData, getIsAdmin, userActions } from 'entities/User';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 import { Text, TextTheme } from 'shared/ui/Text';
 import { HStack } from 'shared/ui/Stack';
@@ -25,6 +25,7 @@ export const NavBar = memo(({ className }: NavBarProps) => {
 	const [isAuthModal, setIsAuthModal] = useState(false);
 	const [isAuth, setIsAuth] = useState(false);
 	const authRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+	const isAdmin = useSelector(getIsAdmin);
 
 	const onAuth = useCallback(() => setIsAuth(true), []);
 
@@ -57,24 +58,19 @@ export const NavBar = memo(({ className }: NavBarProps) => {
 	}, [dispatch]);
 
 	const nameWithTranslation: OptionalRecord<AppRoutes, string> = {
-		[AppRoutes.MAIN]: t('Main'),
-		[AppRoutes.ABOUT]: t('About'),
+		[AppRoutes.ADMIN]: t('Admin'),
 		[AppRoutes.PROFILE]: t('Profile'),
 		[AppRoutes.ARTICLE_CREATE]: t('Create article'),
 	};
 
 	const menuItems: Array<MenuItem> = useMemo(() => ([
-		{
-			content: nameWithTranslation.Main!,
-			href: routePaths.Main,
-		},
-		{
-			content: nameWithTranslation.About!,
-			href: routePaths.About,
-		},
+		...(isAdmin ? [{
+			content: nameWithTranslation.Admin!,
+			href: routePaths.Admin,
+		}] : []),
 		{
 			content: nameWithTranslation.Profile!,
-			href: routePaths.Profile + authData!.id,
+			href: `${routePaths.Profile}${authData?.id}`,
 		},
 		{
 			content: nameWithTranslation.Article_create!,
@@ -84,7 +80,7 @@ export const NavBar = memo(({ className }: NavBarProps) => {
 			content: t('LogOut'),
 			onClick: onLogout,
 		},
-	]), []);
+	]), [authData, isAdmin, nameWithTranslation.Admin, nameWithTranslation.Article_create, nameWithTranslation.Profile, onLogout, t]);
 
 	return (
 		<HStack Tag="header" justify="between" className={classNames(cls.NavBar, {}, [className])}>

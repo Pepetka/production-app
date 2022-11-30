@@ -1,4 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { UserRole } from 'entities/User';
 import {
 	Article, ArticleBlockType, ArticlesView, ArticleType,
 } from '../../model/types/article';
@@ -25,6 +26,7 @@ const article: Article = {
 	user: {
 		username: 'username',
 		id: 'some id',
+		role: UserRole.USER,
 	},
 	blocks: [
 		{

@@ -20,5 +20,7 @@
 	"Create article": "Создать статью",
 	"Prod App": "Prod App",
 	"Article New Page": "Страница создания статьи",
-	"Article Edit Page": "Страница редактирования статьи"
+	"Article Edit Page": "Страница редактирования статьи",
+	"Admin": "Админ",
+	"Forbidden page": "Доступ запрещен"
 }

@@ -1,6 +1,6 @@
 import { describe, expect, test } from '@jest/globals';
 import { userActions, userReducer } from './userSlice';
-import { UserSchema } from '../types/userSchema';
+import { UserRole, UserSchema } from '../types/userSchema';
 
 describe('userSlice', () => {
 	test('setAuthData', () => {
@@ -8,6 +8,7 @@ describe('userSlice', () => {
 			authData: {
 				id: 'some id',
 				username: 'some username',
+				role: UserRole.USER,
 			},
 			_init: true,
 		};
@@ -16,12 +17,14 @@ describe('userSlice', () => {
 			username: 'username',
 			id: 'id',
 			avatar: 'avatar',
+			role: UserRole.USER,
 		}))).toEqual({
 			...state,
 			authData: {
 				username: 'username',
 				id: 'id',
 				avatar: 'avatar',
+				role: UserRole.USER,
 			},
 		});
 	});
@@ -31,6 +34,7 @@ describe('userSlice', () => {
 			authData: {
 				id: 'some id',
 				username: 'some username',
+				role: UserRole.USER,
 			},
 			_init: true,
 		};
@@ -46,6 +50,7 @@ describe('userSlice', () => {
 			authData: {
 				id: 'some id',
 				username: 'some username',
+				role: UserRole.USER,
 			},
 			_init: false,
 		};
@@ -61,11 +66,13 @@ describe('userSlice', () => {
 			username: 'username',
 			id: 'id',
 			avatar: 'avatar',
+			role: UserRole.USER,
 		}))).toEqual({
 			authData: {
 				username: 'username',
 				id: 'id',
 				avatar: 'avatar',
+				role: UserRole.USER,
 			},
 			_init: false,
 		});

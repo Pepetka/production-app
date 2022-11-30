@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import AboutPage from './AboutPage';
 
 export default {
-	title: 'pages/AboutPage',
+	title: 'pages/ForbiddenPage',
 	component: AboutPage,
 	argTypes: {
 		backgroundColor: { control: 'color' },

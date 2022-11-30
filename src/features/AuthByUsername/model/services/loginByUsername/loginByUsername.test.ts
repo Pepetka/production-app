@@ -1,12 +1,12 @@
 import { describe, expect, test } from '@jest/globals';
-import { User, userActions } from 'entities/User';
+import { User, userActions, UserRole } from 'entities/User';
 import { TestAsyncThunk } from 'shared/lib/testAsyncThunk/testAsyncThunk';
 import { loginActions } from '../../slice/loginSlice';
 import { loginByUsername } from './loginByUsername';
 
 describe('loginByUsername', () => {
 	test('fulfilled', async () => {
-		const userValue: User = { id: 'some id', username: 'some username' };
+		const userValue: User = { id: 'some id', username: 'some username', role: UserRole.USER };
 
 		const thunk = new TestAsyncThunk(loginByUsername);
 		thunk.api.post.mockReturnValue(Promise.resolve({ data: userValue }));
@@ -17,7 +17,7 @@ describe('loginByUsername', () => {
 		expect(thunk.dispatch).toHaveBeenCalledWith(loginActions.clearLogin());
 		expect(thunk.dispatch).toHaveBeenCalledTimes(4);
 		expect(result.meta.requestStatus).toEqual('fulfilled');
-		expect(result.payload).toEqual({ id: 'some id', username: 'some username' });
+		expect(result.payload).toEqual({ id: 'some id', username: 'some username', role: UserRole.USER });
 	});
 
 	test('rejected with 403', async () => {

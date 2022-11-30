@@ -1,4 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { UserRole } from 'entities/User';
 import {
 	Article, ArticlesView, ArticleBlockType, ArticleType,
 } from '../../model/types/article';
@@ -23,6 +24,7 @@ const articles: Array<Article> = new Array(10).fill(0).map((_, i) => (
 		user: {
 			id: 'some user id',
 			username: 'some username',
+			role: UserRole.USER,
 		},
 		createdAt: 'date',
 		views: 100,
