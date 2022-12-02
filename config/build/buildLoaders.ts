@@ -7,12 +7,6 @@ export function buildLoaders({ isDev }: BuildOptions): RuleSetRule[] {
 	const codeBabelLoader = buildBabelLoader(isDev, false);
 	const tsxCodeBabelLoader = buildBabelLoader(isDev, true);
 
-	// const typescriptLoader = {
-	// 	test: /\.tsx?$/,
-	// 	use: 'ts-loader',
-	// 	exclude: /node_modules/,
-	// };
-
 	const svgLoader = {
 		test: /\.svg$/,
 		use: ['@svgr/webpack'],
