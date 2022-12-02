@@ -1,10 +1,6 @@
 import { Currency } from 'entities/Currency/model/types/currency';
 import { Country } from 'entities/Country/model/types/country';
-
-export enum ValidateProfileError {
-	INCORRECT_USERNAME = 'Incorrect username',
-	INCORRECT_AGE = 'Incorrect age',
-}
+import { ValidateProfileError } from '../consts/consts';
 
 export interface Profile {
 	id?: string

@@ -5,23 +5,8 @@ import { AppLink, AppLinkTheme } from '../../AppLink';
 import { Button, ButtonTheme } from '../../Button';
 import { HStack } from '../../Stack';
 import { PopupPosition } from '../../../types/uiTypes';
+import { MenuItem } from '../model/types/menu';
 import cls from './Menu.module.scss';
-
-interface MenuItemBase {
-	content: string
-}
-
-type MenuItemButton = MenuItemBase & {
-	onClick: () => void
-	href?: never
-}
-
-type MenuItemLink = MenuItemBase & {
-	href: string
-	onClick?: never
-}
-
-export type MenuItem = MenuItemButton | MenuItemLink
 
 interface MenuProps {
 	className?: string

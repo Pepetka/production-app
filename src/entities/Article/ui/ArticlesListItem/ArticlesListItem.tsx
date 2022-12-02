@@ -10,9 +10,12 @@ import { useTranslation } from 'react-i18next';
 import { routePaths } from 'shared/config/routeConfig/routeConfig';
 import { AppLink } from 'shared/ui/AppLink';
 import { HStack, VStack } from 'shared/ui/Stack';
-import {
-	Article, ArticleBlockType, ArticlesView, ArticleTextBlock, ArticleType,
+import type {
+	Article, ArticleTextBlock,
 } from '../../model/types/article';
+import {
+	ArticleBlockType, ArticlesView, ArticleType,
+} from '../../model/consts/consts';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import cls from './ArticlesListItem.module.scss';
 

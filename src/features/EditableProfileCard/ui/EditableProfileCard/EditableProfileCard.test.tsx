@@ -4,9 +4,9 @@ import { componentTestRender } from 'shared/lib/componentTestRender/comopnentTes
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import { $api } from 'shared/api/api';
-import { ValidateProfileError } from '../../model/types/profileSchema';
 import { profileReducer } from '../../model/slice/profileSlice';
 import { EditableProfileCard } from './EditableProfileCard';
+import { ValidateProfileError } from '../../model/consts/consts';
 
 describe('widgets/EditableProfileCard', () => {
 	const data = {

@@ -1,6 +1,7 @@
 import { describe, expect, test } from '@jest/globals';
 import { userActions, userReducer } from './userSlice';
-import { UserRole, UserSchema } from '../types/userSchema';
+import { UserSchema } from '../types/userSchema';
+import { UserRole } from '../../consts/consts';
 
 describe('userSlice', () => {
 	test('setAuthData', () => {

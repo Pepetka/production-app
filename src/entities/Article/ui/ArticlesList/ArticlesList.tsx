@@ -9,7 +9,8 @@ import { useAppEffect } from 'shared/lib/hooks/useAppEffect/useAppEffect';
 import { useSafeScroll } from 'shared/lib/hooks/useSafeScroll/useSafeScroll';
 import { ArticlesListSkeleton } from '../ArticlesListSkeleton/ArticlesListSkeleton';
 import { ArticlesListItem } from '../ArticlesListItem/ArticlesListItem';
-import { Article, ArticlesView } from '../../model/types/article';
+import type { Article } from '../../model/types/article';
+import { ArticlesView } from '../../model/consts/consts';
 import cls from './ArticlesList.module.scss';
 
 interface FooterProps {
