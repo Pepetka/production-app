@@ -1,6 +1,6 @@
 import { memo, useCallback } from 'react';
 import { Text } from 'shared/ui/Text';
-import { Comment, CommentForm, CommentList } from 'entities/Comment';
+import { CommentForm, CommentList } from 'entities/Comment';
 import { VStack } from 'shared/ui/Stack';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
