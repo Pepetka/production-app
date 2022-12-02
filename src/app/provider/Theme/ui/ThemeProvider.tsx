@@ -1,12 +1,16 @@
 import {
-	FC, useEffect, useMemo, useState,
+	ReactNode, useEffect, useMemo, useState,
 } from 'react';
 import { LOCAL_STORAGE_THEME_KEY } from 'shared/const/localstorage';
 import { Theme, ThemeContext } from '../lib/ThemeContext';
 
-const baseTheme: Theme =	(localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme) ?? Theme.LIGHT_THEME;
+const baseTheme: Theme = (localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme) ?? Theme.LIGHT_THEME;
 
-export const ThemeProvider: FC = ({ children }) => {
+interface ThemeProviderProps {
+	children: ReactNode
+}
+
+export const ThemeProvider = ({ children }: ThemeProviderProps) => {
 	const [theme, setTheme] = useState<Theme>(baseTheme);
 
 	useEffect(() => {
