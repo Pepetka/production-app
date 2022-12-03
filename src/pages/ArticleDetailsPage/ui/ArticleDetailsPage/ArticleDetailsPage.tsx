@@ -8,7 +8,11 @@ import { ArticleRecommendations } from 'features/ArticleRecommendations';
 import { VStack } from 'shared/ui/Stack';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 
-const ArticleDetailsPage = memo(() => {
+interface ArticleDetailsPageProps {
+	storybookId?: string
+}
+
+const ArticleDetailsPage = memo(({ storybookId }: ArticleDetailsPageProps) => {
 	const params = useParams<{id: string}>();
 	const articleError = useSelector(getArticleError);
 
@@ -20,7 +24,7 @@ const ArticleDetailsPage = memo(() => {
 				{!articleError && (
 					<>
 						<ArticleRecommendations />
-						<ArticleComments articleId={params.id!} />
+						<ArticleComments articleId={storybookId ?? params.id!} />
 					</>
 				)}
 			</VStack>
