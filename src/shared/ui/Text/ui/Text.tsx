@@ -9,6 +9,7 @@ export enum TextTheme {
 
 type TextAlign = 'center' | 'right' | 'left'
 export enum TextSize {
+	S = 'size_s',
 	M = 'size_m',
 	L = 'size_l',
 }
@@ -25,16 +26,17 @@ interface TextProps {
 	invert?: boolean
 	TitleTag?: TagType
 	'data-testid'?: string
+	noWrap?: boolean
 }
 
 export const Text = memo(({
-	className, text, title, align = 'left', theme = TextTheme.PRIMARY, size = TextSize.M, invert, TitleTag = 'p', 'data-testid': dataTestId,
+	className, text, title, align = 'left', theme = TextTheme.PRIMARY, noWrap, size = TextSize.M, invert, TitleTag = 'p', 'data-testid': dataTestId,
 }: TextProps) => (
 	<div
 		data-testid={dataTestId}
 		className={classNames('', { [cls.invert]: invert }, [className, cls[theme], cls[size], cls[align]])}
 	>
-		{title && <TitleTag className={cls.title}>{title}</TitleTag>}
-		{text && <p className={cls.text}>{text}</p>}
+		{title && <TitleTag className={classNames(cls.title, { [cls.noWrap]: noWrap })}>{title}</TitleTag>}
+		{text && <p className={classNames(cls.text, { [cls.noWrap]: noWrap })}>{text}</p>}
 	</div>
 ));

@@ -1,6 +1,6 @@
 import { memo, useMemo } from 'react';
 import { ArticleSortField } from 'entities/Article';
-import { Select, SelectTheme } from 'shared/ui/Select';
+import { Select, SelectTheme } from 'shared/ui/Popups/ui/Select';
 import { useTranslation } from 'react-i18next';
 import { SortOrder } from 'shared/types';
 import { HStack } from 'shared/ui/Stack';

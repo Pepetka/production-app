@@ -2,11 +2,21 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Menu } from './Menu';
 
 export default {
-	title: 'shared/Menu',
+	title: 'shared/Popups/Menu',
 	component: Menu,
 	argTypes: {
 		backgroundColor: { control: 'color' },
 	},
+	decorators: [
+		(StoryComponent) => (
+			<div style={{
+				width: '500px', height: '300px', display: 'flex', justifyContent: 'center', alignItems: 'center',
+			}}
+			>
+				<StoryComponent />
+			</div>
+		),
+	],
 } as ComponentMeta<typeof Menu>;
 
 const Template: ComponentStory<typeof Menu> = (args) => <Menu {...args} />;

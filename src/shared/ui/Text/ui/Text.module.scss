@@ -30,6 +30,16 @@
 	text-align: right;
 }
 
+.size_s {
+	.text {
+		font: var(--font-s);
+	}
+
+	.title {
+		font: var(--font-m);
+	}
+}
+
 .size_m {
 	.text {
 		font: var(--font-m);
@@ -58,4 +68,8 @@
 	.text {
 		color: var(--invert-secondary-color);
 	}
+}
+
+.noWrap {
+	white-space: nowrap;
 }

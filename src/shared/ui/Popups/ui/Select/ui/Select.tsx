@@ -1,8 +1,8 @@
 import { memo, useMemo } from 'react';
 import { Listbox } from '@headlessui/react';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { HStack } from '../../Stack';
-import { Button, ButtonTheme } from '../../Button';
+import { HStack } from '../../../../Stack';
+import { Button, ButtonTheme } from '../../../../Button';
 import cls from './Select.module.scss';
 
 export enum SelectTheme {
@@ -20,6 +20,7 @@ interface SelectProps <T extends string>{
 	options: Record<string, string>
 	selected?: T
 	label?: string
+	popupPosition?: 'top' | 'bottom'
 }
 
 const typedMemo: <T>(c: T) => T = memo;
@@ -35,7 +36,7 @@ export const Select = typedMemo(<T extends string>(
 		options,
 		selected,
 		label,
-
+		popupPosition = 'bottom',
 	}: SelectProps<T>,
 ) => {
 	const optionsList = useMemo(() => {
@@ -73,7 +74,7 @@ export const Select = typedMemo(<T extends string>(
 								</HStack>
 							</Button>
 						</Listbox.Button>
-						<Listbox.Options className={cls.options}>
+						<Listbox.Options className={classNames(cls.options, {}, [cls[popupPosition]])}>
 							{optionsList.map(([key, value]) => (
 								<Listbox.Option
 									key={key}

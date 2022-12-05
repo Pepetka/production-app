@@ -10,7 +10,7 @@ import { Avatar, AvatarSize } from 'shared/ui/Avatar';
 import { Currency, CurrencySelect } from 'entities/Currency';
 import { Country, CountrySelect } from 'entities/Country';
 import { HStack, VStack } from 'shared/ui/Stack';
-import { SelectTheme } from 'shared/ui/Select';
+import { SelectTheme } from 'shared/ui/Popups/ui/Select';
 import cls from './ProfileCard.module.scss';
 
 interface ProfileCardProps {

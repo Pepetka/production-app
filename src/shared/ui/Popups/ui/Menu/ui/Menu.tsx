@@ -1,12 +1,13 @@
-import { Fragment, memo, ReactNode } from 'react';
+import { memo, ReactNode } from 'react';
 import { Menu as DropDown } from '@headlessui/react';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { AppLink, AppLinkTheme } from '../../AppLink';
-import { Button, ButtonTheme } from '../../Button';
-import { HStack } from '../../Stack';
-import { PopupPosition } from '../../../types/uiTypes';
+import { AppLink, AppLinkTheme } from '../../../../AppLink';
+import { Button, ButtonTheme } from '../../../../Button';
+import { HStack } from '../../../../Stack';
+import { PopupPosition } from '../../../../../types/uiTypes';
 import { MenuItem } from '../model/types/menu';
 import cls from './Menu.module.scss';
+import clsPopups from '../../../style/Popups.module.scss';
 
 interface MenuProps {
 	className?: string
@@ -31,7 +32,7 @@ export const Menu = memo(
 							</HStack>
 						</Button>
 					</DropDown.Button>
-					<DropDown.Items className={classNames(cls.items, {}, [cls[popupPosition]])}>
+					<DropDown.Items className={classNames(cls.items, {}, [clsPopups[popupPosition]])}>
 						{menuItems.map((el) => {
 							if (el.onClick) {
 								return (
