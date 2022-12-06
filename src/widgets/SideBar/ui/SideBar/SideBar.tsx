@@ -28,7 +28,7 @@ interface SideBarProps {
 }
 export const SideBar = memo(({ className }: SideBarProps) => {
 	const [collapsed, setCollapsed] = useState(true);
-	const userId = useSelector(getAuthData)?.id;
+	const authData = useSelector(getAuthData);
 
 	const onCollapse = useCallback(() => {
 		setCollapsed((collapsed) => !collapsed);
@@ -37,7 +37,7 @@ export const SideBar = memo(({ className }: SideBarProps) => {
 	const links: DeepPartial<typeof routeConfig> = {
 		[AppRoutes.MAIN]: { path: routePaths.Main, authOnly: routeConfig.Main.authOnly },
 		[AppRoutes.ABOUT]: { path: routePaths.About, authOnly: routeConfig.About.authOnly },
-		[AppRoutes.PROFILE]: { path: routePaths.Profile + userId, authOnly: routeConfig.Profile.authOnly },
+		[AppRoutes.PROFILE]: { path: routePaths.Profile + (authData?.id ?? ''), authOnly: routeConfig.Profile.authOnly },
 		[AppRoutes.ARTICLES]: { path: routePaths.Articles, authOnly: routeConfig.Articles.authOnly },
 	};
 

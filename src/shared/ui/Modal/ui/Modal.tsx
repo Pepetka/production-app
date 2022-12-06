@@ -1,8 +1,9 @@
 import {
-	ReactNode, MouseEvent, useState, useRef, useEffect, useCallback,
+	ReactNode, useCallback, useEffect, useRef, useState,
 } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTheme } from 'app/provider/Theme';
+import { Overlay } from '../../Overlay';
 import { HStack } from '../../Stack';
 import { Portal } from '../../Portal';
 
@@ -41,10 +42,6 @@ export const Modal = ({
 	useEffect(() => {
 		if (isOpen) setIsMounted(true);
 	}, [isOpen]);
-
-	const onContentClick = (event: MouseEvent) => {
-		event.stopPropagation();
-	};
 
 	const onCloseHandler = useCallback(
 		() => {
@@ -87,13 +84,12 @@ export const Modal = ({
 			<div
 				className={classNames(cls.Modal, { [cls.open]: isOpening, [cls.close]: isClosing }, [className, theme, 'app_modal'])}
 			>
-				<div onClick={onCloseHandler} className={cls.overlay}>
-					<HStack justify="center" className={cls.contentWrapper}>
-						<div className={cls.content} onClick={onContentClick}>
-							{children}
-						</div>
-					</HStack>
-				</div>
+				<Overlay onClick={onCloseHandler} />
+				<HStack justify="center" className={cls.contentWrapper}>
+					<div className={cls.content}>
+						{children}
+					</div>
+				</HStack>
 			</div>
 		</Portal>
 	);

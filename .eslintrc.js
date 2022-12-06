@@ -21,7 +21,6 @@ module.exports = {
 		sourceType: 'module',
 	},
 	plugins: [
-		// 'pepetka-plugin',
 		'ulbi-tv-plugin',
 		'react',
 		'jsx-a11y',
@@ -30,7 +29,6 @@ module.exports = {
 		'react-hooks',
 	],
 	rules: {
-		// 'pepetka-plugin/path-checker': 'error',
 		'ulbi-tv-plugin/path-checker': 'error',
 		'react/no-array-index-key': 'off',
 		'react/jsx-indent': [2, 'tab'],

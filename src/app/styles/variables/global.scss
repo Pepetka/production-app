@@ -1,4 +1,5 @@
 :root {
+	// font
 	--font-family-main: verdana, geneva, sans-serif;
 	--font-size-s: 8px;
 	--font-line-s: 16px;
@@ -12,13 +13,22 @@
 	--font-size-xl: 32px;
 	--font-line-xl: 40px;
 	--font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-main);
+
+	// width/height
 	--navbar-height: 50px;
 	--sidebar-width: 300px;
 	--sidebar-width-collapsed: 80px;
 	--filters-height: 165px;
-	--modal-z-index: 10;
+
+	// colors
 	--overlay-color: rgba(0 0 0 / 80%);
 	--red-primary-color: red;
 	--red-secondary-color: #850000;
+
+	// other
+	--modal-z-index: 3;
+	--overlay-z-index: 2;
+	--popup-z-index: 2;
+	--hide-z-index: -1;
 	--page-padding: 30px;
 }

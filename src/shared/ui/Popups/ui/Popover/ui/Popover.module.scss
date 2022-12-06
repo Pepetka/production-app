@@ -14,7 +14,7 @@
 .panel {
 	padding: 10px;
 	position: absolute;
-	z-index: 2;
+	z-index: var(--popup-z-index);
 	border-radius: 5px;
 	border: 2px solid var(--invert-bg-color);
 	background: var(--invert-options-bgc);
