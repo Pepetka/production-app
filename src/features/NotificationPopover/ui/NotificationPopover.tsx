@@ -6,6 +6,7 @@ import { Popover } from 'shared/ui/Popups';
 import { Drawer } from 'shared/ui/Drawer';
 import { Button, ButtonTheme } from 'shared/ui/Button';
 import { BrowserView, MobileView } from 'react-device-detect';
+import { AnimationProvider } from 'shared/lib/components/AnimationProvider/AnimationProvider';
 
 export const NotificationPopover = memo(
 	() => {
@@ -19,9 +20,11 @@ export const NotificationPopover = memo(
 					<Button theme={ButtonTheme.CLEAR} onClick={onOpenDrawer}>
 						<Icon theme={IconTheme.INVERT_PRIMARY} SvgIcon={NotificationIcon} />
 					</Button>
-					<Drawer isOpen={isOpen} onCloseDrawer={onCloseDrawer}>
-						<NotificationList invert w100 />
-					</Drawer>
+					<AnimationProvider>
+						<Drawer isOpen={isOpen} onCloseDrawer={onCloseDrawer}>
+							<NotificationList invert w100 />
+						</Drawer>
+					</AnimationProvider>
 				</MobileView>
 				<BrowserView>
 					<Popover
