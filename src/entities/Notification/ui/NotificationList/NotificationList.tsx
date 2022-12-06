@@ -10,10 +10,12 @@ import cls from './NotificationList.module.scss';
 
 interface NotificationListProps {
 	className?: string
+	w100?: boolean
+	invert?: boolean
 }
 
 export const NotificationList = memo(
-	({ className }: NotificationListProps) => {
+	({ className, w100, invert }: NotificationListProps) => {
 		const { error, isLoading, data: notifications } = useFetchNotificationsQuery(null, {
 			pollingInterval: 10000,
 		});
@@ -27,7 +29,7 @@ export const NotificationList = memo(
 
 		if (isLoading) {
 			return (
-				<VStack gap="8" className={classNames(cls.NotificationList, {}, [className])} w100>
+				<VStack gap="8" className={classNames(cls.NotificationList, { [cls.w100]: w100 }, [className])} w100>
 					<NotificationSkeleton />
 					<NotificationSkeleton />
 					<NotificationSkeleton />
@@ -39,8 +41,8 @@ export const NotificationList = memo(
 		}
 
 		return (
-			<VStack gap="8" className={classNames(cls.NotificationList, {}, [className])} w100>
-				{notifications?.map((item) => <NotificationItem key={item.id} notification={item} />)}
+			<VStack gap="8" className={classNames(cls.NotificationList, { [cls.w100]: w100 }, [className])} w100>
+				{notifications?.map((item) => <NotificationItem invert={invert} key={item.id} notification={item} />)}
 			</VStack>
 		);
 	},

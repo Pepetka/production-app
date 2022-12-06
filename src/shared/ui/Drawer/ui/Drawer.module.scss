@@ -1,0 +1,43 @@
+.Drawer {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: var(--hide-z-index);
+	opacity: 0;
+	pointer-events: none;
+}
+
+.content {
+	padding: 15px;
+	border-radius: 5px;
+	background: var(--bg-color);
+	width: 100%;
+	transition: transform 0.3s ease-out;
+	transform: translateY(100%);
+	z-index: var(--modal-z-index);
+	max-height: 60%;
+	overflow-y: auto;
+}
+
+.open {
+	z-index: var(--modal-z-index);
+	opacity: 1;
+	pointer-events: auto;
+
+	.content {
+		transform: translateY(0);
+	}
+}
+
+.close {
+	.content {
+		transform: translateY(100%);
+	}
+}
+
+.contentWrapper {
+	width: 100%;
+	height: 100%;
+}
