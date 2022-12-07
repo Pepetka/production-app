@@ -20,11 +20,9 @@ export const NotificationPopover = memo(
 					<Button theme={ButtonTheme.CLEAR} onClick={onOpenDrawer}>
 						<Icon theme={IconTheme.INVERT_PRIMARY} SvgIcon={NotificationIcon} />
 					</Button>
-					<AnimationProvider>
-						<Drawer isOpen={isOpen} onCloseDrawer={onCloseDrawer}>
-							<NotificationList invert w100 />
-						</Drawer>
-					</AnimationProvider>
+					<Drawer isOpen={isOpen} onCloseDrawer={onCloseDrawer}>
+						<NotificationList invert w100 />
+					</Drawer>
 				</MobileView>
 				<BrowserView>
 					<Popover
