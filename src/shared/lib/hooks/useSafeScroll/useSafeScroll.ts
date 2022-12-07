@@ -1,11 +1,11 @@
 import { MutableRefObject, useCallback } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import {
 	scrollSafeActions,
 	getScrollSafeScrollByPath,
-} from 'widgets/Page';
-import { useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { StateSchema } from 'app/provider/Store';
+} from '@/widgets/Page';
+import { StateSchema } from '@/app/provider/Store';
 import { useAppDispatch } from '../useAppDispatch/useAppDispatch';
 import { useThrottle } from '../useThrottle/useThrottle';
 

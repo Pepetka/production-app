@@ -1,10 +1,10 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { StateSchema } from 'app/provider/Store';
 import { ReducersMapObject } from '@reduxjs/toolkit';
-import { profileReducer, ValidateProfileError } from 'features/EditableProfileCard';
-import { Currency } from 'entities/Currency';
-import { Country } from 'entities/Country';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { StateSchema } from '@/app/provider/Store';
+import { profileReducer, ValidateProfileError } from '@/features/EditableProfileCard';
+import { Currency } from '@/entities/Currency';
+import { Country } from '@/entities/Country';
 import ProfilePage from './ProfilePage';
 
 export default {

@@ -1,18 +1,18 @@
 import {
 	memo, SVGProps, useCallback, useState, VFC,
 } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
-import { LangSwitcher } from 'widgets/LangSwitcher';
-import { Button, ButtonTheme } from 'shared/ui/Button';
-import { AppRoutes, routeConfig, routePaths } from 'shared/config/routeConfig/routeConfig';
-import AboutIcon from 'shared/assets/icons/about_icon.svg';
-import HomeIcon from 'shared/assets/icons/home_icon.svg';
-import ProfileIcon from 'shared/assets/icons/profile_icon.svg';
-import ArticlesIcon from 'shared/assets/icons/articles_icon.svg';
 import { useSelector } from 'react-redux';
-import { getAuthData } from 'entities/User';
-import { Flex, VStack } from 'shared/ui/Stack';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { ThemeSwitcher } from '@/widgets/ThemeSwitcher';
+import { LangSwitcher } from '@/widgets/LangSwitcher';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
+import { AppRoutes, routeConfig, routePaths } from '@/shared/config/routeConfig/routeConfig';
+import AboutIcon from '@/shared/assets/icons/about_icon.svg';
+import HomeIcon from '@/shared/assets/icons/home_icon.svg';
+import ProfileIcon from '@/shared/assets/icons/profile_icon.svg';
+import ArticlesIcon from '@/shared/assets/icons/articles_icon.svg';
+import { getAuthData } from '@/entities/User';
+import { Flex, VStack } from '@/shared/ui/Stack';
 import { SideBarLink } from '../SideBarLink/SideBarLink';
 import cls from './SideBar.module.scss';
 

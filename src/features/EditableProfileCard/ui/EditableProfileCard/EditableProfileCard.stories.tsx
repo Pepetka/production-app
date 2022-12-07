@@ -1,9 +1,9 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { StateSchema } from 'app/provider/Store';
 import { ReducersMapObject } from '@reduxjs/toolkit';
-import { Country } from 'entities/Country';
-import { Currency } from 'entities/Currency';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { StateSchema } from '@/app/provider/Store';
+import { Country } from '@/entities/Country';
+import { Currency } from '@/entities/Currency';
 import { profileReducer } from '../../model/slice/profileSlice';
 import { EditableProfileCard } from './EditableProfileCard';
 import { ValidateProfileError } from '../../model/consts/consts';

@@ -1,6 +1,6 @@
-import { Skeleton } from 'shared/ui/Skeleton';
 import { memo } from 'react';
-import { VStack } from 'shared/ui/Stack';
+import { Skeleton } from '@/shared/ui/Skeleton';
+import { VStack } from '@/shared/ui/Stack';
 import cls from './ArticleSkeleton.module.scss';
 
 export const ArticleSkeleton = memo(() => (

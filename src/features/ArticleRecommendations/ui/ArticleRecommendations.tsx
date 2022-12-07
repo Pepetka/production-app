@@ -1,9 +1,9 @@
 import { memo } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { ArticlesList } from 'entities/Article';
-import { Text } from 'shared/ui/Text';
 import { useTranslation } from 'react-i18next';
-import { VStack } from 'shared/ui/Stack';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { ArticlesList } from '@/entities/Article';
+import { Text } from '@/shared/ui/Text';
+import { VStack } from '@/shared/ui/Stack';
 import { useFetchRecommendationsQuery } from '../api/articleRecommendations';
 import cls from './ArticleRecommendations.module.scss';
 

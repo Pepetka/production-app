@@ -1,7 +1,7 @@
 import { memo } from 'react';
-import { Text } from 'shared/ui/Text';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { AppLink } from 'shared/ui/AppLink';
+import { Text } from '@/shared/ui/Text';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { AppLink } from '@/shared/ui/AppLink';
 import { Notification } from '../../model/types/notification';
 import cls from './NotificationItem.module.scss';
 

@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import DoneIcon from 'shared/assets/icons/done_icon.svg';
+import DoneIcon from '@/shared/assets/icons/done_icon.svg';
 import { Icon, IconTheme } from './Icon';
 
 export default {

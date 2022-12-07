@@ -1,10 +1,10 @@
 import { ReactNode } from 'react';
 import { render } from '@testing-library/react';
 import { I18nextProvider } from 'react-i18next';
-import i18nConfigForTesting from 'shared/config/i18n/i18nConfigForTesting';
 import { MemoryRouter } from 'react-router-dom';
-import { StateSchema, StoreProvider } from 'app/provider/Store';
 import { ReducersMapObject } from '@reduxjs/toolkit';
+import i18nConfigForTesting from '@/shared/config/i18n/i18nConfigForTesting';
+import { StateSchema, StoreProvider } from '@/app/provider/Store';
 
 interface ComponentTestRenderOptions {
 	route?: string

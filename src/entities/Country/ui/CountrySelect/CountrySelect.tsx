@@ -1,6 +1,6 @@
-import { Select, SelectTheme } from 'shared/ui/Popups/ui/Select';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Select, SelectTheme } from '@/shared/ui/Popups/ui/Select';
 import { Country } from '../../model/types/country';
 
 interface CountrySelectProps {

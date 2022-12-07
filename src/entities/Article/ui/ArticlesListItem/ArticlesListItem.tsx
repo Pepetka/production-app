@@ -1,15 +1,15 @@
 import { HTMLAttributeAnchorTarget, memo, useMemo } from 'react';
-import { Text } from 'shared/ui/Text';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Icon, IconTheme } from 'shared/ui/Icon';
-import EyeIcon from 'shared/assets/icons/eye_icon.svg';
-import { Card } from 'shared/ui/Card';
-import { Button, ButtonTheme } from 'shared/ui/Button';
-import { Avatar, AvatarSize } from 'shared/ui/Avatar';
 import { useTranslation } from 'react-i18next';
-import { routePaths } from 'shared/config/routeConfig/routeConfig';
-import { AppLink } from 'shared/ui/AppLink';
-import { HStack, VStack } from 'shared/ui/Stack';
+import { Text } from '@/shared/ui/Text';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Icon, IconTheme } from '@/shared/ui/Icon';
+import EyeIcon from '@/shared/assets/icons/eye_icon.svg';
+import { Card } from '@/shared/ui/Card';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
+import { Avatar, AvatarSize } from '@/shared/ui/Avatar';
+import { routePaths } from '@/shared/config/routeConfig/routeConfig';
+import { AppLink } from '@/shared/ui/AppLink';
+import { HStack, VStack } from '@/shared/ui/Stack';
 import type {
 	Article, ArticleTextBlock,
 } from '../../model/types/article';

@@ -1,9 +1,9 @@
 import {
 	ReactNode, useCallback, useEffect, useRef, useState,
 } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { useTheme } from 'app/provider/Theme';
-import { useModal } from 'shared/lib/hooks/useModal/useModal';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useTheme } from '@/app/provider/Theme';
+import { useModal } from '@/shared/lib/hooks/useModal/useModal';
 import { Overlay } from '../../Overlay';
 import { HStack } from '../../Stack';
 import { Portal } from '../../Portal';

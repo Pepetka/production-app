@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 import { Provider } from 'react-redux';
-import { createReduxStore } from 'app/provider/Store/config/store';
-import { StateSchema } from 'app/provider/Store/config/StateSchema';
 import { ReducersMapObject } from '@reduxjs/toolkit';
+import { createReduxStore } from '@/app/provider/Store/config/store';
+import { StateSchema } from '@/app/provider/Store/config/StateSchema';
 
 interface StoreProviderProps {
 	children: ReactNode;

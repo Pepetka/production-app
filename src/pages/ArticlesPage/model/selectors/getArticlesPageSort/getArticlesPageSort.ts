@@ -1,5 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { ArticleSortField } from 'entities/Article';
+import { ArticleSortField } from '@/entities/Article';
 import { getArticlesPageState } from '../getArticlesPageState/getArticlesPageState';
 import type { ArticlesPageSchema } from '../../types/articlesPageSchema';
 

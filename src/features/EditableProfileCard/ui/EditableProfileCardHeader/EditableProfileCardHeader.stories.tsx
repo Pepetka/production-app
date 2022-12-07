@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { StateSchema } from 'app/provider/Store';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ReducersMapObject } from '@reduxjs/toolkit';
+import { StateSchema } from '@/app/provider/Store';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { profileReducer } from '../../model/slice/profileSlice';
 import { EditableProfileCardHeader } from './EditableProfileCardHeader';
 

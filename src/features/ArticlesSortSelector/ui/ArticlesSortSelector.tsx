@@ -1,9 +1,9 @@
 import { memo, useMemo } from 'react';
-import { ArticleSortField } from 'entities/Article';
-import { Select, SelectTheme } from 'shared/ui/Popups/ui/Select';
 import { useTranslation } from 'react-i18next';
-import { SortOrder } from 'shared/types';
-import { HStack } from 'shared/ui/Stack';
+import { ArticleSortField } from '@/entities/Article';
+import { Select, SelectTheme } from '@/shared/ui/Popups/ui/Select';
+import { SortOrder } from '@/shared/types';
+import { HStack } from '@/shared/ui/Stack';
 import cls from './ArticlesSortSelector.module.scss';
 
 interface ArticlesSortSelectorProps {

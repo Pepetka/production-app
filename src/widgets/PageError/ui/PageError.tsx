@@ -1,10 +1,10 @@
-import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Button } from 'shared/ui/Button';
-import { useTheme } from 'app/provider/Theme';
 import { memo } from 'react';
-import { VStack } from 'shared/ui/Stack';
-import { Text } from 'shared/ui/Text';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Button } from '@/shared/ui/Button';
+import { useTheme } from '@/app/provider/Theme';
+import { VStack } from '@/shared/ui/Stack';
+import { Text } from '@/shared/ui/Text';
 import cls from './PageError.module.scss';
 
 interface PageErrorProps {

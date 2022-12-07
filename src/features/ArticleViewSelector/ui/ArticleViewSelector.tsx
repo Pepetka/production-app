@@ -1,10 +1,10 @@
 import { memo } from 'react';
-import { Button, ButtonTheme } from 'shared/ui/Button';
-import { Icon, IconTheme } from 'shared/ui/Icon';
-import SmallIcon from 'shared/assets/icons/articles-view-small_icon.svg';
-import BigIcon from 'shared/assets/icons/articles-view-big_icon.svg';
-import { ArticlesView } from 'entities/Article';
-import { HStack } from 'shared/ui/Stack';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
+import { Icon, IconTheme } from '@/shared/ui/Icon';
+import SmallIcon from '@/shared/assets/icons/articles-view-small_icon.svg';
+import BigIcon from '@/shared/assets/icons/articles-view-big_icon.svg';
+import { ArticlesView } from '@/entities/Article';
+import { HStack } from '@/shared/ui/Stack';
 
 interface ArticleViewSelectorProps {
 	className?: string

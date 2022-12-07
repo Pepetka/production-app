@@ -1,6 +1,6 @@
 import { memo, ReactNode } from 'react';
 import { Menu as DropDown } from '@headlessui/react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { AppLink, AppLinkTheme } from '../../../../AppLink';
 import { Button, ButtonTheme } from '../../../../Button';
 import { HStack } from '../../../../Stack';

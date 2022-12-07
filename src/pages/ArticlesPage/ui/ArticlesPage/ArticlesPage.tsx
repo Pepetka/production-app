@@ -1,9 +1,9 @@
 import { memo, useCallback, useRef } from 'react';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { Page } from 'widgets/Page';
-import { useAppEffect } from 'shared/lib/hooks/useAppEffect/useAppEffect';
-import { VStack } from 'shared/ui/Stack';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { DynamicModuleLoader } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { Page } from '@/widgets/Page';
+import { useAppEffect } from '@/shared/lib/hooks/useAppEffect/useAppEffect';
+import { VStack } from '@/shared/ui/Stack';
 import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
 import { articlesPageReducer } from '../../model/slice/articlesPageSlice';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';

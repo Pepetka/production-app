@@ -1,12 +1,12 @@
 import {
 	HTMLAttributeAnchorTarget, memo, MutableRefObject, useCallback, useEffect, useRef, useState,
 } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Text } from 'shared/ui/Text';
 import { useTranslation } from 'react-i18next';
 import { ListRange, VirtuosoGrid, VirtuosoGridHandle } from 'react-virtuoso';
-import { useAppEffect } from 'shared/lib/hooks/useAppEffect/useAppEffect';
-import { useSafeScroll } from 'shared/lib/hooks/useSafeScroll/useSafeScroll';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Text } from '@/shared/ui/Text';
+import { useAppEffect } from '@/shared/lib/hooks/useAppEffect/useAppEffect';
+import { useSafeScroll } from '@/shared/lib/hooks/useSafeScroll/useSafeScroll';
 import { ArticlesListSkeleton } from '../ArticlesListSkeleton/ArticlesListSkeleton';
 import { ArticlesListItem } from '../ArticlesListItem/ArticlesListItem';
 import type { Article } from '../../model/types/article';

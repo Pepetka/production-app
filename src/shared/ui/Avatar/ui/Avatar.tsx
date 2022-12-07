@@ -1,7 +1,7 @@
-import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
-import DefaultAvatar from 'shared/assets/imgs/default_avatar.jpeg';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import DefaultAvatar from '@/shared/assets/imgs/default_avatar.jpeg';
 import { HStack } from '../../Stack';
 import cls from './Avatar.module.scss';
 

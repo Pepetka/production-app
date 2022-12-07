@@ -1,11 +1,11 @@
-import { AppLink, AppLinkTheme } from 'shared/ui/AppLink';
-import { classNames } from 'shared/lib/classNames/classNames';
 import { FC, memo, SVGProps } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { getAuthData } from 'entities/User';
-import { Icon, IconTheme } from 'shared/ui/Icon';
-import { HStack } from 'shared/ui/Stack';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { AppLink, AppLinkTheme } from '@/shared/ui/AppLink';
+import { getAuthData } from '@/entities/User';
+import { Icon, IconTheme } from '@/shared/ui/Icon';
+import { HStack } from '@/shared/ui/Stack';
 import cls from './SideBarLink.module.scss';
 
 interface SideBarLinkProps {

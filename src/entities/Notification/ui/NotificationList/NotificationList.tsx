@@ -1,8 +1,8 @@
 import { memo } from 'react';
-import { VStack } from 'shared/ui/Stack';
-import { Text } from 'shared/ui/Text';
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { VStack } from '@/shared/ui/Stack';
+import { Text } from '@/shared/ui/Text';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { NotificationSkeleton } from '../NotificationSkeleton/NotificationSkeleton';
 import { useFetchNotificationsQuery } from '../../api/notification';
 import { NotificationItem } from '../NotificationItem/NotificationItem';

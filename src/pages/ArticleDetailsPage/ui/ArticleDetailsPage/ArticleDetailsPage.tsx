@@ -1,11 +1,11 @@
 import { memo } from 'react';
-import { ArticleDetails, getArticleError } from 'entities/Article';
 import { useParams } from 'react-router-dom';
-import { ArticleComments } from 'features/ArticleComments';
 import { useSelector } from 'react-redux';
-import { Page } from 'widgets/Page';
-import { ArticleRecommendations } from 'features/ArticleRecommendations';
-import { VStack } from 'shared/ui/Stack';
+import { ArticleDetails, getArticleError } from '@/entities/Article';
+import { ArticleComments } from '@/features/ArticleComments';
+import { Page } from '@/widgets/Page';
+import { ArticleRecommendations } from '@/features/ArticleRecommendations';
+import { VStack } from '@/shared/ui/Stack';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 
 interface ArticleDetailsPageProps {

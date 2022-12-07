@@ -1,7 +1,7 @@
 import { memo } from 'react';
-import { Skeleton } from 'shared/ui/Skeleton';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { HStack, VStack } from 'shared/ui/Stack';
+import { Skeleton } from '@/shared/ui/Skeleton';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { HStack, VStack } from '@/shared/ui/Stack';
 import cls from './CommentSkeleton.module.scss';
 
 interface CommentSkeletonProps {

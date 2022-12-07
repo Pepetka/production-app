@@ -1,6 +1,6 @@
 import { describe, expect, test } from '@jest/globals';
-import { User, userActions, UserRole } from 'entities/User';
-import { TestAsyncThunk } from 'shared/lib/testAsyncThunk/testAsyncThunk';
+import { User, userActions, UserRole } from '@/entities/User';
+import { TestAsyncThunk } from '@/shared/lib/testAsyncThunk/testAsyncThunk';
 import { loginActions } from '../../slice/loginSlice';
 import { loginByUsername } from './loginByUsername';
 

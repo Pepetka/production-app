@@ -1,16 +1,16 @@
 import {
 	memo, useEffect, useMemo, useState,
 } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { LoginModal } from 'features/AuthByUsername';
 import { useSelector } from 'react-redux';
-import { getAuthData } from 'entities/User';
-import { Button, ButtonTheme } from 'shared/ui/Button';
-import { Text, TextTheme } from 'shared/ui/Text';
-import { HStack } from 'shared/ui/Stack';
-import { NotificationPopover } from 'features/NotificationPopover';
-import { MenuAvatar } from 'features/MenuAvatar';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { LoginModal } from '@/features/AuthByUsername';
+import { getAuthData } from '@/entities/User';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
+import { Text, TextTheme } from '@/shared/ui/Text';
+import { HStack } from '@/shared/ui/Stack';
+import { NotificationPopover } from '@/features/NotificationPopover';
+import { MenuAvatar } from '@/features/MenuAvatar';
 import cls from './NavBar.module.scss';
 
 interface NavBarProps {
@@ -31,7 +31,7 @@ export const NavBar = memo(({ className }: NavBarProps) => {
 		if (authData) {
 			authTimer = setTimeout(() => {
 				setIsAuth(true);
-			}, 1000);
+			}, 300);
 		}
 
 		return () => {

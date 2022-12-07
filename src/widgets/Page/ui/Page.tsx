@@ -1,9 +1,9 @@
 import {
 	forwardRef, MutableRefObject, ReactNode, useImperativeHandle, useRef,
 } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { useSafeScroll } from 'shared/lib/hooks/useSafeScroll/useSafeScroll';
-import { useInfiniteScroll } from 'shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useSafeScroll } from '@/shared/lib/hooks/useSafeScroll/useSafeScroll';
+import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
 import cls from './Page.module.scss';
 
 interface PageProps {

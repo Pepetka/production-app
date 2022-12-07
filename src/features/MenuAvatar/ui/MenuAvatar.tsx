@@ -1,10 +1,10 @@
 import { memo, useCallback, useMemo } from 'react';
-import { Avatar, AvatarSize } from 'shared/ui/Avatar';
-import { Menu, MenuItem } from 'shared/ui/Popups';
-import { getAuthData, getIsAdmin, userActions } from 'entities/User';
-import { AppRoutes, routePaths } from 'shared/config/routeConfig/routeConfig';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { Avatar, AvatarSize } from '@/shared/ui/Avatar';
+import { Menu, MenuItem } from '@/shared/ui/Popups';
+import { getAuthData, getIsAdmin, userActions } from '@/entities/User';
+import { AppRoutes, routePaths } from '@/shared/config/routeConfig/routeConfig';
 
 interface MenuAvatarProps {
 	onLogoutCallback: () => void

@@ -1,7 +1,7 @@
-import { classNames } from 'shared/lib/classNames/classNames';
-import { Text } from 'shared/ui/Text';
 import { memo } from 'react';
-import { VStack } from 'shared/ui/Stack';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Text } from '@/shared/ui/Text';
+import { VStack } from '@/shared/ui/Stack';
 import { ArticleImgBlock } from '../../model/types/article';
 import cls from './ArticleImgBlockComponent.module.scss';
 

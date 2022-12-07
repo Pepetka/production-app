@@ -1,8 +1,8 @@
 import { memo } from 'react';
-import { Page } from 'widgets/Page';
 import { useParams } from 'react-router-dom';
-import { Text, TextSize } from 'shared/ui/Text';
 import { useTranslation } from 'react-i18next';
+import { Page } from '@/widgets/Page';
+import { Text, TextSize } from '@/shared/ui/Text';
 
 const ArticleEditPage = memo(
 	() => {
