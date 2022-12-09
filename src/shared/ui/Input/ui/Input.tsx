@@ -57,7 +57,7 @@ export const Input = (
 	}, []);
 
 	useEffect(() => {
-		if (value) {
+		if (value || isFocused) {
 			setIsPlaceholder(false);
 		} else if (!isFocused) {
 			setIsPlaceholder(true);

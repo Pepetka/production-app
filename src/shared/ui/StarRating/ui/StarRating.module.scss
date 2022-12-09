@@ -1,0 +1,13 @@
+.star {
+	stroke: var(--primary-color);
+	fill: none;
+}
+
+.fill {
+	stroke: var(--primary-color);
+	fill: var(--primary-color);
+}
+
+.noPointer {
+	cursor: auto;
+}

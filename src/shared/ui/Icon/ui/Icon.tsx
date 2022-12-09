@@ -16,13 +16,14 @@ interface IconProps {
 	SvgIcon: React.VFC<React.SVGProps<SVGSVGElement>>
 	theme?: IconTheme
 	stroke?: boolean
+	size?: 'size_s' | 'size_m' | 'size_l' | 'size_xs'
 }
 
 export const Icon = memo(
 	({
-		className, SvgIcon, theme = IconTheme.PRIMARY, stroke,
+		className, SvgIcon, theme = IconTheme.PRIMARY, stroke, size = 'size_xs',
 	}: IconProps) => (
-		<HStack className={classNames('', { [cls.stroke]: stroke }, [className, cls[theme]])}>
+		<HStack className={classNames('', { [cls.stroke]: stroke }, [className, cls[theme], cls[size]])}>
 			<SvgIcon />
 		</HStack>
 	),

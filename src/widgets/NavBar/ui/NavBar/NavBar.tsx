@@ -29,6 +29,7 @@ export const NavBar = memo(({ className }: NavBarProps) => {
 		setIsAuthData(!!authData);
 
 		if (authData) {
+			setIsAuthModal(false);
 			authTimer = setTimeout(() => {
 				setIsAuth(true);
 			}, 300);
@@ -58,7 +59,7 @@ export const NavBar = memo(({ className }: NavBarProps) => {
 
 	return (
 		<HStack Tag="header" justify="between" className={classNames(cls.NavBar, {}, [className])}>
-			{!isAuth && <LoginModal isOpen={isAuthModal} isClose={!!authData} onCloseModal={onCloseModal} />}
+			{!isAuth && <LoginModal isOpen={isAuthModal} onCloseModal={onCloseModal} />}
 			<Text className={cls.logo} title={t('Prod App')} align="center" theme={TextTheme.PRIMARY} invert />
 			<HStack Tag="nav" gap="16" justify="end" className={classNames(cls.links)}>
 				{isAuthData ? (

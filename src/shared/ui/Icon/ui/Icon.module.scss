@@ -37,3 +37,27 @@
 		stroke: var(--red-primary-color);
 	}
 }
+
+.size_xs {
+	svg {
+		width: 20px;
+	}
+}
+
+.size_s {
+	svg {
+		width: 24px;
+	}
+}
+
+.size_m {
+	svg {
+		width: 32px;
+	}
+}
+
+.size_l {
+	svg {
+		width: 40px;
+	}
+}

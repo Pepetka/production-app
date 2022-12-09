@@ -7,6 +7,7 @@ import { Page } from '@/widgets/Page';
 import { ArticleRecommendations } from '@/features/ArticleRecommendations';
 import { VStack } from '@/shared/ui/Stack';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
+import { ArticleRating } from '@/features/ArticleRating';
 
 interface ArticleDetailsPageProps {
 	storybookId?: string
@@ -23,6 +24,7 @@ const ArticleDetailsPage = memo(({ storybookId }: ArticleDetailsPageProps) => {
 				<ArticleDetails id={params.id!} />
 				{!articleError && (
 					<>
+						<ArticleRating articleId={storybookId ?? params.id!} />
 						<ArticleRecommendations />
 						<ArticleComments articleId={storybookId ?? params.id!} />
 					</>

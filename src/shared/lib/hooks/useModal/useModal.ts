@@ -5,29 +5,34 @@ import {
 interface UseModalProps {
 	isOpen: boolean
 	onClose?: () => void
-	isClose: boolean
+	callback?: () => void
 }
 
-export const useModal = ({ isOpen, onClose, isClose }: UseModalProps) => {
+export const useModal = ({ isOpen, onClose, callback }: UseModalProps) => {
 	const [isClosing, setIsClosing] = useState(false);
 	const [isOpening, setIsOpening] = useState(false);
 	const [isMounted, setIsMounted] = useState(false);
 	const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-	const openTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+	const onCloseWithCallback = useCallback(() => {
+		onClose?.();
+		callback?.();
+	}, [callback, onClose]);
+
 	useEffect(() => {
+		let openTimeout: ReturnType<typeof setTimeout>;
 		if (isOpen) {
-			openTimeoutRef.current = setTimeout(() => {
+			openTimeout = setTimeout(() => {
 				setIsOpening(true);
 			});
+
+			setIsMounted(true);
 		}
 
 		return () => {
-			clearTimeout(openTimeoutRef.current!);
+			clearTimeout(openTimeout);
+			if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
 		};
-	}, [isOpen]);
-
-	useEffect(() => {
-		if (isOpen) setIsMounted(true);
 	}, [isOpen]);
 
 	const onCloseHandler = useCallback(
@@ -36,22 +41,22 @@ export const useModal = ({ isOpen, onClose, isClose }: UseModalProps) => {
 				setIsClosing(true);
 
 				closeTimeoutRef.current = setTimeout(() => {
-					onClose();
+					onCloseWithCallback();
 					setIsClosing(false);
 					setIsOpening(false);
 				}, 300);
 			}
 		},
-		[onClose],
+		[onClose, onCloseWithCallback],
 	);
 
 	useEffect(() => {
-		if (isClose) onCloseHandler();
-	}, [isClose, onCloseHandler]);
+		if (!isOpen) onCloseHandler();
+	}, [isOpen, onCloseHandler]);
 
 	const onKeyDown = useCallback((event: KeyboardEvent) => {
-		if (event.key === 'Escape') onCloseHandler();
-	}, [onCloseHandler]);
+		if (event.key === 'Escape' && onClose) onClose();
+	}, [onClose]);
 
 	useEffect(() => {
 		if (isOpen) {
@@ -59,7 +64,7 @@ export const useModal = ({ isOpen, onClose, isClose }: UseModalProps) => {
 		}
 
 		return () => {
-			clearTimeout(closeTimeoutRef.current!);
+			if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
 			window.removeEventListener('keydown', onKeyDown);
 		};
 	}, [isOpen, onKeyDown]);

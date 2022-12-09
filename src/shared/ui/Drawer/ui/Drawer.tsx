@@ -1,5 +1,5 @@
 import {
-	memo, ReactNode, useCallback, useEffect,
+	memo, ReactNode, useCallback, useEffect, useMemo, useState,
 } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useTheme } from '@/app/provider/Theme';
@@ -13,36 +13,70 @@ interface DrawerProps {
 	children?: ReactNode
 	isOpen: boolean
 	onCloseDrawer?: () => void
+	callback?: () => void
+	height?: number
 }
-
-const height = window.innerHeight - 200;
 
 const DrawerContent = memo(
 	({
-		className, children, isOpen, onCloseDrawer,
+		className, children, isOpen, onCloseDrawer, callback, height = window.innerHeight - 200,
 	}: DrawerProps) => {
 		const { theme } = useTheme();
 		const { Spring, Gesture } = useAnimationsLib();
+		const [isOpened, setIsOpened] = useState(isOpen);
 		const [{ y }, api] = Spring.useSpring(() => ({ y: height }));
 
 		const openDrawer = useCallback(() => {
 			api.start({ y: 0, immediate: false });
 		}, [api]);
 
-		useEffect(() => {
-			if (isOpen) {
-				openDrawer();
-			}
-		}, [isOpen, openDrawer]);
+		const onCloseDrawerWithCallback = useCallback(() => {
+			onCloseDrawer?.();
+			callback?.();
+		}, [callback, onCloseDrawer]);
 
-		const close = (velocity = 0) => {
+		const close = useCallback((callback?: () => void) => (velocity = 0) => {
 			api.start({
 				y: height,
 				immediate: false,
 				config: { ...Spring.config.stiff, velocity },
-				onResolve: onCloseDrawer,
+				onResolve: () => {
+					callback?.();
+					setIsOpened(false);
+				},
 			});
-		};
+		}, [Spring.config.stiff, api]);
+
+		const {
+			closeDrawer,
+			closeDrawerWithCallback,
+		} = useMemo(() => ({
+			closeDrawer: close(onCloseDrawer),
+			closeDrawerWithCallback: close(onCloseDrawerWithCallback),
+		}), [close, onCloseDrawer, onCloseDrawerWithCallback]);
+
+		const onKeyDown = useCallback((event: KeyboardEvent) => {
+			if (event.key === 'Escape') closeDrawer();
+		}, [closeDrawer]);
+
+		useEffect(() => {
+			if (isOpen) {
+				window.addEventListener('keydown', onKeyDown);
+			}
+
+			return () => {
+				window.removeEventListener('keydown', onKeyDown);
+			};
+		}, [isOpen, onKeyDown]);
+
+		useEffect(() => {
+			if (isOpen) {
+				setIsOpened(true);
+				openDrawer();
+			} else {
+				closeDrawerWithCallback();
+			}
+		}, [closeDrawerWithCallback, isOpen, openDrawer]);
 
 		const bind = Gesture.useDrag(
 			({
@@ -56,7 +90,7 @@ const DrawerContent = memo(
 
 				if (last) {
 					if (my > height * 0.5 || (vy > 0.5 && dy > 0)) {
-						close();
+						closeDrawer();
 					} else {
 						openDrawer();
 					}
@@ -71,7 +105,7 @@ const DrawerContent = memo(
 
 		const display = y.to((py) => (py < height ? 'block' : 'none'));
 
-		if (!isOpen) {
+		if (!isOpened) {
 			return null;
 		}
 
@@ -80,7 +114,7 @@ const DrawerContent = memo(
 				<div
 					className={classNames(cls.Drawer, {}, [className, theme, 'app_drawer'])}
 				>
-					<Overlay onClick={() => close()} />
+					<Overlay onClick={() => closeDrawer()} />
 					<Spring.a.div {...bind()} style={{ display, bottom: `calc(-100vh + ${height - 100}px)`, y }} className={cls.content}>
 						{children}
 					</Spring.a.div>

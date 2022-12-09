@@ -1,6 +1,4 @@
-import {
-	ReactNode, useCallback, useEffect, useRef, useState,
-} from 'react';
+import { ReactNode } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useTheme } from '@/app/provider/Theme';
 import { useModal } from '@/shared/lib/hooks/useModal/useModal';
@@ -12,22 +10,23 @@ import cls from './Modal.module.scss';
 
 interface ModalProps {
 	className?: string
-	children?: ReactNode
+	children: ReactNode
 	isOpen: boolean
-	isClose?: boolean
 	onCloseModal?: () => void
+	callback?: () => void
 	lazy?: boolean
 }
+
 export const Modal = ({
-	className, children, isOpen, onCloseModal, isClose = false, lazy = false,
+	className, children, isOpen, onCloseModal, lazy = false, callback,
 }: ModalProps) => {
 	const { theme } = useTheme();
 	const {
-		isMounted, isClosing, isOpening, onCloseHandler,
+		isMounted, isClosing, isOpening,
 	} = useModal({
 		isOpen,
-		isClose,
 		onClose: onCloseModal,
+		callback,
 	});
 
 	if (lazy && !isMounted) return null;
@@ -37,7 +36,7 @@ export const Modal = ({
 			<div
 				className={classNames(cls.Modal, { [cls.open]: isOpening, [cls.close]: isClosing }, [className, theme, 'app_modal'])}
 			>
-				<Overlay onClick={onCloseHandler} />
+				<Overlay onClick={onCloseModal} />
 				<HStack justify="center" className={cls.contentWrapper}>
 					<div className={cls.content}>
 						{children}

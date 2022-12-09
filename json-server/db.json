@@ -1,4 +1,102 @@
 {
+  "rating-article": [
+    {
+      "rating": 3,
+      "userId": "0",
+      "articleId": "0",
+      "review": "Nice",
+      "id": "bijBAuG"
+    },
+    {
+      "rating": 1,
+      "userId": "0",
+      "articleId": "18",
+      "review": "ok",
+      "id": "pOwMgNb"
+    },
+    {
+      "rating": 2,
+      "userId": "0",
+      "articleId": "25",
+      "id": "eeAHBFX"
+    },
+    {
+      "rating": 3,
+      "userId": "0",
+      "articleId": "30",
+      "id": "2rN517W"
+    },
+    {
+      "rating": 4,
+      "userId": "0",
+      "articleId": "6",
+      "id": "5UyyxHm"
+    },
+    {
+      "rating": 1,
+      "userId": "0",
+      "articleId": "16",
+      "review": "ok",
+      "id": "TmAQf0x"
+    },
+    {
+      "rating": 2,
+      "userId": "0",
+      "articleId": "1",
+      "id": "nrUA73J"
+    },
+    {
+      "rating": 3,
+      "userId": "0",
+      "articleId": "20",
+      "id": "euasGBT"
+    },
+    {
+      "rating": 2,
+      "userId": "0",
+      "articleId": "17",
+      "id": "QWEhe5v"
+    },
+    {
+      "rating": 2,
+      "userId": "0",
+      "articleId": "17",
+      "id": "BRRNRsN"
+    },
+    {
+      "rating": 4,
+      "userId": "0",
+      "articleId": "3",
+      "review": "Nice",
+      "id": "C7kEnPA"
+    },
+    {
+      "rating": 5,
+      "userId": "0",
+      "articleId": "8",
+      "id": "aU-8S9A"
+    },
+    {
+      "rating": 2,
+      "userId": "0",
+      "articleId": "23",
+      "id": "IJLH16Y"
+    }
+  ],
+  "rating-profile": [
+    {
+      "rating": 3,
+      "userId": "1",
+      "profileId": "0",
+      "id": "bijBAuG"
+    },
+    {
+      "rating": 4,
+      "userId": "0",
+      "profileId": "1",
+      "id": "qmx5Bpc"
+    }
+  ],
   "notifications": [
     {
       "id": "0",
@@ -1416,6 +1514,18 @@
       "userId": "0",
       "articleId": "18",
       "id": "AYymjTA"
+    },
+    {
+      "text": "Comment",
+      "userId": "0",
+      "articleId": "0",
+      "id": "OXxy7Ja"
+    },
+    {
+      "text": "Comment",
+      "userId": "0",
+      "articleId": "8",
+      "id": "JJc_Tri"
     }
   ],
   "profile": [

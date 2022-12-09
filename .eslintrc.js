@@ -50,7 +50,9 @@ module.exports = {
 		'max-len': ['error', { code: 150 }],
 		'i18next/no-literal-string': ['error', {
 			markupOnly: true,
-			ignoreAttribute: ['popupPosition', 'as', 'TitleTag', 'Tag', 'data-testid', 'align', 'reducerKey', 'target', 'direction', 'justify'],
+			ignoreAttribute: [
+				'size', 'popupPosition', 'as', 'TitleTag', 'Tag', 'data-testid', 'align', 'reducerKey', 'target', 'direction', 'justify',
+			],
 		}],
 		'no-console': 'off',
 		'linebreak-style': ['error', 'unix'],
