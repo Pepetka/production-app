@@ -88,7 +88,7 @@ export const RatingCard = memo(
 		return (
 			<Card w100 className={classNames(cls.RatingCard, {}, [className])}>
 				<VStack gap="16" w100 justify="center" align="center">
-					<Text title={title} />
+					<Text title={(selectedStar || rating) ? t('Thank you for rating') : title} />
 					{isLoading ? <Skeleton width={200} height={40} /> : <StarRating rating={rating} onSelect={onSelectHandle} />}
 				</VStack>
 				{modal && (

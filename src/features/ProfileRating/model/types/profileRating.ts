@@ -1,8 +1,8 @@
-export interface ProfileRating {
+export interface ProfileRatingType {
 	profileId: string
 	rating: number
 }
 
-export interface ProfileRatingDB extends ProfileRating {
+export interface ProfileRatingDB extends ProfileRatingType {
 	userId: string
 }

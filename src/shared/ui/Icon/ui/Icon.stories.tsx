@@ -41,3 +41,24 @@ IconRed.args = {
 	theme: IconTheme.RED,
 	SvgIcon: DoneIcon,
 };
+
+export const IconRedXS = Template.bind({});
+IconRedXS.args = {
+	SvgIcon: DoneIcon,
+	size: 'size_xs',
+};
+export const IconRedS = Template.bind({});
+IconRedS.args = {
+	SvgIcon: DoneIcon,
+	size: 'size_s',
+};
+export const IconRedM = Template.bind({});
+IconRedM.args = {
+	SvgIcon: DoneIcon,
+	size: 'size_m',
+};
+export const IconRedL = Template.bind({});
+IconRedL.args = {
+	SvgIcon: DoneIcon,
+	size: 'size_l',
+};

@@ -21,7 +21,7 @@ export const NotificationItem = memo(
 
 		if (notification.href) {
 			return (
-				<AppLink to={notification.href}>
+				<AppLink w100 to={notification.href}>
 					<div className={classNames(cls.NotificationItem, { [cls.invert]: invert }, [className])}>
 						<Text invert={!invert} title={notification.title} text={notification.description} />
 					</div>

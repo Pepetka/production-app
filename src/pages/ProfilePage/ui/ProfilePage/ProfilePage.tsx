@@ -20,7 +20,7 @@ const ProfilePage = memo(({ storybookId }: ProfilePageProps) => {
 			<DynamicModuleLoader reducerKey="profile" reducer={profileReducer}>
 				<EditableProfileCard />
 			</DynamicModuleLoader>
-			{authData?.id === params.id! || <ProfileRating profileId={storybookId ?? params.id!} />}
+			{authData?.id === (storybookId ?? params.id!) || <ProfileRating profileId={storybookId ?? params.id!} />}
 		</Page>
 	);
 });

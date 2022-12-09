@@ -1,11 +1,13 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ReducersMapObject } from '@reduxjs/toolkit';
+import withMock from 'storybook-addon-mock';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { StateSchema } from '@/app/provider/Store';
 import { profileReducer, ValidateProfileError } from '@/features/EditableProfileCard';
 import { Currency } from '@/entities/Currency';
 import { Country } from '@/entities/Country';
 import ProfilePage from './ProfilePage';
+import { ProfileRatingType } from '@/features/ProfileRating/model/types/profileRating';
 
 export default {
 	title: 'pages/ProfilePage/ProfilePage',
@@ -13,9 +15,10 @@ export default {
 	argTypes: {
 		backgroundColor: { control: 'color' },
 	},
+	decorators: [withMock],
 } as ComponentMeta<typeof ProfilePage>;
 
-const Template: ComponentStory<typeof ProfilePage> = (args) => <ProfilePage />;
+const Template: ComponentStory<typeof ProfilePage> = (args) => <ProfilePage {...args} />;
 
 const state: DeepPartial<StateSchema> = {
 	profile: {
@@ -32,6 +35,11 @@ const state: DeepPartial<StateSchema> = {
 		readOnly: true,
 		data: {},
 	},
+	user: {
+		authData: {
+			id: '1',
+		},
+	},
 };
 
 const stateWithError: DeepPartial<StateSchema> = {
@@ -45,14 +53,53 @@ const asyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
 	profile: profileReducer,
 };
 
+const profileRating: Array<ProfileRatingType> = [
+	{
+		rating: 3,
+		profileId: '1',
+	},
+];
+
 export const ProfilePageStory = Template.bind({});
-ProfilePageStory.args = {};
+ProfilePageStory.args = {
+	storybookId: '1',
+};
 ProfilePageStory.decorators = [
 	StoreDecorator(state as StateSchema, asyncReducers as ReducersMapObject<StateSchema>),
 ];
+ProfilePageStory.parameters = {
+	mockData: [
+		{
+			url: `${__API__}/rating-profile?profileId=1&userId=1`,
+			method: 'GET',
+			status: 200,
+			response: profileRating,
+		},
+	],
+};
+
+export const ProfilePageWithRate = Template.bind({});
+ProfilePageWithRate.args = {
+	storybookId: '0',
+};
+ProfilePageWithRate.decorators = [
+	StoreDecorator(state as StateSchema, asyncReducers as ReducersMapObject<StateSchema>),
+];
+ProfilePageWithRate.parameters = {
+	mockData: [
+		{
+			url: `${__API__}/rating-profile?profileId=1&userId=1`,
+			method: 'GET',
+			status: 200,
+			response: profileRating,
+		},
+	],
+};
 
 export const ProfilePageWithError = Template.bind({});
-ProfilePageWithError.args = {};
+ProfilePageWithError.args = {
+	storybookId: '1',
+};
 ProfilePageWithError.decorators = [
 	StoreDecorator(stateWithError as StateSchema, asyncReducers as ReducersMapObject<StateSchema>),
 ];

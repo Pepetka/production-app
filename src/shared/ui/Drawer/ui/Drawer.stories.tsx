@@ -12,4 +12,7 @@ export default {
 const Template: ComponentStory<typeof Drawer> = (args) => <Drawer {...args} />;
 
 export const DrawerStory = Template.bind({});
-DrawerStory.args = {};
+DrawerStory.args = {
+	isOpen: true,
+	children: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, autem dolorum enim molestias quaerat quam saepe sapiente sunt. Blanditiis consectetur culpa dolorem dolorum esse labore officia quam reiciendis voluptatem voluptatum.',
+};

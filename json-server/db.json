@@ -81,6 +81,19 @@
       "userId": "0",
       "articleId": "23",
       "id": "IJLH16Y"
+    },
+    {
+      "rating": 2,
+      "userId": "0",
+      "articleId": "5",
+      "id": "RXxm-M8"
+    },
+    {
+      "rating": 4,
+      "userId": "0",
+      "articleId": "7",
+      "review": "ok",
+      "id": "xTdpbeM"
     }
   ],
   "rating-profile": [

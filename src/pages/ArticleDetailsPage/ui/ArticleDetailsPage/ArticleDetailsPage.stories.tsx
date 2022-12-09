@@ -8,6 +8,7 @@ import { ArticleType, ArticleBlockType, Article } from '@/entities/Article';
 import { UserRole } from '@/entities/User';
 import { Comment } from '@/entities/Comment';
 import ArticleDetailsPage from './ArticleDetailsPage';
+import { ArticleRatingType } from '@/features/ArticleRating/model/types/articleRating';
 
 export default {
 	title: 'pages/ArticleDetailsPage/ArticleDetailsPage',
@@ -15,7 +16,16 @@ export default {
 	argTypes: {
 		backgroundColor: { control: 'color' },
 	},
-	decorators: [withMock],
+	decorators: [
+		withMock,
+		StoreDecorator({
+			user: {
+				authData: {
+					id: '1',
+				},
+			},
+		} as StateSchema),
+	],
 } as ComponentMeta<typeof ArticleDetailsPage>;
 
 const Template: ComponentStory<typeof ArticleDetailsPage> = (args) => <ArticleDetailsPage {...args} />;
@@ -153,6 +163,13 @@ const articles: Array<Article> = [
 	},
 ];
 
+const articleRating: Array<ArticleRatingType> = [
+	{
+		rating: 3,
+		articleId: '1',
+	},
+];
+
 const state = (loading: boolean, error?: string): DeepPartial<StateSchema> => ({
 	article: {
 		loading,
@@ -207,6 +224,12 @@ ArticleDetailsPageStory.parameters = {
 			status: 200,
 			response: comments,
 		},
+		{
+			url: `${__API__}/rating-article?articleId=1&userId=1`,
+			method: 'GET',
+			status: 200,
+			response: articleRating,
+		},
 	],
 };
 
@@ -231,6 +254,12 @@ ArticleDetailsPageLoading.parameters = {
 			status: 200,
 			response: comments,
 		},
+		{
+			url: `${__API__}/rating-article?articleId=1&userId=1`,
+			method: 'GET',
+			status: 200,
+			response: articleRating,
+		},
 	],
 };
 
@@ -254,6 +283,12 @@ ArticleDetailsPageError.parameters = {
 			method: 'GET',
 			status: 200,
 			response: comments,
+		},
+		{
+			url: `${__API__}/rating-article?articleId=1&userId=1`,
+			method: 'GET',
+			status: 200,
+			response: articleRating,
 		},
 	],
 };
