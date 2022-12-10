@@ -1,12 +1,3 @@
 .ArticlesPageFilters {
-	display: flex;
-	flex-direction: column;
 	height: var(--filters-height);
-	justify-content: space-between;
-}
-
-.sortPanel {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
 }

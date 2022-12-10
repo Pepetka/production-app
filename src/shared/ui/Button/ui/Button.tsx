@@ -1,5 +1,7 @@
-import { ButtonHTMLAttributes, memo, ReactNode } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import {
+	ButtonHTMLAttributes, ForwardedRef, forwardRef, ReactNode,
+} from 'react';
+import { classNames } from '@/shared/lib/classNames/classNames';
 
 import cls from './Button.module.scss';
 
@@ -17,18 +19,21 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	theme?: ButtonTheme
 	inverted?: boolean
 	children: ReactNode
+	hover?: boolean
+	w100?: boolean
+	'data-testid'?: string
 }
 
-export const Button = memo(
-	({
-		className, inverted, theme = ButtonTheme.PRIMARY, children, ...buttonProps
-	}: ButtonProps) => (
-		<button
-			type="button"
-			className={classNames(cls.Button, { [cls.inverted]: inverted }, [className, cls[theme]])}
-			{...buttonProps}
-		>
-			{children}
-		</button>
-	),
-);
+export const Button = forwardRef(({
+	className, inverted, theme = ButtonTheme.PRIMARY, children, hover = true, w100 = false, 'data-testid': dataTestId, ...buttonProps
+}: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) => (
+	<button
+		data-testid={dataTestId}
+		ref={ref}
+		type="button"
+		className={classNames(cls.Button, { [cls.inverted]: inverted, [cls.hover]: hover, [cls.w100]: w100 }, [className, cls[theme]])}
+		{...buttonProps}
+	>
+		{children}
+	</button>
+));

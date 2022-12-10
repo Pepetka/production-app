@@ -1,4 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { UserRole } from '@/entities/User';
 import { CommentCard } from './CommentCard';
 
 export default {
@@ -19,6 +20,7 @@ CommentCardStory.args = {
 		user: {
 			id: '1',
 			username: 'username',
+			role: UserRole.USER,
 		},
 	},
 };

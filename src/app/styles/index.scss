@@ -4,7 +4,8 @@
 @import "./variables/global";
 
 .App,
-.app_modal {
+.app_modal,
+.app_drawer {
 	font: var(--font-m);
 	color: var(--primary-color);
 }
@@ -13,11 +14,6 @@
 	background-color: var(--bg-color);
 	color: var(--primary-color);
 	min-height: 100vh;
-}
-
-.page-content {
-	display: flex;
-	width: 100%;
 }
 
 * {

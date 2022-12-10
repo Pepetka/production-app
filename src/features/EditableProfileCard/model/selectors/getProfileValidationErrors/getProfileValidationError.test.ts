@@ -1,6 +1,6 @@
 import { describe, expect, test } from '@jest/globals';
-import { StateSchema } from 'app/provider/Store';
-import { ValidateProfileError } from '../../types/profileSchema';
+import type { StateSchema } from '@/app/provider/Store';
+import { ValidateProfileError } from '../../consts/consts';
 import { getProfileValidationErrors } from './getProfileValidationErrors';
 
 describe('getProfileValidationErrors', () => {

@@ -1,22 +1,34 @@
-import { FC, useEffect } from 'react';
+import {
+	FC, ReactNode, useCallback, useEffect,
+} from 'react';
 import { useDispatch, useStore } from 'react-redux';
-import { ReduxStoreWithManager } from 'app/provider/Store';
 import { Reducer } from '@reduxjs/toolkit';
-import { StateSchemaKey } from 'app/provider/Store/config/StateSchema';
+import { ReduxStoreWithManager } from '@/app/provider/Store';
+import { StateSchemaKey } from '@/app/provider/Store/config/StateSchema';
 
 interface DynamicModuleLoaderProps {
 	reducerKey: StateSchemaKey
 	reducer: Reducer
 	removeOnUnmount?: boolean
+	children: ReactNode
 }
 
-export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = ({
+interface EffectProps {
+	effect: () => void
+}
+
+const Effect = ({ effect }: EffectProps) => {
+	useEffect(() => effect(), [effect]);
+	return null;
+};
+
+export const DynamicModuleLoader = ({
 	children, reducer, reducerKey, removeOnUnmount = true,
-}) => {
+}: DynamicModuleLoaderProps) => {
 	const store = useStore() as ReduxStoreWithManager;
 	const dispatch = useDispatch();
 
-	useEffect(() => {
+	const callback = useCallback(() => {
 		const activeReducers = store.reducerManager.getReducerMap();
 
 		if (!activeReducers[reducerKey]) {
@@ -33,8 +45,8 @@ export const DynamicModuleLoader: FC<DynamicModuleLoaderProps> = ({
 	}, [dispatch, reducer, reducerKey, removeOnUnmount, store.reducerManager]);
 
 	return (
-		// eslint-disable-next-line react/jsx-no-useless-fragment
 		<>
+			<Effect effect={callback} />
 			{children}
 		</>
 	);

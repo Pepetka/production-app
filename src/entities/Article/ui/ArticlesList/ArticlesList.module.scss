@@ -6,11 +6,20 @@
 }
 
 .wrapper {
-	height: calc(100vh - var(--navbar-height) - var(--filters-height) - var(--page-padding) - 15px);
+	width: 100%;
 }
 
 .recommendations {
+	width: 100%;
 	height: 260px;
+
+	& > div {
+		overflow-y: hidden !important;
+	}
+
+	.ArticlesList {
+		height: 100%;
+	}
 }
 
 .small {

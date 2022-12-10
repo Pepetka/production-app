@@ -1,7 +1,7 @@
-import 'app/styles/index.scss';
+import '@/app/styles/index.scss';
 import { DecoratorFn, Story } from '@storybook/react';
-import { Theme, ThemeProvider, useTheme } from 'app/provider/Theme';
 import { useEffect } from 'react';
+import { Theme, ThemeProvider, useTheme } from '@/app/provider/Theme';
 
 import './Storybook.scss';
 

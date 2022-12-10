@@ -36,10 +36,21 @@ export default {
 		'\\.s?css$': 'identity-obj-proxy',
 		'\\.svg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
 		'\\.jpeg': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+		'\\.png': path.resolve(__dirname, 'jestEmptyComponent.tsx'),
+		'@/(.*)$': '<rootDir>/src/$1',
 	},
 	globals: {
 		__IS_DEV__: true,
 		__PROJECT__: 'jest',
 		__API__: JSON.stringify(''),
 	},
+	reporters: [
+		'default',
+		['jest-html-reporters', {
+			publicPath: '<rootDir>/html-report',
+			filename: 'report.html',
+			openReport: true,
+			inlineSource: true,
+		}],
+	],
 };

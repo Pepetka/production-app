@@ -1,11 +1,11 @@
 import { memo, useCallback } from 'react';
-import { Button, ButtonTheme } from 'shared/ui/Button';
 import { useTranslation } from 'react-i18next';
-import { routePaths } from 'shared/config/routeConfig/routeConfig';
 import { useNavigate } from 'react-router-dom';
-import { classNames } from 'shared/lib/classNames/classNames';
 import { useSelector } from 'react-redux';
-import { getArticleData } from 'entities/Article';
+import { routePaths } from '@/shared/config/routeConfig/routeConfig';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
+import { getArticleData } from '@/entities/Article';
+import { HStack } from '@/shared/ui/Stack';
 import cls from './ArticleDetailsPageHeader.module.scss';
 import { getCanEditArticle } from '../../model/selectors/getCanEditArticle/getCanEditArticle';
 
@@ -29,7 +29,7 @@ export const ArticleDetailsPageHeader = memo(
 		}, [article?.id, navigate]);
 
 		return (
-			<div className={classNames(cls.ArticleDetailsPageHeader, {}, [className])}>
+			<HStack justify="between" w100 className={className}>
 				<Button className={cls.btn} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onBack}>
 					{t('Back to list')}
 				</Button>
@@ -38,7 +38,7 @@ export const ArticleDetailsPageHeader = memo(
 						{t('Edit')}
 					</Button>
 				)}
-			</div>
+			</HStack>
 		);
 	},
 );

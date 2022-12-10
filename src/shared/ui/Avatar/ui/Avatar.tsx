@@ -1,8 +1,8 @@
-import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
-import DefaultAvatar from 'shared/assets/imgs/default_avatar.jpeg';
-import { Spinner } from '../../Spinner';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import DefaultAvatar from '@/shared/assets/imgs/default_avatar.jpeg';
+import { HStack } from '../../Stack';
 import cls from './Avatar.module.scss';
 
 export enum AvatarSize {
@@ -15,19 +15,19 @@ export enum AvatarSize {
 interface AvatarProps {
 	className?: string;
 	avatar?: string
-	loading?: boolean
 	size?: AvatarSize
 	alt?: string
+	inverted?: boolean
 }
 
 export const Avatar = memo(({
-	className, avatar = DefaultAvatar, loading, size = AvatarSize.SIZE_M, alt,
+	className, avatar = DefaultAvatar, size = AvatarSize.SIZE_M, alt, inverted = false,
 }: AvatarProps) => {
 	const { t } = useTranslation('profile');
 
 	return (
-		<div className={classNames(cls.Avatar, {}, [className, cls[size]])}>
-			{loading ? <Spinner /> : <img src={avatar} alt={alt ?? t('Profile avatar')} />}
-		</div>
+		<HStack justify="center" className={classNames(cls.Avatar, { [cls.inverted]: inverted }, [className, cls[size]])}>
+			<img src={avatar} alt={alt ?? t('Profile avatar')} />
+		</HStack>
 	);
 });

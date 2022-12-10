@@ -1,5 +1,5 @@
-import { classNames } from 'shared/lib/classNames/classNames';
 import { memo } from 'react';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Text.module.scss';
 
 export enum TextTheme {
@@ -9,9 +9,12 @@ export enum TextTheme {
 
 type TextAlign = 'center' | 'right' | 'left'
 export enum TextSize {
+	S = 'size_s',
 	M = 'size_m',
 	L = 'size_l',
 }
+
+type TagType = 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 
 interface TextProps {
 	className?: string
@@ -21,13 +24,30 @@ interface TextProps {
 	align?: TextAlign
 	size?: TextSize
 	invert?: boolean
+	TitleTag?: TagType
+	'data-testid'?: string
+	noWrap?: boolean
+	w100?: boolean
 }
 
 export const Text = memo(({
-	className, text, title, align = 'left', theme = TextTheme.PRIMARY, size = TextSize.M, invert,
+	className,
+	text,
+	title,
+	align = 'left',
+	theme = TextTheme.PRIMARY,
+	noWrap,
+	size = TextSize.M,
+	w100,
+	invert,
+	TitleTag = 'p',
+	'data-testid': dataTestId,
 }: TextProps) => (
-	<div className={classNames(cls.Text, { [cls.invert]: invert }, [className, cls[theme], cls[size], cls[align]])}>
-		{title && <p className={cls.title}>{title}</p>}
-		{text && <p className={cls.text}>{text}</p>}
+	<div
+		data-testid={dataTestId}
+		className={classNames('', { [cls.invert]: invert, [cls.w100]: w100 }, [className, cls[theme], cls[size], cls[align]])}
+	>
+		{title && <TitleTag className={classNames(cls.title, { [cls.noWrap]: noWrap })}>{title}</TitleTag>}
+		{text && <p className={classNames(cls.text, { [cls.noWrap]: noWrap })}>{text}</p>}
 	</div>
 ));

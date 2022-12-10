@@ -1,0 +1,23 @@
+.Drawer {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	align-items: flex-end;
+}
+
+.content {
+	padding: 15px;
+	border-radius: 5px 5px 0;
+	background: var(--bg-color);
+	width: 96vw;
+	transition: transform 0.3s ease-out;
+	transform: translateY(100%);
+	z-index: var(--modal-z-index);
+	height: calc(100vh + 100px);
+	position: fixed;
+	left: 2vw;
+	touch-action: none;
+}

@@ -1,8 +1,11 @@
 export { ArticleDetails } from './ui/ArticleDetails/ArticleDetails';
-export {
-	Article, ArticlesView, ArticleSortField, ArticleType,
+export type {
+	Article,
 } from './model/types/article';
-export { ArticleSchema } from './model/types/articleSchema';
+export {
+	ArticlesView, ArticleSortField, ArticleType, ArticleBlockType,
+} from './model/consts/consts';
+export type { ArticleSchema } from './model/types/articleSchema';
 export { fetchArticleById } from './model/services/fetchArticleById/fetchArticleById';
 export { getArticleData } from './model/selectors/getArticleData/getArticleData';
 export { getArticleError } from './model/selectors/getArticleError/getArticleError';

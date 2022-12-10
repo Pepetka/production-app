@@ -1,7 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import {
-	Article, ArticleBlockType, ArticlesView, ArticleType,
-} from '../../model/types/article';
+import { UserRole } from '@/entities/User';
+import { ArticleBlockType, ArticlesView, ArticleType } from '../../model/consts/consts';
+import type { Article } from '../../model/types/article';
+
 import { ArticlesListItem } from './ArticlesListItem';
 
 export default {
@@ -25,6 +26,7 @@ const article: Article = {
 	user: {
 		username: 'username',
 		id: 'some id',
+		role: UserRole.USER,
 	},
 	blocks: [
 		{

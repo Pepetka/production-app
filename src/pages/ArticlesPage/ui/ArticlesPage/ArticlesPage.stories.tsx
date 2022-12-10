@@ -1,9 +1,9 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { StateSchema } from 'app/provider/Store';
-import { ArticlesView } from 'entities/Article';
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 import { ReducersMapObject } from '@reduxjs/toolkit';
-import { ArticleBlockType, ArticleType } from 'entities/Article/model/types/article';
+import { StateSchema } from '@/app/provider/Store';
+import { ArticlesView, ArticleType } from '@/entities/Article';
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { ArticleBlockType } from '@/entities/Article/model/consts/consts';
 import { articlesPageReducer } from '../../model/slice/articlesPageSlice';
 import ArticlesPage from './ArticlesPage';
 
@@ -15,7 +15,7 @@ export default {
 	},
 } as ComponentMeta<typeof ArticlesPage>;
 
-const Template: ComponentStory<typeof ArticlesPage> = (args) => <ArticlesPage {...args} />;
+const Template: ComponentStory<typeof ArticlesPage> = (args) => <ArticlesPage />;
 
 const state = (view: ArticlesView): DeepPartial<StateSchema> => {
 	const entities: Record<string, any> = {};

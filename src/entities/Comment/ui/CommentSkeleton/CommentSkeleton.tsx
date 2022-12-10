@@ -1,6 +1,7 @@
 import { memo } from 'react';
-import { Skeleton } from 'shared/ui/Skeleton';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { Skeleton } from '@/shared/ui/Skeleton';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { HStack, VStack } from '@/shared/ui/Stack';
 import cls from './CommentSkeleton.module.scss';
 
 interface CommentSkeletonProps {
@@ -9,14 +10,12 @@ interface CommentSkeletonProps {
 
 export const CommentSkeleton = memo(
 	({ className }: CommentSkeletonProps) => (
-		<div className={classNames(cls.CommentSkeleton, {}, [className])}>
-			<div className={cls.user}>
+		<VStack gap="8" align="start" className={classNames(cls.CommentSkeleton, {}, [className])}>
+			<HStack gap="8" justify="center">
 				<Skeleton width={30} circle />
 				<Skeleton width={200} height={32} />
-			</div>
-			<div>
-				<Skeleton width="100%" height={24} />
-			</div>
-		</div>
+			</HStack>
+			<Skeleton width="100%" height={24} />
+		</VStack>
 	),
 );

@@ -1,18 +1,17 @@
-import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
-import { Page } from 'widgets/Page';
-import cls from './NotFoundPage.module.scss';
+import { Page } from '@/widgets/Page';
+import { HStack } from '@/shared/ui/Stack';
+import { Text, TextSize } from '@/shared/ui/Text';
 
-interface NotFoundPageProps {
-	className?: string;
-}
-const NotFoundPage = memo(({ className }: NotFoundPageProps) => {
+const NotFoundPage = memo(() => {
 	const { t } = useTranslation();
 
 	return (
-		<Page className={classNames(cls.NotFoundPage, {}, [className])}>
-			{t('Page not found')}
+		<Page>
+			<HStack h100 justify="center">
+				<Text title={t('Page not found')} TitleTag="h1" size={TextSize.L} />
+			</HStack>
 		</Page>
 	);
 });

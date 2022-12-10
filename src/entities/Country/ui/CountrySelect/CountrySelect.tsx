@@ -1,6 +1,6 @@
-import { Select, SelectTheme } from 'shared/ui/Select';
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Select, SelectTheme } from '@/shared/ui/Popups/ui/Select';
 import { Country } from '../../model/types/country';
 
 interface CountrySelectProps {
@@ -8,10 +8,11 @@ interface CountrySelectProps {
 	readonly?: boolean
 	onChangeCountry?: (value: Country) => void
 	selected?: Country
+	theme?: SelectTheme
 }
 
 export const CountrySelect = ({
-	className, onChangeCountry, selected, readonly,
+	className, onChangeCountry, selected, readonly, theme,
 }: CountrySelectProps) => {
 	const { t } = useTranslation('profile');
 
@@ -30,7 +31,7 @@ export const CountrySelect = ({
 			textInvert={readonly}
 			onChange={onChangeCountry}
 			className={className}
-			theme={readonly ? SelectTheme.INVERT : SelectTheme.PRIMARY}
+			theme={theme}
 			options={countryOptions}
 			selected={selected}
 		/>

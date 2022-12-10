@@ -1,6 +1,6 @@
 import { describe, expect, test } from '@jest/globals';
-import { StateSchema } from 'app/provider/Store';
-import { ArticlesView } from 'entities/Article';
+import { StateSchema } from '@/app/provider/Store';
+import { ArticlesView } from '@/entities/Article';
 import { getArticlesPageView } from './getArticlesPageView';
 
 describe('getArticlesPageView', () => {

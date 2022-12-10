@@ -1,0 +1,107 @@
+.selectWrapper {
+	width: 100%;
+	position: relative;
+}
+
+.withLabel {
+	padding-top: 35px;
+}
+
+.label {
+	pointer-events: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	transform: translateY(5px);
+	color: var(--primary-color);
+}
+
+.trigger {
+	background: none;
+	border: none;
+	position: relative;
+
+	button {
+		width: 100%;
+	}
+}
+
+.options {
+	padding: 10px;
+	width: 100%;
+	position: absolute;
+	z-index: var(--popup-z-index);
+	border-radius: 5px;
+	border: 2px solid var(--bg-color);
+}
+
+.bottom {
+	top: 100%;
+}
+
+.top {
+	bottom: 100%;
+}
+
+.option {
+	padding: 15px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.disabled {
+	opacity: 0.7;
+}
+
+.primary {
+	.label {
+		color: var(--primary-color);
+	}
+
+	.options {
+		background: var(--invert-options-bgc);
+		color: var(--invert-primary-color);
+	}
+
+	.selected {
+		background: var(--bg-color);
+		color: var(--primary-color);
+	}
+}
+
+.invert {
+	.label {
+		color: var(--invert-primary-color);
+	}
+
+	.options {
+		background: var(--options-bgc);
+		color: var(--primary-color);
+	}
+
+	.selected {
+		background: var(--invert-bg-color);
+		color: var(--invert-primary-color);
+	}
+}
+
+.primary.textInvert {
+	.label {
+		color: var(--invert-primary-color);
+	}
+}
+
+.invert.textInvert {
+	.label {
+		color: var(--primary-color);
+	}
+}
+
+.arrow {
+	transform: rotateZ(-90deg);
+	transition: transform 0.2s linear;
+}
+
+.open {
+	transform: rotateZ(0deg);
+}

@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { StateSchema } from 'app/provider/Store';
+import { StateSchema } from '@/app/provider/Store';
 import { getArticlesPageSearch } from './getArticlesPageSearch';
 
 describe('getArticlesPageSearch', () => {

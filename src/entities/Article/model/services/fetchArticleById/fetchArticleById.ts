@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { ThunkConfig } from 'app/provider/Store';
+import { ThunkConfig } from '@/app/provider/Store';
 import { Article } from '../../types/article';
 
 interface fetchArticleByIdProps {

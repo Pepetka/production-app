@@ -1,11 +1,11 @@
-import { classNames } from 'shared/lib/classNames/classNames';
 import {
 	memo, useCallback, useEffect, useRef, useState,
 } from 'react';
-import { Button, ButtonTheme } from 'shared/ui/Button';
-import CopyIcon from 'shared/assets/icons/copy_icon.svg';
-import DoneIcon from 'shared/assets/icons/done_icon.svg';
-import { Icon } from 'shared/ui/Icon';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
+import CopyIcon from '@/shared/assets/icons/copy_icon.svg';
+import DoneIcon from '@/shared/assets/icons/done_icon.svg';
+import { Icon } from '@/shared/ui/Icon';
 import { ArticleCodeBlock } from '../../model/types/article';
 import cls from './ArticleCodeBlockComponent.module.scss';
 

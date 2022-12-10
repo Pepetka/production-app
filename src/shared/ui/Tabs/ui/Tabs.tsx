@@ -1,7 +1,6 @@
 import { memo, useCallback } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { HStack } from '../../Stack';
 import { Button, ButtonTheme } from '../../Button';
-import cls from './Tabs.module.scss';
 
 interface TabsProps<T extends string> {
 	className?: string
@@ -21,7 +20,7 @@ export const Tabs =	typedMemo(<T extends string> ({
 	}, [onClick]);
 
 	return (
-		<div className={classNames(cls.Tabs, {}, [className])}>
+		<HStack gap="8" justify="start" className={className}>
 			{Object.entries(tabs).map(([key, value]) => (
 				<Button
 					onClick={onHandleClick(key as T)}
@@ -32,6 +31,6 @@ export const Tabs =	typedMemo(<T extends string> ({
 					{value}
 				</Button>
 			))}
-		</div>
+		</HStack>
 	);
 });

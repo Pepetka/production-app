@@ -3,14 +3,15 @@
 	aspect-ratio: 1 / 1;
 	border-radius: 50%;
 	overflow: hidden;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	align-self: center;
 
 	img {
 		height: 110%;
 	}
+}
+
+.inverted {
+	border: 2px solid var(--invert-primary-color);
 }
 
 .size_xs {

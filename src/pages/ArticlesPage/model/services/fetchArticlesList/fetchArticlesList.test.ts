@@ -1,7 +1,7 @@
 import { describe, expect, test } from '@jest/globals';
-import { TestAsyncThunk } from 'shared/lib/testAsyncThunk/testAsyncThunk';
-import { Article } from 'entities/Article';
-import { StateSchema } from 'app/provider/Store';
+import { TestAsyncThunk } from '@/shared/lib/testAsyncThunk/testAsyncThunk';
+import { Article } from '@/entities/Article';
+import { StateSchema } from '@/app/provider/Store';
 import { fetchArticlesList } from './fetchArticlesList';
 
 describe('fetchArticlesList', () => {

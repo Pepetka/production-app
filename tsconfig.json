@@ -12,8 +12,9 @@
 		"plugins": [{ "name": "typescript-plugin-css-modules" }],
 		"baseUrl": ".",
 		"strict": true,
+		"isolatedModules": true,
 		"paths": {
-			"*": ["./src/*"]
+			"@/*": ["./src/*"]
 		}
 	},
 	"ts-node": {

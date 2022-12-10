@@ -1,81 +1,35 @@
-import { useTranslation } from 'react-i18next';
-import { memo, useCallback } from 'react';
-import { ArticleDetails, getArticleError } from 'entities/Article';
+import { memo } from 'react';
 import { useParams } from 'react-router-dom';
-import { CommentList } from 'entities/Comment';
-import { Text } from 'shared/ui/Text';
-import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import {
-	addCommentForArticle,
-	commentsReducer,
-	fetchCommentsByArticleId,
-	getComments,
-	getCommentsError,
-	getCommentsLoading,
-} from 'features/ArticleCommentsList';
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { AddCommentForm } from 'features/AddCommentForm';
-import { Page } from 'widgets/Page';
-import { useAppEffect } from 'shared/lib/hooks/useAppEffect/useAppEffect';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { ArticleRecommendations } from 'features/ArticleRecommendatopns';
-import cls from './ArticleDetailsPage.module.scss';
+import { ArticleDetails, getArticleError } from '@/entities/Article';
+import { ArticleComments } from '@/features/ArticleComments';
+import { Page } from '@/widgets/Page';
+import { ArticleRecommendations } from '@/features/ArticleRecommendations';
+import { VStack } from '@/shared/ui/Stack';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
+import { ArticleRating } from '@/features/ArticleRating';
 
 interface ArticleDetailsPageProps {
-	className?: string
+	storybookId?: string
 }
 
-const ArticleDetailsPage = memo(({ className }: ArticleDetailsPageProps) => {
-	const { t } = useTranslation('articles');
+const ArticleDetailsPage = memo(({ storybookId }: ArticleDetailsPageProps) => {
 	const params = useParams<{id: string}>();
-	const comments = useSelector(getComments.selectAll);
-	const loading = useSelector(getCommentsLoading);
-	const error = useSelector(getCommentsError);
 	const articleError = useSelector(getArticleError);
-	const dispatch = useAppDispatch();
-
-	const callback = useCallback(() => {
-		dispatch(fetchCommentsByArticleId({ articleId: params.id! }));
-	}, [dispatch, params.id]);
-
-	useAppEffect(callback);
-
-	const onSendComment = useCallback((text: string) => {
-		dispatch(addCommentForArticle(text));
-	}, [dispatch]);
-
-	if (error) {
-		return (
-			<Text title={t('Something wrong')} align="center" />
-		);
-	}
 
 	return (
 		<Page>
-			<DynamicModuleLoader reducerKey="comments" reducer={commentsReducer}>
-				<div className={classNames(cls.ArticlesDetailsPage, {}, [className])}>
-					<ArticleDetailsPageHeader />
-					<ArticleDetails id={params.id!} />
-					{!articleError && (
-						<>
-							<div className={cls.recommendations}>
-								<Text title={t('Recommendations')} align="center" />
-								<ArticleRecommendations />
-							</div>
-							<div className={cls.comments}>
-								<Text title={t('Comments')} align="center" />
-								<AddCommentForm onSendComment={onSendComment} />
-								<CommentList
-									loading={loading}
-									comments={comments}
-								/>
-							</div>
-						</>
-					)}
-				</div>
-			</DynamicModuleLoader>
+			<VStack w100 align="start" gap="32">
+				<ArticleDetailsPageHeader />
+				<ArticleDetails id={params.id!} />
+				{!articleError && (
+					<>
+						<ArticleRating articleId={storybookId ?? params.id!} />
+						<ArticleRecommendations />
+						<ArticleComments articleId={storybookId ?? params.id!} />
+					</>
+				)}
+			</VStack>
 		</Page>
 	);
 });

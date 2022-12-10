@@ -1,8 +1,7 @@
 import {
-	ChangeEvent,
-	HTMLInputTypeAttribute, InputHTMLAttributes, memo, useEffect, useRef, useState,
+	ChangeEvent, HTMLInputTypeAttribute, InputHTMLAttributes, useEffect, useRef, useState,
 } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
 
 export enum InputTheme {
@@ -22,6 +21,7 @@ interface InputProps extends HTMLInputProps {
 	value?: string
 	readonly?: boolean
 	onChange?: (value: string) => void
+	'data-testid'?: string
 }
 
 export const Input = (
@@ -35,6 +35,7 @@ export const Input = (
 		autoFocus = false,
 		type = 'text',
 		onChange,
+		'data-testid': dataTestId,
 		...otherProps
 	}: InputProps,
 ) => {
@@ -56,7 +57,7 @@ export const Input = (
 	}, []);
 
 	useEffect(() => {
-		if (value) {
+		if (value || isFocused) {
 			setIsPlaceholder(false);
 		} else if (!isFocused) {
 			setIsPlaceholder(true);
@@ -91,12 +92,13 @@ export const Input = (
 				{floatPlaceholder}
 			</span>
 			<input
+				data-testid={dataTestId}
 				ref={inputRef}
 				className={classNames(cls.Input, { [cls.readOnly]: readonly })}
 				type={type}
 				onBlur={onBlur}
 				onFocus={onFocus}
-				value={value}
+				value={value ?? ''}
 				readOnly={readonly}
 				onChange={onHandleChange}
 				{...otherProps}

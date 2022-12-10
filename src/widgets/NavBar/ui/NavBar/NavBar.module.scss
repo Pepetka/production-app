@@ -3,18 +3,11 @@
 	height: var(--navbar-height);
 	background-color: var(--invert-bg-color);
 	padding-inline: 20px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
 }
 
 .links {
 	height: 100%;
 	width: 100%;
-	display: flex;
-	gap: 15px;
-	align-items: center;
-	justify-content: flex-end;
 }
 
 .logo {

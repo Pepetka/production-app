@@ -1,60 +1,46 @@
 import {
-	MutableRefObject, ReactNode, UIEvent, useRef,
+	forwardRef, MutableRefObject, ReactNode, useImperativeHandle, useRef,
 } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { useInfiniteScroll } from 'shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
-import { useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { useAppEffect } from 'shared/lib/hooks/useAppEffect/useAppEffect';
-import { StateSchema } from 'app/provider/Store';
-import { useThrottle } from 'shared/lib/hooks/useThrottle/useThrottle';
-import { scrollSafeActions } from '../model/slice/scrollSafeSclice';
-import { getScrollSafeScrollByPath } from '../model/selectors/getScrollSafeScrollByPath/getScrollSafeScrollByPath';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useSafeScroll } from '@/shared/lib/hooks/useSafeScroll/useSafeScroll';
+import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
 import cls from './Page.module.scss';
 
 interface PageProps {
 	className?: string
 	children: ReactNode
 	onScrollEnd?: () => void
-	noObserver?: boolean
-	withBottomPadding?: boolean
+	infiniteScroll?: boolean
+	safeScroll?: boolean
 }
 
-export const Page = ({
-	className, children, onScrollEnd, noObserver, withBottomPadding = true,
-}: PageProps) => {
+export const Page = forwardRef<HTMLElement, PageProps>(({
+	className, children, onScrollEnd, infiniteScroll, safeScroll = false,
+}, ref) => {
 	const wrapperRef = useRef() as MutableRefObject<HTMLElement>;
-	// const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
-	const dispatch = useAppDispatch();
-	const location = useLocation();
-	const scroll = useSelector((state: StateSchema) => getScrollSafeScrollByPath(state, location.pathname));
+	const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
+	const { onScroll, setScroll } = useSafeScroll(wrapperRef, 100);
 
-	useAppEffect(() => {
-		wrapperRef.current.scrollTop = scroll;
+	// useEffect(() => {
+	// 	if (safeScroll) setScroll();
+	// }, []);
+
+	useInfiniteScroll({
+		wrapperRef,
+		triggerRef,
+		callback: infiniteScroll ? onScrollEnd : undefined,
 	});
 
-	// useInfiniteScroll({
-	// 	wrapperRef,
-	// 	triggerRef,
-	// 	callback: onScrollEnd,
-	// });
-
-	const onScroll = useThrottle((event: UIEvent<HTMLDivElement>) => {
-		dispatch(scrollSafeActions.setScroll({
-			path: location.pathname,
-			position: event.currentTarget.scrollTop,
-		}));
-	}, 500);
+	useImperativeHandle(ref, () => wrapperRef.current);
 
 	return (
-		<section
+		<main
 			ref={wrapperRef}
-			className={classNames(cls.Page, { [cls.padding]: withBottomPadding }, [className])}
-			onScroll={onScroll}
+			className={classNames(cls.Page, {}, [className])}
+			onScroll={safeScroll ? onScroll : () => {}}
 		>
 			{children}
-			{/* {!noObserver ? onScrollEnd && <div className={cls.observer} ref={triggerRef} /> : null} */}
-		</section>
+			{infiniteScroll ? (onScrollEnd && <div className={cls.observer} ref={triggerRef} />) : null}
+		</main>
 	);
-};
+});

@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { useTheme } from 'app/provider/Theme';
-import { NavBar } from 'widgets/NavBar';
-import { SideBar } from 'widgets/SideBar';
-import { getAuthInit, userActions } from 'entities/User';
-import { AppRouter } from 'app/provider/Router';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useTheme } from '@/app/provider/Theme';
+import { NavBar } from '@/widgets/NavBar';
+import { SideBar } from '@/widgets/SideBar';
+import { getAuthInit, userActions } from '@/entities/User';
+import { AppRouter } from '@/app/provider/Router';
+import { HStack } from '@/shared/ui/Stack';
 
 const App = () => {
 	const { theme } = useTheme();
@@ -19,10 +20,10 @@ const App = () => {
 	return (
 		<div className={classNames('App', {}, [theme])}>
 			<NavBar />
-			<div className="page-content">
+			<HStack w100>
 				<SideBar />
 				{init && <AppRouter />}
-			</div>
+			</HStack>
 		</div>
 	);
 };

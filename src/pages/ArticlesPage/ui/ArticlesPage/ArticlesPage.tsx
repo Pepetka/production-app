@@ -1,30 +1,17 @@
-import { memo, useCallback } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { ArticlesList } from 'entities/Article';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { useSelector } from 'react-redux';
-import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { Page } from 'widgets/Page';
-import { useAppEffect } from 'shared/lib/hooks/useAppEffect/useAppEffect';
+import { memo, useCallback, useRef } from 'react';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { DynamicModuleLoader } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { Page } from '@/widgets/Page';
+import { useAppEffect } from '@/shared/lib/hooks/useAppEffect/useAppEffect';
+import { VStack } from '@/shared/ui/Stack';
 import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
-import { getArticlesPageLoading } from '../../model/selectors/getArticlesPageLoading/getArticlesPageLoading';
-import { articlesPageReducer, getArticles } from '../../model/slice/articlesPageSlice';
-import { getArticlesPageView } from '../../model/selectors/getArticlesPageView/getArticlesPageView';
-import { fetchNextArticles } from '../../model/services/fetchNextArticles/fetchNextArticles';
+import { articlesPageReducer } from '../../model/slice/articlesPageSlice';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
-import { getArticlesPageError } from '../../model/selectors/getArticlesPageError/getArticlesPageError';
-import cls from './ArticlesPage.module.scss';
+import { ArticlesPageInfiniteList } from '../ArticlesPageInfiniteList/ArticlesPageInfiniteList';
 
-interface ArticlesPageProps {
-	className?: string
-}
-
-const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
+const ArticlesPage = memo(() => {
 	const dispatch = useAppDispatch();
-	const view = useSelector(getArticlesPageView);
-	const loading = useSelector(getArticlesPageLoading);
-	const error = useSelector(getArticlesPageError);
-	const articles = useSelector(getArticles.selectAll);
+	const wrapperRef = useRef<HTMLElement | null>(null);
 
 	const callback = useCallback(() => {
 		dispatch(initArticlesPage());
@@ -32,23 +19,13 @@ const ArticlesPage = memo(({ className }: ArticlesPageProps) => {
 
 	useAppEffect(callback);
 
-	const onScrollEnd = useCallback(() => {
-		if (__PROJECT__ !== 'storybook') dispatch(fetchNextArticles());
-	}, [dispatch]);
-
 	return (
-		<Page noObserver={error !== undefined} withBottomPadding={false}>
+		<Page ref={wrapperRef} safeScroll>
 			<DynamicModuleLoader removeOnUnmount={false} reducerKey="articlesPage" reducer={articlesPageReducer}>
-				<div className={classNames(cls.ArticlesPage, {}, [className])}>
+				<VStack w100 align="start" gap="16">
 					<ArticlesPageFilters />
-					<ArticlesList
-						error={error}
-						loading={loading}
-						view={view}
-						articles={articles}
-						onScrollEnd={onScrollEnd}
-					/>
-				</div>
+					<ArticlesPageInfiniteList wrapperRef={wrapperRef} />
+				</VStack>
 			</DynamicModuleLoader>
 		</Page>
 	);

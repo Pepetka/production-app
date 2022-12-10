@@ -1,4 +1,153 @@
 {
+  "rating-article": [
+    {
+      "rating": 3,
+      "userId": "0",
+      "articleId": "0",
+      "review": "Nice",
+      "id": "bijBAuG"
+    },
+    {
+      "rating": 1,
+      "userId": "0",
+      "articleId": "18",
+      "review": "ok",
+      "id": "pOwMgNb"
+    },
+    {
+      "rating": 2,
+      "userId": "0",
+      "articleId": "25",
+      "id": "eeAHBFX"
+    },
+    {
+      "rating": 3,
+      "userId": "0",
+      "articleId": "30",
+      "id": "2rN517W"
+    },
+    {
+      "rating": 4,
+      "userId": "0",
+      "articleId": "6",
+      "id": "5UyyxHm"
+    },
+    {
+      "rating": 1,
+      "userId": "0",
+      "articleId": "16",
+      "review": "ok",
+      "id": "TmAQf0x"
+    },
+    {
+      "rating": 2,
+      "userId": "0",
+      "articleId": "1",
+      "id": "nrUA73J"
+    },
+    {
+      "rating": 3,
+      "userId": "0",
+      "articleId": "20",
+      "id": "euasGBT"
+    },
+    {
+      "rating": 2,
+      "userId": "0",
+      "articleId": "17",
+      "id": "QWEhe5v"
+    },
+    {
+      "rating": 2,
+      "userId": "0",
+      "articleId": "17",
+      "id": "BRRNRsN"
+    },
+    {
+      "rating": 4,
+      "userId": "0",
+      "articleId": "3",
+      "review": "Nice",
+      "id": "C7kEnPA"
+    },
+    {
+      "rating": 5,
+      "userId": "0",
+      "articleId": "8",
+      "id": "aU-8S9A"
+    },
+    {
+      "rating": 2,
+      "userId": "0",
+      "articleId": "23",
+      "id": "IJLH16Y"
+    },
+    {
+      "rating": 2,
+      "userId": "0",
+      "articleId": "5",
+      "id": "RXxm-M8"
+    },
+    {
+      "rating": 4,
+      "userId": "0",
+      "articleId": "7",
+      "review": "ok",
+      "id": "xTdpbeM"
+    }
+  ],
+  "rating-profile": [
+    {
+      "rating": 3,
+      "userId": "1",
+      "profileId": "0",
+      "id": "bijBAuG"
+    },
+    {
+      "rating": 4,
+      "userId": "0",
+      "profileId": "1",
+      "id": "qmx5Bpc"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "0",
+      "title": "Some title",
+      "description": "Some notification description",
+      "userId": "0"
+    },
+    {
+      "id": "1",
+      "title": "Some title",
+      "description": "Some notification description",
+      "userId": "0"
+    },
+    {
+      "id": "2",
+      "title": "Some title",
+      "description": "Some notification description",
+      "userId": "0"
+    },
+    {
+      "id": "3",
+      "title": "Some title",
+      "description": "Some notification description",
+      "userId": "1"
+    },
+    {
+      "id": "4",
+      "title": "Some title",
+      "description": "Some notification description",
+      "userId": "0"
+    },
+    {
+      "id": "5",
+      "title": "Some title",
+      "description": "Some notification description",
+      "userId": "1"
+    }
+  ],
   "posts": [
     {
       "id": 1,
@@ -891,7 +1040,7 @@
       "id": "25",
       "title": "C++ news",
       "subtitle": "Что нового в C++ за 2022 год?",
-      "img": "https://www.pngkit.com/png/detail/534-5342172_c-language-course-c-logo.png",
+      "img": "https://wus-www.sway-cdn.com/s/OSpeaWK1uAPBefkZ/images/BNsLdhbcAA2CCQ?quality=1080&amp;isThumbnail=True",
       "views": 10220,
       "userId": "1",
       "createdAt": "03.12.2020",
@@ -926,7 +1075,7 @@
       "id": "26",
       "title": "C++ news",
       "subtitle": "Что нового в C++ за 2022 год?",
-      "img": "https://www.pngkit.com/png/detail/534-5342172_c-language-course-c-logo.png",
+      "img": "https://wus-www.sway-cdn.com/s/OSpeaWK1uAPBefkZ/images/BNsLdhbcAA2CCQ?quality=1080&amp;isThumbnail=True",
       "views": 1022,
       "userId": "1",
       "createdAt": "26.02.2022",
@@ -1070,7 +1219,7 @@
       "id": "30",
       "title": "C++ news",
       "subtitle": "Что нового в C++ за 2022 год?",
-      "img": "https://www.pngkit.com/png/detail/534-5342172_c-language-course-c-logo.png",
+      "img": "https://wus-www.sway-cdn.com/s/OSpeaWK1uAPBefkZ/images/BNsLdhbcAA2CCQ?quality=1080&amp;isThumbnail=True",
       "views": 100,
       "userId": "1",
       "createdAt": "12.05.2022",
@@ -1178,7 +1327,7 @@
       "id": "33",
       "title": "C++ news",
       "subtitle": "Что нового в C++ за 2022 год?",
-      "img": "https://www.pngkit.com/png/detail/534-5342172_c-language-course-c-logo.png",
+      "img": "https://wus-www.sway-cdn.com/s/OSpeaWK1uAPBefkZ/images/BNsLdhbcAA2CCQ?quality=1080&amp;isThumbnail=True",
       "views": 1022,
       "userId": "1",
       "createdAt": "26.02.2022",
@@ -1213,7 +1362,7 @@
       "id": "34",
       "title": "C++ news",
       "subtitle": "Что нового в C++ за 2022 год?",
-      "img": "https://www.pngkit.com/png/detail/534-5342172_c-language-course-c-logo.png",
+      "img": "https://wus-www.sway-cdn.com/s/OSpeaWK1uAPBefkZ/images/BNsLdhbcAA2CCQ?quality=1080&amp;isThumbnail=True",
       "views": 101,
       "userId": "1",
       "createdAt": "30.04.2022",
@@ -1336,6 +1485,60 @@
       "userId": "0",
       "articleId": "25",
       "id": "HXxC-VB"
+    },
+    {
+      "text": "Comment",
+      "userId": "0",
+      "articleId": "18",
+      "id": "s97n7kR"
+    },
+    {
+      "text": "Comment",
+      "userId": "0",
+      "articleId": "6",
+      "id": "9wrLxq8"
+    },
+    {
+      "text": "Some comment",
+      "userId": "0",
+      "articleId": "18",
+      "id": "2xVYbDS"
+    },
+    {
+      "text": "Comment",
+      "userId": "0",
+      "articleId": "18",
+      "id": "u0_B_DB"
+    },
+    {
+      "text": "Some text",
+      "userId": "0",
+      "articleId": "18",
+      "id": "6BJp6H8"
+    },
+    {
+      "text": "Hi",
+      "userId": "1",
+      "articleId": "18",
+      "id": "gaBDbC4"
+    },
+    {
+      "text": "Hi",
+      "userId": "0",
+      "articleId": "18",
+      "id": "AYymjTA"
+    },
+    {
+      "text": "Comment",
+      "userId": "0",
+      "articleId": "0",
+      "id": "OXxy7Ja"
+    },
+    {
+      "text": "Comment",
+      "userId": "0",
+      "articleId": "8",
+      "id": "JJc_Tri"
     }
   ],
   "profile": [

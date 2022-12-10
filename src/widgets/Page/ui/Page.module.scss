@@ -1,12 +1,8 @@
 .Page {
 	flex: 1;
-	padding: var(--page-padding) var(--page-padding) 0;
+	padding: var(--page-padding);
 	height: calc(100vh - var(--navbar-height));
 	overflow-y: auto;
-}
-
-.padding {
-	padding-bottom: var(--page-padding);
 }
 
 .observer {

@@ -1,14 +1,16 @@
-import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Input, InputTheme } from 'shared/ui/Input';
-import { Spinner } from 'shared/ui/Spinner';
-import { Profile } from 'features/EditableProfileCard';
-import { Text, TextTheme } from 'shared/ui/Text';
-import { Button } from 'shared/ui/Button';
 import { memo } from 'react';
-import { Avatar, AvatarSize } from 'shared/ui/Avatar';
-import { Currency, CurrencySelect } from 'entities/Currency';
-import { Country, CountrySelect } from 'entities/Country';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Input, InputTheme } from '@/shared/ui/Input';
+import { Spinner } from '@/shared/ui/Spinner';
+import { Profile } from '@/features/EditableProfileCard';
+import { Text, TextTheme } from '@/shared/ui/Text';
+import { Button } from '@/shared/ui/Button';
+import { Avatar, AvatarSize } from '@/shared/ui/Avatar';
+import { Currency, CurrencySelect } from '@/entities/Currency';
+import { Country, CountrySelect } from '@/entities/Country';
+import { HStack, VStack } from '@/shared/ui/Stack';
+import { SelectTheme } from '@/shared/ui/Popups/ui/Select';
 import cls from './ProfileCard.module.scss';
 
 interface ProfileCardProps {
@@ -25,6 +27,7 @@ interface ProfileCardProps {
 	onChangeCity?: (value: string) => void
 	onChangeCountry?: (value: Country) => void
 	onChangeCurrency?: (value: Currency) => void
+	'data-testid'?: string
 }
 
 export const ProfileCard = memo((
@@ -42,6 +45,7 @@ export const ProfileCard = memo((
 		onChangeCity,
 		onChangeCurrency,
 		onChangeCountry,
+		'data-testid': dataTestId,
 	}: ProfileCardProps,
 ) => {
 	const { t } = useTranslation('profile');
@@ -52,40 +56,33 @@ export const ProfileCard = memo((
 
 	if (loading) {
 		return (
-			<div className={cls.template}>
+			<HStack justify="center" className={cls.template}>
 				<Spinner />
-			</div>
+			</HStack>
 		);
 	}
 
 	if (error) {
 		return (
-			<div className={cls.template}>
+			<VStack gap="16" justify="center" className={cls.template}>
 				<Text align="center" title={t('Something went wrong')} theme={TextTheme.ERROR} />
 				<Button onClick={onReloadPage}>{t('Reload Page')}</Button>
-			</div>
+			</VStack>
 		);
 	}
 
 	return (
-		<div className={classNames(cls.ProfileCard, {}, [className])}>
-			<div className={cls.column}>
-				{data?.avatar ? (
-					<Avatar
-						size={AvatarSize.SIZE_L}
-						avatar={data?.avatar}
-						loading={loading}
-					/>
-				) : (
-					<Avatar
-						size={AvatarSize.SIZE_L}
-						loading={loading}
-					/>
-				)}
-			</div>
-			<div className={cls.profileData}>
-				<div className={cls.column}>
+		<HStack data-testid={dataTestId} align="start" className={classNames(cls.ProfileCard, {}, [className])}>
+			<VStack gap="16" justify="start" className={cls.column}>
+				<Avatar
+					size={AvatarSize.SIZE_L}
+					avatar={data?.avatar}
+				/>
+			</VStack>
+			<HStack gap="32" align="start" className={cls.profileData}>
+				<VStack gap="16" justify="start" className={cls.column}>
 					<Input
+						data-testid={`${dataTestId}.Username`}
 						readonly={readonly}
 						textInvert={readonly}
 						theme={readonly ? InputTheme.INVERT : InputTheme.PRIMARY}
@@ -110,6 +107,7 @@ export const ProfileCard = memo((
 						floatPlaceholder={t('Lastname')}
 					/>
 					<Input
+						data-testid={`${dataTestId}.Age`}
 						readonly={readonly}
 						textInvert={readonly}
 						theme={readonly ? InputTheme.INVERT : InputTheme.PRIMARY}
@@ -117,8 +115,8 @@ export const ProfileCard = memo((
 						value={data?.age}
 						floatPlaceholder={t('Age')}
 					/>
-				</div>
-				<div className={cls.column}>
+				</VStack>
+				<VStack gap="16" justify="start" className={cls.column}>
 					<Input
 						readonly={readonly}
 						textInvert={readonly}
@@ -135,10 +133,20 @@ export const ProfileCard = memo((
 						onChange={onChangeCity}
 						floatPlaceholder={t('City')}
 					/>
-					<CountrySelect selected={data?.country} onChangeCountry={onChangeCountry} readonly={readonly} />
-					<CurrencySelect selected={data?.currency} onChangeCurrency={onChangeCurrency} readonly={readonly} />
-				</div>
-			</div>
-		</div>
+					<CountrySelect
+						selected={data?.country}
+						onChangeCountry={onChangeCountry}
+						readonly={readonly}
+						theme={readonly ? SelectTheme.INVERT : SelectTheme.PRIMARY}
+					/>
+					<CurrencySelect
+						selected={data?.currency}
+						onChangeCurrency={onChangeCurrency}
+						readonly={readonly}
+						theme={readonly ? SelectTheme.INVERT : SelectTheme.PRIMARY}
+					/>
+				</VStack>
+			</HStack>
+		</HStack>
 	);
 });

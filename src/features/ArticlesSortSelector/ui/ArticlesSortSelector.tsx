@@ -1,9 +1,9 @@
 import { memo, useMemo } from 'react';
-import { ArticleSortField } from 'entities/Article';
-import { Select, SelectTheme } from 'shared/ui/Select';
-import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { SortOrder } from 'shared/types';
+import { ArticleSortField } from '@/entities/Article';
+import { Select, SelectTheme } from '@/shared/ui/Popups/ui/Select';
+import { SortOrder } from '@/shared/types';
+import { HStack } from '@/shared/ui/Stack';
 import cls from './ArticlesSortSelector.module.scss';
 
 interface ArticlesSortSelectorProps {
@@ -36,7 +36,7 @@ export const ArticlesSortSelector = memo(
 		), [t]);
 
 		return (
-			<div className={classNames(cls.ArticlesSortSelector, {}, [className])}>
+			<HStack gap="8" className={className}>
 				<Select
 					theme={SelectTheme.INVERT}
 					selected={sort}
@@ -53,7 +53,7 @@ export const ArticlesSortSelector = memo(
 					options={SortOrderOptions}
 					label={t('By')}
 				/>
-			</div>
+			</HStack>
 		);
 	},
 );

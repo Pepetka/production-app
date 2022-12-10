@@ -21,7 +21,6 @@ module.exports = {
 		sourceType: 'module',
 	},
 	plugins: [
-		// 'pepetka-plugin',
 		'ulbi-tv-plugin',
 		'react',
 		'jsx-a11y',
@@ -30,7 +29,6 @@ module.exports = {
 		'react-hooks',
 	],
 	rules: {
-		// 'pepetka-plugin/path-checker': 'error',
 		'ulbi-tv-plugin/path-checker': 'error',
 		'react/no-array-index-key': 'off',
 		'react/jsx-indent': [2, 'tab'],
@@ -52,7 +50,9 @@ module.exports = {
 		'max-len': ['error', { code: 150 }],
 		'i18next/no-literal-string': ['error', {
 			markupOnly: true,
-			ignoreAttribute: ['data-testid', 'align', 'reducerKey', 'target'],
+			ignoreAttribute: [
+				'size', 'popupPosition', 'as', 'TitleTag', 'Tag', 'data-testid', 'align', 'reducerKey', 'target', 'direction', 'justify',
+			],
 		}],
 		'no-console': 'off',
 		'linebreak-style': ['error', 'unix'],
@@ -60,10 +60,11 @@ module.exports = {
 		'jsx-a11y/no-static-element-interactions': 'off',
 		'jsx-a11y/click-events-have-key-events': 'off',
 		'react-hooks/rules-of-hooks': 'error',
-		'react-hooks/exhaustive-deps': 'error',
+		'react-hooks/exhaustive-deps': 'warn',
 		'no-param-reassign': 'off',
 		'consistent-return': 'off',
 		'no-undef': 'off',
+		'react/prop-types': 'off',
 	},
 	globals: {
 		__IS_DEV__: true,

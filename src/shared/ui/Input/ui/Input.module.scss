@@ -8,6 +8,7 @@
 }
 
 .inputWrapper {
+	width: 100%;
 	position: relative;
 }
 
@@ -34,7 +35,7 @@
 	.Input {
 		background: var(--invert-bg-color);
 		color: var(--invert-primary-color);
-		border: solid 1px var(--invert-primary-color);
+		border: solid 2px var(--invert-primary-color);
 
 		&::placeholder {
 			color: var(--invert-secondary-color);

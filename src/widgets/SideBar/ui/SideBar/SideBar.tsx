@@ -1,19 +1,22 @@
-import React, { memo, useCallback, useState } from 'react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
-import { LangSwitcher } from 'widgets/LangSwitcher';
-import { Button, ButtonTheme } from 'shared/ui/Button';
-import { AppRoutes, routeConfig, routePaths } from 'shared/config/routeConfig/routeConfig';
-import AboutIcon from 'shared/assets/icons/about_icon.svg';
-import HomeIcon from 'shared/assets/icons/home_icon.svg';
-import ProfileIcon from 'shared/assets/icons/profile_icon.svg';
-import ArticlesIcon from 'shared/assets/icons/articles_icon.svg';
+import {
+	memo, SVGProps, useCallback, useState, VFC,
+} from 'react';
 import { useSelector } from 'react-redux';
-import { getAuthData } from 'entities/User';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { ThemeSwitcher } from '@/widgets/ThemeSwitcher';
+import { LangSwitcher } from '@/widgets/LangSwitcher';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
+import { AppRoutes, routeConfig, routePaths } from '@/shared/config/routeConfig/routeConfig';
+import AboutIcon from '@/shared/assets/icons/about_icon.svg';
+import HomeIcon from '@/shared/assets/icons/home_icon.svg';
+import ProfileIcon from '@/shared/assets/icons/profile_icon.svg';
+import ArticlesIcon from '@/shared/assets/icons/articles_icon.svg';
+import { getAuthData } from '@/entities/User';
+import { Flex, VStack } from '@/shared/ui/Stack';
 import { SideBarLink } from '../SideBarLink/SideBarLink';
 import cls from './SideBar.module.scss';
 
-const navIcons: Record<string, React.VFC<React.SVGProps<SVGSVGElement>>> = {
+const navIcons: Record<string, VFC<SVGProps<SVGSVGElement>>> = {
 	[AppRoutes.MAIN]: HomeIcon,
 	[AppRoutes.ABOUT]: AboutIcon,
 	[AppRoutes.PROFILE]: ProfileIcon,
@@ -25,7 +28,7 @@ interface SideBarProps {
 }
 export const SideBar = memo(({ className }: SideBarProps) => {
 	const [collapsed, setCollapsed] = useState(true);
-	const userId = useSelector(getAuthData)?.id;
+	const authData = useSelector(getAuthData);
 
 	const onCollapse = useCallback(() => {
 		setCollapsed((collapsed) => !collapsed);
@@ -34,24 +37,24 @@ export const SideBar = memo(({ className }: SideBarProps) => {
 	const links: DeepPartial<typeof routeConfig> = {
 		[AppRoutes.MAIN]: { path: routePaths.Main, authOnly: routeConfig.Main.authOnly },
 		[AppRoutes.ABOUT]: { path: routePaths.About, authOnly: routeConfig.About.authOnly },
-		[AppRoutes.PROFILE]: { path: routePaths.Profile + userId, authOnly: routeConfig.Profile.authOnly },
+		[AppRoutes.PROFILE]: { path: routePaths.Profile + (authData?.id ?? ''), authOnly: routeConfig.Profile.authOnly },
 		[AppRoutes.ARTICLES]: { path: routePaths.Articles, authOnly: routeConfig.Articles.authOnly },
 	};
 
 	return (
-		<menu data-testid="sidebar" className={classNames(cls.SideBar, { [cls.collapsed]: collapsed }, [className])}>
-			<div>
+		<VStack data-testid="SideBar" Tag="aside" justify="between" className={classNames(cls.SideBar, { [cls.collapsed]: collapsed }, [className])}>
+			<VStack w100 gap="32">
 				<Button
 					theme={ButtonTheme.CLEAR}
 					className={cls.toggle}
 					onClick={onCollapse}
-					data-testid="toggle"
+					data-testid="SideBar.Toggle"
 					inverted
 				>
 					{collapsed ? '>' : '<'}
 				</Button>
 
-				<nav className={classNames(cls.links, {}, [])}>
+				<VStack Tag="nav" gap="16" align="start">
 					{Object.entries(links).map(([routeName, { path, authOnly }]) => (
 						<SideBarLink
 							authOnly={authOnly}
@@ -62,13 +65,13 @@ export const SideBar = memo(({ className }: SideBarProps) => {
 							collapsed={collapsed}
 						/>
 					))}
-				</nav>
-			</div>
+				</VStack>
+			</VStack>
 
-			<div className={cls.switchers}>
+			<Flex direction={collapsed ? 'column' : 'row'} justify="between" gap="8">
 				<ThemeSwitcher />
 				<LangSwitcher />
-			</div>
-		</menu>
+			</Flex>
+		</VStack>
 	);
 });

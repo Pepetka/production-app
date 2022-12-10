@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { StateSchema } from 'app/provider/Store';
+import { StateSchema } from '@/app/provider/Store';
 import { getArticlesPageLimit } from './getArticlesPageLimit';
 
 describe('getArticlesPageLimit', () => {
@@ -16,6 +16,6 @@ describe('getArticlesPageLimit', () => {
 	test('empty state', () => {
 		const state: DeepPartial<StateSchema> = {};
 
-		expect(getArticlesPageLimit(state as StateSchema)).toEqual(8);
+		expect(getArticlesPageLimit(state as StateSchema)).toEqual(10);
 	});
 });

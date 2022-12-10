@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import {
-	Article, ArticlesView, ArticleBlockType, ArticleType,
-} from '../../model/types/article';
+import { UserRole } from '@/entities/User';
+import { ArticleBlockType, ArticlesView, ArticleType } from '../../model/consts/consts';
+import type { Article } from '../../model/types/article';
 import { ArticlesList } from './ArticlesList';
 
 export default {
@@ -14,7 +14,7 @@ export default {
 
 const Template: ComponentStory<typeof ArticlesList> = (args) => <ArticlesList {...args} />;
 
-const articles: Array<Article> = new Array(8).fill(0).map((_, i) => (
+const articles: Array<Article> = new Array(10).fill(0).map((_, i) => (
 	{
 		title: `Some title ${i}`,
 		id: i.toString(),
@@ -23,6 +23,7 @@ const articles: Array<Article> = new Array(8).fill(0).map((_, i) => (
 		user: {
 			id: 'some user id',
 			username: 'some username',
+			role: UserRole.USER,
 		},
 		createdAt: 'date',
 		views: 100,
@@ -59,7 +60,7 @@ export const ArticlesListSmall = Template.bind({});
 ArticlesListSmall.args = {
 	articles,
 	loading: false,
-	view: ArticlesView.SMALL,
+	wrapperRef: { current: document.querySelector('body') },
 };
 
 export const ArticlesListBig = Template.bind({});
@@ -67,13 +68,13 @@ ArticlesListBig.args = {
 	articles,
 	loading: false,
 	view: ArticlesView.BIG,
+	wrapperRef: { current: document.querySelector('body') },
 };
 
 export const ArticlesListSmallLoading = Template.bind({});
 ArticlesListSmallLoading.args = {
 	articles,
 	loading: true,
-	view: ArticlesView.SMALL,
 };
 
 export const ArticlesListBigLoading = Template.bind({});
@@ -81,4 +82,17 @@ ArticlesListBigLoading.args = {
 	articles,
 	loading: true,
 	view: ArticlesView.BIG,
+};
+
+export const ArticlesListRecommendations = Template.bind({});
+ArticlesListRecommendations.args = {
+	articles: articles.slice(0, 4),
+	loading: false,
+	recommendations: true,
+};
+
+export const ArticlesListRecommendationsLoading = Template.bind({});
+ArticlesListRecommendationsLoading.args = {
+	loading: true,
+	recommendations: true,
 };

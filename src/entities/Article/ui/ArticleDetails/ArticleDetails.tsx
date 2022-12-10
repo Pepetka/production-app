@@ -1,17 +1,19 @@
-import { DynamicModuleLoader } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { classNames } from 'shared/lib/classNames/classNames';
 import { memo, useCallback } from 'react';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useSelector } from 'react-redux';
-import { Text, TextSize } from 'shared/ui/Text';
 import { useTranslation } from 'react-i18next';
-import { Avatar, AvatarSize } from 'shared/ui/Avatar';
-import EyeIcon from 'shared/assets/icons/eye_icon.svg';
-import CalendarIcon from 'shared/assets/icons/calendar_icon.svg';
-import { Icon, IconTheme } from 'shared/ui/Icon';
-import { useAppEffect } from 'shared/lib/hooks/useAppEffect/useAppEffect';
+import { DynamicModuleLoader } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { Text, TextSize } from '@/shared/ui/Text';
+import { Avatar, AvatarSize } from '@/shared/ui/Avatar';
+import EyeIcon from '@/shared/assets/icons/eye_icon.svg';
+import CalendarIcon from '@/shared/assets/icons/calendar_icon.svg';
+import { Icon, IconTheme } from '@/shared/ui/Icon';
+import { useAppEffect } from '@/shared/lib/hooks/useAppEffect/useAppEffect';
+import { HStack, VStack } from '@/shared/ui/Stack';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
-import { ArticleBlock, ArticleBlockType } from '../../model/types/article';
+import type { ArticleBlock } from '../../model/types/article';
+import { ArticleBlockType } from '../../model/consts/consts';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { ArticleImgBlockComponent } from '../ArticleImgBlockComponent/ArticleImgBlockComponent';
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
@@ -60,24 +62,24 @@ export const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
 	if (error) {
 		content = <Text title={t(error)} align="center" />;
 	} else if (loading) {
-		content = <div className={cls.loader}><ArticleSkeleton /></div>;
+		content = <HStack justify="center" w100><ArticleSkeleton /></HStack>;
 	} else {
 		content = (
-			<div className={cls.article}>
-				<div className={cls.header}>
+			<VStack align="start" gap="32" w100>
+				<VStack align="start" w100 gap="8">
 					<Avatar avatar={article?.img} alt={t('Article img')} size={AvatarSize.SIZE_L} />
 					<Text size={TextSize.L} title={article?.title} text={article?.subtitle} />
-					<div className={cls.views}>
+					<HStack gap="8">
 						<Icon SvgIcon={EyeIcon} theme={IconTheme.SECONDARY} />
 						<Text text={`${article?.views}`} />
-					</div>
-					<div className={cls.calendar}>
+					</HStack>
+					<HStack gap="8">
 						<Icon SvgIcon={CalendarIcon} theme={IconTheme.SECONDARY} />
 						<Text text={article?.createdAt} />
-					</div>
-				</div>
+					</HStack>
+				</VStack>
 				{article?.blocks.map(renderBlock)}
-			</div>
+			</VStack>
 		);
 	}
 

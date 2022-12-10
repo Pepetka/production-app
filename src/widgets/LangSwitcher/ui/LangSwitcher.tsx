@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
-import { classNames } from 'shared/lib/classNames/classNames';
 import { memo, useEffect } from 'react';
-import { Button, ButtonTheme } from 'shared/ui/Button';
-import { LOCAL_STORAGE_LANG_KEY } from 'shared/const/localstorage';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
+import { LOCAL_STORAGE_LANG_KEY } from '@/shared/const/localstorage';
 import cls from './LangSwitcher.module.scss';
 
 enum Languages {

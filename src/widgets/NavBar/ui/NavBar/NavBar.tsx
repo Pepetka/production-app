@@ -1,16 +1,17 @@
-import { AppRoutes, routeConfig, routePaths } from 'shared/config/routeConfig/routeConfig';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { useTranslation } from 'react-i18next';
 import {
-	memo, useCallback, useEffect, useMemo, useRef, useState,
+	memo, useEffect, useMemo, useState,
 } from 'react';
-import { LoginModal } from 'features/AuthByUsername';
-import { useDispatch, useSelector } from 'react-redux';
-import { getAuthData, userActions } from 'entities/User';
-import { Button, ButtonTheme } from 'shared/ui/Button';
-import { Text, TextTheme } from 'shared/ui/Text';
+import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
+import { classNames } from '@/shared/lib/classNames/classNames';
+import { LoginModal } from '@/features/AuthByUsername';
+import { getAuthData } from '@/entities/User';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
+import { Text, TextTheme } from '@/shared/ui/Text';
+import { HStack } from '@/shared/ui/Stack';
+import { NotificationPopover } from '@/features/NotificationPopover';
+import { MenuAvatar } from '@/features/MenuAvatar';
 import cls from './NavBar.module.scss';
-import { NavBarLink } from '../NavBarLink/NavBarLink';
 
 interface NavBarProps {
 	className?: string
@@ -18,27 +19,31 @@ interface NavBarProps {
 
 export const NavBar = memo(({ className }: NavBarProps) => {
 	const { t } = useTranslation();
-	const authData = useSelector(getAuthData);
-	const dispatch = useDispatch();
 	const [isAuthModal, setIsAuthModal] = useState(false);
 	const [isAuth, setIsAuth] = useState(false);
-	const authRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-	const onAuth = useCallback(() => setIsAuth(true), []);
+	const authData = useSelector(getAuthData);
+	const [isAuthData, setIsAuthData] = useState(!!authData);
 
 	useEffect(() => {
+		let authTimer: ReturnType<typeof setTimeout>;
+		setIsAuthData(!!authData);
+
 		if (authData) {
-			authRef.current = setTimeout(onAuth, 3000);
+			setIsAuthModal(false);
+			authTimer = setTimeout(() => {
+				setIsAuth(true);
+			}, 300);
 		}
 
 		return () => {
-			clearInterval(authRef.current!);
+			clearInterval(authTimer);
 		};
-	}, [authData, onAuth]);
+	}, [authData]);
 
 	const {
 		onOpenModal,
 		onCloseModal,
+		onLogoutCallback,
 	} = useMemo(() => ({
 		onCloseModal: () => {
 			setIsAuthModal(false);
@@ -46,42 +51,28 @@ export const NavBar = memo(({ className }: NavBarProps) => {
 		onOpenModal: () => {
 			setIsAuthModal(true);
 		},
-	}), []);
-
-	const onLogout = useCallback(() => {
-		dispatch(userActions.removeAuthData());
-		setIsAuth(false);
-		setIsAuthModal(false);
-	}, [dispatch]);
-
-	const navLinks: DeepPartial<typeof routeConfig> = useMemo(() => ({
-		[AppRoutes.MAIN]: { path: routePaths.Main, authOnly: routeConfig.Main.authOnly },
-		[AppRoutes.ABOUT]: { path: routePaths.About, authOnly: routeConfig.About.authOnly },
-		[AppRoutes.ARTICLE_CREATE]: { path: routePaths.Article_create, authOnly: routeConfig.Article_create.authOnly },
+		onLogoutCallback: () => {
+			setIsAuth(false);
+			setIsAuthModal(false);
+		},
 	}), []);
 
 	return (
-		<header className={classNames(cls.NavBar, {}, [className])}>
-			{!isAuth && <LoginModal isOpen={isAuthModal} isClose={!!authData} onCloseModal={onCloseModal} />}
+		<HStack Tag="header" justify="between" className={classNames(cls.NavBar, {}, [className])}>
+			{!isAuth && <LoginModal isOpen={isAuthModal} onCloseModal={onCloseModal} />}
 			<Text className={cls.logo} title={t('Prod App')} align="center" theme={TextTheme.PRIMARY} invert />
-			<nav className={classNames(cls.links)}>
-				{Object.entries(navLinks).map(([name, route]) => (
-					<NavBarLink
-						key={name}
-						route={route}
-						routeName={name}
-					/>
-				))}
-				{authData ? (
-					<Button theme={ButtonTheme.OUTLINE_PRIMARY} inverted onClick={onLogout}>
-						{t('LogOut')}
-					</Button>
+			<HStack Tag="nav" gap="16" justify="end" className={classNames(cls.links)}>
+				{isAuthData ? (
+					<HStack gap="16" align="center">
+						<NotificationPopover />
+						<MenuAvatar onLogoutCallback={onLogoutCallback} />
+					</HStack>
 				) : (
 					<Button theme={ButtonTheme.OUTLINE_PRIMARY} inverted onClick={onOpenModal}>
 						{t('LogIn')}
 					</Button>
 				)}
-			</nav>
-		</header>
+			</HStack>
+		</HStack>
 	);
 });

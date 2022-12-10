@@ -1,7 +1,8 @@
 import { describe, expect, test } from '@jest/globals';
-import { Country } from 'entities/Country';
-import { Currency } from 'entities/Currency';
-import { Profile, ValidateProfileError } from '../../types/profileSchema';
+import { Country } from '@/entities/Country';
+import { Currency } from '@/entities/Currency';
+import { ValidateProfileError } from '../../consts/consts';
+import type { Profile } from '../../types/profileSchema';
 import { validateProfileData } from './validateProfileData';
 
 describe('validateProfileData', () => {
