@@ -1,5 +1,5 @@
 import {
-	memo, SVGProps, useCallback, useState, VFC,
+	memo, SVGProps, useCallback, useState, FC,
 } from 'react';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -16,7 +16,7 @@ import { Flex, VStack } from '@/shared/ui/Stack';
 import { SideBarLink } from '../SideBarLink/SideBarLink';
 import cls from './SideBar.module.scss';
 
-const navIcons: Record<string, VFC<SVGProps<SVGSVGElement>>> = {
+const navIcons: Record<string, FC<SVGProps<SVGSVGElement>>> = {
 	[AppRoutes.MAIN]: HomeIcon,
 	[AppRoutes.ABOUT]: AboutIcon,
 	[AppRoutes.PROFILE]: ProfileIcon,
