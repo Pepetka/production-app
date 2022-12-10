@@ -103,3 +103,13 @@ ProfilePageWithError.args = {
 ProfilePageWithError.decorators = [
 	StoreDecorator(stateWithError as StateSchema, asyncReducers as ReducersMapObject<StateSchema>),
 ];
+ProfilePageWithError.parameters = {
+	mockData: [
+		{
+			url: `${__API__}/rating-profile?profileId=1&userId=1`,
+			method: 'GET',
+			status: 200,
+			response: profileRating,
+		},
+	],
+};
