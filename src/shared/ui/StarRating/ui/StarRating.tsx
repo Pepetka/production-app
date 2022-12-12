@@ -1,9 +1,9 @@
 import { memo, useEffect, useState } from 'react';
 import StarIcon from '@/shared/assets/icons/star_icon.svg';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Icon } from '@/shared/ui/Icon';
-import { HStack } from '@/shared/ui/Stack';
-import { Button, ButtonTheme } from '@/shared/ui/Button';
+import { Icon } from '../../Icon';
+import { HStack } from '../../Stack';
+import { Button, ButtonTheme } from '../../Button';
 import cls from './StarRating.module.scss';
 
 interface StarRatingProps {

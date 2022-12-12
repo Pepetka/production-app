@@ -29,7 +29,8 @@ module.exports = {
 		'react-hooks',
 	],
 	rules: {
-		'ulbi-tv-plugin/path-checker': 'error',
+		'ulbi-tv-plugin/path-checker': ['error', { alias: '@' }],
+		'ulbi-tv-plugin/public-api-imports': ['error', { alias: '@' }],
 		'react/no-array-index-key': 'off',
 		'react/jsx-indent': [2, 'tab'],
 		'react/jsx-indent-props': [2, 'tab'],

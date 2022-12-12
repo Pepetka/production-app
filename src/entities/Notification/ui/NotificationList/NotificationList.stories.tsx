@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import withMock from 'storybook-addon-mock';
 import { NotificationList } from './NotificationList';
-import { Notification } from '@/entities/Notification/model/types/notification';
+import { Notification } from '../../model/types/notification';
 
 export default {
 	title: 'entities/Notification/NotificationList',

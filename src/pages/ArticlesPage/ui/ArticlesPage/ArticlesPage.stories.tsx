@@ -1,9 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ReducersMapObject } from '@reduxjs/toolkit';
 import { StateSchema } from '@/app/provider/Store';
-import { ArticlesView, ArticleType } from '@/entities/Article';
+import { ArticlesView, ArticleType, ArticleBlockType } from '@/entities/Article';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
-import { ArticleBlockType } from '@/entities/Article/model/consts/consts';
 import { articlesPageReducer } from '../../model/slice/articlesPageSlice';
 import ArticlesPage from './ArticlesPage';
 

@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ReducersMapObject } from '@reduxjs/toolkit';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { StateSchema } from '@/app/provider/Store';
-import { articleReducer } from '@/entities/Article/model/slice/articleSlice';
+import { articleReducer } from '@/entities/Article';
 import { ArticleDetailsPageHeader } from './ArticleDetailsPageHeader';
 
 export default {

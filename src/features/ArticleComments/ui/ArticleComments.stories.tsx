@@ -2,10 +2,9 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import withMock from 'storybook-addon-mock';
 import { ReducersMapObject } from '@reduxjs/toolkit';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
-import { Comment } from '@/entities/Comment';
+import { Comment, commentFormReducer } from '@/entities/Comment';
 import { UserRole } from '@/entities/User';
 import { StateSchema } from '@/app/provider/Store';
-import { commentFormReducer } from '@/entities/Comment/model/slice/commentFormSlice';
 import { ArticleComments } from './ArticleComments';
 
 export default {

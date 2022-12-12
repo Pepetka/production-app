@@ -6,8 +6,8 @@ import { StateSchema } from '@/app/provider/Store';
 import { profileReducer, ValidateProfileError } from '@/features/EditableProfileCard';
 import { Currency } from '@/entities/Currency';
 import { Country } from '@/entities/Country';
+import { ProfileRatingType } from '@/features/ProfileRating';
 import ProfilePage from './ProfilePage';
-import { ProfileRatingType } from '@/features/ProfileRating/model/types/profileRating';
 
 export default {
 	title: 'pages/ProfilePage/ProfilePage',
