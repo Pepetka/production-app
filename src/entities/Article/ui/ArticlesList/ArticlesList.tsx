@@ -5,8 +5,6 @@ import { useTranslation } from 'react-i18next';
 import { ListRange, VirtuosoGrid, VirtuosoGridHandle } from 'react-virtuoso';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Text } from '@/shared/ui/Text';
-import { useAppEffect } from '@/shared/lib/hooks/useAppEffect/useAppEffect';
-import { useSafeScroll } from '@/shared/lib/hooks/useSafeScroll/useSafeScroll';
 import { ArticlesListSkeleton } from '../ArticlesListSkeleton/ArticlesListSkeleton';
 import { ArticlesListItem } from '../ArticlesListItem/ArticlesListItem';
 import type { Article } from '../../model/types/article';
@@ -60,21 +58,20 @@ export const ArticlesList = memo(
 		const { t } = useTranslation('articles');
 		const virtuoso = useRef<VirtuosoGridHandle>(null);
 		const [_, setRerender] = useState(0);
-		const { scroll } = useSafeScroll(wrapperRef!, 100);
 
 		useEffect(() => {
 			setRerender((prev) => prev + 1);
 		}, [wrapperRef]);
 
-		const callback = useCallback(() => {
-			if (virtuoso.current && wrapperRef?.current) {
-				virtuoso.current.scrollTo({
-					top: scroll - 211,
-				});
-			}
-		}, []);
-
-		useAppEffect(callback);
+		// const callback = useCallback(() => {
+		// 	if (virtuoso.current && wrapperRef?.current) {
+		// 		virtuoso.current.scrollTo({
+		// 			top: scroll - 211,
+		// 		});
+		// 	}
+		// }, []);
+		//
+		// useAppEffect(callback);
 
 		const renderArticle = useCallback((index: number) => (
 			<ArticlesListItem

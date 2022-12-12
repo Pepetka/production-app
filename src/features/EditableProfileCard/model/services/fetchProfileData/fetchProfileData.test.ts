@@ -2,8 +2,8 @@ import { describe, expect, test } from '@jest/globals';
 import { TestAsyncThunk } from '@/shared/lib/testAsyncThunk/testAsyncThunk';
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
-import { Profile } from '../../types/profileSchema';
 import { fetchProfileData } from './fetchProfileData';
+import { Profile } from '@/entities/Profile';
 
 describe('fetchProfileData', () => {
 	test('fulfilled', async () => {

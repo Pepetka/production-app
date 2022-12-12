@@ -1,9 +1,15 @@
 import {
-	forwardRef, MutableRefObject, ReactNode, useImperativeHandle, useRef,
+	forwardRef, MutableRefObject, ReactNode, useCallback, useImperativeHandle, useRef,
 } from 'react';
+import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useSafeScroll } from '@/shared/lib/hooks/useSafeScroll/useSafeScroll';
 import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
+import { StateSchema } from '@/app/provider/Store';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { scrollSafeActions } from '../model/slice/scrollSafeSclice';
+import { getScrollSafeScrollByPath } from '../model/selectors/getScrollSafeScrollByPath/getScrollSafeScrollByPath';
 import cls from './Page.module.scss';
 
 interface PageProps {
@@ -17,9 +23,25 @@ interface PageProps {
 export const Page = forwardRef<HTMLElement, PageProps>(({
 	className, children, onScrollEnd, infiniteScroll, safeScroll = false,
 }, ref) => {
+	const dispatch = useAppDispatch();
+	const location = useLocation();
 	const wrapperRef = useRef() as MutableRefObject<HTMLElement>;
 	const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
-	const { onScroll, setScroll } = useSafeScroll(wrapperRef, 100);
+	const scroll = useSelector((state: StateSchema) => getScrollSafeScrollByPath(state, location.pathname));
+
+	const onScrollCallback = useCallback(() => {
+		dispatch(scrollSafeActions.setScroll({
+			path: location.pathname,
+			position: wrapperRef.current.scrollTop,
+		}));
+	}, [dispatch, location.pathname]);
+
+	const { onScroll, setScroll } = useSafeScroll({
+		wrapperRef,
+		delay: 100,
+		scroll,
+		onScrollCallback,
+	});
 
 	// useEffect(() => {
 	// 	if (safeScroll) setScroll();

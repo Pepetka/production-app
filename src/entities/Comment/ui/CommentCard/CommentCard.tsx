@@ -3,10 +3,10 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Text } from '@/shared/ui/Text';
 import { Avatar, AvatarSize } from '@/shared/ui/Avatar';
 import { AppLink } from '@/shared/ui/AppLink';
-import { routePaths } from '@/shared/config/routeConfig/routeConfig';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { Comment } from '../../model/types/comment';
 import cls from './CommentCard.module.scss';
+import { routePaths } from '@/shared/const/router';
 
 interface CommentCardProps {
 	className?: string

@@ -1,8 +1,9 @@
 import { describe, expect, test } from '@jest/globals';
-import { User, userActions, UserRole } from '@/entities/User';
+import { User, userActions } from '@/entities/User';
 import { TestAsyncThunk } from '@/shared/lib/testAsyncThunk/testAsyncThunk';
 import { loginActions } from '../../slice/loginSlice';
 import { loginByUsername } from './loginByUsername';
+import { UserRole } from '@/shared/const';
 
 describe('loginByUsername', () => {
 	test('fulfilled', async () => {

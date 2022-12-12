@@ -31,6 +31,10 @@ module.exports = {
 	rules: {
 		'ulbi-tv-plugin/path-checker': ['error', { alias: '@' }],
 		'ulbi-tv-plugin/public-api-imports': ['error', { alias: '@' }],
+		'ulbi-tv-plugin/layer-imports': ['error', {
+			alias: '@',
+			ignoreImportPatterns: ['**/Store'],
+		}],
 		'react/no-array-index-key': 'off',
 		'react/jsx-indent': [2, 'tab'],
 		'react/jsx-indent-props': [2, 'tab'],

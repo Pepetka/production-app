@@ -25,3 +25,4 @@ createRoot(document.getElementById('root') as HTMLElement).render(
 		</Suspense>
 	</StrictMode>,
 );
+export { Theme } from '@/shared/const/theme';

@@ -3,9 +3,9 @@ import withMock from 'storybook-addon-mock';
 import { ReducersMapObject } from '@reduxjs/toolkit';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { Comment, commentFormReducer } from '@/entities/Comment';
-import { UserRole } from '@/entities/User';
 import { StateSchema } from '@/app/provider/Store';
 import { ArticleComments } from './ArticleComments';
+import { UserRole } from '@/shared/const';
 
 export default {
 	title: 'features/ArticleComments',

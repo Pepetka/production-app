@@ -1,12 +1,11 @@
 import {
-	memo, SVGProps, useCallback, useState, FC,
+	FC, memo, SVGProps, useCallback, useState,
 } from 'react';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { ThemeSwitcher } from '@/widgets/ThemeSwitcher';
-import { LangSwitcher } from '@/widgets/LangSwitcher';
+import { ThemeSwitcher } from '@/features/ThemeSwitcher';
+import { LangSwitcher } from '@/features/LangSwitcher';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
-import { AppRoutes, routeConfig, routePaths } from '@/shared/config/routeConfig/routeConfig';
 import AboutIcon from '@/shared/assets/icons/about_icon.svg';
 import HomeIcon from '@/shared/assets/icons/home_icon.svg';
 import ProfileIcon from '@/shared/assets/icons/profile_icon.svg';
@@ -14,6 +13,8 @@ import ArticlesIcon from '@/shared/assets/icons/articles_icon.svg';
 import { getAuthData } from '@/entities/User';
 import { Flex, VStack } from '@/shared/ui/Stack';
 import { SideBarLink } from '../SideBarLink/SideBarLink';
+import { AppRoutes, routePaths } from '@/shared/const/router';
+import { AppRoutesProps } from '@/shared/types/router';
 import cls from './SideBar.module.scss';
 
 const navIcons: Record<string, FC<SVGProps<SVGSVGElement>>> = {
@@ -34,11 +35,11 @@ export const SideBar = memo(({ className }: SideBarProps) => {
 		setCollapsed((collapsed) => !collapsed);
 	}, []);
 
-	const links: DeepPartial<typeof routeConfig> = {
-		[AppRoutes.MAIN]: { path: routePaths.Main, authOnly: routeConfig.Main.authOnly },
-		[AppRoutes.ABOUT]: { path: routePaths.About, authOnly: routeConfig.About.authOnly },
-		[AppRoutes.PROFILE]: { path: routePaths.Profile + (authData?.id ?? ''), authOnly: routeConfig.Profile.authOnly },
-		[AppRoutes.ARTICLES]: { path: routePaths.Articles, authOnly: routeConfig.Articles.authOnly },
+	const links: DeepPartial<Record<AppRoutes, AppRoutesProps>> = {
+		[AppRoutes.MAIN]: { path: routePaths.Main, authOnly: false },
+		[AppRoutes.ABOUT]: { path: routePaths.About, authOnly: false },
+		[AppRoutes.PROFILE]: { path: routePaths.Profile + (authData?.id ?? ''), authOnly: true },
+		[AppRoutes.ARTICLES]: { path: routePaths.Articles, authOnly: true },
 	};
 
 	return (

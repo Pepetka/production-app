@@ -1,7 +1,11 @@
-import '@/app/styles/index.scss';
 import { DecoratorFn, Story } from '@storybook/react';
 import { useEffect } from 'react';
-import { Theme, ThemeProvider, useTheme } from '@/app/provider/Theme';
+// eslint-disable-next-line
+import { ThemeProvider } from '@/app/provider/Theme';
+import { Theme } from '@/shared/const/theme';
+import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
+// eslint-disable-next-line
+import '@/app/styles/index.scss';
 
 import './Storybook.scss';
 

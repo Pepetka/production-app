@@ -1,10 +1,7 @@
-import {
-	FC, ReactNode, useCallback, useEffect,
-} from 'react';
+import { ReactNode, useCallback, useEffect } from 'react';
 import { useDispatch, useStore } from 'react-redux';
 import { Reducer } from '@reduxjs/toolkit';
-import { ReduxStoreWithManager } from '@/app/provider/Store';
-import { StateSchemaKey } from '@/app/provider/Store/config/StateSchema';
+import { ReduxStoreWithManager, StateSchemaKey } from '@/app/provider/Store';
 
 interface DynamicModuleLoaderProps {
 	reducerKey: StateSchemaKey

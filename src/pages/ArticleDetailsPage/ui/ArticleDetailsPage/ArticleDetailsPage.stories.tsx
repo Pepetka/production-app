@@ -6,10 +6,10 @@ import { StateSchema } from '@/app/provider/Store';
 import {
 	articleReducer, ArticleType, ArticleBlockType, Article,
 } from '@/entities/Article';
-import { UserRole } from '@/entities/User';
 import { Comment } from '@/entities/Comment';
 import { ArticleRatingType } from '@/features/ArticleRating';
 import ArticleDetailsPage from './ArticleDetailsPage';
+import { UserRole } from '@/shared/const';
 
 export default {
 	title: 'pages/ArticleDetailsPage/ArticleDetailsPage',
