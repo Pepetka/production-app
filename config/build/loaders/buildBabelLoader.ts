@@ -6,6 +6,7 @@ export const buildBabelLoader = (isDev: boolean, isTSX: boolean) => ({
 	use: {
 		loader: 'babel-loader',
 		options: {
+			cacheDirectory: true,
 			presets: ['@babel/preset-env'],
 			plugins: [
 				[
@@ -15,7 +16,7 @@ export const buildBabelLoader = (isDev: boolean, isTSX: boolean) => ({
 					},
 				],
 				'@babel/plugin-transform-runtime',
-				isTSX && [
+				(isTSX && !isDev) && [
 					babelRemovePropsPlugin,
 					{
 						props: ['data-testid'],
