@@ -9,8 +9,8 @@ module.exports = {
 		'plugin:jsx-a11y/recommended',
 		'plugin:react/recommended',
 		'plugin:i18next/recommended',
-		'plugin:import/errors',
-		'plugin:import/warnings',
+		'plugin:import/recommended',
+		'plugin:import/typescript',
 	],
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
@@ -27,8 +27,10 @@ module.exports = {
 		'@typescript-eslint',
 		'i18next',
 		'react-hooks',
+		'unused-imports',
 	],
 	rules: {
+		'unused-imports/no-unused-imports': 'error',
 		'ulbi-tv-plugin/path-checker': ['error', { alias: '@' }],
 		'ulbi-tv-plugin/public-api-imports': ['error', { alias: '@' }],
 		'ulbi-tv-plugin/layer-imports': ['error', {

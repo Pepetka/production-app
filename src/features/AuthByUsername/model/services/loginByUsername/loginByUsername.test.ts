@@ -1,7 +1,6 @@
 import { describe, expect, test } from '@jest/globals';
 import { User, userActions } from '@/entities/User';
 import { TestAsyncThunk } from '@/shared/lib/testAsyncThunk/testAsyncThunk';
-import { loginActions } from '../../slice/loginSlice';
 import { loginByUsername } from './loginByUsername';
 import { UserRole } from '@/shared/const';
 
@@ -15,8 +14,7 @@ describe('loginByUsername', () => {
 
 		expect(thunk.api.post).toHaveBeenCalled();
 		expect(thunk.dispatch).toHaveBeenCalledWith(userActions.setAuthData(userValue));
-		expect(thunk.dispatch).toHaveBeenCalledWith(loginActions.clearLogin());
-		expect(thunk.dispatch).toHaveBeenCalledTimes(4);
+		expect(thunk.dispatch).toHaveBeenCalledTimes(3);
 		expect(result.meta.requestStatus).toEqual('fulfilled');
 		expect(result.payload).toEqual({ id: 'some id', username: 'some username', role: UserRole.USER });
 	});
