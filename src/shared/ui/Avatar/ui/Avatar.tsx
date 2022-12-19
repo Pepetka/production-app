@@ -3,6 +3,8 @@ import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import DefaultAvatar from '@/shared/assets/imgs/default_avatar.jpeg';
 import { HStack } from '../../Stack';
+import { AppImg } from '../../AppImg';
+import { Skeleton } from '../../Skeleton';
 import cls from './Avatar.module.scss';
 
 export enum AvatarSize {
@@ -27,7 +29,12 @@ export const Avatar = memo(({
 
 	return (
 		<HStack justify="center" className={classNames(cls.Avatar, { [cls.inverted]: inverted }, [className, cls[size]])}>
-			<img src={avatar} alt={alt ?? t('Profile avatar')} />
+			<AppImg
+				src={avatar}
+				alt={alt ?? t('Profile avatar')}
+				className={cls.avatarImg}
+				fallback={<Skeleton width="100%" height="100%" />}
+			/>
 		</HStack>
 	);
 });

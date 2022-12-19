@@ -16,8 +16,10 @@ import {
 	ArticleBlockType, ArticlesView, ArticleType,
 } from '../../model/consts/consts';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
-import cls from './ArticlesListItem.module.scss';
 import { routePaths } from '@/shared/const/router';
+import { AppImg } from '@/shared/ui/AppImg';
+import { Skeleton } from '@/shared/ui/Skeleton';
+import cls from './ArticlesListItem.module.scss';
 
 interface ArticlesListItemProps {
 	className?: string
@@ -56,7 +58,11 @@ export const ArticlesListItem = memo(
 					<Text title={article.title} />
 					<Text text={articleTypes} />
 					<HStack justify="center" className={cls.img}>
-						<img src={article.img} alt={t('Article img')} />
+						<AppImg
+							src={article.img}
+							alt={t('Article img')}
+							fallback={<Skeleton width="100%" height="100%" />}
+						/>
 					</HStack>
 					<div className={cls.content}>
 						{textContent && <ArticleTextBlockComponent block={textContent} />}
@@ -82,7 +88,11 @@ export const ArticlesListItem = memo(
 					<VStack className={cls.smallWrapper}>
 						<HStack justify="center" className={cls.img}>
 							<Text className={cls.date} text={article.createdAt} />
-							<img src={article.img} alt={t('Article img')} />
+							<AppImg
+								src={article.img}
+								alt={t('Article img')}
+								fallback={<Skeleton width="100%" height="100%" />}
+							/>
 						</HStack>
 						<div className={cls.data}>
 							<HStack justify="between">
