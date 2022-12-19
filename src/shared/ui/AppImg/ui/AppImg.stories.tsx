@@ -1,8 +1,9 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { AppImg } from './AppImg';
+import DefaultAvatar from '@/shared/assets/imgs/default_avatar.jpeg';
 
 export default {
-	title: 'components/AppImg',
+	title: 'shared/AppImg',
 	component: AppImg,
 	argTypes: {
 		backgroundColor: { control: 'color' },
@@ -12,4 +13,6 @@ export default {
 const Template: ComponentStory<typeof AppImg> = (args) => <AppImg {...args} />;
 
 export const AppImgStory = Template.bind({});
-AppImgStory.args = {};
+AppImgStory.args = {
+	src: DefaultAvatar,
+};
