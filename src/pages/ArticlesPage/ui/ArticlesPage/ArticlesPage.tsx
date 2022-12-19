@@ -20,7 +20,7 @@ const ArticlesPage = memo(() => {
 	useAppEffect(callback);
 
 	return (
-		<Page ref={wrapperRef} safeScroll>
+		<Page data-testid="ArticlesPage" ref={wrapperRef} safeScroll>
 			<DynamicModuleLoader removeOnUnmount={false} reducerKey="articlesPage" reducer={articlesPageReducer}>
 				<VStack w100 align="start" gap="16">
 					<ArticlesPageFilters />

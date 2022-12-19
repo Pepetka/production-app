@@ -18,10 +18,11 @@ interface PageProps {
 	onScrollEnd?: () => void
 	infiniteScroll?: boolean
 	safeScroll?: boolean
+	'data-testid'?: string
 }
 
 export const Page = forwardRef<HTMLElement, PageProps>(({
-	className, children, onScrollEnd, infiniteScroll, safeScroll = false,
+	className, children, onScrollEnd, infiniteScroll, safeScroll = false, 'data-testid': dataTestId,
 }, ref) => {
 	const dispatch = useAppDispatch();
 	const location = useLocation();
@@ -60,6 +61,7 @@ export const Page = forwardRef<HTMLElement, PageProps>(({
 			ref={wrapperRef}
 			className={classNames(cls.Page, {}, [className])}
 			onScroll={safeScroll ? onScroll : () => {}}
+			data-testid={dataTestId}
 		>
 			{children}
 			{infiniteScroll ? (onScrollEnd && <div className={cls.observer} ref={triggerRef} />) : null}
