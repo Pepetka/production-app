@@ -26,11 +26,11 @@ export const AppImg = memo(
 			};
 		}, [src]);
 
-		if (isLoading && fallback) {
+		if (isLoading && fallback && __PROJECT__ !== 'storybook') {
 			return fallback;
 		}
 
-		if (isError && errorFallback) {
+		if (isError && errorFallback && __PROJECT__ !== 'storybook') {
 			return errorFallback;
 		}
 

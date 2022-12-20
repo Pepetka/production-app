@@ -1,10 +1,10 @@
 import {
-	forwardRef, MutableRefObject, ReactNode, useCallback, useImperativeHandle, useRef,
+	forwardRef, MutableRefObject, ReactNode, useCallback, useEffect, useImperativeHandle, useRef,
 } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { useSafeScroll } from '@/shared/lib/hooks/useSafeScroll/useSafeScroll';
+import { useScroll } from '@/shared/lib/hooks/useScroll/useScroll';
 import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
 import { StateSchema } from '@/app/provider/Store';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -37,16 +37,15 @@ export const Page = forwardRef<HTMLElement, PageProps>(({
 		}));
 	}, [dispatch, location.pathname]);
 
-	const { onScroll, setScroll } = useSafeScroll({
+	const { onScroll, setScroll } = useScroll({
 		wrapperRef,
 		delay: 100,
-		scroll,
 		onScrollCallback,
 	});
 
-	// useEffect(() => {
-	// 	if (safeScroll) setScroll();
-	// }, []);
+	useEffect(() => {
+		if (safeScroll) setScroll(scroll);
+	}, [safeScroll, scroll, setScroll]);
 
 	useInfiniteScroll({
 		wrapperRef,

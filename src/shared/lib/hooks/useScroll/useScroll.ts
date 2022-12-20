@@ -4,18 +4,17 @@ import { useThrottle } from '../useThrottle/useThrottle';
 interface UseSafeScrollProps {
 	wrapperRef: MutableRefObject<HTMLElement | null>,
 	delay?: number,
-	scroll: number,
 	onScrollCallback?: () => void,
 }
 
-export const useSafeScroll = ({
-	wrapperRef, delay = 500, scroll, onScrollCallback,
+export const useScroll = ({
+	wrapperRef, delay = 500, onScrollCallback,
 }: UseSafeScrollProps) => {
-	const setScroll = useCallback((customScroll: number = scroll) => {
+	const setScroll = useCallback((customScroll: number) => {
 		if (wrapperRef.current) {
 			wrapperRef.current.scrollTop = customScroll;
 		}
-	}, [scroll, wrapperRef]);
+	}, [wrapperRef]);
 
 	const onScroll = useThrottle(() => {
 		if (wrapperRef.current) {
@@ -26,6 +25,5 @@ export const useSafeScroll = ({
 	return {
 		setScroll,
 		onScroll,
-		scroll,
 	};
 };
