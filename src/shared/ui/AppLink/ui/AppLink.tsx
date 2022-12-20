@@ -1,5 +1,5 @@
 import {
-	ForwardedRef, forwardRef, memo, ReactNode,
+	ForwardedRef, forwardRef, ReactNode,
 } from 'react';
 import { NavLink, NavLinkProps } from 'react-router-dom';
 import { classNames } from '@/shared/lib/classNames/classNames';

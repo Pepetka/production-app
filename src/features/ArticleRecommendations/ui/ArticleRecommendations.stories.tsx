@@ -1,8 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import withMock from 'storybook-addon-mock';
-import { UserRole } from '@/entities/User';
 import { Article, ArticleBlockType, ArticleType } from '@/entities/Article';
 import { ArticleRecommendations } from './ArticleRecommendations';
+import { UserRole } from '@/shared/const';
 
 export default {
 	title: 'features/ArticleRecommendations',

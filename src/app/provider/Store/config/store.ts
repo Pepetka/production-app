@@ -6,7 +6,7 @@ import { $api } from '@/shared/api/api';
 import { scrollSafeReducer } from '@/widgets/Page';
 import { rtkApi } from '@/shared/api/rtkApi';
 import { StateSchema } from './StateSchema';
-import { createReducerManager } from '../config/reducerManager';
+import { createReducerManager } from './reducerManager';
 
 export const createReduxStore = (
 	initialState?: StateSchema,

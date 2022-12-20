@@ -7,7 +7,6 @@ import EyeIcon from '@/shared/assets/icons/eye_icon.svg';
 import { Card } from '@/shared/ui/Card';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { Avatar, AvatarSize } from '@/shared/ui/Avatar';
-import { routePaths } from '@/shared/config/routeConfig/routeConfig';
 import { AppLink } from '@/shared/ui/AppLink';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import type {
@@ -17,6 +16,9 @@ import {
 	ArticleBlockType, ArticlesView, ArticleType,
 } from '../../model/consts/consts';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
+import { routePaths } from '@/shared/const/router';
+import { AppImg } from '@/shared/ui/AppImg';
+import { Skeleton } from '@/shared/ui/Skeleton';
 import cls from './ArticlesListItem.module.scss';
 
 interface ArticlesListItemProps {
@@ -55,9 +57,12 @@ export const ArticlesListItem = memo(
 					</HStack>
 					<Text title={article.title} />
 					<Text text={articleTypes} />
-					<HStack justify="center" className={cls.img}>
-						<img src={article.img} alt={t('Article img')} />
-					</HStack>
+					<AppImg
+						src={article.img}
+						alt={t('Article img')}
+						className={cls.img}
+						fallback={<Skeleton width="100%" height={200} />}
+					/>
 					<div className={cls.content}>
 						{textContent && <ArticleTextBlockComponent block={textContent} />}
 					</div>
@@ -80,10 +85,14 @@ export const ArticlesListItem = memo(
 			<AppLink target={target} to={routePaths.Article_details + article.id}>
 				<Card className={classNames(cls.Small, {}, [className])}>
 					<VStack className={cls.smallWrapper}>
-						<HStack justify="center" className={cls.img}>
-							<Text className={cls.date} text={article.createdAt} />
-							<img src={article.img} alt={t('Article img')} />
-						</HStack>
+						<Text className={cls.date} text={article.createdAt} />
+						<AppImg
+							src={article.img}
+							alt={t('Article img')}
+							className={cls.img}
+							fallback={<Skeleton width={200} height={200} />}
+							errorFallback={<Skeleton width={200} height={200} />}
+						/>
 						<div className={cls.data}>
 							<HStack justify="between">
 								<Text className={cls.types} text={articleTypes} />

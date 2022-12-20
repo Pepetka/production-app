@@ -3,7 +3,6 @@ import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Input, InputTheme } from '@/shared/ui/Input';
 import { Spinner } from '@/shared/ui/Spinner';
-import { Profile } from '@/features/EditableProfileCard';
 import { Text, TextTheme } from '@/shared/ui/Text';
 import { Button } from '@/shared/ui/Button';
 import { Avatar, AvatarSize } from '@/shared/ui/Avatar';
@@ -11,6 +10,7 @@ import { Currency, CurrencySelect } from '@/entities/Currency';
 import { Country, CountrySelect } from '@/entities/Country';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { SelectTheme } from '@/shared/ui/Popups/ui/Select';
+import { Profile } from '../../model/types/profile';
 import cls from './ProfileCard.module.scss';
 
 interface ProfileCardProps {

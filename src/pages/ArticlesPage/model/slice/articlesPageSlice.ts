@@ -63,11 +63,11 @@ export const articlesPageSlice = createSlice({
 		changeType: (state, action: PayloadAction<ArticleType>) => {
 			state.type = action.payload;
 		},
-		initView: (state) => {
+		initView: (state, action: PayloadAction<number>) => {
 			const view = localStorage.getItem(LOCAL_STORAGE_ARTICLES_VIEW_KEY) as ArticlesView;
 
 			state.view = view ?? initialState.view;
-			state.limit = view === ArticlesView.BIG ? 3 : 10;
+			state.limit = view === ArticlesView.BIG ? 3 : action.payload;
 			state._init = true;
 		},
 	},

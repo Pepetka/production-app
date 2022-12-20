@@ -2,7 +2,8 @@ import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import DefaultAvatar from '@/shared/assets/imgs/default_avatar.jpeg';
-import { HStack } from '../../Stack';
+import { AppImg } from '../../AppImg';
+import { Skeleton } from '../../Skeleton';
 import cls from './Avatar.module.scss';
 
 export enum AvatarSize {
@@ -11,6 +12,13 @@ export enum AvatarSize {
 	SIZE_M = 'size_m',
 	SIZE_L = 'size_l',
 }
+
+const SkeletonSize: Record<AvatarSize, number> = {
+	[AvatarSize.SIZE_XS]: 30,
+	[AvatarSize.SIZE_S]: 100,
+	[AvatarSize.SIZE_M]: 150,
+	[AvatarSize.SIZE_L]: 200,
+};
 
 interface AvatarProps {
 	className?: string;
@@ -26,8 +34,11 @@ export const Avatar = memo(({
 	const { t } = useTranslation('profile');
 
 	return (
-		<HStack justify="center" className={classNames(cls.Avatar, { [cls.inverted]: inverted }, [className, cls[size]])}>
-			<img src={avatar} alt={alt ?? t('Profile avatar')} />
-		</HStack>
+		<AppImg
+			src={avatar}
+			alt={alt ?? t('Profile avatar')}
+			className={classNames(cls.Avatar, { [cls.inverted]: inverted }, [className, cls[size]])}
+			fallback={<Skeleton width={SkeletonSize[size]} circle />}
+		/>
 	);
 });

@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { useTheme } from '@/app/provider/Theme';
+import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 import { NavBar } from '@/widgets/NavBar';
 import { SideBar } from '@/widgets/SideBar';
 import { getAuthInit, userActions } from '@/entities/User';
-import { AppRouter } from '@/app/provider/Router';
+import { AppRouter } from './provider/Router';
 import { HStack } from '@/shared/ui/Stack';
 
 const App = () => {

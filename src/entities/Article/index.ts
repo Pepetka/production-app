@@ -10,3 +10,4 @@ export { fetchArticleById } from './model/services/fetchArticleById/fetchArticle
 export { getArticleData } from './model/selectors/getArticleData/getArticleData';
 export { getArticleError } from './model/selectors/getArticleError/getArticleError';
 export { ArticlesList } from './ui/ArticlesList/ArticlesList';
+export { articleReducer } from './model/slice/articleSlice';

@@ -7,7 +7,7 @@ const HomePage = memo(() => {
 	const { t } = useTranslation('main');
 
 	return (
-		<Page>
+		<Page data-testid="HomePage">
 			<Text size={TextSize.L} title={t('Home Title')} TitleTag="h1" />
 		</Page>
 	);

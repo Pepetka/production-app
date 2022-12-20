@@ -2,9 +2,9 @@ import { describe, expect, test } from '@jest/globals';
 import { TestAsyncThunk } from '@/shared/lib/testAsyncThunk/testAsyncThunk';
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
-import type { Profile } from '../../types/profileSchema';
 import { updateProfileData } from './updateProfileData';
 import { ValidateProfileError } from '../../consts/consts';
+import { Profile } from '@/entities/Profile';
 
 describe('updateProfileData', () => {
 	const data: Profile = {

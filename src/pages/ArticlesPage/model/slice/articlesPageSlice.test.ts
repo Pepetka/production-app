@@ -107,7 +107,7 @@ describe('articlesPageSlice', () => {
 	});
 
 	test('initView', () => {
-		expect(articlesPageReducer(state as ArticlesPageSchema, articlesPageActions.initView())).toEqual({
+		expect(articlesPageReducer(state as ArticlesPageSchema, articlesPageActions.initView(10))).toEqual({
 			...state,
 			limit: 10,
 			view: ArticlesView.SMALL,
@@ -186,7 +186,7 @@ describe('articlesPageSlice', () => {
 			...initialState,
 			page: 10,
 		});
-		expect(articlesPageReducer(undefined, articlesPageActions.initView())).toEqual({
+		expect(articlesPageReducer(undefined, articlesPageActions.initView(10))).toEqual({
 			...initialState,
 			limit: 10,
 			_init: true,

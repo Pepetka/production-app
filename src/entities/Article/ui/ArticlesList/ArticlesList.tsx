@@ -2,11 +2,9 @@ import {
 	HTMLAttributeAnchorTarget, memo, MutableRefObject, useCallback, useEffect, useRef, useState,
 } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ListRange, VirtuosoGrid, VirtuosoGridHandle } from 'react-virtuoso';
+import { VirtuosoGrid, VirtuosoGridHandle } from 'react-virtuoso';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Text } from '@/shared/ui/Text';
-import { useAppEffect } from '@/shared/lib/hooks/useAppEffect/useAppEffect';
-import { useSafeScroll } from '@/shared/lib/hooks/useSafeScroll/useSafeScroll';
 import { ArticlesListSkeleton } from '../ArticlesListSkeleton/ArticlesListSkeleton';
 import { ArticlesListItem } from '../ArticlesListItem/ArticlesListItem';
 import type { Article } from '../../model/types/article';
@@ -17,16 +15,18 @@ interface FooterProps {
 	view: ArticlesView
 	loading: boolean
 	recommendations?: boolean
+	articlesNumSmall: number
 }
 
-const ListFooter = memo(({ view, loading, recommendations }: FooterProps) => {
+const ListFooter = memo(({
+	view, loading, recommendations, articlesNumSmall,
+}: FooterProps) => {
 	const getSkeletons = (view: ArticlesView) => {
-		const skeletonNum = recommendations ? 4 : null;
-
+		const skeletonNumRecommendations = recommendations ? 4 : null;
 		if (!loading) return null;
 
 		return (
-			new Array(skeletonNum ?? (view === ArticlesView.SMALL ? 10 : 3))
+			new Array(skeletonNumRecommendations ?? (view === ArticlesView.SMALL ? articlesNumSmall : 3))
 				.fill(0)
 				.map((el, i) => (
 					<ArticlesListSkeleton key={i} view={view} />
@@ -51,30 +51,30 @@ interface ArticlesListProps {
 	onScrollEnd?: () => void
 	recommendations?: boolean
 	wrapperRef?: MutableRefObject<HTMLElement | null>
+	articlesNumSmall: number
 }
 
 export const ArticlesList = memo(
 	({
-		className, view = ArticlesView.SMALL, loading, articles, target, error, onScrollEnd, recommendations, wrapperRef,
+		className, view = ArticlesView.SMALL, loading, articles, target, error, onScrollEnd, recommendations, wrapperRef, articlesNumSmall,
 	}: ArticlesListProps) => {
 		const { t } = useTranslation('articles');
 		const virtuoso = useRef<VirtuosoGridHandle>(null);
 		const [_, setRerender] = useState(0);
-		const { scroll } = useSafeScroll(wrapperRef!, 100);
 
 		useEffect(() => {
 			setRerender((prev) => prev + 1);
 		}, [wrapperRef]);
 
-		const callback = useCallback(() => {
-			if (virtuoso.current && wrapperRef?.current) {
-				virtuoso.current.scrollTo({
-					top: scroll - 211,
-				});
-			}
-		}, []);
-
-		useAppEffect(callback);
+		// const callback = useCallback(() => {
+		// 	if (virtuoso.current && wrapperRef?.current) {
+		// 		virtuoso.current.scrollTo({
+		// 			top: scroll - 211,
+		// 		});
+		// 	}
+		// }, []);
+		//
+		// useAppEffect(callback);
 
 		const renderArticle = useCallback((index: number) => (
 			<ArticlesListItem
@@ -91,9 +91,9 @@ export const ArticlesList = memo(
 
 		const Footer = useCallback(() => (
 			<div className={classNames(cls.ArticlesList, {}, [cls[view]])}>
-				<ListFooter view={view} loading={loading} recommendations={recommendations} />
+				<ListFooter view={view} loading={loading} recommendations={recommendations} articlesNumSmall={articlesNumSmall} />
 			</div>
-		), [loading, recommendations, view]);
+		), [articlesNumSmall, loading, recommendations, view]);
 
 		const ItemContent = useCallback((index: number) => (
 			renderArticle(index)
@@ -121,18 +121,18 @@ export const ArticlesList = memo(
 					<VirtuosoGrid
 						data={articles}
 						endReached={loading ? undefined : onScrollEnd}
-						overscan={view === ArticlesView.SMALL ? 5 : 1}
 						listClassName={classNames(cls.ArticlesList, {}, [className, cls[view]])}
 						components={{
 							ScrollSeekPlaceholder,
 						}}
 						customScrollParent={!recommendations ? wrapperRef?.current! : undefined}
+						overscan={view === ArticlesView.SMALL ? articlesNumSmall : 2}
 						itemContent={ItemContent}
 						ref={virtuoso}
 						scrollSeekConfiguration={{
-							enter: (velocity: number) => Math.abs(velocity) > 500,
-							exit: (velocity: number) => Math.abs(velocity) < 100,
-							change: (_, range: ListRange) => console.log({ range }),
+							enter: (velocity: number) => Math.abs(velocity) > 1000,
+							exit: (velocity: number) => Math.abs(velocity) < 200,
+							change: (_, range) => {},
 						}}
 					/>
 				)}

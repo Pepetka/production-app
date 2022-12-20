@@ -2,8 +2,8 @@ import 'loki/configure-react';
 import { StyleDecorator } from '../../src/shared/config/storybook/StyleDecorator/StyleDecorator';
 import { RouterDecorator } from '../../src/shared/config/storybook/RouterDecorator/RouterDecorator';
 import { LocalizationDecorator } from '../../src/shared/config/storybook/LocalizationDecorator/LocalizationDecorator';
-import { Theme } from '../../src/app/provider/Theme';
 import { StoreDecorator } from '../../src/shared/config/storybook/StoreDecorator/StoreDecorator';
+import { Theme } from '../../src';
 
 export const parameters = {
 	actions: { argTypesRegex: '^on[A-Z].*' },

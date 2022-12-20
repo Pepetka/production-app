@@ -6,7 +6,7 @@ import { commentFormReducer } from '../../model/slice/commentFormSlice';
 import CommentForm from './CommentForm';
 
 export default {
-	title: 'features/CommentForm',
+	title: 'entities/CommentForm',
 	component: CommentForm,
 	argTypes: {
 		backgroundColor: { control: 'color' },

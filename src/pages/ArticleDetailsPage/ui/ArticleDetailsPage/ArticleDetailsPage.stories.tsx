@@ -3,12 +3,13 @@ import { ReducersMapObject } from '@reduxjs/toolkit';
 import withMock from 'storybook-addon-mock';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { StateSchema } from '@/app/provider/Store';
-import { articleReducer } from '@/entities/Article/model/slice/articleSlice';
-import { ArticleType, ArticleBlockType, Article } from '@/entities/Article';
-import { UserRole } from '@/entities/User';
+import {
+	articleReducer, ArticleType, ArticleBlockType, Article,
+} from '@/entities/Article';
 import { Comment } from '@/entities/Comment';
+import { ArticleRatingType } from '@/features/ArticleRating';
 import ArticleDetailsPage from './ArticleDetailsPage';
-import { ArticleRatingType } from '@/features/ArticleRating/model/types/articleRating';
+import { UserRole } from '@/shared/const';
 
 export default {
 	title: 'pages/ArticleDetailsPage/ArticleDetailsPage',

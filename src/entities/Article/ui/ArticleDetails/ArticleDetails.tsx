@@ -67,7 +67,9 @@ export const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
 		content = (
 			<VStack align="start" gap="32" w100>
 				<VStack align="start" w100 gap="8">
-					<Avatar avatar={article?.img} alt={t('Article img')} size={AvatarSize.SIZE_L} />
+					<HStack justify="center" w100>
+						<Avatar avatar={article?.img} alt={t('Article img')} size={AvatarSize.SIZE_L} />
+					</HStack>
 					<Text size={TextSize.L} title={article?.title} text={article?.subtitle} />
 					<HStack gap="8">
 						<Icon SvgIcon={EyeIcon} theme={IconTheme.SECONDARY} />

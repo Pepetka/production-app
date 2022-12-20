@@ -12,9 +12,9 @@ import { getArticlesPageInit } from '../../selectors/getArticlesPageInit/getArti
 import { articlesPageActions } from '../../slice/articlesPageSlice';
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';
 
-export const initArticlesPage = createAsyncThunk<void, void, ThunkConfig<string>>(
+export const initArticlesPage = createAsyncThunk<void, number, ThunkConfig<string>>(
 	'articlesPage/initArticlesPage',
-	async (_, { dispatch, getState }) => {
+	async (limit, { dispatch, getState }) => {
 		const inited = getArticlesPageInit(getState());
 		const {
 			sort,
@@ -24,7 +24,7 @@ export const initArticlesPage = createAsyncThunk<void, void, ThunkConfig<string>
 		} = getQueryParams();
 
 		if (!inited) {
-			dispatch(articlesPageActions.initView());
+			dispatch(articlesPageActions.initView(limit));
 			if (sort) dispatch(articlesPageActions.changeSort(sort as ArticleSortField));
 			if (order) dispatch(articlesPageActions.changeOrder(order as SortOrder));
 			if (search) dispatch(articlesPageActions.changeSearch(search));

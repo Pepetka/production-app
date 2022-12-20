@@ -7,7 +7,7 @@ const ForbiddenPage = memo(() => {
 	const { t } = useTranslation();
 
 	return (
-		<Page>
+		<Page data-testid="ForbiddenPage">
 			<Text size={TextSize.L} title={t('Forbidden page')} TitleTag="h1" />
 		</Page>
 	);

@@ -8,7 +8,7 @@ const NotFoundPage = memo(() => {
 	const { t } = useTranslation();
 
 	return (
-		<Page>
+		<Page data-testid="NotFoundPage">
 			<HStack h100 justify="center">
 				<Text title={t('Page not found')} TitleTag="h1" size={TextSize.L} />
 			</HStack>

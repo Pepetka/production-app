@@ -15,19 +15,10 @@ export function buildPlugins({
 			template: paths.html,
 		}),
 		new ProgressPlugin(),
-		new MiniCssExtractPlugin({
-			filename: 'css/[name].[contenthash].css',
-			chunkFilename: 'css/[name].[contenthash].css',
-		}),
 		new webpack.DefinePlugin({
 			__IS_DEV__: JSON.stringify(isDev),
 			__PROJECT__: JSON.stringify(project),
 			__API__: JSON.stringify(apiUrl),
-		}),
-		new CopyPlugin({
-			patterns: [
-				{ from: paths.locales, to: paths.buildLocales },
-			],
 		}),
 		new ForkTsCheckerWebpackPlugin({
 			typescript: {
@@ -44,6 +35,16 @@ export function buildPlugins({
 		plugins.push(new ReactRefreshWebpackPlugin());
 		plugins.push(new BundleAnalyzerPlugin({
 			openAnalyzer: false,
+		}));
+	} else {
+		plugins.push(new MiniCssExtractPlugin({
+			filename: 'css/[name].[contenthash].css',
+			chunkFilename: 'css/[name].[contenthash].css',
+		}));
+		plugins.push(new CopyPlugin({
+			patterns: [
+				{ from: paths.locales, to: paths.buildLocales },
+			],
 		}));
 	}
 

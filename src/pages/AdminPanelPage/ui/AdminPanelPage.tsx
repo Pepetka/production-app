@@ -7,7 +7,7 @@ const AdminPanelPage = memo(() => {
 	const { t } = useTranslation('admin');
 
 	return (
-		<Page>
+		<Page data-testid="AdminPanelPage">
 			<Text size={TextSize.L} title={t('Admin Panel Title')} TitleTag="h1" />
 		</Page>
 	);

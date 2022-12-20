@@ -33,6 +33,7 @@ export const ArticleRecommendations = memo(
 					className={classNames(cls.ArticleRecommendations, {}, [className])}
 					loading={isLoading}
 					articles={recommendations!}
+					articlesNumSmall={4}
 				/>
 			</VStack>
 		);

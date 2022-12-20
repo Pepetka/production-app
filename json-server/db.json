@@ -94,6 +94,12 @@
       "articleId": "7",
       "review": "ok",
       "id": "xTdpbeM"
+    },
+    {
+      "rating": 3,
+      "userId": "0",
+      "articleId": "13",
+      "id": "9Rhi0Jt"
     }
   ],
   "rating-profile": [
@@ -1539,6 +1545,12 @@
       "userId": "0",
       "articleId": "8",
       "id": "JJc_Tri"
+    },
+    {
+      "text": "Comment",
+      "userId": "0",
+      "articleId": "16",
+      "id": "rcL7f64"
     }
   ],
   "profile": [

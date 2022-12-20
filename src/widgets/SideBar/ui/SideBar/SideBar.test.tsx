@@ -1,3 +1,4 @@
+import 'whatwg-fetch';
 import { fireEvent, screen } from '@testing-library/react';
 import { componentTestRender } from '@/shared/lib/componentTestRender/comopnentTestRender';
 import { SideBar } from './SideBar';
