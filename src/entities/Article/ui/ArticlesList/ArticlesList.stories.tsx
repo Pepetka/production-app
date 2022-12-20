@@ -61,6 +61,7 @@ ArticlesListSmall.args = {
 	articles,
 	loading: false,
 	wrapperRef: { current: document.querySelector('body') },
+	articlesNumSmall: 10,
 };
 
 export const ArticlesListBig = Template.bind({});
@@ -69,12 +70,14 @@ ArticlesListBig.args = {
 	loading: false,
 	view: ArticlesView.BIG,
 	wrapperRef: { current: document.querySelector('body') },
+	articlesNumSmall: 10,
 };
 
 export const ArticlesListSmallLoading = Template.bind({});
 ArticlesListSmallLoading.args = {
 	articles,
 	loading: true,
+	articlesNumSmall: 10,
 };
 
 export const ArticlesListBigLoading = Template.bind({});
@@ -82,6 +85,7 @@ ArticlesListBigLoading.args = {
 	articles,
 	loading: true,
 	view: ArticlesView.BIG,
+	articlesNumSmall: 10,
 };
 
 export const ArticlesListRecommendations = Template.bind({});
@@ -89,10 +93,12 @@ ArticlesListRecommendations.args = {
 	articles: articles.slice(0, 4),
 	loading: false,
 	recommendations: true,
+	articlesNumSmall: 10,
 };
 
 export const ArticlesListRecommendationsLoading = Template.bind({});
 ArticlesListRecommendationsLoading.args = {
 	loading: true,
 	recommendations: true,
+	articlesNumSmall: 10,
 };

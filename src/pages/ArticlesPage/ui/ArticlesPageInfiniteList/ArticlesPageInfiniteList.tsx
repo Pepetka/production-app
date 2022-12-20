@@ -10,10 +10,11 @@ import { fetchNextArticles } from '../../model/services/fetchNextArticles/fetchN
 
 interface ArticlesPageInfiniteListProps {
 	wrapperRef?: MutableRefObject<HTMLElement | null>
+	articlesNumSmall: number
 }
 
 export const ArticlesPageInfiniteList = memo(
-	({ wrapperRef }: ArticlesPageInfiniteListProps) => {
+	({ wrapperRef, articlesNumSmall }: ArticlesPageInfiniteListProps) => {
 		const dispatch = useAppDispatch();
 		const view = useSelector(getArticlesPageView);
 		const loading = useSelector(getArticlesPageLoading);
@@ -32,6 +33,7 @@ export const ArticlesPageInfiniteList = memo(
 				articles={articles}
 				onScrollEnd={onScrollEnd}
 				wrapperRef={wrapperRef}
+				articlesNumSmall={articlesNumSmall}
 			/>
 		);
 	},

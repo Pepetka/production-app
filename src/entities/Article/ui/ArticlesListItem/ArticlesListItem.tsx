@@ -57,13 +57,12 @@ export const ArticlesListItem = memo(
 					</HStack>
 					<Text title={article.title} />
 					<Text text={articleTypes} />
-					<HStack justify="center" className={cls.img}>
-						<AppImg
-							src={article.img}
-							alt={t('Article img')}
-							fallback={<Skeleton width="100%" height="100%" />}
-						/>
-					</HStack>
+					<AppImg
+						src={article.img}
+						alt={t('Article img')}
+						className={cls.img}
+						fallback={<Skeleton width="100%" height={200} />}
+					/>
 					<div className={cls.content}>
 						{textContent && <ArticleTextBlockComponent block={textContent} />}
 					</div>
@@ -86,14 +85,14 @@ export const ArticlesListItem = memo(
 			<AppLink target={target} to={routePaths.Article_details + article.id}>
 				<Card className={classNames(cls.Small, {}, [className])}>
 					<VStack className={cls.smallWrapper}>
-						<HStack justify="center" className={cls.img}>
-							<Text className={cls.date} text={article.createdAt} />
-							<AppImg
-								src={article.img}
-								alt={t('Article img')}
-								fallback={<Skeleton width="100%" height="100%" />}
-							/>
-						</HStack>
+						<Text className={cls.date} text={article.createdAt} />
+						<AppImg
+							src={article.img}
+							alt={t('Article img')}
+							className={cls.img}
+							fallback={<Skeleton width={200} height={200} />}
+							errorFallback={<Skeleton width={200} height={200} />}
+						/>
 						<div className={cls.data}>
 							<HStack justify="between">
 								<Text className={cls.types} text={articleTypes} />
