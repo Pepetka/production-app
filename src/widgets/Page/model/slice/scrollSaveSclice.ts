@@ -6,7 +6,7 @@ const initialState: ScrollSafeSchema = {
 };
 
 export const scrollSafeSlice = createSlice({
-	name: 'scrollSafe',
+	name: 'scrollSave',
 	initialState,
 	reducers: {
 		setScroll: (state, action: PayloadAction<{ path: string, position: number }>) => {

@@ -8,8 +8,8 @@ import { useScroll } from '@/shared/lib/hooks/useScroll/useScroll';
 import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
 import { StateSchema } from '@/app/provider/Store';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { scrollSafeActions } from '../model/slice/scrollSafeSclice';
-import { getScrollSafeScrollByPath } from '../model/selectors/getScrollSafeScrollByPath/getScrollSafeScrollByPath';
+import { scrollSafeActions } from '../model/slice/scrollSaveSclice';
+import { getScrollSaveScrollByPath } from '../model/selectors/getScrollSaveScrollByPath/getScrollSaveScrollByPath';
 import cls from './Page.module.scss';
 
 interface PageProps {
@@ -17,18 +17,17 @@ interface PageProps {
 	children: ReactNode
 	onScrollEnd?: () => void
 	infiniteScroll?: boolean
-	safeScroll?: boolean
 	'data-testid'?: string
 }
 
 export const Page = forwardRef<HTMLElement, PageProps>(({
-	className, children, onScrollEnd, infiniteScroll, safeScroll = false, 'data-testid': dataTestId,
+	className, children, onScrollEnd, infiniteScroll, 'data-testid': dataTestId,
 }, ref) => {
 	const dispatch = useAppDispatch();
 	const location = useLocation();
 	const wrapperRef = useRef() as MutableRefObject<HTMLElement>;
 	const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
-	const scroll = useSelector((state: StateSchema) => getScrollSafeScrollByPath(state, location.pathname));
+	const scroll = useSelector((state: StateSchema) => getScrollSaveScrollByPath(state, location.pathname));
 
 	const onScrollCallback = useCallback(() => {
 		dispatch(scrollSafeActions.setScroll({
@@ -44,8 +43,10 @@ export const Page = forwardRef<HTMLElement, PageProps>(({
 	});
 
 	useEffect(() => {
-		if (safeScroll) setScroll(scroll);
-	}, [safeScroll, scroll, setScroll]);
+		setTimeout(() => {
+			setScroll(scroll);
+		}, 15);
+	}, []);
 
 	useInfiniteScroll({
 		wrapperRef,
@@ -59,7 +60,7 @@ export const Page = forwardRef<HTMLElement, PageProps>(({
 		<main
 			ref={wrapperRef}
 			className={classNames(cls.Page, {}, [className])}
-			onScroll={safeScroll ? onScroll : () => {}}
+			onScroll={onScroll}
 			data-testid={dataTestId}
 		>
 			{children}
