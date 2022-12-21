@@ -26,10 +26,11 @@ interface AvatarProps {
 	size?: AvatarSize
 	alt?: string
 	inverted?: boolean
+	border?: boolean
 }
 
 export const Avatar = memo(({
-	className, avatar = DefaultAvatar, size = AvatarSize.SIZE_M, alt, inverted = false,
+	className, avatar = DefaultAvatar, size = AvatarSize.SIZE_M, alt, inverted = false, border = true,
 }: AvatarProps) => {
 	const { t } = useTranslation('profile');
 
@@ -37,7 +38,7 @@ export const Avatar = memo(({
 		<AppImg
 			src={avatar}
 			alt={alt ?? t('Profile avatar')}
-			className={classNames(cls.Avatar, { [cls.inverted]: inverted }, [className, cls[size]])}
+			className={classNames(cls.Avatar, { [cls.inverted]: inverted, [cls.border]: border }, [className, cls[size]])}
 			fallback={<Skeleton width={SkeletonSize[size]} circle />}
 		/>
 	);

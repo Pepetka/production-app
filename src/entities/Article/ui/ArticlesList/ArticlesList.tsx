@@ -1,5 +1,5 @@
 import {
-	HTMLAttributeAnchorTarget, memo, MutableRefObject, useCallback, useRef,
+	HTMLAttributeAnchorTarget, memo, MutableRefObject, useCallback, useEffect, useRef, useState,
 } from 'react';
 import { useTranslation } from 'react-i18next';
 import { VirtuosoGrid, VirtuosoGridHandle } from 'react-virtuoso';
@@ -60,6 +60,11 @@ export const ArticlesList = memo(
 	}: ArticlesListProps) => {
 		const { t } = useTranslation('articles');
 		const virtuoso = useRef<VirtuosoGridHandle>(null);
+		const [_, setRerender] = useState(0);
+
+		useEffect(() => {
+			if (wrapperRef?.current) setRerender((prev) => prev + 1);
+		}, [wrapperRef]);
 
 		const renderArticle = useCallback((index: number) => (
 			<ArticlesListItem

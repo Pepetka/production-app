@@ -1,5 +1,5 @@
 import {
-	forwardRef, MutableRefObject, ReactNode, useCallback, useEffect, useImperativeHandle, useRef,
+	forwardRef, MutableRefObject, ReactNode, useCallback, useImperativeHandle, useRef,
 } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
@@ -11,6 +11,7 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { scrollSafeActions } from '../model/slice/scrollSaveSclice';
 import { getScrollSaveScrollByPath } from '../model/selectors/getScrollSaveScrollByPath/getScrollSaveScrollByPath';
 import cls from './Page.module.scss';
+import { useAppEffect } from '@/shared/lib/hooks/useAppEffect/useAppEffect';
 
 interface PageProps {
 	className?: string
@@ -42,11 +43,17 @@ export const Page = forwardRef<HTMLElement, PageProps>(({
 		onScrollCallback,
 	});
 
-	useEffect(() => {
-		setTimeout(() => {
+	const callback = useCallback(() => {
+		const timeout = setTimeout(() => {
 			setScroll(scroll);
-		}, 15);
+		}, 50);
+
+		return () => {
+			clearTimeout(timeout);
+		};
 	}, []);
+
+	useAppEffect(callback);
 
 	useInfiniteScroll({
 		wrapperRef,

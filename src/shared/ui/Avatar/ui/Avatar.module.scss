@@ -1,17 +1,23 @@
 .Avatar {
-	border: 2px solid var(--primary-color);
 	aspect-ratio: 1 / 1;
 	border-radius: 50%;
 	overflow: hidden;
 }
 
-.inverted {
-	border: 2px solid var(--invert-primary-color);
+.border {
+	border: 2px solid var(--primary-color);
+
+	&.inverted {
+		border: 2px solid var(--invert-primary-color);
+	}
+
+	&.size_xs {
+		border-width: 1px;
+	}
 }
 
 .size_xs {
 	width: 30px;
-	border-width: 1px;
 }
 
 .size_s {
