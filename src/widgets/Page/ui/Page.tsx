@@ -1,5 +1,5 @@
 import {
-	forwardRef, MutableRefObject, ReactNode, useCallback, useEffect, useImperativeHandle, useRef,
+	forwardRef, MutableRefObject, ReactNode, useCallback, useImperativeHandle, useRef,
 } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
@@ -8,27 +8,27 @@ import { useScroll } from '@/shared/lib/hooks/useScroll/useScroll';
 import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
 import { StateSchema } from '@/app/provider/Store';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { scrollSafeActions } from '../model/slice/scrollSafeSclice';
-import { getScrollSafeScrollByPath } from '../model/selectors/getScrollSafeScrollByPath/getScrollSafeScrollByPath';
+import { scrollSafeActions } from '../model/slice/scrollSaveSclice';
+import { getScrollSaveScrollByPath } from '../model/selectors/getScrollSaveScrollByPath/getScrollSaveScrollByPath';
 import cls from './Page.module.scss';
+import { useAppEffect } from '@/shared/lib/hooks/useAppEffect/useAppEffect';
 
 interface PageProps {
 	className?: string
 	children: ReactNode
 	onScrollEnd?: () => void
 	infiniteScroll?: boolean
-	safeScroll?: boolean
 	'data-testid'?: string
 }
 
 export const Page = forwardRef<HTMLElement, PageProps>(({
-	className, children, onScrollEnd, infiniteScroll, safeScroll = false, 'data-testid': dataTestId,
+	className, children, onScrollEnd, infiniteScroll, 'data-testid': dataTestId,
 }, ref) => {
 	const dispatch = useAppDispatch();
 	const location = useLocation();
 	const wrapperRef = useRef() as MutableRefObject<HTMLElement>;
 	const triggerRef = useRef() as MutableRefObject<HTMLDivElement>;
-	const scroll = useSelector((state: StateSchema) => getScrollSafeScrollByPath(state, location.pathname));
+	const scroll = useSelector((state: StateSchema) => getScrollSaveScrollByPath(state, location.pathname));
 
 	const onScrollCallback = useCallback(() => {
 		dispatch(scrollSafeActions.setScroll({
@@ -43,9 +43,17 @@ export const Page = forwardRef<HTMLElement, PageProps>(({
 		onScrollCallback,
 	});
 
-	useEffect(() => {
-		if (safeScroll) setScroll(scroll);
-	}, [safeScroll, scroll, setScroll]);
+	const callback = useCallback(() => {
+		const timeout = setTimeout(() => {
+			setScroll(scroll);
+		}, 50);
+
+		return () => {
+			clearTimeout(timeout);
+		};
+	}, []);
+
+	useAppEffect(callback);
 
 	useInfiniteScroll({
 		wrapperRef,
@@ -59,7 +67,7 @@ export const Page = forwardRef<HTMLElement, PageProps>(({
 		<main
 			ref={wrapperRef}
 			className={classNames(cls.Page, {}, [className])}
-			onScroll={safeScroll ? onScroll : () => {}}
+			onScroll={onScroll}
 			data-testid={dataTestId}
 		>
 			{children}

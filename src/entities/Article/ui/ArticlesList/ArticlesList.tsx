@@ -63,18 +63,8 @@ export const ArticlesList = memo(
 		const [_, setRerender] = useState(0);
 
 		useEffect(() => {
-			setRerender((prev) => prev + 1);
+			if (wrapperRef?.current) setRerender((prev) => prev + 1);
 		}, [wrapperRef]);
-
-		// const callback = useCallback(() => {
-		// 	if (virtuoso.current && wrapperRef?.current) {
-		// 		virtuoso.current.scrollTo({
-		// 			top: scroll - 211,
-		// 		});
-		// 	}
-		// }, []);
-		//
-		// useAppEffect(callback);
 
 		const renderArticle = useCallback((index: number) => (
 			<ArticlesListItem

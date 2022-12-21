@@ -18,7 +18,7 @@ export const CommentCard = memo(
 		<VStack gap="8" align="start" className={classNames(cls.CommentCard, {}, [className])}>
 			<AppLink to={routePaths.Profile + comment.user.id}>
 				<HStack gap="8">
-					<Avatar size={AvatarSize.SIZE_XS} avatar={comment.user.avatar} />
+					<Avatar size={AvatarSize.SIZE_XS} avatar={comment.user.avatar} border={false} />
 					<Text title={comment.user.username} />
 				</HStack>
 			</AppLink>

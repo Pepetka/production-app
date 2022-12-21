@@ -1,7 +1,7 @@
 import { MutableRefObject, useCallback } from 'react';
 import { useThrottle } from '../useThrottle/useThrottle';
 
-interface UseSafeScrollProps {
+interface UseScrollProps {
 	wrapperRef: MutableRefObject<HTMLElement | null>,
 	delay?: number,
 	onScrollCallback?: () => void,
@@ -9,7 +9,7 @@ interface UseSafeScrollProps {
 
 export const useScroll = ({
 	wrapperRef, delay = 500, onScrollCallback,
-}: UseSafeScrollProps) => {
+}: UseScrollProps) => {
 	const setScroll = useCallback((customScroll: number) => {
 		if (wrapperRef.current) {
 			wrapperRef.current.scrollTop = customScroll;
