@@ -1,6 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ReducersMapObject } from '@reduxjs/toolkit';
-import withMock from 'storybook-addon-mock';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { StateSchema } from '@/app/provider/Store';
 import {
@@ -18,7 +17,6 @@ export default {
 		backgroundColor: { control: 'color' },
 	},
 	decorators: [
-		withMock,
 		StoreDecorator({
 			user: {
 				authData: {
