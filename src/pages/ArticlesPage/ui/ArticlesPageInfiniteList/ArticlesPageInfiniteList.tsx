@@ -7,16 +7,17 @@ import { getArticlesPageLoading } from '../../model/selectors/getArticlesPageLoa
 import { getArticlesPageError } from '../../model/selectors/getArticlesPageError/getArticlesPageError';
 import { getArticles } from '../../model/slice/articlesPageSlice';
 import { fetchNextArticles } from '../../model/services/fetchNextArticles/fetchNextArticles';
+import { getArticlesPageLimit } from '../../model/selectors/getArticlesPageLimit/getArticlesPageLimit';
 
 interface ArticlesPageInfiniteListProps {
 	wrapperRef?: MutableRefObject<HTMLElement | null>
-	articlesNumSmall: number
 }
 
 export const ArticlesPageInfiniteList = memo(
-	({ wrapperRef, articlesNumSmall }: ArticlesPageInfiniteListProps) => {
+	({ wrapperRef }: ArticlesPageInfiniteListProps) => {
 		const dispatch = useAppDispatch();
 		const view = useSelector(getArticlesPageView);
+		const limit = useSelector(getArticlesPageLimit);
 		const loading = useSelector(getArticlesPageLoading);
 		const error = useSelector(getArticlesPageError);
 		const articles = useSelector(getArticles.selectAll);
@@ -33,7 +34,7 @@ export const ArticlesPageInfiniteList = memo(
 				articles={articles}
 				onScrollEnd={onScrollEnd}
 				wrapperRef={wrapperRef}
-				articlesNumSmall={articlesNumSmall}
+				limit={limit}
 			/>
 		);
 	},

@@ -15,18 +15,18 @@ interface FooterProps {
 	view: ArticlesView
 	loading: boolean
 	recommendations?: boolean
-	articlesNumSmall: number
+	limit: number
 }
 
 const ListFooter = memo(({
-	view, loading, recommendations, articlesNumSmall,
+	view, loading, recommendations, limit,
 }: FooterProps) => {
 	const getSkeletons = (view: ArticlesView) => {
 		const skeletonNumRecommendations = recommendations ? 4 : null;
 		if (!loading) return null;
 
 		return (
-			new Array(skeletonNumRecommendations ?? (view === ArticlesView.SMALL ? articlesNumSmall : 3))
+			new Array(skeletonNumRecommendations ?? limit)
 				.fill(0)
 				.map((el, i) => (
 					<ArticlesListSkeleton key={i} view={view} />
@@ -51,12 +51,12 @@ interface ArticlesListProps {
 	onScrollEnd?: () => void
 	recommendations?: boolean
 	wrapperRef?: MutableRefObject<HTMLElement | null>
-	articlesNumSmall: number
+	limit: number
 }
 
 export const ArticlesList = memo(
 	({
-		className, view = ArticlesView.SMALL, loading, articles, target, error, onScrollEnd, recommendations, wrapperRef, articlesNumSmall,
+		className, view = ArticlesView.SMALL, loading, articles, target, error, onScrollEnd, recommendations, wrapperRef, limit,
 	}: ArticlesListProps) => {
 		const { t } = useTranslation('articles');
 		const virtuoso = useRef<VirtuosoGridHandle>(null);
@@ -81,9 +81,9 @@ export const ArticlesList = memo(
 
 		const Footer = useCallback(() => (
 			<div className={classNames(cls.ArticlesList, {}, [cls[view]])}>
-				<ListFooter view={view} loading={loading} recommendations={recommendations} articlesNumSmall={articlesNumSmall} />
+				<ListFooter view={view} loading={loading} recommendations={recommendations} limit={limit} />
 			</div>
-		), [articlesNumSmall, loading, recommendations, view]);
+		), [limit, loading, recommendations, view]);
 
 		const ItemContent = useCallback((index: number) => (
 			renderArticle(index)
@@ -116,7 +116,7 @@ export const ArticlesList = memo(
 							ScrollSeekPlaceholder,
 						}}
 						customScrollParent={!recommendations ? wrapperRef?.current! : undefined}
-						overscan={view === ArticlesView.SMALL ? articlesNumSmall : 2}
+						overscan={limit}
 						itemContent={ItemContent}
 						ref={virtuoso}
 						scrollSeekConfiguration={{

@@ -22,10 +22,11 @@ import cls from './ArticlesPageFilters.module.scss';
 
 interface ArticlesPageFiltersProps {
 	className?: string
+	onChangeView?: () => void
 }
 
 export const ArticlesPageFilters = memo(
-	({ className }: ArticlesPageFiltersProps) => {
+	({ className, onChangeView }: ArticlesPageFiltersProps) => {
 		const dispatch = useAppDispatch();
 		const view = useSelector(getArticlesPageView);
 		const sort = useSelector(getArticlesPageSort);
@@ -68,15 +69,16 @@ export const ArticlesPageFilters = memo(
 			debounceFetchSortedData();
 		}, [debounceFetchSortedData, dispatch]);
 
-		const onChangeView = useCallback((view: ArticlesView) => {
+		const onChangeViewHandle = useCallback((view: ArticlesView) => {
 			dispatch(articlesPageActions.changeView(view));
-		}, [dispatch]);
+			onChangeView?.();
+		}, [dispatch, onChangeView]);
 
 		return (
 			<VStack w100 justify="between" align="start" className={classNames(cls.ArticlesPageFilters, {}, [className])}>
 				<HStack justify="between" w100>
 					<ArticlesSortSelector sort={sort} order={order} onChangeSort={onChangeSort} onChangeOrder={onChangeOrder} />
-					<ArticleViewSelector activeView={view} onChangeView={onChangeView} />
+					<ArticleViewSelector activeView={view} onChangeView={onChangeViewHandle} />
 				</HStack>
 				<Input theme={InputTheme.INVERT} value={search} onChange={onChangeSearch} placeholder={t('Search')} />
 				<ArticlesTypeTabs type={type} onChangeType={onChangeType} />
