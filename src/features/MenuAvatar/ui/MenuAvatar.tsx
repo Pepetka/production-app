@@ -4,7 +4,9 @@ import { useTranslation } from 'react-i18next';
 import { Avatar, AvatarSize } from '@/shared/ui/Avatar';
 import { Menu, MenuItem } from '@/shared/ui/Popups';
 import { getAuthData, getIsAdmin, userActions } from '@/entities/User';
-import { AppRoutes, routePaths } from '@/shared/const/router';
+import {
+	AppRoutes, getAdminPagePath, getArticleCreatePagePath, getProfilePagePath,
+} from '@/shared/const/router';
 
 interface MenuAvatarProps {
 	onLogoutCallback: () => void
@@ -31,15 +33,15 @@ export const MenuAvatar = memo(
 		const menuItems: Array<MenuItem> = useMemo(() => ([
 			...(isAdmin ? [{
 				content: nameWithTranslation.Admin!,
-				href: routePaths.Admin,
+				href: getAdminPagePath(),
 			}] : []),
 			{
 				content: nameWithTranslation.Profile!,
-				href: `${routePaths.Profile}${authData?.id}`,
+				href: getProfilePagePath(authData?.id),
 			},
 			{
 				content: nameWithTranslation.Article_create!,
-				href: routePaths.Article_create,
+				href: getArticleCreatePagePath(),
 			},
 			{
 				content: t('LogOut'),

@@ -25,7 +25,7 @@ export const ArticleRecommendations = memo(
 		}
 
 		return (
-			<VStack w100 gap="16">
+			<VStack w100 gap="16" data-testid="ArticleRecommendations">
 				<Text title={t('Recommendations')} align="center" />
 				<ArticlesList
 					recommendations

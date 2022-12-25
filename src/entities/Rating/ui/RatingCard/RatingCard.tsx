@@ -64,9 +64,21 @@ export const RatingCard = memo(
 			<form onSubmit={onSendHandle}>
 				<VStack gap="16" align="end">
 					<Text w100 align="center" title={modalTitle} />
-					<Input onChange={onReview} value={review} textInvert theme={InputTheme.INVERT} autoFocus floatPlaceholder={modalTitle} />
+					<Input
+						data-testid="RatingCard.Review"
+						onChange={onReview}
+						value={review}
+						textInvert
+						theme={InputTheme.INVERT}
+						autoFocus
+						floatPlaceholder={modalTitle}
+					/>
 					<HStack justify="end">
-						<Button type="submit" theme={ButtonTheme.OUTLINE_PRIMARY}>
+						<Button
+							data-testid="RatingCard.SendReviewBtn"
+							type="submit"
+							theme={ButtonTheme.OUTLINE_PRIMARY}
+						>
 							{t('Send')}
 						</Button>
 					</HStack>
@@ -87,7 +99,7 @@ export const RatingCard = memo(
 
 		return (
 			<Card w100 className={classNames(cls.RatingCard, {}, [className])}>
-				<VStack gap="16" w100 justify="center" align="center">
+				<VStack data-testid="RatingCard" gap="16" w100 justify="center" align="center">
 					<Text title={(selectedStar || rating) ? t('Thank you for rating') : title} />
 					{isLoading ? <Skeleton width={200} height={40} /> : <StarRating rating={rating} onSelect={onSelectHandle} />}
 				</VStack>

@@ -2,7 +2,7 @@ import { describe, expect, test } from '@jest/globals';
 import { User, userActions } from '@/entities/User';
 import { TestAsyncThunk } from '@/shared/lib/testAsyncThunk/testAsyncThunk';
 import { loginByUsername } from './loginByUsername';
-import { UserRole } from '@/shared/const';
+import { UserRole } from '@/shared/const/role';
 
 describe('loginByUsername', () => {
 	test('fulfilled', async () => {

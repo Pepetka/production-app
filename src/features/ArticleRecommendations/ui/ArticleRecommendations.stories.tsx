@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Article, ArticleBlockType, ArticleType } from '@/entities/Article';
 import { ArticleRecommendations } from './ArticleRecommendations';
-import { UserRole } from '@/shared/const';
+import { UserRole } from '@/shared/const/role';
 
 export default {
 	title: 'features/ArticleRecommendations',

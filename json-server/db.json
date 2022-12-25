@@ -100,6 +100,13 @@
       "userId": "0",
       "articleId": "13",
       "id": "9Rhi0Jt"
+    },
+    {
+      "rating": 2,
+      "userId": "2",
+      "articleId": "NXUWxOa",
+      "review": "Test review",
+      "id": "Uok9bF9"
     }
   ],
   "rating-profile": [
@@ -1575,6 +1582,28 @@
       "city": "Minsk",
       "username": "user",
       "avatar": "https://miro.medium.com/max/2400/1*1WCjO1iYMo7J7Upp8KMfLA@2x.jpeg"
+    },
+    {
+      "id": "2",
+      "first": "testFirst",
+      "lastname": "testLast",
+      "age": "18",
+      "currency": "RUB",
+      "country": "Belarus",
+      "city": "Minsk",
+      "username": "testUser",
+      "avatar": "https://miro.medium.com/max/2400/1*1WCjO1iYMo7J7Upp8KMfLA@2x.jpeg"
+    },
+    {
+      "id": "3",
+      "first": "testFirst",
+      "lastname": "testLast",
+      "age": "18",
+      "currency": "RUB",
+      "country": "Belarus",
+      "city": "Minsk",
+      "username": "testAdmin",
+      "avatar": "https://cdn1.iconfinder.com/data/icons/avatars-55/100/avatar_profile_user_music_headphones_shirt_cool-512.png"
     }
   ],
   "users": [
@@ -1591,6 +1620,20 @@
       "id": "1",
       "role": "USER",
       "avatar": "https://miro.medium.com/max/2400/1*1WCjO1iYMo7J7Upp8KMfLA@2x.jpeg"
+    },
+    {
+      "username": "testUser",
+      "password": "123",
+      "id": "2",
+      "role": "USER",
+      "avatar": "https://miro.medium.com/max/2400/1*1WCjO1iYMo7J7Upp8KMfLA@2x.jpeg"
+    },
+    {
+      "username": "testAdmin",
+      "password": "123",
+      "id": "3",
+      "role": "ADMIN",
+      "avatar": "https://cdn1.iconfinder.com/data/icons/avatars-55/100/avatar_profile_user_music_headphones_shirt_cool-512.png"
     }
   ]
 }

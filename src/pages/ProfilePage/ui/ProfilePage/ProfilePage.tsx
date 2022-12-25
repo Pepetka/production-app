@@ -16,7 +16,7 @@ const ProfilePage = memo(({ storybookId }: ProfilePageProps) => {
 	const authData = useSelector(getAuthData);
 
 	return (
-		<Page>
+		<Page data-testid="ProfilePage">
 			<DynamicModuleLoader reducerKey="profile" reducer={profileReducer}>
 				<EditableProfileCard />
 			</DynamicModuleLoader>

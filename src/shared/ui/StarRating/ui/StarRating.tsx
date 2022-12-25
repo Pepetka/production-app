@@ -37,9 +37,11 @@ export const StarRating = memo(
 		};
 
 		return (
-			<HStack className={className}>
+			<HStack data-testid="StarRating" className={className}>
 				{starsArray.map((star) => (
 					<Button
+						data-testid={`StarRating.${star}`}
+						data-selected={selectedStar === star ? `StarRating.${selectedStar}` : undefined}
 						className={classNames('', { [cls.noPointer]: selectedStar !== undefined })}
 						hover={false}
 						onClick={selectedStar !== undefined ? undefined : onSelectStar(star)}

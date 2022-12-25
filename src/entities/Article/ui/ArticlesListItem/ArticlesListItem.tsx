@@ -16,9 +16,9 @@ import {
 	ArticleBlockType, ArticlesView, ArticleType,
 } from '../../model/consts/consts';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
-import { routePaths } from '@/shared/const/router';
 import { AppImg } from '@/shared/ui/AppImg';
 import { Skeleton } from '@/shared/ui/Skeleton';
+import { getArticleDetailsPagePath, getProfilePagePath } from '@/shared/const/router';
 import cls from './ArticlesListItem.module.scss';
 
 interface ArticlesListItemProps {
@@ -45,9 +45,9 @@ export const ArticlesListItem = memo(
 
 		if (view === ArticlesView.BIG) {
 			return (
-				<Card className={classNames(cls.Big, {}, [className])}>
+				<Card data-testid="ArticlesListItem" className={classNames(cls.Big, {}, [className])}>
 					<HStack className={cls.bigWrapper} justify="between">
-						<AppLink to={routePaths.Profile + article.user.id}>
+						<AppLink to={getProfilePagePath(article.user.id)}>
 							<HStack gap="8">
 								<Avatar avatar={article.user.avatar} size={AvatarSize.SIZE_XS} />
 								<Text text={article.user.username} />
@@ -67,7 +67,7 @@ export const ArticlesListItem = memo(
 						{textContent && <ArticleTextBlockComponent block={textContent} />}
 					</div>
 					<HStack justify="between">
-						<AppLink target={target} to={routePaths.Article_details + article.id}>
+						<AppLink target={target} to={getArticleDetailsPagePath(article.id)}>
 							<Button theme={ButtonTheme.OUTLINE_PRIMARY}>
 								{t('Read more')}
 							</Button>
@@ -82,7 +82,7 @@ export const ArticlesListItem = memo(
 		}
 
 		return (
-			<AppLink target={target} to={routePaths.Article_details + article.id}>
+			<AppLink data-testid="ArticlesListItem" target={target} to={getArticleDetailsPagePath(article.id)}>
 				<Card className={classNames(cls.Small, {}, [className])}>
 					<VStack className={cls.smallWrapper}>
 						<Text className={cls.date} text={article.createdAt} />

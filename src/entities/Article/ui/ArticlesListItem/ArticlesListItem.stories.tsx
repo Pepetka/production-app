@@ -3,7 +3,7 @@ import { ArticleBlockType, ArticlesView, ArticleType } from '../../model/consts/
 import type { Article } from '../../model/types/article';
 
 import { ArticlesListItem } from './ArticlesListItem';
-import { UserRole } from '@/shared/const';
+import { UserRole } from '@/shared/const/role';
 
 export default {
 	title: 'entities/ArticlesList/ArticlesListItem',

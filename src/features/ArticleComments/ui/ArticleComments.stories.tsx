@@ -4,7 +4,7 @@ import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDe
 import { Comment, commentFormReducer } from '@/entities/Comment';
 import { StateSchema } from '@/app/provider/Store';
 import { ArticleComments } from './ArticleComments';
-import { UserRole } from '@/shared/const';
+import { UserRole } from '@/shared/const/role';
 
 export default {
 	title: 'features/ArticleComments',

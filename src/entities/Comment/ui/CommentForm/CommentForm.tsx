@@ -39,6 +39,7 @@ const CommentForm = memo(
 				<form onSubmit={onSend} className={classNames(cls.AddCommentForm, {}, [className])}>
 					<HStack align="end" justify="between" gap="8">
 						<Input
+							data-testid="CommentForm.Input"
 							onChange={onChange}
 							className={cls.input}
 							theme={InputTheme.INVERT}
@@ -46,7 +47,11 @@ const CommentForm = memo(
 							value={text}
 							floatPlaceholder={t('Enter comment text')}
 						/>
-						<Button type="submit" theme={ButtonTheme.OUTLINE_PRIMARY}>
+						<Button
+							data-testid="CommentForm.SendBtn"
+							type="submit"
+							theme={ButtonTheme.OUTLINE_PRIMARY}
+						>
 							{t('Send')}
 						</Button>
 					</HStack>

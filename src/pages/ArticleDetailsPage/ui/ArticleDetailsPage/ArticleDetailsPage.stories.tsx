@@ -8,7 +8,7 @@ import {
 import { Comment } from '@/entities/Comment';
 import { ArticleRatingType } from '@/features/ArticleRating';
 import ArticleDetailsPage from './ArticleDetailsPage';
-import { UserRole } from '@/shared/const';
+import { UserRole } from '@/shared/const/role';
 
 export default {
 	title: 'pages/ArticleDetailsPage/ArticleDetailsPage',

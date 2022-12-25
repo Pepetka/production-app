@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ArticleBlockType, ArticlesView, ArticleType } from '../../model/consts/consts';
 import type { Article } from '../../model/types/article';
 import { ArticlesList } from './ArticlesList';
-import { UserRole } from '@/shared/const';
+import { UserRole } from '@/shared/const/role';
 
 export default {
 	title: 'entities/ArticlesList/ArticlesList',

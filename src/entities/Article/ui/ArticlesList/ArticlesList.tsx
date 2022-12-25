@@ -106,7 +106,7 @@ export const ArticlesList = memo(
 		}
 
 		return (
-			<div className={classNames('', { [cls.wrapper]: !recommendations, [cls.recommendations]: recommendations })}>
+			<div data-testid="ArticlesList" className={classNames('', { [cls.wrapper]: !recommendations, [cls.recommendations]: recommendations })}>
 				{((recommendations && !loading) || !recommendations) && (
 					<VirtuosoGrid
 						data={articles}

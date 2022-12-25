@@ -35,7 +35,7 @@ export const ArticleComments = memo(
 		}
 
 		return (
-			<VStack w100 gap="16">
+			<VStack w100 gap="16" data-testid="ArticleComments">
 				<Text title={t('Comments')} align="center" />
 				<CommentForm onSendComment={onSendComment} />
 				<CommentList
