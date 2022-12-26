@@ -4,10 +4,14 @@ import { HStack } from '@/shared/ui/Stack';
 import cls from './PageLoader.module.scss';
 
 interface PageLoaderProps {
-className?: string;
+	className?: string;
 }
 export const PageLoader = ({ className }: PageLoaderProps) => (
-	<HStack justify="center" w100 className={classNames(cls.PageLoader, {}, [className])}>
+	<HStack
+		justify="center"
+		w100
+		className={classNames(cls.PageLoader, {}, [className])}
+	>
 		<Spinner />
 	</HStack>
 );

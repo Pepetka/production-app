@@ -9,7 +9,9 @@ export default {
 	},
 } as ComponentMeta<typeof ArticleEditPage>;
 
-const Template: ComponentStory<typeof ArticleEditPage> = (args) => <ArticleEditPage />;
+const Template: ComponentStory<typeof ArticleEditPage> = (args) => (
+	<ArticleEditPage />
+);
 
 export const ArticleEditPageStory = Template.bind({});
 ArticleEditPageStory.args = {};

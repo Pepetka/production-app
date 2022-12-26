@@ -7,33 +7,39 @@ import { HStack } from '@/shared/ui/Stack';
 import cls from './ArticlesSortSelector.module.scss';
 
 interface ArticlesSortSelectorProps {
-	className?: string
-	sort: ArticleSortField
-	order: SortOrder
-	onChangeSort: (value: ArticleSortField) => void
-	onChangeOrder: (value: SortOrder) => void
+	className?: string;
+	sort: ArticleSortField;
+	order: SortOrder;
+	onChangeSort: (value: ArticleSortField) => void;
+	onChangeOrder: (value: SortOrder) => void;
 }
 
 export const ArticlesSortSelector = memo(
 	({
-		className, onChangeSort, onChangeOrder, order, sort,
+		className,
+		onChangeSort,
+		onChangeOrder,
+		order,
+		sort,
 	}: ArticlesSortSelectorProps) => {
 		const { t } = useTranslation('articles');
 
-		const SortOptions: Record<ArticleSortField, string> = useMemo(() => (
-			{
+		const SortOptions: Record<ArticleSortField, string> = useMemo(
+			() => ({
 				[ArticleSortField.VIEWS]: t('Views'),
 				[ArticleSortField.TITLE]: t('Title'),
 				[ArticleSortField.CREATED_AT]: t('Created at'),
-			}
-		), [t]);
+			}),
+			[t],
+		);
 
-		const SortOrderOptions: Record<SortOrder, string> = useMemo(() => (
-			{
+		const SortOrderOptions: Record<SortOrder, string> = useMemo(
+			() => ({
 				asc: t('Asc'),
 				desc: t('Desc'),
-			}
-		), [t]);
+			}),
+			[t],
+		);
 
 		return (
 			<HStack gap="8" className={className}>

@@ -15,4 +15,5 @@ export const commentFormSlice = createSlice({
 	},
 });
 
-export const { actions: commentFormActions, reducer: commentFormReducer } = commentFormSlice;
+export const { actions: commentFormActions, reducer: commentFormReducer } =
+	commentFormSlice;

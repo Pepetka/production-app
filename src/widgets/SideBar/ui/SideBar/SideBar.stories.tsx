@@ -11,7 +11,9 @@ export default {
 	},
 } as ComponentMeta<typeof SideBar>;
 
-const Template: ComponentStory<typeof SideBar> = (args) => <SideBar {...args} />;
+const Template: ComponentStory<typeof SideBar> = (args) => (
+	<SideBar {...args} />
+);
 
 export const SideBarWithAuth = Template.bind({});
 SideBarWithAuth.args = {};
@@ -21,6 +23,4 @@ SideBarWithAuth.decorators = [
 
 export const SideBarWithoutAuth = Template.bind({});
 SideBarWithoutAuth.args = {};
-SideBarWithoutAuth.decorators = [
-	StoreDecorator({} as StateSchema),
-];
+SideBarWithoutAuth.decorators = [StoreDecorator({} as StateSchema)];

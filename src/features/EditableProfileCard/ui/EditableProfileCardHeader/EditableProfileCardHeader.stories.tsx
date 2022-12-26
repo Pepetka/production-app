@@ -13,7 +13,9 @@ export default {
 	},
 } as ComponentMeta<typeof EditableProfileCardHeader>;
 
-const Template: ComponentStory<typeof EditableProfileCardHeader> = (args) => <EditableProfileCardHeader {...args} />;
+const Template: ComponentStory<typeof EditableProfileCardHeader> = (args) => (
+	<EditableProfileCardHeader {...args} />
+);
 
 const state: DeepPartial<StateSchema> = {
 	profile: {
@@ -34,11 +36,17 @@ const asyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
 export const ProfilePageHeaderStory = Template.bind({});
 ProfilePageHeaderStory.args = {};
 ProfilePageHeaderStory.decorators = [
-	StoreDecorator(state as StateSchema, asyncReducers as ReducersMapObject<StateSchema>),
+	StoreDecorator(
+		state as StateSchema,
+		asyncReducers as ReducersMapObject<StateSchema>,
+	),
 ];
 
 export const ProfilePageHeaderReadOnly = Template.bind({});
 ProfilePageHeaderReadOnly.args = {};
 ProfilePageHeaderReadOnly.decorators = [
-	StoreDecorator(stateReadOnly as StateSchema, asyncReducers as ReducersMapObject<StateSchema>),
+	StoreDecorator(
+		stateReadOnly as StateSchema,
+		asyncReducers as ReducersMapObject<StateSchema>,
+	),
 ];

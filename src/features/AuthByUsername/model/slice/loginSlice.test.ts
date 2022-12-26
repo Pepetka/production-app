@@ -11,7 +11,10 @@ describe('loginSlice', () => {
 			password: '',
 		};
 
-		expect(loginReducer(state, loginActions.setUsername('username'))).toEqual({ ...state, username: 'username' });
+		expect(loginReducer(state, loginActions.setUsername('username'))).toEqual({
+			...state,
+			username: 'username',
+		});
 	});
 
 	test('setPassword', () => {
@@ -22,7 +25,10 @@ describe('loginSlice', () => {
 			password: '',
 		};
 
-		expect(loginReducer(state, loginActions.setPassword('password'))).toEqual({ ...state, password: 'password' });
+		expect(loginReducer(state, loginActions.setPassword('password'))).toEqual({
+			...state,
+			password: 'password',
+		});
 	});
 
 	test('setPassword', () => {
@@ -33,16 +39,24 @@ describe('loginSlice', () => {
 			password: 'password',
 		};
 
-		expect(loginReducer(state, loginActions.clearLogin())).toEqual({ ...state, password: '', username: '' } as LoginSchema);
+		expect(loginReducer(state, loginActions.clearLogin())).toEqual({
+			...state,
+			password: '',
+			username: '',
+		} as LoginSchema);
 	});
 
 	test('undefined state', () => {
-		expect(loginReducer(undefined, loginActions.setUsername('username'))).toEqual({
+		expect(
+			loginReducer(undefined, loginActions.setUsername('username')),
+		).toEqual({
 			username: 'username',
 			loading: false,
 			password: '',
 		} as LoginSchema);
-		expect(loginReducer(undefined, loginActions.setPassword('password'))).toEqual({
+		expect(
+			loginReducer(undefined, loginActions.setPassword('password')),
+		).toEqual({
 			username: '',
 			loading: false,
 			password: 'password',

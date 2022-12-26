@@ -8,13 +8,17 @@ import { useFetchRecommendationsQuery } from '../api/articleRecommendationsApi';
 import cls from './ArticleRecommendations.module.scss';
 
 interface ArticleRecommendationsProps {
-	className?: string
+	className?: string;
 }
 
 export const ArticleRecommendations = memo(
 	({ className }: ArticleRecommendationsProps) => {
 		const { t } = useTranslation('articles');
-		const { error, isLoading, data: recommendations } = useFetchRecommendationsQuery(4);
+		const {
+			error,
+			isLoading,
+			data: recommendations,
+		} = useFetchRecommendationsQuery(4);
 
 		if (error) {
 			return <Text title={t('Something wrong')} align="center" />;

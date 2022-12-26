@@ -10,7 +10,7 @@ import { fetchNextArticles } from '../../model/services/fetchNextArticles/fetchN
 import { getArticlesPageLimit } from '../../model/selectors/getArticlesPageLimit/getArticlesPageLimit';
 
 interface ArticlesPageInfiniteListProps {
-	wrapperRef?: MutableRefObject<HTMLElement | null>
+	wrapperRef?: MutableRefObject<HTMLElement | null>;
 }
 
 export const ArticlesPageInfiniteList = memo(

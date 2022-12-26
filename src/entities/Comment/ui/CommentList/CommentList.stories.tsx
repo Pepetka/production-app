@@ -10,7 +10,9 @@ export default {
 	},
 } as ComponentMeta<typeof CommentList>;
 
-const Template: ComponentStory<typeof CommentList> = (args) => <CommentList {...args} />;
+const Template: ComponentStory<typeof CommentList> = (args) => (
+	<CommentList {...args} />
+);
 
 export const CommentListStory = Template.bind({});
 CommentListStory.args = {
@@ -22,7 +24,6 @@ CommentListStory.args = {
 				id: '1',
 				username: 'username',
 				role: UserRole.USER,
-
 			},
 		},
 		{
@@ -32,7 +33,6 @@ CommentListStory.args = {
 				id: '2',
 				username: 'some username',
 				role: UserRole.USER,
-
 			},
 		},
 		{
@@ -42,7 +42,6 @@ CommentListStory.args = {
 				id: '1',
 				username: 'username',
 				role: UserRole.USER,
-
 			},
 		},
 	],

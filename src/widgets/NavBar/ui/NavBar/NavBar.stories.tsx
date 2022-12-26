@@ -30,12 +30,8 @@ const initialStateAuth: DeepPartial<StateSchema> = {
 
 export const NavBarStory = Template.bind({});
 NavBarStory.args = {};
-NavBarStory.decorators = [
-	StoreDecorator(initialState as StateSchema),
-];
+NavBarStory.decorators = [StoreDecorator(initialState as StateSchema)];
 
 export const NavBarAuth = Template.bind({});
 NavBarAuth.args = {};
-NavBarAuth.decorators = [
-	StoreDecorator(initialStateAuth as StateSchema),
-];
+NavBarAuth.decorators = [StoreDecorator(initialStateAuth as StateSchema)];

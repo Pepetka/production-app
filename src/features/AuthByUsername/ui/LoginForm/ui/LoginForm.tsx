@@ -34,21 +34,24 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
 		dispatch(loginByUsername({ username, password }));
 	};
 
-	const {
-		onChangeUsername,
-		onChangePassword,
-	} = useMemo(() => ({
-		onChangeUsername: (value: string) => {
-			dispatch(loginActions.setUsername(value));
-		},
-		onChangePassword: (value: string) => {
-			dispatch(loginActions.setPassword(value));
-		},
-	}), [dispatch]);
+	const { onChangeUsername, onChangePassword } = useMemo(
+		() => ({
+			onChangeUsername: (value: string) => {
+				dispatch(loginActions.setUsername(value));
+			},
+			onChangePassword: (value: string) => {
+				dispatch(loginActions.setPassword(value));
+			},
+		}),
+		[dispatch],
+	);
 
 	return (
 		<DynamicModuleLoader reducerKey="login" reducer={loginReducer}>
-			<form onSubmit={onSubmit} className={classNames(cls.LoginForm, {}, [className])}>
+			<form
+				onSubmit={onSubmit}
+				className={classNames(cls.LoginForm, {}, [className])}
+			>
 				<VStack>
 					<Text TitleTag="h3" title={t('Auth form')} align="center" />
 					<Input
@@ -66,10 +69,22 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
 						value={password}
 						onChange={onChangePassword}
 					/>
-					<Button disabled={loading} type="submit" className={cls.button} theme={ButtonTheme.OUTLINE_PRIMARY}>
+					<Button
+						disabled={loading}
+						type="submit"
+						className={cls.button}
+						theme={ButtonTheme.OUTLINE_PRIMARY}
+					>
 						{loading ? `${t('Loading')}...` : t('LogIn')}
 					</Button>
-					{error && <Text text={t(error)} theme={TextTheme.ERROR} align="right" className={cls.error} />}
+					{error && (
+						<Text
+							text={t(error)}
+							theme={TextTheme.ERROR}
+							align="right"
+							className={cls.error}
+						/>
+					)}
 				</VStack>
 			</form>
 		</DynamicModuleLoader>

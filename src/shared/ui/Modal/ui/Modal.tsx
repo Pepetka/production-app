@@ -9,21 +9,24 @@ import { Portal } from '../../Portal';
 import cls from './Modal.module.scss';
 
 interface ModalProps {
-	className?: string
-	children: ReactNode
-	isOpen: boolean
-	onCloseModal?: () => void
-	callback?: () => void
-	lazy?: boolean
+	className?: string;
+	children: ReactNode;
+	isOpen: boolean;
+	onCloseModal?: () => void;
+	callback?: () => void;
+	lazy?: boolean;
 }
 
 export const Modal = ({
-	className, children, isOpen, onCloseModal, lazy = false, callback,
+	className,
+	children,
+	isOpen,
+	onCloseModal,
+	lazy = false,
+	callback,
 }: ModalProps) => {
 	const { theme } = useTheme();
-	const {
-		isMounted, isClosing, isOpening,
-	} = useModal({
+	const { isMounted, isClosing, isOpening } = useModal({
 		isOpen,
 		onClose: onCloseModal,
 		callback,
@@ -34,13 +37,15 @@ export const Modal = ({
 	return (
 		<Portal>
 			<div
-				className={classNames(cls.Modal, { [cls.open]: isOpening, [cls.close]: isClosing }, [className, theme, 'app_modal'])}
+				className={classNames(
+					cls.Modal,
+					{ [cls.open]: isOpening, [cls.close]: isClosing },
+					[className, theme, 'app_modal'],
+				)}
 			>
 				<Overlay onClick={onCloseModal} />
 				<HStack justify="center" className={cls.contentWrapper}>
-					<div className={cls.content}>
-						{children}
-					</div>
+					<div className={cls.content}>{children}</div>
 				</HStack>
 			</div>
 		</Portal>

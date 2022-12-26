@@ -2,7 +2,10 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ReducersMapObject } from '@reduxjs/toolkit';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { StateSchema } from '@/app/provider/Store';
-import { profileReducer, ValidateProfileError } from '@/features/EditableProfileCard';
+import {
+	profileReducer,
+	ValidateProfileError,
+} from '@/features/EditableProfileCard';
 import { Currency } from '@/entities/Currency';
 import { Country } from '@/entities/Country';
 import { ProfileRatingType } from '@/features/ProfileRating';
@@ -16,7 +19,9 @@ export default {
 	},
 } as ComponentMeta<typeof ProfilePage>;
 
-const Template: ComponentStory<typeof ProfilePage> = (args) => <ProfilePage {...args} />;
+const Template: ComponentStory<typeof ProfilePage> = (args) => (
+	<ProfilePage {...args} />
+);
 
 const state: DeepPartial<StateSchema> = {
 	profile: {
@@ -43,7 +48,10 @@ const state: DeepPartial<StateSchema> = {
 const stateWithError: DeepPartial<StateSchema> = {
 	profile: {
 		error: 'Some error',
-		validateErrors: [ValidateProfileError.INCORRECT_AGE, ValidateProfileError.INCORRECT_USERNAME],
+		validateErrors: [
+			ValidateProfileError.INCORRECT_AGE,
+			ValidateProfileError.INCORRECT_USERNAME,
+		],
 	},
 };
 
@@ -63,7 +71,10 @@ ProfilePageStory.args = {
 	storybookId: '1',
 };
 ProfilePageStory.decorators = [
-	StoreDecorator(state as StateSchema, asyncReducers as ReducersMapObject<StateSchema>),
+	StoreDecorator(
+		state as StateSchema,
+		asyncReducers as ReducersMapObject<StateSchema>,
+	),
 ];
 ProfilePageStory.parameters = {
 	mockData: [
@@ -81,7 +92,10 @@ ProfilePageWithRate.args = {
 	storybookId: '0',
 };
 ProfilePageWithRate.decorators = [
-	StoreDecorator(state as StateSchema, asyncReducers as ReducersMapObject<StateSchema>),
+	StoreDecorator(
+		state as StateSchema,
+		asyncReducers as ReducersMapObject<StateSchema>,
+	),
 ];
 ProfilePageWithRate.parameters = {
 	mockData: [
@@ -99,7 +113,10 @@ ProfilePageWithError.args = {
 	storybookId: '1',
 };
 ProfilePageWithError.decorators = [
-	StoreDecorator(stateWithError as StateSchema, asyncReducers as ReducersMapObject<StateSchema>),
+	StoreDecorator(
+		stateWithError as StateSchema,
+		asyncReducers as ReducersMapObject<StateSchema>,
+	),
 ];
 ProfilePageWithError.parameters = {
 	mockData: [

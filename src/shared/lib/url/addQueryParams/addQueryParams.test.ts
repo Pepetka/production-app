@@ -7,8 +7,7 @@ describe('addQueryParams', () => {
 			search: 'searchValue',
 		};
 
-		expect(queryParams(param))
-			.toEqual('?search=searchValue');
+		expect(queryParams(param)).toEqual('?search=searchValue');
 	});
 
 	test('with multiple params', () => {
@@ -17,8 +16,7 @@ describe('addQueryParams', () => {
 			sort: 'sortValue',
 		};
 
-		expect(queryParams(params))
-			.toEqual('?search=searchValue&sort=sortValue');
+		expect(queryParams(params)).toEqual('?search=searchValue&sort=sortValue');
 	});
 
 	test('with undefined params', () => {

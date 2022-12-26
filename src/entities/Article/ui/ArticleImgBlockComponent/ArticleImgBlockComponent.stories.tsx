@@ -10,7 +10,9 @@ export default {
 	},
 } as ComponentMeta<typeof ArticleImgBlockComponent>;
 
-const Template: ComponentStory<typeof ArticleImgBlockComponent> = (args) => <ArticleImgBlockComponent {...args} />;
+const Template: ComponentStory<typeof ArticleImgBlockComponent> = (args) => (
+	<ArticleImgBlockComponent {...args} />
+);
 
 export const ArticleImgBlockComponentStory = Template.bind({});
 ArticleImgBlockComponentStory.args = {

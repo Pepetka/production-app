@@ -9,7 +9,9 @@ export default {
 	},
 } as ComponentMeta<typeof CommentSkeleton>;
 
-const Template: ComponentStory<typeof CommentSkeleton> = (args) => <CommentSkeleton {...args} />;
+const Template: ComponentStory<typeof CommentSkeleton> = (args) => (
+	<CommentSkeleton {...args} />
+);
 
 export const CommentSkeletonStory = Template.bind({});
 CommentSkeletonStory.args = {};

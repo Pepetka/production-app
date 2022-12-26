@@ -8,7 +8,7 @@ import cls from './ThemeSwitcher.module.scss';
 import { Theme } from '@/shared/const/theme';
 
 interface ThemeSwitcherProps {
-	className?: string
+	className?: string;
 }
 export const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
 	const { onThemeChange, theme } = useTheme();

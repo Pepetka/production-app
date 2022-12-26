@@ -4,9 +4,7 @@ import { BuildPaths } from '../build/types/config';
 import { buildCSSLoader } from '../build/loaders/buildCSSLoader';
 
 export default {
-	stories: [
-		'../../src/**/*.stories.@(js|jsx|ts|tsx)',
-	],
+	stories: ['../../src/**/*.stories.@(js|jsx|ts|tsx)'],
 	addons: [
 		'@storybook/addon-links',
 		'@storybook/addon-essentials',
@@ -34,7 +32,8 @@ export default {
 
 		// @ts-ignore
 		config!.module!.rules = config!.module!.rules!.map((rule: RuleSetRule) => {
-			if (/svg/.test(rule.test as string)) return { ...rule, exclude: /\.svg$/i };
+			if (/svg/.test(rule.test as string))
+				return { ...rule, exclude: /\.svg$/i };
 
 			return rule;
 		});

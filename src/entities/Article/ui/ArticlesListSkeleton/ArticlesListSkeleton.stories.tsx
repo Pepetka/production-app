@@ -10,7 +10,9 @@ export default {
 	},
 } as ComponentMeta<typeof ArticlesListSkeleton>;
 
-const Template: ComponentStory<typeof ArticlesListSkeleton> = (args) => <ArticlesListSkeleton {...args} />;
+const Template: ComponentStory<typeof ArticlesListSkeleton> = (args) => (
+	<ArticlesListSkeleton {...args} />
+);
 
 export const ArticlesListSkeletonSmall = Template.bind({});
 ArticlesListSkeletonSmall.args = {

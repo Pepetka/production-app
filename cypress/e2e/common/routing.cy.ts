@@ -1,5 +1,9 @@
 import {
-	getAboutPagePath, getAdminPagePath, getArticlesPagePath, getMainPagePath, getProfilePagePath,
+	getAboutPagePath,
+	getAdminPagePath,
+	getArticlesPagePath,
+	getMainPagePath,
+	getProfilePagePath,
 } from '../../../src/shared/const/router';
 
 describe('Routing', () => {

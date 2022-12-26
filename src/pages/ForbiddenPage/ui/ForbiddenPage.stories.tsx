@@ -9,7 +9,9 @@ export default {
 	},
 } as ComponentMeta<typeof ForbiddenPage>;
 
-const Template: ComponentStory<typeof ForbiddenPage> = (args) => <ForbiddenPage />;
+const Template: ComponentStory<typeof ForbiddenPage> = (args) => (
+	<ForbiddenPage />
+);
 
 export const ForbiddenPageStory = Template.bind({});
 ForbiddenPageStory.args = {};

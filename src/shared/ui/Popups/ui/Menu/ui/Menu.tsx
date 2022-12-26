@@ -10,16 +10,20 @@ import cls from './Menu.module.scss';
 import clsPopups from '../../../style/Popups.module.scss';
 
 interface MenuProps {
-	className?: string
-	trigger: ReactNode
-	arrow?: boolean
-	menuItems: Array<MenuItem>
-	popupPosition?: PopupPosition
+	className?: string;
+	trigger: ReactNode;
+	arrow?: boolean;
+	menuItems: Array<MenuItem>;
+	popupPosition?: PopupPosition;
 }
 
 export const Menu = memo(
 	({
-		className, trigger, arrow, menuItems, popupPosition = 'bottom_right',
+		className,
+		trigger,
+		arrow,
+		menuItems,
+		popupPosition = 'bottom_right',
 	}: MenuProps) => (
 		<DropDown as="div" className={classNames(cls.Menu, {}, [className])}>
 			{({ open }) => (
@@ -28,11 +32,17 @@ export const Menu = memo(
 						<Button theme={ButtonTheme.CLEAR}>
 							<HStack w100 justify="between">
 								{trigger}
-								{arrow && <div className={classNames(cls.arrow, { [cls.open]: open })}>{'<'}</div>}
+								{arrow && (
+									<div className={classNames(cls.arrow, { [cls.open]: open })}>
+										{'<'}
+									</div>
+								)}
 							</HStack>
 						</Button>
 					</DropDown.Button>
-					<DropDown.Items className={classNames(cls.items, {}, [clsPopups[popupPosition]])}>
+					<DropDown.Items
+						className={classNames(cls.items, {}, [clsPopups[popupPosition]])}
+					>
 						{menuItems.map((el) => {
 							if (el.onClick) {
 								return (
@@ -46,7 +56,11 @@ export const Menu = memo(
 										key={el.content}
 									>
 										{({ active }) => (
-											<div className={classNames(cls.item, { [cls.active]: active })}>
+											<div
+												className={classNames(cls.item, {
+													[cls.active]: active,
+												})}
+											>
 												{el.content}
 											</div>
 										)}
@@ -63,7 +77,9 @@ export const Menu = memo(
 									key={el.content}
 								>
 									{({ active }) => (
-										<div className={classNames(cls.item, { [cls.active]: active })}>
+										<div
+											className={classNames(cls.item, { [cls.active]: active })}
+										>
 											{el.content}
 										</div>
 									)}

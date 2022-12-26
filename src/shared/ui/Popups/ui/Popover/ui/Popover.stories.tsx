@@ -9,9 +9,14 @@ export default {
 	},
 	decorators: [
 		(StoryComponent) => (
-			<div style={{
-				width: '500px', height: '300px', display: 'flex', justifyContent: 'center', alignItems: 'center',
-			}}
+			<div
+				style={{
+					width: '500px',
+					height: '300px',
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+				}}
 			>
 				<StoryComponent />
 			</div>
@@ -19,7 +24,9 @@ export default {
 	],
 } as ComponentMeta<typeof Popover>;
 
-const Template: ComponentStory<typeof Popover> = (args) => <Popover {...args} />;
+const Template: ComponentStory<typeof Popover> = (args) => (
+	<Popover {...args} />
+);
 
 export const PopoverBottomRight = Template.bind({});
 PopoverBottomRight.args = {

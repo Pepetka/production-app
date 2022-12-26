@@ -5,9 +5,6 @@
 	"views": 1022,
 	"userId": "1",
 	"createdAt": "26.02.2022",
-	"type": [
-		"IT",
-		"Math"
-	],
+	"type": ["IT", "Math"],
 	"blocks": []
 }

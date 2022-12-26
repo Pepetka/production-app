@@ -14,12 +14,17 @@ describe('userSlice', () => {
 			_init: true,
 		};
 
-		expect(userReducer(state, userActions.setAuthData({
-			username: 'username',
-			id: 'id',
-			avatar: 'avatar',
-			role: UserRole.USER,
-		}))).toEqual({
+		expect(
+			userReducer(
+				state,
+				userActions.setAuthData({
+					username: 'username',
+					id: 'id',
+					avatar: 'avatar',
+					role: UserRole.USER,
+				}),
+			),
+		).toEqual({
 			...state,
 			authData: {
 				username: 'username',
@@ -63,12 +68,17 @@ describe('userSlice', () => {
 	});
 
 	test('undefined state', () => {
-		expect(userReducer(undefined, userActions.setAuthData({
-			username: 'username',
-			id: 'id',
-			avatar: 'avatar',
-			role: UserRole.USER,
-		}))).toEqual({
+		expect(
+			userReducer(
+				undefined,
+				userActions.setAuthData({
+					username: 'username',
+					id: 'id',
+					avatar: 'avatar',
+					role: UserRole.USER,
+				}),
+			),
+		).toEqual({
 			authData: {
 				username: 'username',
 				id: 'id',

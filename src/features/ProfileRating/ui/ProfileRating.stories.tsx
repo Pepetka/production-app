@@ -21,7 +21,9 @@ export default {
 	],
 } as ComponentMeta<typeof ProfileRating>;
 
-const Template: ComponentStory<typeof ProfileRating> = (args) => <ProfileRating {...args} />;
+const Template: ComponentStory<typeof ProfileRating> = (args) => (
+	<ProfileRating {...args} />
+);
 
 const profileRating: Array<ProfileRatingType> = [
 	{

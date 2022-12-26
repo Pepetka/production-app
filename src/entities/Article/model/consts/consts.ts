@@ -8,13 +8,13 @@ export enum ArticleType {
 	ALL = 'All',
 	IT = 'IT',
 	ECONOMY = 'Economy',
-	MATH = 'Math'
+	MATH = 'Math',
 }
 
 export enum ArticleBlockType {
 	IMG = 'IMAGE',
 	TEXT = 'TEXT',
-	CODE = 'CODE'
+	CODE = 'CODE',
 }
 export enum ArticlesView {
 	BIG = 'big',

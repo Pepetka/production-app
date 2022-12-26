@@ -11,7 +11,9 @@ export default {
 	},
 } as ComponentMeta<typeof ArticleRecommendations>;
 
-const Template: ComponentStory<typeof ArticleRecommendations> = (args) => <ArticleRecommendations {...args} />;
+const Template: ComponentStory<typeof ArticleRecommendations> = (args) => (
+	<ArticleRecommendations {...args} />
+);
 
 const articles: Array<Article> = [
 	{
@@ -27,8 +29,8 @@ const articles: Array<Article> = [
 				id: '1',
 				title: 'Title',
 				paragraphs: [
-					'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consectetur culpa distinctio et placeat'
-					+ ' praesentium, quasi tempora? Fugiat quasi, voluptatum.',
+					'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consectetur culpa distinctio et placeat' +
+						' praesentium, quasi tempora? Fugiat quasi, voluptatum.',
 				],
 				type: ArticleBlockType.TEXT,
 			},
@@ -52,8 +54,8 @@ const articles: Array<Article> = [
 				id: '1',
 				title: 'Title',
 				paragraphs: [
-					'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consectetur culpa distinctio et placeat'
-					+ ' praesentium, quasi tempora? Fugiat quasi, voluptatum.',
+					'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consectetur culpa distinctio et placeat' +
+						' praesentium, quasi tempora? Fugiat quasi, voluptatum.',
 				],
 				type: ArticleBlockType.TEXT,
 			},
@@ -77,8 +79,8 @@ const articles: Array<Article> = [
 				id: '1',
 				title: 'Title',
 				paragraphs: [
-					'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consectetur culpa distinctio et placeat'
-					+ ' praesentium, quasi tempora? Fugiat quasi, voluptatum.',
+					'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consectetur culpa distinctio et placeat' +
+						' praesentium, quasi tempora? Fugiat quasi, voluptatum.',
 				],
 				type: ArticleBlockType.TEXT,
 			},
@@ -102,8 +104,8 @@ const articles: Array<Article> = [
 				id: '1',
 				title: 'Title',
 				paragraphs: [
-					'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consectetur culpa distinctio et placeat'
-					+ ' praesentium, quasi tempora? Fugiat quasi, voluptatum.',
+					'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consectetur culpa distinctio et placeat' +
+						' praesentium, quasi tempora? Fugiat quasi, voluptatum.',
 				],
 				type: ArticleBlockType.TEXT,
 			},

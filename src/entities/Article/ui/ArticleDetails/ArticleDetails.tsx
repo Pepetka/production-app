@@ -25,8 +25,8 @@ import { ArticleSkeleton } from '../ArticleSkeleton/ArticleSkeleton';
 import cls from './ArticleDetails.module.scss';
 
 interface ArticleDetailsProps {
-	className?: string
-	id: string
+	className?: string;
+	id: string;
 }
 
 export const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
@@ -37,9 +37,8 @@ export const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
 	const article = useSelector(getArticleData);
 	let content: JSX.Element;
 
-	const renderBlock = useCallback(
-		(block: ArticleBlock) => {
-			switch (block.type) {
+	const renderBlock = useCallback((block: ArticleBlock) => {
+		switch (block.type) {
 			case ArticleBlockType.TEXT:
 				return <ArticleTextBlockComponent key={block.id} block={block} />;
 			case ArticleBlockType.IMG:
@@ -48,10 +47,8 @@ export const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
 				return <ArticleCodeBlockComponent key={block.id} block={block} />;
 			default:
 				return null;
-			}
-		},
-		[],
-	);
+		}
+	}, []);
 
 	const effect = useCallback(() => {
 		dispatch(fetchArticleById({ id }));
@@ -62,15 +59,27 @@ export const ArticleDetails = memo(({ className, id }: ArticleDetailsProps) => {
 	if (error) {
 		content = <Text title={t(error)} align="center" />;
 	} else if (loading) {
-		content = <HStack justify="center" w100><ArticleSkeleton /></HStack>;
+		content = (
+			<HStack justify="center" w100>
+				<ArticleSkeleton />
+			</HStack>
+		);
 	} else {
 		content = (
 			<VStack data-testid="ArticleDetails" align="start" gap="32" w100>
 				<VStack align="start" w100 gap="8">
 					<HStack justify="center" w100>
-						<Avatar avatar={article?.img} alt={t('Article img')} size={AvatarSize.SIZE_L} />
+						<Avatar
+							avatar={article?.img}
+							alt={t('Article img')}
+							size={AvatarSize.SIZE_L}
+						/>
 					</HStack>
-					<Text size={TextSize.L} title={article?.title} text={article?.subtitle} />
+					<Text
+						size={TextSize.L}
+						title={article?.title}
+						text={article?.subtitle}
+					/>
 					<HStack gap="8">
 						<Icon SvgIcon={EyeIcon} theme={IconTheme.SECONDARY} />
 						<Text text={`${article?.views}`} />

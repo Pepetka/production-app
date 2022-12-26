@@ -9,9 +9,9 @@ import { CommentCard } from '../CommentCard/CommentCard';
 import cls from './CommentList.module.scss';
 
 interface CommentListProps {
-	className?: string
-	comments?: Array<Comment>
-	loading?: boolean
+	className?: string;
+	comments?: Array<Comment>;
+	loading?: boolean;
 }
 
 export const CommentList = memo(
@@ -20,7 +20,10 @@ export const CommentList = memo(
 
 		if (loading) {
 			return (
-				<VStack gap="16" className={classNames(cls.CommentList, {}, [className])}>
+				<VStack
+					gap="16"
+					className={classNames(cls.CommentList, {}, [className])}
+				>
 					<CommentSkeleton />
 					<CommentSkeleton />
 					<CommentSkeleton />
@@ -30,9 +33,13 @@ export const CommentList = memo(
 
 		return (
 			<VStack gap="16" className={classNames(cls.CommentList, {}, [className])}>
-				{comments?.length
-					? comments?.map((comment) => <CommentCard key={comment.id} comment={comment} />)
-					: <Text text={t('No comments')} align="center" />}
+				{comments?.length ? (
+					comments?.map((comment) => (
+						<CommentCard key={comment.id} comment={comment} />
+					))
+				) : (
+					<Text text={t('No comments')} align="center" />
+				)}
 			</VStack>
 		);
 	},

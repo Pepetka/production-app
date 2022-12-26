@@ -6,11 +6,14 @@ import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { getArticleData } from '@/entities/Article';
 import { HStack } from '@/shared/ui/Stack';
 import { getCanEditArticle } from '../../model/selectors/getCanEditArticle/getCanEditArticle';
-import { getArticleEditPagePath, getArticlesPagePath } from '@/shared/const/router';
+import {
+	getArticleEditPagePath,
+	getArticlesPagePath,
+} from '@/shared/const/router';
 import cls from './ArticleDetailsPageHeader.module.scss';
 
 interface ArticleDetailsPageHeaderProps {
-	className?: string
+	className?: string;
 }
 
 export const ArticleDetailsPageHeader = memo(
@@ -24,17 +27,25 @@ export const ArticleDetailsPageHeader = memo(
 			navigate(getArticlesPagePath());
 		}, [navigate]);
 
-		const	onEdit = useCallback(() => {
+		const onEdit = useCallback(() => {
 			navigate(getArticleEditPagePath(article?.id));
 		}, [article?.id, navigate]);
 
 		return (
 			<HStack justify="between" w100 className={className}>
-				<Button className={cls.btn} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onBack}>
+				<Button
+					className={cls.btn}
+					theme={ButtonTheme.OUTLINE_PRIMARY}
+					onClick={onBack}
+				>
 					{t('Back to list')}
 				</Button>
 				{canEditArticle && (
-					<Button className={cls.btn} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onEdit}>
+					<Button
+						className={cls.btn}
+						theme={ButtonTheme.OUTLINE_PRIMARY}
+						onClick={onEdit}
+					>
 						{t('Edit')}
 					</Button>
 				)}

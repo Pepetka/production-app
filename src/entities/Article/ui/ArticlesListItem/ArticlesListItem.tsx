@@ -9,47 +9,61 @@ import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { Avatar, AvatarSize } from '@/shared/ui/Avatar';
 import { AppLink } from '@/shared/ui/AppLink';
 import { HStack, VStack } from '@/shared/ui/Stack';
-import type {
-	Article, ArticleTextBlock,
-} from '../../model/types/article';
+import type { Article, ArticleTextBlock } from '../../model/types/article';
 import {
-	ArticleBlockType, ArticlesView, ArticleType,
+	ArticleBlockType,
+	ArticlesView,
+	ArticleType,
 } from '../../model/consts/consts';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { AppImg } from '@/shared/ui/AppImg';
 import { Skeleton } from '@/shared/ui/Skeleton';
-import { getArticleDetailsPagePath, getProfilePagePath } from '@/shared/const/router';
+import {
+	getArticleDetailsPagePath,
+	getProfilePagePath,
+} from '@/shared/const/router';
 import cls from './ArticlesListItem.module.scss';
 
 interface ArticlesListItemProps {
-	className?: string
-	article: Article
-	view: ArticlesView
-	target?: HTMLAttributeAnchorTarget
+	className?: string;
+	article: Article;
+	view: ArticlesView;
+	target?: HTMLAttributeAnchorTarget;
 }
 
 export const ArticlesListItem = memo(
-	({
-		className, article, view, target,
-	}: ArticlesListItemProps) => {
+	({ className, article, view, target }: ArticlesListItemProps) => {
 		const { t } = useTranslation('articles');
-		const textContent = article.blocks.find((block) => block.type === ArticleBlockType.TEXT) as ArticleTextBlock;
+		const textContent = article.blocks.find(
+			(block) => block.type === ArticleBlockType.TEXT,
+		) as ArticleTextBlock;
 
-		const articleTranslatedTypes: OptionalRecord<ArticleType, string> = useMemo(() => ({
-			[ArticleType.IT]: t('IT'),
-			[ArticleType.MATH]: t('MATH'),
-			[ArticleType.ECONOMY]: t('ECONOMY'),
-		}), [t]);
+		const articleTranslatedTypes: OptionalRecord<ArticleType, string> = useMemo(
+			() => ({
+				[ArticleType.IT]: t('IT'),
+				[ArticleType.MATH]: t('MATH'),
+				[ArticleType.ECONOMY]: t('ECONOMY'),
+			}),
+			[t],
+		);
 
-		const articleTypes = article.type.map((type) => articleTranslatedTypes[type]).join(', ');
+		const articleTypes = article.type
+			.map((type) => articleTranslatedTypes[type])
+			.join(', ');
 
 		if (view === ArticlesView.BIG) {
 			return (
-				<Card data-testid="ArticlesListItem" className={classNames(cls.Big, {}, [className])}>
+				<Card
+					data-testid="ArticlesListItem"
+					className={classNames(cls.Big, {}, [className])}
+				>
 					<HStack className={cls.bigWrapper} justify="between">
 						<AppLink to={getProfilePagePath(article.user.id)}>
 							<HStack gap="8">
-								<Avatar avatar={article.user.avatar} size={AvatarSize.SIZE_XS} />
+								<Avatar
+									avatar={article.user.avatar}
+									size={AvatarSize.SIZE_XS}
+								/>
 								<Text text={article.user.username} />
 							</HStack>
 						</AppLink>
@@ -82,7 +96,11 @@ export const ArticlesListItem = memo(
 		}
 
 		return (
-			<AppLink data-testid="ArticlesListItem" target={target} to={getArticleDetailsPagePath(article.id)}>
+			<AppLink
+				data-testid="ArticlesListItem"
+				target={target}
+				to={getArticleDetailsPagePath(article.id)}
+			>
 				<Card className={classNames(cls.Small, {}, [className])}>
 					<VStack className={cls.smallWrapper}>
 						<Text className={cls.date} text={article.createdAt} />

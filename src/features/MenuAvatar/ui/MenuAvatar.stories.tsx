@@ -9,7 +9,9 @@ export default {
 	},
 } as ComponentMeta<typeof MenuAvatar>;
 
-const Template: ComponentStory<typeof MenuAvatar> = (args) => <MenuAvatar {...args} />;
+const Template: ComponentStory<typeof MenuAvatar> = (args) => (
+	<MenuAvatar {...args} />
+);
 
 export const MenuAvatarStory = Template.bind({});
 MenuAvatarStory.args = {};

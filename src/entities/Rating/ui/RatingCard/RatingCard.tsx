@@ -1,6 +1,4 @@
-import {
-	memo, useCallback, useState, FormEvent,
-} from 'react';
+import { memo, useCallback, useState, FormEvent } from 'react';
 import { BrowserView, MobileView } from 'react-device-detect';
 import { useTranslation } from 'react-i18next';
 import { StarRating } from '@/shared/ui/StarRating';
@@ -16,19 +14,26 @@ import { Skeleton } from '@/shared/ui/Skeleton';
 import cls from './RatingCard.module.scss';
 
 interface RatingCardProps {
-	className?: string
-	title: string
-	onSelectStar?: (star: number, review?: string) => void
-	modal?: boolean
-	modalTitle?: string
-	rating?: number
-	isLoading?: boolean
-	isError?: boolean
+	className?: string;
+	title: string;
+	onSelectStar?: (star: number, review?: string) => void;
+	modal?: boolean;
+	modalTitle?: string;
+	rating?: number;
+	isLoading?: boolean;
+	isError?: boolean;
 }
 
 export const RatingCard = memo(
 	({
-		className, title, onSelectStar, modal = true, modalTitle, rating, isLoading, isError,
+		className,
+		title,
+		onSelectStar,
+		modal = true,
+		modalTitle,
+		rating,
+		isLoading,
+		isError,
 	}: RatingCardProps) => {
 		const { t } = useTranslation();
 		const [isModalOpen, setIsModalOpen] = useState(false);
@@ -40,20 +45,24 @@ export const RatingCard = memo(
 		}, []);
 
 		const onCloseCallback = useCallback(() => {
-			if (selectedStar) onSelectStar?.(selectedStar, review.trim() ? review.trim() : undefined);
+			if (selectedStar)
+				onSelectStar?.(selectedStar, review.trim() ? review.trim() : undefined);
 		}, [onSelectStar, review, selectedStar]);
 
 		const onReview = useCallback((value: string) => {
 			setReview(value);
 		}, []);
 
-		const onSelectHandle = useCallback((star: number) => {
-			if (!modal && star) {
-				onSelectStar?.(star);
-			}
-			setSelectedStar(star);
-			setIsModalOpen(true);
-		}, [modal, onSelectStar]);
+		const onSelectHandle = useCallback(
+			(star: number) => {
+				if (!modal && star) {
+					onSelectStar?.(star);
+				}
+				setSelectedStar(star);
+				setIsModalOpen(true);
+			},
+			[modal, onSelectStar],
+		);
 
 		const onSendHandle = useCallback((event: FormEvent<HTMLFormElement>) => {
 			event.preventDefault();
@@ -99,19 +108,41 @@ export const RatingCard = memo(
 
 		return (
 			<Card w100 className={classNames(cls.RatingCard, {}, [className])}>
-				<VStack data-testid="RatingCard" gap="16" w100 justify="center" align="center">
-					<Text title={(selectedStar || rating) ? t('Thank you for rating') : title} />
-					{isLoading ? <Skeleton width={200} height={40} /> : <StarRating rating={rating} onSelect={onSelectHandle} />}
+				<VStack
+					data-testid="RatingCard"
+					gap="16"
+					w100
+					justify="center"
+					align="center"
+				>
+					<Text
+						title={selectedStar || rating ? t('Thank you for rating') : title}
+					/>
+					{isLoading ? (
+						<Skeleton width={200} height={40} />
+					) : (
+						<StarRating rating={rating} onSelect={onSelectHandle} />
+					)}
 				</VStack>
 				{modal && (
 					<>
 						<MobileView>
-							<Drawer callback={onCloseCallback} isOpen={isModalOpen} onCloseDrawer={onCloseModal} height={300}>
+							<Drawer
+								callback={onCloseCallback}
+								isOpen={isModalOpen}
+								onCloseDrawer={onCloseModal}
+								height={300}
+							>
 								{content}
 							</Drawer>
 						</MobileView>
 						<BrowserView>
-							<Modal callback={onCloseCallback} lazy isOpen={isModalOpen} onCloseModal={onCloseModal}>
+							<Modal
+								callback={onCloseCallback}
+								lazy
+								isOpen={isModalOpen}
+								onCloseModal={onCloseModal}
+							>
 								{content}
 							</Modal>
 						</BrowserView>

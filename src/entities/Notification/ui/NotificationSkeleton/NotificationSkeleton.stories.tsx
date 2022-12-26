@@ -9,7 +9,9 @@ export default {
 	},
 } as ComponentMeta<typeof NotificationSkeleton>;
 
-const Template: ComponentStory<typeof NotificationSkeleton> = (args) => <NotificationSkeleton {...args} />;
+const Template: ComponentStory<typeof NotificationSkeleton> = (args) => (
+	<NotificationSkeleton {...args} />
+);
 
 export const NotificationSkeletonStory = Template.bind({});
 NotificationSkeletonStory.args = {};

@@ -5,12 +5,16 @@ import { VStack } from '@/shared/ui/Stack';
 import cls from './NotificationSkeleton.module.scss';
 
 interface NotificationSkeletonProps {
-	className?: string
+	className?: string;
 }
 
 export const NotificationSkeleton = memo(
 	({ className }: NotificationSkeletonProps) => (
-		<VStack gap="8" align="start" className={classNames(cls.NotificationSkeleton, {}, [className])}>
+		<VStack
+			gap="8"
+			align="start"
+			className={classNames(cls.NotificationSkeleton, {}, [className])}
+		>
 			<Skeleton height={24} width="30%" />
 			<Skeleton height={16} width="70%" />
 		</VStack>

@@ -8,22 +8,32 @@ export enum IconTheme {
 	INVERT_PRIMARY = 'invert_primary',
 	SECONDARY = 'secondary',
 	INVERT_SECONDARY = 'invert_secondary',
-	RED = 'red'
+	RED = 'red',
 }
 
 interface IconProps {
-	className?: string
-	SvgIcon: React.VFC<React.SVGProps<SVGSVGElement>>
-	theme?: IconTheme
-	stroke?: boolean
-	size?: 'size_s' | 'size_m' | 'size_l' | 'size_xs'
+	className?: string;
+	SvgIcon: React.VFC<React.SVGProps<SVGSVGElement>>;
+	theme?: IconTheme;
+	stroke?: boolean;
+	size?: 'size_s' | 'size_m' | 'size_l' | 'size_xs';
 }
 
 export const Icon = memo(
 	({
-		className, SvgIcon, theme = IconTheme.PRIMARY, stroke, size = 'size_xs',
+		className,
+		SvgIcon,
+		theme = IconTheme.PRIMARY,
+		stroke,
+		size = 'size_xs',
 	}: IconProps) => (
-		<HStack className={classNames('', { [cls.stroke]: stroke }, [className, cls[theme], cls[size]])}>
+		<HStack
+			className={classNames('', { [cls.stroke]: stroke }, [
+				className,
+				cls[theme],
+				cls[size],
+			])}
+		>
 			<SvgIcon />
 		</HStack>
 	),

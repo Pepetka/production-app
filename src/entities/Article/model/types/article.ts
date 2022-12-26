@@ -2,37 +2,40 @@ import type { User } from '@/entities/User';
 import { ArticleBlockType, ArticleType } from '../consts/consts';
 
 export interface ArticleBlockBase {
-	id: string
-	type: ArticleBlockType
+	id: string;
+	type: ArticleBlockType;
 }
 
 export interface ArticleTextBlock extends ArticleBlockBase {
-	type: ArticleBlockType.TEXT
-	title?: string,
-	paragraphs: Array<string>
+	type: ArticleBlockType.TEXT;
+	title?: string;
+	paragraphs: Array<string>;
 }
 
 export interface ArticleImgBlock extends ArticleBlockBase {
-	type: ArticleBlockType.IMG
-	src: string,
-	title?: string,
+	type: ArticleBlockType.IMG;
+	src: string;
+	title?: string;
 }
 
 export interface ArticleCodeBlock extends ArticleBlockBase {
-	type: ArticleBlockType.CODE
-	code: string
+	type: ArticleBlockType.CODE;
+	code: string;
 }
 
-export type ArticleBlock = ArticleTextBlock | ArticleImgBlock | ArticleCodeBlock
+export type ArticleBlock =
+	| ArticleTextBlock
+	| ArticleImgBlock
+	| ArticleCodeBlock;
 
 export interface Article {
-	id: string
-	title: string
-	subtitle: string
-	img: string
-	views: number
-	user: User,
-	createdAt: string
-	type: Array<ArticleType>
-	blocks:Array<ArticleBlock>
+	id: string;
+	title: string;
+	subtitle: string;
+	img: string;
+	views: number;
+	user: User;
+	createdAt: string;
+	type: Array<ArticleType>;
+	blocks: Array<ArticleBlock>;
 }

@@ -9,7 +9,9 @@ export default {
 	},
 } as ComponentMeta<typeof NotificationPopover>;
 
-const Template: ComponentStory<typeof NotificationPopover> = (args) => <NotificationPopover />;
+const Template: ComponentStory<typeof NotificationPopover> = (args) => (
+	<NotificationPopover />
+);
 
 export const NotificationPopoverStory = Template.bind({});
 NotificationPopoverStory.args = {};

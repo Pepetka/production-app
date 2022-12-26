@@ -7,12 +7,14 @@ import cls from './LoginModal.module.scss';
 
 interface LoginModalProps {
 	className?: string;
-	isOpen: boolean
-	onCloseModal: () => void
+	isOpen: boolean;
+	onCloseModal: () => void;
 }
 
 export const LoginModal = ({
-	className, onCloseModal, isOpen,
+	className,
+	onCloseModal,
+	isOpen,
 }: LoginModalProps) => (
 	<Modal
 		lazy

@@ -7,8 +7,8 @@ import { ArticlesView } from '../../model/consts/consts';
 import cls from './ArticlesListSkeleton.module.scss';
 
 interface ArticlesListSkeletonProps {
-	className?: string
-	view: ArticlesView
+	className?: string;
+	view: ArticlesView;
 }
 
 export const ArticlesListSkeleton = memo(
@@ -16,7 +16,12 @@ export const ArticlesListSkeleton = memo(
 		if (view === ArticlesView.BIG) {
 			return (
 				<Card className={classNames(cls.Big, {}, [className])}>
-					<VStack justify="between" align="start" gap="4" className={cls.wrapper}>
+					<VStack
+						justify="between"
+						align="start"
+						gap="4"
+						className={cls.wrapper}
+					>
 						<HStack justify="between" className={cls.widthWrapper}>
 							<HStack gap="8">
 								<Skeleton width={30} circle />

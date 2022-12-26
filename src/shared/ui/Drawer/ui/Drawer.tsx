@@ -1,25 +1,38 @@
 import {
-	memo, ReactNode, useCallback, useEffect, useMemo, useState,
+	memo,
+	ReactNode,
+	useCallback,
+	useEffect,
+	useMemo,
+	useState,
 } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
-import { AnimationProvider, useAnimationsLib } from '@/shared/lib/components/AnimationProvider/AnimationProvider';
+import {
+	AnimationProvider,
+	useAnimationsLib,
+} from '@/shared/lib/components/AnimationProvider/AnimationProvider';
 import { Portal } from '../../Portal';
 import { Overlay } from '../../Overlay';
 import cls from './Drawer.module.scss';
 
 interface DrawerProps {
-	className?: string
-	children?: ReactNode
-	isOpen: boolean
-	onCloseDrawer?: () => void
-	callback?: () => void
-	height?: number
+	className?: string;
+	children?: ReactNode;
+	isOpen: boolean;
+	onCloseDrawer?: () => void;
+	callback?: () => void;
+	height?: number;
 }
 
 const DrawerContent = memo(
 	({
-		className, children, isOpen, onCloseDrawer, callback, height = window.innerHeight - 200,
+		className,
+		children,
+		isOpen,
+		onCloseDrawer,
+		callback,
+		height = window.innerHeight - 200,
 	}: DrawerProps) => {
 		const { theme } = useTheme();
 		const { Spring, Gesture } = useAnimationsLib();
@@ -35,29 +48,36 @@ const DrawerContent = memo(
 			callback?.();
 		}, [callback, onCloseDrawer]);
 
-		const close = useCallback((callback?: () => void) => (velocity = 0) => {
-			api.start({
-				y: height,
-				immediate: false,
-				config: { ...Spring.config.stiff, velocity },
-				onResolve: () => {
-					callback?.();
-					setIsOpened(false);
+		const close = useCallback(
+			(callback?: () => void) =>
+				(velocity = 0) => {
+					api.start({
+						y: height,
+						immediate: false,
+						config: { ...Spring.config.stiff, velocity },
+						onResolve: () => {
+							callback?.();
+							setIsOpened(false);
+						},
+					});
 				},
-			});
-		}, [Spring.config.stiff, api]);
+			[Spring.config.stiff, api],
+		);
 
-		const {
-			closeDrawer,
-			closeDrawerWithCallback,
-		} = useMemo(() => ({
-			closeDrawer: close(onCloseDrawer),
-			closeDrawerWithCallback: close(onCloseDrawerWithCallback),
-		}), [close, onCloseDrawer, onCloseDrawerWithCallback]);
+		const { closeDrawer, closeDrawerWithCallback } = useMemo(
+			() => ({
+				closeDrawer: close(onCloseDrawer),
+				closeDrawerWithCallback: close(onCloseDrawerWithCallback),
+			}),
+			[close, onCloseDrawer, onCloseDrawerWithCallback],
+		);
 
-		const onKeyDown = useCallback((event: KeyboardEvent) => {
-			if (event.key === 'Escape') closeDrawer();
-		}, [closeDrawer]);
+		const onKeyDown = useCallback(
+			(event: KeyboardEvent) => {
+				if (event.key === 'Escape') closeDrawer();
+			},
+			[closeDrawer],
+		);
 
 		useEffect(() => {
 			if (isOpen) {
@@ -99,7 +119,10 @@ const DrawerContent = memo(
 				}
 			},
 			{
-				from: () => [0, y.get()], filterTaps: true, bounds: { top: 0 }, rubberband: true,
+				from: () => [0, y.get()],
+				filterTaps: true,
+				bounds: { top: 0 },
+				rubberband: true,
 			},
 		);
 
@@ -112,10 +135,18 @@ const DrawerContent = memo(
 		return (
 			<Portal>
 				<div
-					className={classNames(cls.Drawer, {}, [className, theme, 'app_drawer'])}
+					className={classNames(cls.Drawer, {}, [
+						className,
+						theme,
+						'app_drawer',
+					])}
 				>
 					<Overlay onClick={() => closeDrawer()} />
-					<Spring.a.div {...bind()} style={{ display, bottom: `calc(-100vh + ${height - 100}px)`, y }} className={cls.content}>
+					<Spring.a.div
+						{...bind()}
+						style={{ display, bottom: `calc(-100vh + ${height - 100}px)`, y }}
+						className={cls.content}
+					>
 						{children}
 					</Spring.a.div>
 				</div>
@@ -129,9 +160,7 @@ const DrawerAsync = memo((props: DrawerProps) => {
 
 	if (!isLoaded) return null;
 
-	return (
-		<DrawerContent {...props} />
-	);
+	return <DrawerContent {...props} />;
 });
 
 export const Drawer = memo((props: DrawerProps) => (

@@ -3,28 +3,38 @@ import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { RatingCard } from '@/entities/Rating';
 import { getAuthData } from '@/entities/User';
-import { useAddArticleRatingMutation, useFetchArticleRatingQuery } from '../api/articleRatingApi';
+import {
+	useAddArticleRatingMutation,
+	useFetchArticleRatingQuery,
+} from '../api/articleRatingApi';
 
 interface ArticleRatingProps {
-	className?: string
-	articleId: string
+	className?: string;
+	articleId: string;
 }
 
 export const ArticleRating = memo(
 	({ className, articleId }: ArticleRatingProps) => {
 		const { t } = useTranslation('articles');
 		const authData = useSelector(getAuthData);
-		const { isLoading, isError, data: rating } = useFetchArticleRatingQuery({ articleId, userId: authData?.id ?? '' });
+		const {
+			isLoading,
+			isError,
+			data: rating,
+		} = useFetchArticleRatingQuery({ articleId, userId: authData?.id ?? '' });
 		const [addArticle] = useAddArticleRatingMutation();
 
-		const onSelectStar = useCallback((star: number, review?: string) => {
-			addArticle({
-				rating: star,
-				userId: authData?.id ?? '',
-				articleId,
-				review,
-			});
-		}, [addArticle, articleId, authData?.id]);
+		const onSelectStar = useCallback(
+			(star: number, review?: string) => {
+				addArticle({
+					rating: star,
+					userId: authData?.id ?? '',
+					articleId,
+					review,
+				});
+			},
+			[addArticle, articleId, authData?.id],
+		);
 
 		return (
 			<RatingCard

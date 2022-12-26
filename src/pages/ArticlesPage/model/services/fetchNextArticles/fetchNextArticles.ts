@@ -6,16 +6,17 @@ import { getArticlesPageHasMore } from '../../selectors/getArticlesPageHasMore/g
 import { getArticlesPageLoading } from '../../selectors/getArticlesPageLoading/getArticlesPageLoading';
 import { getArticlesPagePage } from '../../selectors/getArticlesPagePage/getArticlesPagePage';
 
-export const fetchNextArticles = createAsyncThunk<void, void, ThunkConfig<string>>(
-	'articlesPage/fetchNextArticles',
-	async (_, { dispatch, getState }) => {
-		const hasMore = getArticlesPageHasMore(getState());
-		const loading = getArticlesPageLoading(getState());
-		const page = getArticlesPagePage(getState());
+export const fetchNextArticles = createAsyncThunk<
+	void,
+	void,
+	ThunkConfig<string>
+>('articlesPage/fetchNextArticles', async (_, { dispatch, getState }) => {
+	const hasMore = getArticlesPageHasMore(getState());
+	const loading = getArticlesPageLoading(getState());
+	const page = getArticlesPagePage(getState());
 
-		if (hasMore && !loading) {
-			dispatch(articlesPageActions.changePage(page + 1));
-			dispatch(fetchArticlesList({}));
-		}
-	},
-);
+	if (hasMore && !loading) {
+		dispatch(articlesPageActions.changePage(page + 1));
+		dispatch(fetchArticlesList({}));
+	}
+});

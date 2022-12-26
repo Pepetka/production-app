@@ -1,6 +1,4 @@
-import {
-	FC, memo, SVGProps, useCallback, useState,
-} from 'react';
+import { FC, memo, SVGProps, useCallback, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
@@ -14,7 +12,11 @@ import { getAuthData } from '@/entities/User';
 import { Flex, VStack } from '@/shared/ui/Stack';
 import { SideBarLink } from '../SideBarLink/SideBarLink';
 import {
-	AppRoutes, getAboutPagePath, getArticlesPagePath, getMainPagePath, getProfilePagePath,
+	AppRoutes,
+	getAboutPagePath,
+	getArticlesPagePath,
+	getMainPagePath,
+	getProfilePagePath,
 } from '@/shared/const/router';
 import { AppRoutesProps } from '@/shared/types/router';
 import cls from './SideBar.module.scss';
@@ -27,7 +29,7 @@ const navIcons: Record<string, FC<SVGProps<SVGSVGElement>>> = {
 };
 
 interface SideBarProps {
-	className?: string
+	className?: string;
 }
 export const SideBar = memo(({ className }: SideBarProps) => {
 	const [collapsed, setCollapsed] = useState(true);
@@ -40,12 +42,22 @@ export const SideBar = memo(({ className }: SideBarProps) => {
 	const links: DeepPartial<Record<AppRoutes, AppRoutesProps>> = {
 		[AppRoutes.MAIN]: { path: getMainPagePath(), authOnly: false },
 		[AppRoutes.ABOUT]: { path: getAboutPagePath(), authOnly: false },
-		[AppRoutes.PROFILE]: { path: getProfilePagePath(authData?.id), authOnly: true },
+		[AppRoutes.PROFILE]: {
+			path: getProfilePagePath(authData?.id),
+			authOnly: true,
+		},
 		[AppRoutes.ARTICLES]: { path: getArticlesPagePath(), authOnly: true },
 	};
 
 	return (
-		<VStack data-testid="SideBar" Tag="aside" justify="between" className={classNames(cls.SideBar, { [cls.collapsed]: collapsed }, [className])}>
+		<VStack
+			data-testid="SideBar"
+			Tag="aside"
+			justify="between"
+			className={classNames(cls.SideBar, { [cls.collapsed]: collapsed }, [
+				className,
+			])}
+		>
 			<VStack w100 gap="32">
 				<Button
 					theme={ButtonTheme.CLEAR}

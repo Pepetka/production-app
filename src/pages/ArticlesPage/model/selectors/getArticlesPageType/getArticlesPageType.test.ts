@@ -11,7 +11,9 @@ describe('getArticlesPageType', () => {
 			},
 		};
 
-		expect(getArticlesPageType(state as StateSchema)).toEqual(ArticleType.ECONOMY);
+		expect(getArticlesPageType(state as StateSchema)).toEqual(
+			ArticleType.ECONOMY,
+		);
 	});
 
 	test('empty state', () => {

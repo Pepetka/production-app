@@ -1,9 +1,10 @@
 export { ArticleDetails } from './ui/ArticleDetails/ArticleDetails';
-export type {
-	Article,
-} from './model/types/article';
+export type { Article } from './model/types/article';
 export {
-	ArticlesView, ArticleSortField, ArticleType, ArticleBlockType,
+	ArticlesView,
+	ArticleSortField,
+	ArticleType,
+	ArticleBlockType,
 } from './model/consts/consts';
 export type { ArticleSchema } from './model/types/articleSchema';
 export { fetchArticleById } from './model/services/fetchArticleById/fetchArticleById';

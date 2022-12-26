@@ -20,11 +20,13 @@ export const PageError = memo(({ className }: PageErrorProps) => {
 
 	return (
 		<div className={`App ${theme}`}>
-			<VStack justify="center" gap="8" className={classNames(cls.PageError, {}, [className])}>
+			<VStack
+				justify="center"
+				gap="8"
+				className={classNames(cls.PageError, {}, [className])}
+			>
 				<Text title={t('Something went wrong')} />
-				<Button onClick={onReload}>
-					{t('Reload page')}
-				</Button>
+				<Button onClick={onReload}>{t('Reload page')}</Button>
 			</VStack>
 		</div>
 	);

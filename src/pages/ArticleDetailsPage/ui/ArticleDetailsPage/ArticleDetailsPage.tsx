@@ -10,11 +10,11 @@ import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDet
 import { ArticleRating } from '@/features/ArticleRating';
 
 interface ArticleDetailsPageProps {
-	storybookId?: string
+	storybookId?: string;
 }
 
 const ArticleDetailsPage = memo(({ storybookId }: ArticleDetailsPageProps) => {
-	const params = useParams<{id: string}>();
+	const params = useParams<{ id: string }>();
 	const articleError = useSelector(getArticleError);
 
 	return (
