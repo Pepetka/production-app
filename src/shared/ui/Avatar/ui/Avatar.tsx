@@ -32,7 +32,7 @@ interface AvatarProps {
 export const Avatar = memo(
 	({
 		className,
-		avatar = DefaultAvatar,
+		avatar,
 		size = AvatarSize.SIZE_M,
 		alt,
 		inverted = false,
@@ -42,7 +42,7 @@ export const Avatar = memo(
 
 		return (
 			<AppImg
-				src={avatar}
+				src={avatar || DefaultAvatar}
 				alt={alt ?? t('Profile avatar')}
 				className={classNames(
 					cls.Avatar,

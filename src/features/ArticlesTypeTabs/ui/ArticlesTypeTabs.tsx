@@ -22,6 +22,6 @@ export const ArticlesTypeTabs = memo(
 			[t],
 		);
 
-		return <Tabs tabs={tabs} selected={type} onClick={onChangeType} />;
+		return <Tabs tabs={tabs} selected={[type]} onClick={onChangeType} />;
 	},
 );

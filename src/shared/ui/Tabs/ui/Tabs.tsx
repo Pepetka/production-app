@@ -5,7 +5,7 @@ import { Button, ButtonTheme } from '../../Button';
 interface TabsProps<T extends string> {
 	className?: string;
 	tabs: Record<string, string>;
-	selected?: T;
+	selected?: Array<T>;
 	onClick?: (tab: T) => void;
 	inverted?: boolean;
 }
@@ -34,7 +34,7 @@ export const Tabs = typedMemo(
 						onClick={onHandleClick(key as T)}
 						key={key}
 						theme={
-							key === selected
+							selected?.find((el) => el === key)
 								? ButtonTheme.OUTLINE_RED
 								: ButtonTheme.OUTLINE_PRIMARY
 						}

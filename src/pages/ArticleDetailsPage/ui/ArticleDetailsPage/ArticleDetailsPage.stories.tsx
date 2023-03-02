@@ -10,8 +10,8 @@ import {
 } from '@/entities/Article';
 import { Comment } from '@/entities/Comment';
 import { ArticleRatingType } from '@/features/ArticleRating';
-import ArticleDetailsPage from './ArticleDetailsPage';
 import { UserRole } from '@/shared/const/role';
+import ArticleDetailsPage from './ArticleDetailsPage';
 
 export default {
 	title: 'pages/ArticleDetailsPage/ArticleDetailsPage',

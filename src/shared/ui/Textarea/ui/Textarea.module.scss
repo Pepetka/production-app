@@ -1,0 +1,106 @@
+.Textarea {
+	width: 100%;
+	background: var(--invert-bg-color);
+	color: var(--invert-primary-color);
+	border: solid 2px var(--invert-primary-color);
+	border-radius: 5px;
+	padding: 10px 15px;
+	resize: vertical;
+	min-height: 50px;
+}
+
+.textareaWrapper {
+	width: 100%;
+	position: relative;
+}
+
+.label {
+	pointer-events: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	transform: translateY(5px);
+	color: var(--primary-color);
+	transition: all 0.3s ease-out;
+}
+
+.withPlaceholder {
+	padding-top: 35px;
+}
+
+.placeholder {
+	transform: translateY(45px) translateX(15px);
+	color: var(--invert-secondary-color);
+}
+
+.primary {
+	.Textarea {
+		background: var(--invert-bg-color);
+		color: var(--invert-primary-color);
+		border: solid 2px var(--invert-primary-color);
+
+		&::placeholder {
+			color: var(--invert-secondary-color);
+		}
+	}
+
+	.label {
+		color: var(--primary-color);
+	}
+
+	.placeholder {
+		color: var(--invert-secondary-color);
+	}
+}
+
+.invert {
+	.Textarea {
+		background: var(--bg-color);
+		color: var(--primary-color);
+		border: solid 2px var(--primary-color);
+
+		&::placeholder {
+			color: var(--secondary-color);
+		}
+	}
+
+	.label {
+		color: var(--invert-primary-color);
+	}
+
+	.placeholder {
+		color: var(--secondary-color);
+	}
+}
+
+.primary.textInvert {
+	.Textarea {
+		color: var(--invert-primary-color);
+	}
+
+	.label {
+		color: var(--invert-primary-color);
+	}
+
+	.placeholder {
+		color: var(--invert-secondary-color);
+	}
+}
+
+.invert.textInvert {
+	.Textarea {
+		color: var(--primary-color);
+	}
+
+	.label {
+		color: var(--primary-color);
+	}
+
+	.placeholder {
+		color: var(--secondary-color);
+	}
+}
+
+.readOnly {
+	outline: none;
+}

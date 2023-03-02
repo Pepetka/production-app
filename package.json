@@ -129,8 +129,8 @@
 	},
 	"lint-staged": {
 		"**/*.{ts,tsx}": [
-			"prettier --list-different",
-			"eslint"
+			"eslint",
+			"prettier --list-different"
 		],
 		"**/*.scss": "npx stylelint"
 	},
