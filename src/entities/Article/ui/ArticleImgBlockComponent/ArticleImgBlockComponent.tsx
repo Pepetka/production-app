@@ -10,14 +10,9 @@ interface ArticleImgBlockComponentProps {
 	block: ArticleImgBlock;
 }
 
-export const ArticleImgBlockComponent = memo(
-	({ className, block }: ArticleImgBlockComponentProps) => (
-		<VStack
-			gap="8"
-			className={classNames(cls.ArticleImgBlockComponent, {}, [className])}
-		>
-			<img src={block.src} alt={block.title} />
-			{block.title && <Text align="center" text={block.title} />}
-		</VStack>
-	),
-);
+export const ArticleImgBlockComponent = memo(({ className, block }: ArticleImgBlockComponentProps) => (
+	<VStack gap="8" className={classNames(cls.ArticleImgBlockComponent, {}, [className])}>
+		<img src={block.src} alt={block.title} />
+		{block.title && <Text align="center" text={block.title} />}
+	</VStack>
+));

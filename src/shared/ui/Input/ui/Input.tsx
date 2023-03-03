@@ -1,11 +1,4 @@
-import {
-	ChangeEvent,
-	HTMLInputTypeAttribute,
-	InputHTMLAttributes,
-	useEffect,
-	useRef,
-	useState,
-} from 'react';
+import { ChangeEvent, HTMLInputTypeAttribute, InputHTMLAttributes, useEffect, useRef, useState } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
 
@@ -92,11 +85,7 @@ export const Input = ({
 				[className, cls[theme]],
 			)}
 		>
-			<span
-				className={classNames(cls.label, { [cls.placeholder]: isPlaceholder })}
-			>
-				{floatPlaceholder}
-			</span>
+			<span className={classNames(cls.label, { [cls.placeholder]: isPlaceholder })}>{floatPlaceholder}</span>
 			<input
 				data-testid={dataTestId}
 				ref={inputRef}

@@ -11,15 +11,11 @@ export default {
 	},
 } as ComponentMeta<typeof SideBar>;
 
-const Template: ComponentStory<typeof SideBar> = (args) => (
-	<SideBar {...args} />
-);
+const Template: ComponentStory<typeof SideBar> = (args) => <SideBar {...args} />;
 
 export const SideBarWithAuth = Template.bind({});
 SideBarWithAuth.args = {};
-SideBarWithAuth.decorators = [
-	StoreDecorator({ user: { authData: { id: 'some id' } } } as StateSchema),
-];
+SideBarWithAuth.decorators = [StoreDecorator({ user: { authData: { id: 'some id' } } } as StateSchema)];
 
 export const SideBarWithoutAuth = Template.bind({});
 SideBarWithoutAuth.args = {};

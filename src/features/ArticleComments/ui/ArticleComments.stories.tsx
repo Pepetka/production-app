@@ -14,9 +14,7 @@ export default {
 	},
 } as ComponentMeta<typeof ArticleComments>;
 
-const Template: ComponentStory<typeof ArticleComments> = (args) => (
-	<ArticleComments {...args} />
-);
+const Template: ComponentStory<typeof ArticleComments> = (args) => <ArticleComments {...args} />;
 
 const comments: Array<Comment> = [
 	{
@@ -64,12 +62,7 @@ export const ArticleCommentsStory = Template.bind({});
 ArticleCommentsStory.args = {
 	articleId: '1',
 };
-ArticleCommentsStory.decorators = [
-	StoreDecorator(
-		state as StateSchema,
-		reducers as ReducersMapObject<StateSchema>,
-	),
-];
+ArticleCommentsStory.decorators = [StoreDecorator(state as StateSchema, reducers as ReducersMapObject<StateSchema>)];
 ArticleCommentsStory.parameters = {
 	mockData: [
 		{

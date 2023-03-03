@@ -8,15 +8,9 @@ interface NotificationSkeletonProps {
 	className?: string;
 }
 
-export const NotificationSkeleton = memo(
-	({ className }: NotificationSkeletonProps) => (
-		<VStack
-			gap="8"
-			align="start"
-			className={classNames(cls.NotificationSkeleton, {}, [className])}
-		>
-			<Skeleton height={24} width="30%" />
-			<Skeleton height={16} width="70%" />
-		</VStack>
-	),
-);
+export const NotificationSkeleton = memo(({ className }: NotificationSkeletonProps) => (
+	<VStack gap="8" align="start" className={classNames(cls.NotificationSkeleton, {}, [className])}>
+		<Skeleton height={24} width="30%" />
+		<Skeleton height={16} width="70%" />
+	</VStack>
+));

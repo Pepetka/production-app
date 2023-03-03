@@ -64,22 +64,14 @@ export const ProfileCard = memo(
 		if (error) {
 			return (
 				<VStack gap="16" justify="center" className={cls.template}>
-					<Text
-						align="center"
-						title={t('Something went wrong')}
-						theme={TextTheme.ERROR}
-					/>
+					<Text align="center" title={t('Something went wrong')} theme={TextTheme.ERROR} />
 					<Button onClick={onReloadPage}>{t('Reload Page')}</Button>
 				</VStack>
 			);
 		}
 
 		return (
-			<HStack
-				data-testid={dataTestId}
-				align="start"
-				className={classNames(cls.ProfileCard, {}, [className])}
-			>
+			<HStack data-testid={dataTestId} align="start" className={classNames(cls.ProfileCard, {}, [className])}>
 				<VStack gap="16" justify="start" className={cls.column}>
 					<Avatar size={AvatarSize.SIZE_L} avatar={data?.avatar} />
 				</VStack>

@@ -55,38 +55,17 @@ export const NavBar = memo(({ className }: NavBarProps) => {
 	);
 
 	return (
-		<HStack
-			Tag="header"
-			justify="between"
-			className={classNames(cls.NavBar, {}, [className])}
-		>
-			{!isAuth && (
-				<LoginModal isOpen={isAuthModal} onCloseModal={onCloseModal} />
-			)}
-			<Text
-				className={cls.logo}
-				title={t('Prod App')}
-				align="center"
-				theme={TextTheme.PRIMARY}
-				invert
-			/>
-			<HStack
-				Tag="nav"
-				gap="16"
-				justify="end"
-				className={classNames(cls.links)}
-			>
+		<HStack Tag="header" justify="between" className={classNames(cls.NavBar, {}, [className])}>
+			{!isAuth && <LoginModal isOpen={isAuthModal} onCloseModal={onCloseModal} />}
+			<Text className={cls.logo} title={t('Prod App')} align="center" theme={TextTheme.PRIMARY} invert />
+			<HStack Tag="nav" gap="16" justify="end" className={classNames(cls.links)}>
 				{isAuthData ? (
 					<HStack gap="16" align="center">
 						<NotificationPopover />
 						<MenuAvatar onLogoutCallback={onLogoutCallback} />
 					</HStack>
 				) : (
-					<Button
-						theme={ButtonTheme.OUTLINE_PRIMARY}
-						inverted
-						onClick={onOpenModal}
-					>
+					<Button theme={ButtonTheme.OUTLINE_PRIMARY} inverted onClick={onOpenModal}>
 						{t('LogIn')}
 					</Button>
 				)}

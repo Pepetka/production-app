@@ -8,11 +8,7 @@ interface LoginByUsernameProps {
 	password: string;
 }
 
-export const loginByUsername = createAsyncThunk<
-	User,
-	LoginByUsernameProps,
-	ThunkConfig<string>
->(
+export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, ThunkConfig<string>>(
 	'login/loginByUsername',
 	async (authData, { rejectWithValue, dispatch, extra }) => {
 		try {
@@ -22,10 +18,7 @@ export const loginByUsername = createAsyncThunk<
 				throw new Error('error');
 			}
 
-			localStorage.setItem(
-				LOCAL_STORAGE_AUTH_KEY,
-				JSON.stringify(response.data),
-			);
+			localStorage.setItem(LOCAL_STORAGE_AUTH_KEY, JSON.stringify(response.data));
 			dispatch(userActions.setAuthData(response.data));
 
 			return response.data;

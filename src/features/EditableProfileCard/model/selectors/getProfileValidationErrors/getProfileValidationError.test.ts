@@ -7,18 +7,12 @@ describe('getProfileValidationErrors', () => {
 	test('return profile validation error', () => {
 		const state: DeepPartial<StateSchema> = {
 			profile: {
-				validateErrors: [
-					ValidateProfileError.INCORRECT_AGE,
-					ValidateProfileError.INCORRECT_USERNAME,
-				],
+				validateErrors: [ValidateProfileError.INCORRECT_AGE, ValidateProfileError.INCORRECT_USERNAME],
 			},
 		};
 
 		expect(getProfileValidationErrors(state as StateSchema)?.sort()).toEqual(
-			[
-				ValidateProfileError.INCORRECT_AGE,
-				ValidateProfileError.INCORRECT_USERNAME,
-			].sort(),
+			[ValidateProfileError.INCORRECT_AGE, ValidateProfileError.INCORRECT_USERNAME].sort(),
 		);
 	});
 });

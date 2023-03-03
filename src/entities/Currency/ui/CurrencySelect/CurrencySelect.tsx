@@ -11,13 +11,7 @@ interface CurrencySelectProps {
 	theme?: SelectTheme;
 }
 
-export const CurrencySelect = ({
-	className,
-	onChangeCurrency,
-	selected,
-	readonly,
-	theme,
-}: CurrencySelectProps) => {
+export const CurrencySelect = ({ className, onChangeCurrency, selected, readonly, theme }: CurrencySelectProps) => {
 	const { t } = useTranslation('profile');
 
 	const currencyOptions: Record<Currency, string> = useMemo(

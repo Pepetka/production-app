@@ -11,9 +11,7 @@ export default {
 	},
 } as ComponentMeta<typeof ArticleRecommendations>;
 
-const Template: ComponentStory<typeof ArticleRecommendations> = (args) => (
-	<ArticleRecommendations {...args} />
-);
+const Template: ComponentStory<typeof ArticleRecommendations> = (args) => <ArticleRecommendations {...args} />;
 
 const articles: Array<Article> = [
 	{

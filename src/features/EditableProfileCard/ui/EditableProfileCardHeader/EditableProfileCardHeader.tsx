@@ -15,65 +15,51 @@ interface ProfilePageHeaderProps {
 	className?: string;
 }
 
-export const EditableProfileCardHeader = memo(
-	({ className }: ProfilePageHeaderProps) => {
-		const { t } = useTranslation('profile');
-		const dispatch = useAppDispatch();
-		const readOnly = useSelector(getProfileReadOnly);
-		const userId = useSelector(getAuthData)?.id;
-		const profile = useSelector(getProfileFormData);
-		let content: JSX.Element | null = null;
+export const EditableProfileCardHeader = memo(({ className }: ProfilePageHeaderProps) => {
+	const { t } = useTranslation('profile');
+	const dispatch = useAppDispatch();
+	const readOnly = useSelector(getProfileReadOnly);
+	const userId = useSelector(getAuthData)?.id;
+	const profile = useSelector(getProfileFormData);
+	let content: JSX.Element | null = null;
 
-		const { onEdit, onCancelEdit } = useMemo(
-			() => ({
-				onEdit: () => {
-					dispatch(profileActions.changeReadOnly());
-				},
-				onCancelEdit: () => {
-					dispatch(profileActions.cancelEdit());
-				},
-			}),
-			[dispatch],
-		);
+	const { onEdit, onCancelEdit } = useMemo(
+		() => ({
+			onEdit: () => {
+				dispatch(profileActions.changeReadOnly());
+			},
+			onCancelEdit: () => {
+				dispatch(profileActions.cancelEdit());
+			},
+		}),
+		[dispatch],
+	);
 
-		const onSave = useCallback(() => {
-			dispatch(updateProfileData());
-		}, [dispatch]);
+	const onSave = useCallback(() => {
+		dispatch(updateProfileData());
+	}, [dispatch]);
 
-		if (profile?.id === userId) {
-			content = readOnly ? (
-				<Button
-					data-testid="EditableProfileCard.EditBtn"
-					onClick={onEdit}
-					theme={ButtonTheme.OUTLINE_PRIMARY}
-				>
-					{t('Edit')}
+	if (profile?.id === userId) {
+		content = readOnly ? (
+			<Button data-testid="EditableProfileCard.EditBtn" onClick={onEdit} theme={ButtonTheme.OUTLINE_PRIMARY}>
+				{t('Edit')}
+			</Button>
+		) : (
+			<HStack gap="16">
+				<Button data-testid="EditableProfileCard.SaveBtn" onClick={onSave} theme={ButtonTheme.OUTLINE_PRIMARY}>
+					{t('Save')}
 				</Button>
-			) : (
-				<HStack gap="16">
-					<Button
-						data-testid="EditableProfileCard.SaveBtn"
-						onClick={onSave}
-						theme={ButtonTheme.OUTLINE_PRIMARY}
-					>
-						{t('Save')}
-					</Button>
-					<Button
-						data-testid="EditableProfileCard.CancelBtn"
-						onClick={onCancelEdit}
-						theme={ButtonTheme.OUTLINE_RED}
-					>
-						{t('Cancel')}
-					</Button>
-				</HStack>
-			);
-		}
-
-		return (
-			<HStack gap="16" align="start" justify="between" className={className}>
-				<Text size={TextSize.L} title={t('Profile page')} TitleTag="h1" />
-				{content}
+				<Button data-testid="EditableProfileCard.CancelBtn" onClick={onCancelEdit} theme={ButtonTheme.OUTLINE_RED}>
+					{t('Cancel')}
+				</Button>
 			</HStack>
 		);
-	},
-);
+	}
+
+	return (
+		<HStack gap="16" align="start" justify="between" className={className}>
+			<Text size={TextSize.L} title={t('Profile page')} TitleTag="h1" />
+			{content}
+		</HStack>
+	);
+});

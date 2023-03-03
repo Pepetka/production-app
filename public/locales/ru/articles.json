@@ -29,9 +29,15 @@
 	"Text": "Текст",
 	"Code": "Код",
 	"Image": "Изображение",
-	"Paragraphs": "Paragraphs",
-	"Add block": "Add block",
-	"Text block": "Text block",
-	"SubTitle": "SubTitle",
-	"Post image": "Post image"
+	"Paragraphs": "Параграфы",
+	"Add block": "Добавить блок:",
+	"Text block": "Текстовый блок",
+	"SubTitle": "Подзаголовок",
+	"Article image": "Изображение статьи",
+	"Block title": "Заголовок блока",
+	"Code block": "Блок с кодом",
+	"Image block": "Блок с изображением",
+	"Image title": "Заголовок изображения",
+	"Delete": "Удалить",
+	"Article title": "Заголовок статьи"
 }

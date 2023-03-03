@@ -47,16 +47,12 @@ describe('loginSlice', () => {
 	});
 
 	test('undefined state', () => {
-		expect(
-			loginReducer(undefined, loginActions.setUsername('username')),
-		).toEqual({
+		expect(loginReducer(undefined, loginActions.setUsername('username'))).toEqual({
 			username: 'username',
 			loading: false,
 			password: '',
 		} as LoginSchema);
-		expect(
-			loginReducer(undefined, loginActions.setPassword('password')),
-		).toEqual({
+		expect(loginReducer(undefined, loginActions.setPassword('password'))).toEqual({
 			username: '',
 			loading: false,
 			password: 'password',

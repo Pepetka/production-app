@@ -13,19 +13,9 @@ export const RequireAuth = ({ children, role }: RequireAuthProps) => {
 	const auth = useSelector(getAuthData);
 	const location = useLocation();
 
-	if (!auth)
-		return (
-			<Navigate to={getMainPagePath()} state={{ from: location }} replace />
-		);
+	if (!auth) return <Navigate to={getMainPagePath()} state={{ from: location }} replace />;
 
-	if (role && auth.role !== role)
-		return (
-			<Navigate
-				to={getForbiddenPagePath()}
-				state={{ from: location }}
-				replace
-			/>
-		);
+	if (role && auth.role !== role) return <Navigate to={getForbiddenPagePath()} state={{ from: location }} replace />;
 
 	return children;
 };

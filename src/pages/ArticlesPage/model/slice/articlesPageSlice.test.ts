@@ -1,16 +1,8 @@
 import { describe, expect, test } from '@jest/globals';
 import { StateSchema } from '@/app/provider/Store';
-import {
-	ArticlesView,
-	ArticleType,
-	ArticleSortField,
-} from '@/entities/Article';
+import { ArticlesView, ArticleType, ArticleSortField } from '@/entities/Article';
 import { ArticlesPageSchema } from '../types/articlesPageSchema';
-import {
-	articlesPageActions,
-	articlesPageReducer,
-	getArticles,
-} from './articlesPageSlice';
+import { articlesPageActions, articlesPageReducer, getArticles } from './articlesPageSlice';
 
 describe('getArticles', () => {
 	const state: DeepPartial<StateSchema> = {
@@ -51,11 +43,7 @@ describe('getArticles', () => {
 	});
 
 	test('selectIds', () => {
-		expect(getArticles.selectIds(state as StateSchema)).toEqual([
-			'1',
-			'2',
-			'3',
-		]);
+		expect(getArticles.selectIds(state as StateSchema)).toEqual(['1', '2', '3']);
 	});
 
 	test('selectEntities', () => {
@@ -112,24 +100,14 @@ describe('articlesPageSlice', () => {
 	};
 
 	test('changePage', () => {
-		expect(
-			articlesPageReducer(
-				state as ArticlesPageSchema,
-				articlesPageActions.changePage(10),
-			),
-		).toEqual({
+		expect(articlesPageReducer(state as ArticlesPageSchema, articlesPageActions.changePage(10))).toEqual({
 			...state,
 			page: 10,
 		});
 	});
 
 	test('initView', () => {
-		expect(
-			articlesPageReducer(
-				state as ArticlesPageSchema,
-				articlesPageActions.initView(10),
-			),
-		).toEqual({
+		expect(articlesPageReducer(state as ArticlesPageSchema, articlesPageActions.initView(10))).toEqual({
 			...state,
 			limit: 10,
 			view: ArticlesView.SMALL,
@@ -138,84 +116,49 @@ describe('articlesPageSlice', () => {
 	});
 
 	test('changeView', () => {
-		expect(
-			articlesPageReducer(
-				state as ArticlesPageSchema,
-				articlesPageActions.changeView(ArticlesView.SMALL),
-			),
-		).toEqual({
+		expect(articlesPageReducer(state as ArticlesPageSchema, articlesPageActions.changeView(ArticlesView.SMALL))).toEqual({
 			...state,
 			view: ArticlesView.SMALL,
 		});
 	});
 
 	test('changeHasMore', () => {
-		expect(
-			articlesPageReducer(
-				state as ArticlesPageSchema,
-				articlesPageActions.changeHasMore(false),
-			),
-		).toEqual({
+		expect(articlesPageReducer(state as ArticlesPageSchema, articlesPageActions.changeHasMore(false))).toEqual({
 			...state,
 			hasMore: false,
 		});
 	});
 
 	test('changeLimit', () => {
-		expect(
-			articlesPageReducer(
-				state as ArticlesPageSchema,
-				articlesPageActions.changeLimit(2),
-			),
-		).toEqual({
+		expect(articlesPageReducer(state as ArticlesPageSchema, articlesPageActions.changeLimit(2))).toEqual({
 			...state,
 			limit: 2,
 		});
 	});
 
 	test('changeSort', () => {
-		expect(
-			articlesPageReducer(
-				state as ArticlesPageSchema,
-				articlesPageActions.changeSort(ArticleSortField.TITLE),
-			),
-		).toEqual({
+		expect(articlesPageReducer(state as ArticlesPageSchema, articlesPageActions.changeSort(ArticleSortField.TITLE))).toEqual({
 			...state,
 			sort: ArticleSortField.TITLE,
 		});
 	});
 
 	test('changeSearch', () => {
-		expect(
-			articlesPageReducer(
-				state as ArticlesPageSchema,
-				articlesPageActions.changeSearch('search'),
-			),
-		).toEqual({
+		expect(articlesPageReducer(state as ArticlesPageSchema, articlesPageActions.changeSearch('search'))).toEqual({
 			...state,
 			search: 'search',
 		});
 	});
 
 	test('changeOrder', () => {
-		expect(
-			articlesPageReducer(
-				state as ArticlesPageSchema,
-				articlesPageActions.changeOrder('desc'),
-			),
-		).toEqual({
+		expect(articlesPageReducer(state as ArticlesPageSchema, articlesPageActions.changeOrder('desc'))).toEqual({
 			...state,
 			order: 'desc',
 		});
 	});
 
 	test('changeType', () => {
-		expect(
-			articlesPageReducer(
-				state as ArticlesPageSchema,
-				articlesPageActions.changeType(ArticleType.ECONOMY),
-			),
-		).toEqual({
+		expect(articlesPageReducer(state as ArticlesPageSchema, articlesPageActions.changeType(ArticleType.ECONOMY))).toEqual({
 			...state,
 			type: ArticleType.ECONOMY,
 		});
@@ -239,70 +182,40 @@ describe('articlesPageSlice', () => {
 			_init: false,
 		};
 
-		expect(
-			articlesPageReducer(undefined, articlesPageActions.changePage(10)),
-		).toEqual({
+		expect(articlesPageReducer(undefined, articlesPageActions.changePage(10))).toEqual({
 			...initialState,
 			page: 10,
 		});
-		expect(
-			articlesPageReducer(undefined, articlesPageActions.initView(10)),
-		).toEqual({
+		expect(articlesPageReducer(undefined, articlesPageActions.initView(10))).toEqual({
 			...initialState,
 			limit: 10,
 			_init: true,
 		});
-		expect(
-			articlesPageReducer(
-				undefined,
-				articlesPageActions.changeView(ArticlesView.SMALL),
-			),
-		).toEqual({
+		expect(articlesPageReducer(undefined, articlesPageActions.changeView(ArticlesView.SMALL))).toEqual({
 			...initialState,
 			view: ArticlesView.SMALL,
 		});
-		expect(
-			articlesPageReducer(undefined, articlesPageActions.changeHasMore(false)),
-		).toEqual({
+		expect(articlesPageReducer(undefined, articlesPageActions.changeHasMore(false))).toEqual({
 			...initialState,
 			hasMore: false,
 		});
-		expect(
-			articlesPageReducer(undefined, articlesPageActions.changeLimit(2)),
-		).toEqual({
+		expect(articlesPageReducer(undefined, articlesPageActions.changeLimit(2))).toEqual({
 			...initialState,
 			limit: 2,
 		});
-		expect(
-			articlesPageReducer(
-				undefined,
-				articlesPageActions.changeSort(ArticleSortField.TITLE),
-			),
-		).toEqual({
+		expect(articlesPageReducer(undefined, articlesPageActions.changeSort(ArticleSortField.TITLE))).toEqual({
 			...initialState,
 			sort: ArticleSortField.TITLE,
 		});
-		expect(
-			articlesPageReducer(
-				undefined,
-				articlesPageActions.changeSearch('search'),
-			),
-		).toEqual({
+		expect(articlesPageReducer(undefined, articlesPageActions.changeSearch('search'))).toEqual({
 			...initialState,
 			search: 'search',
 		});
-		expect(
-			articlesPageReducer(undefined, articlesPageActions.changeOrder('desc')),
-		).toEqual({
+		expect(articlesPageReducer(undefined, articlesPageActions.changeOrder('desc'))).toEqual({
 			...initialState,
 			order: 'desc',
 		});
-		expect(
-			articlesPageReducer(
-				undefined,
-				articlesPageActions.changeType(ArticleType.ECONOMY),
-			),
-		).toEqual({
+		expect(articlesPageReducer(undefined, articlesPageActions.changeType(ArticleType.ECONOMY))).toEqual({
 			...initialState,
 			type: ArticleType.ECONOMY,
 		});

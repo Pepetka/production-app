@@ -13,11 +13,7 @@ interface FetchArticlesListProps {
 	replace?: boolean;
 }
 
-export const fetchArticlesList = createAsyncThunk<
-	Array<Article>,
-	FetchArticlesListProps,
-	ThunkConfig<string>
->(
+export const fetchArticlesList = createAsyncThunk<Array<Article>, FetchArticlesListProps, ThunkConfig<string>>(
 	'articlesPage/fetchArticlesList',
 	async ({ replace = false }, { rejectWithValue, getState, extra }) => {
 		try {

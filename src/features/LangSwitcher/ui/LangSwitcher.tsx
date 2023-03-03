@@ -27,8 +27,7 @@ export const LangSwitcher = memo(({ className }: LangSwitcherProps) => {
 	}, [i18n.language]);
 
 	const onToggle = () => {
-		const newLang =
-			i18n.language === Languages.RU ? Languages.EN : Languages.RU;
+		const newLang = i18n.language === Languages.RU ? Languages.EN : Languages.RU;
 
 		i18n.changeLanguage(newLang);
 		document.documentElement.lang = newLang;

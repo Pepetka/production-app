@@ -1,9 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import {
-	ArticleBlockType,
-	ArticlesView,
-	ArticleType,
-} from '../../model/consts/consts';
+import { ArticleBlockType, ArticlesView, ArticleType } from '../../model/consts/consts';
 import type { Article } from '../../model/types/article';
 import { ArticlesList } from './ArticlesList';
 import { UserRole } from '@/shared/const/role';
@@ -16,9 +12,7 @@ export default {
 	},
 } as ComponentMeta<typeof ArticlesList>;
 
-const Template: ComponentStory<typeof ArticlesList> = (args) => (
-	<ArticlesList {...args} />
-);
+const Template: ComponentStory<typeof ArticlesList> = (args) => <ArticlesList {...args} />;
 
 const articles: Array<Article> = new Array(10).fill(0).map((_, i) => ({
 	title: `Some title ${i}`,

@@ -1,9 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import {
-	ArticleBlockType,
-	ArticlesView,
-	ArticleType,
-} from '../../model/consts/consts';
+import { ArticleBlockType, ArticlesView, ArticleType } from '../../model/consts/consts';
 import type { Article } from '../../model/types/article';
 
 import { ArticlesListItem } from './ArticlesListItem';
@@ -17,9 +13,7 @@ export default {
 	},
 } as ComponentMeta<typeof ArticlesListItem>;
 
-const Template: ComponentStory<typeof ArticlesListItem> = (args) => (
-	<ArticlesListItem {...args} />
-);
+const Template: ComponentStory<typeof ArticlesListItem> = (args) => <ArticlesListItem {...args} />;
 
 const article: Article = {
 	title: 'Some title',

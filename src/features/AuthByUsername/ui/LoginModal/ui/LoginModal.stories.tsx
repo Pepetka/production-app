@@ -13,9 +13,7 @@ export default {
 	},
 } as ComponentMeta<typeof LoginModal>;
 
-const Template: ComponentStory<typeof LoginModal> = (args) => (
-	<LoginModal {...args} />
-);
+const Template: ComponentStory<typeof LoginModal> = (args) => <LoginModal {...args} />;
 
 const initialState: DeepPartial<StateSchema> = {
 	login: {
@@ -35,9 +33,4 @@ LoginModalStory.args = {
 	isOpen: true,
 	onCloseModal: () => {},
 };
-LoginModalStory.decorators = [
-	StoreDecorator(
-		initialState as StateSchema,
-		asyncReducers as ReducersMapObject<StateSchema>,
-	),
-];
+LoginModalStory.decorators = [StoreDecorator(initialState as StateSchema, asyncReducers as ReducersMapObject<StateSchema>)];

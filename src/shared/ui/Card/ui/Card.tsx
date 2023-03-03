@@ -8,13 +8,8 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 	w100?: boolean;
 }
 
-export const Card = memo(
-	({ className, children, w100, ...otherProps }: CardProps) => (
-		<div
-			{...otherProps}
-			className={classNames(cls.Card, { [cls.w100]: w100 }, [className])}
-		>
-			{children}
-		</div>
-	),
-);
+export const Card = memo(({ className, children, w100, ...otherProps }: CardProps) => (
+	<div {...otherProps} className={classNames(cls.Card, { [cls.w100]: w100 }, [className])}>
+		{children}
+	</div>
+));

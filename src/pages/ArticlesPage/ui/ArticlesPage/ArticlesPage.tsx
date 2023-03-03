@@ -5,10 +5,7 @@ import { Page } from '@/widgets/Page';
 import { useAppEffect } from '@/shared/lib/hooks/useAppEffect/useAppEffect';
 import { VStack } from '@/shared/ui/Stack';
 import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters';
-import {
-	articlesPageActions,
-	articlesPageReducer,
-} from '../../model/slice/articlesPageSlice';
+import { articlesPageActions, articlesPageReducer } from '../../model/slice/articlesPageSlice';
 import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 import { ArticlesPageInfiniteList } from '../ArticlesPageInfiniteList/ArticlesPageInfiniteList';
 
@@ -45,18 +42,12 @@ const ArticlesPage = memo(() => {
 	useAppEffect(callback);
 
 	const onChangeView = useCallback(() => {
-		dispatch(
-			articlesPageActions.changeLimit(getArticlesLimit(wrapperRef.current)),
-		);
+		dispatch(articlesPageActions.changeLimit(getArticlesLimit(wrapperRef.current)));
 	}, [dispatch]);
 
 	return (
 		<Page data-testid="ArticlesPage" ref={wrapperRef}>
-			<DynamicModuleLoader
-				removeOnUnmount={false}
-				reducerKey="articlesPage"
-				reducer={articlesPageReducer}
-			>
+			<DynamicModuleLoader removeOnUnmount={false} reducerKey="articlesPage" reducer={articlesPageReducer}>
 				<VStack w100 align="start" gap="16">
 					<ArticlesPageFilters onChangeView={onChangeView} />
 					<ArticlesPageInfiniteList wrapperRef={wrapperRef} />

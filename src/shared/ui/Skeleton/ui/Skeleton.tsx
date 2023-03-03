@@ -10,24 +10,15 @@ interface SkeletonProps {
 	border?: number | string;
 }
 
-export const Skeleton = memo(
-	({ className, circle, width, height = width, border }: SkeletonProps) => {
-		const style: CSSProperties = useMemo(
-			() => ({
-				height: typeof height === 'number' ? `${height}px` : height,
-				width: typeof width === 'number' ? `${width}px` : width,
-				borderRadius: typeof border === 'number' ? `${border}px` : border,
-			}),
-			[border, height, width],
-		);
+export const Skeleton = memo(({ className, circle, width, height = width, border }: SkeletonProps) => {
+	const style: CSSProperties = useMemo(
+		() => ({
+			height: typeof height === 'number' ? `${height}px` : height,
+			width: typeof width === 'number' ? `${width}px` : width,
+			borderRadius: typeof border === 'number' ? `${border}px` : border,
+		}),
+		[border, height, width],
+	);
 
-		return (
-			<div
-				className={classNames(cls.Skeleton, { [cls.circle]: circle }, [
-					className,
-				])}
-				style={style}
-			/>
-		);
-	},
-);
+	return <div className={classNames(cls.Skeleton, { [cls.circle]: circle }, [className])} style={style} />;
+});

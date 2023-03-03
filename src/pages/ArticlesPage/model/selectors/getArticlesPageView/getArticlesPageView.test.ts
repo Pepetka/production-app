@@ -17,8 +17,6 @@ describe('getArticlesPageView', () => {
 	test('empty state', () => {
 		const state: DeepPartial<StateSchema> = {};
 
-		expect(getArticlesPageView(state as StateSchema)).toEqual(
-			ArticlesView.SMALL,
-		);
+		expect(getArticlesPageView(state as StateSchema)).toEqual(ArticlesView.SMALL);
 	});
 });

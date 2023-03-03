@@ -2,12 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ReducersMapObject } from '@reduxjs/toolkit';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { StateSchema } from '@/app/provider/Store';
-import {
-	articleReducer,
-	ArticleType,
-	ArticleBlockType,
-	Article,
-} from '@/entities/Article';
+import { articleReducer, ArticleType, ArticleBlockType, Article } from '@/entities/Article';
 import { Comment } from '@/entities/Comment';
 import { ArticleRatingType } from '@/features/ArticleRating';
 import { UserRole } from '@/shared/const/role';
@@ -30,9 +25,7 @@ export default {
 	],
 } as ComponentMeta<typeof ArticleDetailsPage>;
 
-const Template: ComponentStory<typeof ArticleDetailsPage> = (args) => (
-	<ArticleDetailsPage {...args} />
-);
+const Template: ComponentStory<typeof ArticleDetailsPage> = (args) => <ArticleDetailsPage {...args} />;
 
 const comments: Array<Comment> = [
 	{
@@ -211,12 +204,7 @@ export const ArticleDetailsPageStory = Template.bind({});
 ArticleDetailsPageStory.args = {
 	storybookId: '1',
 };
-ArticleDetailsPageStory.decorators = [
-	StoreDecorator(
-		state(false) as StateSchema,
-		reducers as ReducersMapObject<StateSchema>,
-	),
-];
+ArticleDetailsPageStory.decorators = [StoreDecorator(state(false) as StateSchema, reducers as ReducersMapObject<StateSchema>)];
 ArticleDetailsPageStory.parameters = {
 	mockData: [
 		{
@@ -244,12 +232,7 @@ export const ArticleDetailsPageLoading = Template.bind({});
 ArticleDetailsPageLoading.args = {
 	storybookId: '1',
 };
-ArticleDetailsPageLoading.decorators = [
-	StoreDecorator(
-		state(true) as StateSchema,
-		reducers as ReducersMapObject<StateSchema>,
-	),
-];
+ArticleDetailsPageLoading.decorators = [StoreDecorator(state(true) as StateSchema, reducers as ReducersMapObject<StateSchema>)];
 ArticleDetailsPageLoading.parameters = {
 	mockData: [
 		{
@@ -277,12 +260,7 @@ export const ArticleDetailsPageError = Template.bind({});
 ArticleDetailsPageError.args = {
 	storybookId: '1',
 };
-ArticleDetailsPageError.decorators = [
-	StoreDecorator(
-		state(false, 'some error') as StateSchema,
-		reducers as ReducersMapObject<StateSchema>,
-	),
-];
+ArticleDetailsPageError.decorators = [StoreDecorator(state(false, 'some error') as StateSchema, reducers as ReducersMapObject<StateSchema>)];
 ArticleDetailsPageError.parameters = {
 	mockData: [
 		{

@@ -17,33 +17,20 @@ interface SideBarLinkProps {
 	authOnly?: boolean;
 }
 
-export const SideBarLink = memo(
-	({
-		className,
-		path,
-		icon,
-		collapsed,
-		routeName,
-		authOnly,
-	}: SideBarLinkProps) => {
-		const { t } = useTranslation();
-		const auth = useSelector(getAuthData);
+export const SideBarLink = memo(({ className, path, icon, collapsed, routeName, authOnly }: SideBarLinkProps) => {
+	const { t } = useTranslation();
+	const auth = useSelector(getAuthData);
 
-		if (!auth && authOnly) return null;
+	if (!auth && authOnly) return null;
 
-		return (
-			<div className={classNames('', { [cls.collapsed]: collapsed })}>
-				<AppLink
-					className={classNames(cls.link, {}, [className])}
-					theme={AppLinkTheme.SECONDARY}
-					to={path}
-				>
-					<HStack gap={collapsed ? undefined : '8'}>
-						<Icon theme={IconTheme.INVERT_PRIMARY} SvgIcon={icon} />
-						<span className={cls.text}>{t(routeName)}</span>
-					</HStack>
-				</AppLink>
-			</div>
-		);
-	},
-);
+	return (
+		<div className={classNames('', { [cls.collapsed]: collapsed })}>
+			<AppLink className={classNames(cls.link, {}, [className])} theme={AppLinkTheme.SECONDARY} to={path}>
+				<HStack gap={collapsed ? undefined : '8'}>
+					<Icon theme={IconTheme.INVERT_PRIMARY} SvgIcon={icon} />
+					<span className={cls.text}>{t(routeName)}</span>
+				</HStack>
+			</AppLink>
+		</div>
+	);
+});

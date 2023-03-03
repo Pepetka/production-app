@@ -20,8 +20,7 @@ export const resetProfile = (profileId: string) => {
 			country: 'Belarus',
 			city: 'Minsk',
 			username: 'testUser',
-			avatar:
-				'https://miro.medium.com/max/2400/1*1WCjO1iYMo7J7Upp8KMfLA@2x.jpeg',
+			avatar: 'https://miro.medium.com/max/2400/1*1WCjO1iYMo7J7Upp8KMfLA@2x.jpeg',
 		},
 	});
 };

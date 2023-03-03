@@ -5,12 +5,7 @@ import { buildCSSLoader } from '../build/loaders/buildCSSLoader';
 
 export default {
 	stories: ['../../src/**/*.stories.@(js|jsx|ts|tsx)'],
-	addons: [
-		'@storybook/addon-links',
-		'@storybook/addon-essentials',
-		'@storybook/addon-interactions',
-		'storybook-addon-mock',
-	],
+	addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-interactions', 'storybook-addon-mock'],
 	framework: '@storybook/react',
 	staticDirs: ['../../public'],
 	core: {
@@ -32,8 +27,7 @@ export default {
 
 		// @ts-ignore
 		config!.module!.rules = config!.module!.rules!.map((rule: RuleSetRule) => {
-			if (/svg/.test(rule.test as string))
-				return { ...rule, exclude: /\.svg$/i };
+			if (/svg/.test(rule.test as string)) return { ...rule, exclude: /\.svg$/i };
 
 			return rule;
 		});

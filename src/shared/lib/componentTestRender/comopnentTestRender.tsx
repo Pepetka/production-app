@@ -12,19 +12,11 @@ interface ComponentTestRenderOptions {
 	asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>;
 }
 
-export const componentTestRender = (
-	component: ReactNode,
-	options?: ComponentTestRenderOptions,
-) =>
+export const componentTestRender = (component: ReactNode, options?: ComponentTestRenderOptions) =>
 	render(
 		<MemoryRouter initialEntries={[options?.route ?? '/']}>
-			<StoreProvider
-				initialState={options?.initialState as StateSchema}
-				asyncReducers={options?.asyncReducers}
-			>
-				<I18nextProvider i18n={i18nConfigForTesting}>
-					{component}
-				</I18nextProvider>
+			<StoreProvider initialState={options?.initialState as StateSchema} asyncReducers={options?.asyncReducers}>
+				<I18nextProvider i18n={i18nConfigForTesting}>{component}</I18nextProvider>
 			</StoreProvider>
 		</MemoryRouter>,
 	);

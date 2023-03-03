@@ -16,9 +16,7 @@ export default {
 	},
 } as ComponentMeta<typeof EditableProfileCard>;
 
-const Template: ComponentStory<typeof EditableProfileCard> = (args) => (
-	<EditableProfileCard />
-);
+const Template: ComponentStory<typeof EditableProfileCard> = (args) => <EditableProfileCard />;
 
 interface StateOptions {
 	loading?: boolean;
@@ -27,12 +25,7 @@ interface StateOptions {
 	validateErrors?: Array<ValidateProfileError>;
 }
 
-const state = ({
-	readOnly = false,
-	validateErrors,
-	loading = false,
-	error = '',
-}: StateOptions): DeepPartial<StateSchema> => ({
+const state = ({ readOnly = false, validateErrors, loading = false, error = '' }: StateOptions): DeepPartial<StateSchema> => ({
 	profile: {
 		data: {
 			username: 'Some username',
@@ -64,45 +57,22 @@ const reducers: DeepPartial<ReducersMapObject<StateSchema>> = {
 };
 
 export const EditableProfileCardNormal = Template.bind({});
-EditableProfileCardNormal.decorators = [
-	StoreDecorator(
-		state({}) as StateSchema,
-		reducers as ReducersMapObject<StateSchema>,
-	),
-];
+EditableProfileCardNormal.decorators = [StoreDecorator(state({}) as StateSchema, reducers as ReducersMapObject<StateSchema>)];
 
 export const EditableProfileCardLoading = Template.bind({});
-EditableProfileCardLoading.decorators = [
-	StoreDecorator(
-		state({ loading: true }) as StateSchema,
-		reducers as ReducersMapObject<StateSchema>,
-	),
-];
+EditableProfileCardLoading.decorators = [StoreDecorator(state({ loading: true }) as StateSchema, reducers as ReducersMapObject<StateSchema>)];
 
 export const EditableProfileCardReadOnly = Template.bind({});
-EditableProfileCardReadOnly.decorators = [
-	StoreDecorator(
-		state({ readOnly: true }) as StateSchema,
-		reducers as ReducersMapObject<StateSchema>,
-	),
-];
+EditableProfileCardReadOnly.decorators = [StoreDecorator(state({ readOnly: true }) as StateSchema, reducers as ReducersMapObject<StateSchema>)];
 
 export const EditableProfileCardWithError = Template.bind({});
-EditableProfileCardWithError.decorators = [
-	StoreDecorator(
-		state({ error: 'Some error' }) as StateSchema,
-		reducers as ReducersMapObject<StateSchema>,
-	),
-];
+EditableProfileCardWithError.decorators = [StoreDecorator(state({ error: 'Some error' }) as StateSchema, reducers as ReducersMapObject<StateSchema>)];
 
 export const EditableProfileCardWithValidationsError = Template.bind({});
 EditableProfileCardWithValidationsError.decorators = [
 	StoreDecorator(
 		state({
-			validateErrors: [
-				ValidateProfileError.INCORRECT_AGE,
-				ValidateProfileError.INCORRECT_USERNAME,
-			],
+			validateErrors: [ValidateProfileError.INCORRECT_AGE, ValidateProfileError.INCORRECT_USERNAME],
 		}) as StateSchema,
 		reducers as ReducersMapObject<StateSchema>,
 	),

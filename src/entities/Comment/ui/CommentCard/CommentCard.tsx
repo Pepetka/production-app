@@ -14,19 +14,10 @@ interface CommentCardProps {
 }
 
 export const CommentCard = memo(({ className, comment }: CommentCardProps) => (
-	<VStack
-		data-testid="CommentCard"
-		gap="8"
-		align="start"
-		className={classNames(cls.CommentCard, {}, [className])}
-	>
+	<VStack data-testid="CommentCard" gap="8" align="start" className={classNames(cls.CommentCard, {}, [className])}>
 		<AppLink to={getProfilePagePath(comment.user.id)}>
 			<HStack gap="8">
-				<Avatar
-					size={AvatarSize.SIZE_XS}
-					avatar={comment.user.avatar}
-					border={false}
-				/>
+				<Avatar size={AvatarSize.SIZE_XS} avatar={comment.user.avatar} border={false} />
 				<Text title={comment.user.username} />
 			</HStack>
 		</AppLink>

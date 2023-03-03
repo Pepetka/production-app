@@ -23,12 +23,7 @@ export const NotificationPopover = memo(() => {
 				</Drawer>
 			</MobileView>
 			<BrowserView>
-				<Popover
-					popupPosition="bottom_left"
-					trigger={
-						<Icon theme={IconTheme.INVERT_PRIMARY} SvgIcon={NotificationIcon} />
-					}
-				>
+				<Popover popupPosition="bottom_left" trigger={<Icon theme={IconTheme.INVERT_PRIMARY} SvgIcon={NotificationIcon} />}>
 					<NotificationList />
 				</Popover>
 			</BrowserView>

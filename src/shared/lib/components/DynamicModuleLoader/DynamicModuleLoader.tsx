@@ -19,12 +19,7 @@ const Effect = ({ effect }: EffectProps) => {
 	return null;
 };
 
-export const DynamicModuleLoader = ({
-	children,
-	reducer,
-	reducerKey,
-	removeOnUnmount = true,
-}: DynamicModuleLoaderProps) => {
+export const DynamicModuleLoader = ({ children, reducer, reducerKey, removeOnUnmount = true }: DynamicModuleLoaderProps) => {
 	const store = useStore() as ReduxStoreWithManager;
 	const dispatch = useDispatch();
 

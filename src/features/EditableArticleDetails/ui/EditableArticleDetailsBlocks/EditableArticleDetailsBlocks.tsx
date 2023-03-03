@@ -5,17 +5,26 @@ import { HStack, VStack } from '@/shared/ui/Stack';
 import { Tabs } from '@/shared/ui/Tabs';
 import { Text } from '@/shared/ui/Text';
 import { Card } from '@/shared/ui/Card';
-import { Textarea, TextareaTheme } from '@/shared/ui/Textarea';
-import { Input, InputTheme } from '@/shared/ui/Input';
+import { EditableArticleDetailsTextBlock } from '../EditableArticleDetailsTextBlock/EditableArticleDetailsTextBlock';
+import { EditableArticleDetailsCodeBlock } from '../EditableArticleDetailsCodeBlock/EditableArticleDetailsCodeBlock';
+import { EditableArticleDetailsImgBlock } from '../EditableArticleDetailsImgBlock/EditableArticleDetailsImgBlock';
 import cls from './EditableArticleDetailsBlocks.module.scss';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
 
 interface IEditableArticleDetailsBlocksProps {
 	blocks?: Array<ArticleBlock>;
 	onAddBlock?: (tab: ArticleBlockType) => void;
-	onTextTitleChange?: (id: string) => (text: string) => void;
-	onTextParagraphsChange?: (id: string) => (text: string) => void;
+	onDeleteBlock?: (id: string) => void;
 	textTitle: (id: string) => string;
 	textParagraphs: (id: string) => string;
+	code: (id: string) => string;
+	imgTitle: (id: string) => string;
+	img: (id: string) => string;
+	onTextTitleChange?: (id: string, text: string) => void;
+	onTextParagraphsChange?: (id: string, text: string) => void;
+	onCodeChange?: (id: string, text: string) => void;
+	onImgChange?: (id: string, text: string) => void;
+	onImgTitleChange?: (id: string, text: string) => void;
 }
 
 export const EditableArticleDetailsBlocks = memo(
@@ -26,6 +35,13 @@ export const EditableArticleDetailsBlocks = memo(
 		onTextTitleChange,
 		textParagraphs,
 		textTitle,
+		code,
+		img,
+		imgTitle,
+		onCodeChange,
+		onImgChange,
+		onImgTitleChange,
+		onDeleteBlock,
 	}: IEditableArticleDetailsBlocksProps) => {
 		const { t } = useTranslation('articles');
 		const tabs: Record<ArticleBlockType, string> = useMemo(
@@ -37,25 +53,46 @@ export const EditableArticleDetailsBlocks = memo(
 			[t],
 		);
 
+		const blockContent = (block: ArticleBlock) => {
+			switch (block.type) {
+				case ArticleBlockType.TEXT:
+					return (
+						<EditableArticleDetailsTextBlock
+							block={block}
+							textTitle={textTitle}
+							textParagraphs={textParagraphs}
+							onTextTitleChange={onTextTitleChange}
+							onTextParagraphsChange={onTextParagraphsChange}
+						/>
+					);
+				case ArticleBlockType.CODE:
+					return <EditableArticleDetailsCodeBlock block={block} code={code} onCodeChange={onCodeChange} />;
+				case ArticleBlockType.IMG:
+					return (
+						<EditableArticleDetailsImgBlock
+							block={block}
+							imgTitle={imgTitle}
+							img={img}
+							onImgChange={onImgChange}
+							onImgTitleChange={onImgTitleChange}
+						/>
+					);
+				default:
+					break;
+			}
+		};
+
 		return (
 			<VStack w100 gap="16">
 				{blocks?.map((block) => (
 					<Card className={cls.blockWrapper} w100 key={block.id}>
-						<Text title={t('Text block')} w100 align="center" />
-						<Input
-							value={textTitle(block.id)}
-							onChange={onTextTitleChange?.(block.id)}
-							theme={InputTheme.INVERT}
-							textInvert
-							floatPlaceholder={t('Title')}
-						/>
-						<Textarea
-							value={textParagraphs(block.id)}
-							onChange={onTextParagraphsChange?.(block.id)}
-							theme={TextareaTheme.INVERT}
-							textInvert
-							floatPlaceholder={t('Paragraphs')}
-						/>
+						<HStack justify="end">
+							<Button theme={ButtonTheme.OUTLINE_PRIMARY} onClick={() => onDeleteBlock?.(block.id)}>
+								{/* eslint-disable-next-line */}
+								<span>&#10006;</span>
+							</Button>
+						</HStack>
+						{blockContent(block)}
 					</Card>
 				))}
 				<HStack w100 justify="center">

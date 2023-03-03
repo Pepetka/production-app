@@ -11,13 +11,7 @@ interface CountrySelectProps {
 	theme?: SelectTheme;
 }
 
-export const CountrySelect = ({
-	className,
-	onChangeCountry,
-	selected,
-	readonly,
-	theme,
-}: CountrySelectProps) => {
+export const CountrySelect = ({ className, onChangeCountry, selected, readonly, theme }: CountrySelectProps) => {
 	const { t } = useTranslation('profile');
 
 	const countryOptions: Record<Country, string> = useMemo(

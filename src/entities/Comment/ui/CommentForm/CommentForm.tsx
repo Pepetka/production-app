@@ -9,10 +9,7 @@ import { InputTheme } from '@/shared/ui/Input/ui/Input';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { HStack } from '@/shared/ui/Stack';
 import { getCommentFormText } from '../../model/selectors/getCommentFormText/getCommentFormText';
-import {
-	commentFormReducer,
-	commentFormActions,
-} from '../../model/slice/commentFormSlice';
+import { commentFormReducer, commentFormActions } from '../../model/slice/commentFormSlice';
 import cls from './CommentForm.module.scss';
 
 interface AddCommentFormProps {
@@ -20,60 +17,48 @@ interface AddCommentFormProps {
 	onSendComment: (text: string) => void;
 }
 
-const CommentForm = memo(
-	({ className, onSendComment }: AddCommentFormProps) => {
-		const dispatch = useAppDispatch();
-		const { t } = useTranslation('articles');
-		const text = useSelector(getCommentFormText);
+const CommentForm = memo(({ className, onSendComment }: AddCommentFormProps) => {
+	const dispatch = useAppDispatch();
+	const { t } = useTranslation('articles');
+	const text = useSelector(getCommentFormText);
 
-		const onChange = useCallback(
-			(value: string) => {
-				dispatch(commentFormActions.setText(value));
-			},
-			[dispatch],
-		);
+	const onChange = useCallback(
+		(value: string) => {
+			dispatch(commentFormActions.setText(value));
+		},
+		[dispatch],
+	);
 
-		const onSend = useCallback(
-			(event: FormEvent<HTMLFormElement>) => {
-				event.preventDefault();
+	const onSend = useCallback(
+		(event: FormEvent<HTMLFormElement>) => {
+			event.preventDefault();
 
-				onSendComment(text!);
-				dispatch(commentFormActions.setText(''));
-			},
-			[dispatch, onSendComment, text],
-		);
+			onSendComment(text!);
+			dispatch(commentFormActions.setText(''));
+		},
+		[dispatch, onSendComment, text],
+	);
 
-		return (
-			<DynamicModuleLoader
-				reducerKey="commentForm"
-				reducer={commentFormReducer}
-			>
-				<form
-					onSubmit={onSend}
-					className={classNames(cls.AddCommentForm, {}, [className])}
-				>
-					<HStack align="end" justify="between" gap="8">
-						<Input
-							data-testid="CommentForm.Input"
-							onChange={onChange}
-							className={cls.input}
-							theme={InputTheme.INVERT}
-							textInvert
-							value={text}
-							floatPlaceholder={t('Enter comment text')}
-						/>
-						<Button
-							data-testid="CommentForm.SendBtn"
-							type="submit"
-							theme={ButtonTheme.OUTLINE_PRIMARY}
-						>
-							{t('Send')}
-						</Button>
-					</HStack>
-				</form>
-			</DynamicModuleLoader>
-		);
-	},
-);
+	return (
+		<DynamicModuleLoader reducerKey="commentForm" reducer={commentFormReducer}>
+			<form onSubmit={onSend} className={classNames(cls.AddCommentForm, {}, [className])}>
+				<HStack align="end" justify="between" gap="8">
+					<Input
+						data-testid="CommentForm.Input"
+						onChange={onChange}
+						className={cls.input}
+						theme={InputTheme.INVERT}
+						textInvert
+						value={text}
+						floatPlaceholder={t('Enter comment text')}
+					/>
+					<Button data-testid="CommentForm.SendBtn" type="submit" theme={ButtonTheme.OUTLINE_PRIMARY}>
+						{t('Send')}
+					</Button>
+				</HStack>
+			</form>
+		</DynamicModuleLoader>
+	);
+});
 
 export default CommentForm;

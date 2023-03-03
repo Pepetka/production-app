@@ -14,9 +14,7 @@ export default {
 	},
 } as ComponentMeta<typeof ArticleDetails>;
 
-const Template: ComponentStory<typeof ArticleDetails> = (args) => (
-	<ArticleDetails {...args} />
-);
+const Template: ComponentStory<typeof ArticleDetails> = (args) => <ArticleDetails {...args} />;
 
 const state = (loading: boolean, error?: string): DeepPartial<StateSchema> => ({
 	article: {
@@ -71,31 +69,16 @@ export const ArticleDetailsStory = Template.bind({});
 ArticleDetailsStory.args = {
 	id: 'some id',
 };
-ArticleDetailsStory.decorators = [
-	StoreDecorator(
-		state(false) as StateSchema,
-		reducers as ReducersMapObject<StateSchema>,
-	),
-];
+ArticleDetailsStory.decorators = [StoreDecorator(state(false) as StateSchema, reducers as ReducersMapObject<StateSchema>)];
 
 export const ArticleDetailsLoading = Template.bind({});
 ArticleDetailsLoading.args = {
 	id: 'some id',
 };
-ArticleDetailsLoading.decorators = [
-	StoreDecorator(
-		state(true) as StateSchema,
-		reducers as ReducersMapObject<StateSchema>,
-	),
-];
+ArticleDetailsLoading.decorators = [StoreDecorator(state(true) as StateSchema, reducers as ReducersMapObject<StateSchema>)];
 
 export const ArticleDetailsError = Template.bind({});
 ArticleDetailsError.args = {
 	id: 'some id',
 };
-ArticleDetailsError.decorators = [
-	StoreDecorator(
-		state(false, 'Some error') as StateSchema,
-		reducers as ReducersMapObject<StateSchema>,
-	),
-];
+ArticleDetailsError.decorators = [StoreDecorator(state(false, 'Some error') as StateSchema, reducers as ReducersMapObject<StateSchema>)];

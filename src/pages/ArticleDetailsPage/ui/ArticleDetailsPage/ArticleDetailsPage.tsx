@@ -1,13 +1,7 @@
 import { memo, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import {
-	ArticleDetails,
-	articleReducer,
-	fetchArticleById,
-	getArticleData,
-	getArticleError,
-} from '@/entities/Article';
+import { ArticleDetails, articleReducer, fetchArticleById, getArticleData, getArticleError } from '@/entities/Article';
 import { ArticleComments } from '@/features/ArticleComments';
 import { Page } from '@/widgets/Page';
 import { ArticleRecommendations } from '@/features/ArticleRecommendations';

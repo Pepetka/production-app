@@ -7,11 +7,7 @@ interface UseScrollProps {
 	onScrollCallback?: () => void;
 }
 
-export const useScroll = ({
-	wrapperRef,
-	delay = 500,
-	onScrollCallback,
-}: UseScrollProps) => {
+export const useScroll = ({ wrapperRef, delay = 100, onScrollCallback }: UseScrollProps) => {
 	const setScroll = useCallback(
 		(customScroll: number) => {
 			if (wrapperRef.current) {

@@ -9,9 +9,7 @@ export default {
 	},
 } as ComponentMeta<typeof CountrySelect>;
 
-const Template: ComponentStory<typeof CountrySelect> = (args) => (
-	<CountrySelect {...args} />
-);
+const Template: ComponentStory<typeof CountrySelect> = (args) => <CountrySelect {...args} />;
 
 export const CountrySelectStory = Template.bind({});
 CountrySelectStory.args = {};

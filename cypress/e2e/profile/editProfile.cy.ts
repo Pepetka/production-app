@@ -15,17 +15,11 @@ describe('Edit profile', () => {
 	});
 
 	it('Profile exist', () => {
-		cy.getByTestId('EditableProfileCard.Username').should(
-			'have.value',
-			'testUser',
-		);
+		cy.getByTestId('EditableProfileCard.Username').should('have.value', 'testUser');
 	});
 
 	it('Edit profile', () => {
 		cy.updateProfile();
-		cy.getByTestId('EditableProfileCard.Username').should(
-			'have.value',
-			'newTestUser',
-		);
+		cy.getByTestId('EditableProfileCard.Username').should('have.value', 'newTestUser');
 	});
 });

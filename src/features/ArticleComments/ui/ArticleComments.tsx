@@ -5,10 +5,7 @@ import { Text } from '@/shared/ui/Text';
 import { CommentForm, CommentList } from '@/entities/Comment';
 import { VStack } from '@/shared/ui/Stack';
 import { getAuthData } from '@/entities/User';
-import {
-	useAddCommentMutation,
-	useFetchCommentsQuery,
-} from '../api/articleCommentsApi';
+import { useAddCommentMutation, useFetchCommentsQuery } from '../api/articleCommentsApi';
 
 interface ArticleCommentsProps {
 	articleId: string;

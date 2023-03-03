@@ -11,16 +11,12 @@ describe('getArticlesPageSort', () => {
 			},
 		};
 
-		expect(getArticlesPageSort(state as StateSchema)).toEqual(
-			ArticleSortField.TITLE,
-		);
+		expect(getArticlesPageSort(state as StateSchema)).toEqual(ArticleSortField.TITLE);
 	});
 
 	test('empty state', () => {
 		const state: DeepPartial<StateSchema> = {};
 
-		expect(getArticlesPageSort(state as StateSchema)).toEqual(
-			ArticleSortField.CREATED_AT,
-		);
+		expect(getArticlesPageSort(state as StateSchema)).toEqual(ArticleSortField.CREATED_AT);
 	});
 });

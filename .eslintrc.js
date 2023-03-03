@@ -22,20 +22,10 @@ module.exports = {
 		ecmaVersion: 'latest',
 		sourceType: 'module',
 	},
-	plugins: [
-		'ulbi-tv-plugin',
-		'react',
-		'jsx-a11y',
-		'@typescript-eslint',
-		'i18next',
-		'react-hooks',
-		'unused-imports',
-	],
+	plugins: ['ulbi-tv-plugin', 'react', 'jsx-a11y', '@typescript-eslint', 'i18next', 'react-hooks', 'unused-imports'],
 	rules: {
-		'react/jsx-max-props-per-line': [
-			'error',
-			{ maximum: 3, when: 'multiline' },
-		],
+		'max-len': 'off',
+		'react/jsx-max-props-per-line': ['error', { maximum: 3, when: 'multiline' }],
 		'unused-imports/no-unused-imports': 'error',
 		'ulbi-tv-plugin/path-checker': [
 			'error',
@@ -75,29 +65,11 @@ module.exports = {
 		'import/extensions': 'off',
 		'import/no-extraneous-dependencies': 'off',
 		'no-underscore-dangle': 'off',
-		'max-len': [
-			'error',
-			{
-				code: 150,
-			},
-		],
 		'i18next/no-literal-string': [
 			'error',
 			{
 				markupOnly: true,
-				ignoreAttribute: [
-					'size',
-					'popupPosition',
-					'as',
-					'TitleTag',
-					'Tag',
-					'data-testid',
-					'align',
-					'reducerKey',
-					'target',
-					'direction',
-					'justify',
-				],
+				ignoreAttribute: ['size', 'popupPosition', 'as', 'TitleTag', 'Tag', 'data-testid', 'align', 'reducerKey', 'target', 'direction', 'justify'],
 			},
 		],
 		'no-console': 'off',

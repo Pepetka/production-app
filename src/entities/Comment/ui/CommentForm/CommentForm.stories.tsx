@@ -13,9 +13,7 @@ export default {
 	},
 } as ComponentMeta<typeof CommentForm>;
 
-const Template: ComponentStory<typeof CommentForm> = (args) => (
-	<CommentForm {...args} />
-);
+const Template: ComponentStory<typeof CommentForm> = (args) => <CommentForm {...args} />;
 
 const state: DeepPartial<StateSchema> = {
 	commentForm: {
@@ -31,9 +29,4 @@ export const AddCommentFormStory = Template.bind({});
 AddCommentFormStory.args = {
 	onSendComment: () => {},
 };
-AddCommentFormStory.decorators = [
-	StoreDecorator(
-		state as StateSchema,
-		reducers as ReducersMapObject<StateSchema>,
-	),
-];
+AddCommentFormStory.decorators = [StoreDecorator(state as StateSchema, reducers as ReducersMapObject<StateSchema>)];

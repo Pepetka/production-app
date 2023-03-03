@@ -100,13 +100,6 @@
 			"userId": "0",
 			"articleId": "13",
 			"id": "9Rhi0Jt"
-		},
-		{
-			"rating": 2,
-			"userId": "2",
-			"articleId": "NXUWxOa",
-			"review": "Test review",
-			"id": "Uok9bF9"
 		}
 	],
 	"rating-profile": [
@@ -1322,6 +1315,24 @@
 					"title": "Рисунок 1 - скриншот сайта"
 				}
 			]
+		},
+		{
+			"img": "a",
+			"title": "New article title",
+			"subtitle": "sds",
+			"userId": "1",
+			"type": ["IT"],
+			"blocks": [
+				{
+					"id": "0",
+					"type": "TEXT",
+					"title": "sd",
+					"paragraphs": []
+				}
+			],
+			"views": 0,
+			"createdAt": "03.03.2023",
+			"id": "0NPRV1j"
 		}
 	],
 	"comments": [

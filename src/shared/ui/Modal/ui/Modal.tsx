@@ -17,14 +17,7 @@ interface ModalProps {
 	lazy?: boolean;
 }
 
-export const Modal = ({
-	className,
-	children,
-	isOpen,
-	onCloseModal,
-	lazy = false,
-	callback,
-}: ModalProps) => {
+export const Modal = ({ className, children, isOpen, onCloseModal, lazy = false, callback }: ModalProps) => {
 	const { theme } = useTheme();
 	const { isMounted, isClosing, isOpening } = useModal({
 		isOpen,
@@ -36,13 +29,7 @@ export const Modal = ({
 
 	return (
 		<Portal>
-			<div
-				className={classNames(
-					cls.Modal,
-					{ [cls.open]: isOpening, [cls.close]: isClosing },
-					[className, theme, 'app_modal'],
-				)}
-			>
+			<div className={classNames(cls.Modal, { [cls.open]: isOpening, [cls.close]: isClosing }, [className, theme, 'app_modal'])}>
 				<Overlay onClick={onCloseModal} />
 				<HStack justify="center" className={cls.contentWrapper}>
 					<div className={cls.content}>{children}</div>

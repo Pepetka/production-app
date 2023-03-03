@@ -9,9 +9,7 @@ export default {
 	},
 } as ComponentMeta<typeof LangSwitcher>;
 
-const Template: ComponentStory<typeof LangSwitcher> = (args) => (
-	<LangSwitcher {...args} />
-);
+const Template: ComponentStory<typeof LangSwitcher> = (args) => <LangSwitcher {...args} />;
 
 export const LangSwitcherStory = Template.bind({});
 LangSwitcherStory.args = {};

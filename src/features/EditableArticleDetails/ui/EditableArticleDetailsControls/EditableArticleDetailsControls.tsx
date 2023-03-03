@@ -10,24 +10,15 @@ interface IEditableArticleDetailsControlsProps {
 	onEdit?: () => void;
 	onPreview?: () => void;
 	onSave?: () => void;
+	onDelete?: () => void;
 }
 
 export const EditableArticleDetailsControls = memo(
-	({
-		className,
-		onEdit,
-		onPreview,
-		onSave,
-		isEdit,
-	}: IEditableArticleDetailsControlsProps) => {
+	({ className, onEdit, onPreview, onSave, isEdit, onDelete }: IEditableArticleDetailsControlsProps) => {
 		const { t } = useTranslation('articles');
 
 		return (
-			<HStack
-				w100
-				justify="between"
-				className={classNames('', {}, [className])}
-			>
+			<HStack w100 justify="between" className={classNames('', {}, [className])}>
 				{isEdit ? (
 					<Button theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onPreview}>
 						{t('Preview')}
@@ -37,9 +28,14 @@ export const EditableArticleDetailsControls = memo(
 						{t('Edit')}
 					</Button>
 				)}
-				<Button theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onSave}>
-					{t('Save')}
-				</Button>
+				<HStack gap="8">
+					<Button theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onDelete}>
+						{t('Delete')}
+					</Button>
+					<Button theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onSave}>
+						{t('Save')}
+					</Button>
+				</HStack>
 			</HStack>
 		);
 	},

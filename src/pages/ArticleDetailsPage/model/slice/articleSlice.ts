@@ -28,5 +28,4 @@ export const articleSlice = createSlice({
 	},
 });
 
-export const { actions: articleActions, reducer: articleReducer } =
-	articleSlice;
+export const { actions: articleActions, reducer: articleReducer } = articleSlice;

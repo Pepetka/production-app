@@ -1,10 +1,4 @@
-import {
-	ChangeEvent,
-	TextareaHTMLAttributes,
-	useEffect,
-	useRef,
-	useState,
-} from 'react';
+import { ChangeEvent, TextareaHTMLAttributes, useEffect, useRef, useState } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Textarea.module.scss';
 
@@ -13,10 +7,7 @@ export enum TextareaTheme {
 	INVERT = 'invert',
 }
 
-type HTMLTextareaProps = Omit<
-	TextareaHTMLAttributes<HTMLTextAreaElement>,
-	'onChange'
->;
+type HTMLTextareaProps = Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'onChange'>;
 
 interface TextareaProps extends HTMLTextareaProps {
 	className?: string;
@@ -92,11 +83,7 @@ export const Textarea = ({
 				[className, cls[theme]],
 			)}
 		>
-			<span
-				className={classNames(cls.label, { [cls.placeholder]: isPlaceholder })}
-			>
-				{floatPlaceholder}
-			</span>
+			<span className={classNames(cls.label, { [cls.placeholder]: isPlaceholder })}>{floatPlaceholder}</span>
 			<textarea
 				data-testid={dataTestId}
 				ref={TextareaRef}

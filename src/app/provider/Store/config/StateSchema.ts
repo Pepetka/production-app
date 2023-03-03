@@ -1,10 +1,4 @@
-import {
-	AnyAction,
-	CombinedState,
-	EnhancedStore,
-	Reducer,
-	ReducersMapObject,
-} from '@reduxjs/toolkit';
+import { AnyAction, CombinedState, EnhancedStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 import { UserSchema } from '@/entities/User';
 import { LoginSchema } from '@/features/AuthByUsername';
@@ -14,15 +8,16 @@ import { ArticlesPageSchema } from '@/pages/ArticlesPage';
 import { ScrollSafeSchema } from '@/widgets/Page';
 import { CommentFormSchema } from '@/entities/Comment';
 import { rtkApi } from '@/shared/api/rtkApi';
+import { EditableArticleDetailsSchema } from '@/features/EditableArticleDetails';
 
 export interface StateSchema {
 	user: UserSchema;
 	scrollSafe: ScrollSafeSchema;
 	[rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
-
 	login?: LoginSchema;
 	profile?: ProfileSchema;
 	article?: ArticleSchema;
+	editableArticleDetails?: EditableArticleDetailsSchema;
 	commentForm?: CommentFormSchema;
 	articlesPage?: ArticlesPageSchema;
 }

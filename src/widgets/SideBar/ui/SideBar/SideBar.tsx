@@ -10,15 +10,9 @@ import ProfileIcon from '@/shared/assets/icons/profile_icon.svg';
 import ArticlesIcon from '@/shared/assets/icons/articles_icon.svg';
 import { getAuthData } from '@/entities/User';
 import { Flex, VStack } from '@/shared/ui/Stack';
-import { SideBarLink } from '../SideBarLink/SideBarLink';
-import {
-	AppRoutes,
-	getAboutPagePath,
-	getArticlesPagePath,
-	getMainPagePath,
-	getProfilePagePath,
-} from '@/shared/const/router';
+import { AppRoutes, getAboutPagePath, getArticlesPagePath, getMainPagePath, getProfilePagePath } from '@/shared/const/router';
 import { AppRoutesProps } from '@/shared/types/router';
+import { SideBarLink } from '../SideBarLink/SideBarLink';
 import cls from './SideBar.module.scss';
 
 const navIcons: Record<string, FC<SVGProps<SVGSVGElement>>> = {
@@ -50,35 +44,15 @@ export const SideBar = memo(({ className }: SideBarProps) => {
 	};
 
 	return (
-		<VStack
-			data-testid="SideBar"
-			Tag="aside"
-			justify="between"
-			className={classNames(cls.SideBar, { [cls.collapsed]: collapsed }, [
-				className,
-			])}
-		>
+		<VStack data-testid="SideBar" Tag="aside" justify="between" className={classNames(cls.SideBar, { [cls.collapsed]: collapsed }, [className])}>
 			<VStack w100 gap="32">
-				<Button
-					theme={ButtonTheme.CLEAR}
-					className={cls.toggle}
-					onClick={onCollapse}
-					data-testid="SideBar.Toggle"
-					inverted
-				>
-					{collapsed ? '>' : '<'}
+				<Button theme={ButtonTheme.CLEAR} className={cls.toggle} onClick={onCollapse} data-testid="SideBar.Toggle" inverted>
+					{collapsed ? <span>&gt;</span> : <span>&lt;</span>}
 				</Button>
 
 				<VStack Tag="nav" gap="16" align="start">
 					{Object.entries(links).map(([routeName, { path, authOnly }]) => (
-						<SideBarLink
-							authOnly={authOnly}
-							key={path}
-							path={path!}
-							icon={navIcons[routeName]}
-							routeName={routeName}
-							collapsed={collapsed}
-						/>
+						<SideBarLink authOnly={authOnly} key={path} path={path!} icon={navIcons[routeName]} routeName={routeName} collapsed={collapsed} />
 					))}
 				</VStack>
 			</VStack>

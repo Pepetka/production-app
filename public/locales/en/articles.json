@@ -30,8 +30,14 @@
 	"Code": "Code",
 	"Image": "Image",
 	"Paragraphs": "Paragraphs",
-	"Add block": "Add block",
+	"Add block": "Add block:",
 	"Text block": "Text block",
 	"SubTitle": "SubTitle",
-	"Post image": "Post image"
+	"Article image": "Article image",
+	"Block title": "Block title",
+	"Code block": "Code block",
+	"Image block": "Image block",
+	"Image title": "Image title",
+	"Delete": "Delete",
+	"Article title": "Article title"
 }

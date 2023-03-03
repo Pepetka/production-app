@@ -1,11 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ReducersMapObject } from '@reduxjs/toolkit';
 import { StateSchema } from '@/app/provider/Store';
-import {
-	ArticlesView,
-	ArticleType,
-	ArticleBlockType,
-} from '@/entities/Article';
+import { ArticlesView, ArticleType, ArticleBlockType } from '@/entities/Article';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { articlesPageReducer } from '../../model/slice/articlesPageSlice';
 import ArticlesPage from './ArticlesPage';
@@ -18,9 +14,7 @@ export default {
 	},
 } as ComponentMeta<typeof ArticlesPage>;
 
-const Template: ComponentStory<typeof ArticlesPage> = (args) => (
-	<ArticlesPage />
-);
+const Template: ComponentStory<typeof ArticlesPage> = (args) => <ArticlesPage />;
 
 const state = (view: ArticlesView): DeepPartial<StateSchema> => {
 	const entities: Record<string, any> = {};
@@ -78,36 +72,16 @@ const reducers: DeepPartial<ReducersMapObject<StateSchema>> = {
 
 export const ArticlesPageSmall = Template.bind({});
 ArticlesPageSmall.args = {};
-ArticlesPageSmall.decorators = [
-	StoreDecorator(
-		state(ArticlesView.SMALL) as StateSchema,
-		reducers as ReducersMapObject<StateSchema>,
-	),
-];
+ArticlesPageSmall.decorators = [StoreDecorator(state(ArticlesView.SMALL) as StateSchema, reducers as ReducersMapObject<StateSchema>)];
 
 export const ArticlesPageSmallLoading = Template.bind({});
 ArticlesPageSmallLoading.args = {};
-ArticlesPageSmallLoading.decorators = [
-	StoreDecorator(
-		stateLoading(ArticlesView.SMALL) as StateSchema,
-		reducers as ReducersMapObject<StateSchema>,
-	),
-];
+ArticlesPageSmallLoading.decorators = [StoreDecorator(stateLoading(ArticlesView.SMALL) as StateSchema, reducers as ReducersMapObject<StateSchema>)];
 
 export const ArticlesPageBig = Template.bind({});
 ArticlesPageBig.args = {};
-ArticlesPageBig.decorators = [
-	StoreDecorator(
-		state(ArticlesView.BIG) as StateSchema,
-		reducers as ReducersMapObject<StateSchema>,
-	),
-];
+ArticlesPageBig.decorators = [StoreDecorator(state(ArticlesView.BIG) as StateSchema, reducers as ReducersMapObject<StateSchema>)];
 
 export const ArticlesPageBigLoading = Template.bind({});
 ArticlesPageBigLoading.args = {};
-ArticlesPageBigLoading.decorators = [
-	StoreDecorator(
-		stateLoading(ArticlesView.BIG) as StateSchema,
-		reducers as ReducersMapObject<StateSchema>,
-	),
-];
+ArticlesPageBigLoading.decorators = [StoreDecorator(stateLoading(ArticlesView.BIG) as StateSchema, reducers as ReducersMapObject<StateSchema>)];

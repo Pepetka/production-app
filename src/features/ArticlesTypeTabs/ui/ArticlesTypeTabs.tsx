@@ -8,20 +8,18 @@ interface ArticlesTypeTabsProps {
 	onChangeType: (type: ArticleType) => void;
 }
 
-export const ArticlesTypeTabs = memo(
-	({ type, onChangeType }: ArticlesTypeTabsProps) => {
-		const { t } = useTranslation('articles');
+export const ArticlesTypeTabs = memo(({ type, onChangeType }: ArticlesTypeTabsProps) => {
+	const { t } = useTranslation('articles');
 
-		const tabs: Record<ArticleType, string> = useMemo(
-			() => ({
-				[ArticleType.ALL]: t('ALL'),
-				[ArticleType.IT]: t('IT'),
-				[ArticleType.MATH]: t('MATH'),
-				[ArticleType.ECONOMY]: t('ECONOMY'),
-			}),
-			[t],
-		);
+	const tabs: Record<ArticleType, string> = useMemo(
+		() => ({
+			[ArticleType.ALL]: t('ALL'),
+			[ArticleType.IT]: t('IT'),
+			[ArticleType.MATH]: t('MATH'),
+			[ArticleType.ECONOMY]: t('ECONOMY'),
+		}),
+		[t],
+	);
 
-		return <Tabs tabs={tabs} selected={[type]} onClick={onChangeType} />;
-	},
-);
+	return <Tabs tabs={tabs} selected={[type]} onClick={onChangeType} />;
+});

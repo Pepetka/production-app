@@ -17,9 +17,7 @@ export const getAdminPagePath = () => '/admin';
 export const getForbiddenPagePath = () => '/forbidden';
 export const getProfilePagePath = (id: string = ':id') => `/profile/${id}`;
 export const getArticlesPagePath = () => '/articles';
-export const getArticleDetailsPagePath = (id: string = ':id') =>
-	`/articles/${id}`;
-export const getArticleEditPagePath = (id: string = ':id') =>
-	`/articles/${id}/edit`;
+export const getArticleDetailsPagePath = (id: string = ':id') => `/articles/${id}`;
+export const getArticleEditPagePath = (id: string = ':id') => `/articles/${id}/edit`;
 export const getArticleCreatePagePath = () => '/articles/new';
 export const getNotFoundPagePath = () => '*';

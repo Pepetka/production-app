@@ -13,8 +13,7 @@ export const useTheme = (): ThemeHook => {
 	const { theme, setTheme } = useContext(ThemeContext);
 
 	const onThemeChange = () => {
-		const newTheme =
-			theme === Theme.LIGHT_THEME ? Theme.DARK_THEME : Theme.LIGHT_THEME;
+		const newTheme = theme === Theme.LIGHT_THEME ? Theme.DARK_THEME : Theme.LIGHT_THEME;
 
 		setTheme!(newTheme);
 

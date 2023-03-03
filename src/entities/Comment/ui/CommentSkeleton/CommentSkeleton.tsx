@@ -9,11 +9,7 @@ interface CommentSkeletonProps {
 }
 
 export const CommentSkeleton = memo(({ className }: CommentSkeletonProps) => (
-	<VStack
-		gap="8"
-		align="start"
-		className={classNames(cls.CommentSkeleton, {}, [className])}
-	>
+	<VStack gap="8" align="start" className={classNames(cls.CommentSkeleton, {}, [className])}>
 		<HStack gap="8" justify="center">
 			<Skeleton width={30} circle />
 			<Skeleton width={200} height={32} />

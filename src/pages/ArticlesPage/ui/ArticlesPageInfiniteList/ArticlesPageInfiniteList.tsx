@@ -13,29 +13,19 @@ interface ArticlesPageInfiniteListProps {
 	wrapperRef?: MutableRefObject<HTMLElement | null>;
 }
 
-export const ArticlesPageInfiniteList = memo(
-	({ wrapperRef }: ArticlesPageInfiniteListProps) => {
-		const dispatch = useAppDispatch();
-		const view = useSelector(getArticlesPageView);
-		const limit = useSelector(getArticlesPageLimit);
-		const loading = useSelector(getArticlesPageLoading);
-		const error = useSelector(getArticlesPageError);
-		const articles = useSelector(getArticles.selectAll);
+export const ArticlesPageInfiniteList = memo(({ wrapperRef }: ArticlesPageInfiniteListProps) => {
+	const dispatch = useAppDispatch();
+	const view = useSelector(getArticlesPageView);
+	const limit = useSelector(getArticlesPageLimit);
+	const loading = useSelector(getArticlesPageLoading);
+	const error = useSelector(getArticlesPageError);
+	const articles = useSelector(getArticles.selectAll);
 
-		const onScrollEnd = useCallback(() => {
-			if (__PROJECT__ !== 'storybook') dispatch(fetchNextArticles());
-		}, [dispatch]);
+	const onScrollEnd = useCallback(() => {
+		if (__PROJECT__ !== 'storybook') dispatch(fetchNextArticles());
+	}, [dispatch]);
 
-		return (
-			<ArticlesList
-				error={error}
-				loading={loading}
-				view={view}
-				articles={articles}
-				onScrollEnd={onScrollEnd}
-				wrapperRef={wrapperRef}
-				limit={limit}
-			/>
-		);
-	},
-);
+	return (
+		<ArticlesList error={error} loading={loading} view={view} articles={articles} onScrollEnd={onScrollEnd} wrapperRef={wrapperRef} limit={limit} />
+	);
+});

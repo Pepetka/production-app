@@ -49,21 +49,13 @@ describe('widgets/EditableProfileCard', () => {
 	test('Toggle read only', async () => {
 		componentTestRender(<EditableProfileCard />, options);
 
-		expect(
-			screen.queryByTestId('EditableProfileCard.SaveBtn'),
-		).not.toBeInTheDocument();
-		expect(
-			screen.queryByTestId('EditableProfileCard.CancelBtn'),
-		).not.toBeInTheDocument();
+		expect(screen.queryByTestId('EditableProfileCard.SaveBtn')).not.toBeInTheDocument();
+		expect(screen.queryByTestId('EditableProfileCard.CancelBtn')).not.toBeInTheDocument();
 
 		await userEvent.click(screen.getByTestId('EditableProfileCard.EditBtn'));
 
-		expect(
-			screen.getByTestId('EditableProfileCard.SaveBtn'),
-		).toBeInTheDocument();
-		expect(
-			screen.getByTestId('EditableProfileCard.CancelBtn'),
-		).toBeInTheDocument();
+		expect(screen.getByTestId('EditableProfileCard.SaveBtn')).toBeInTheDocument();
+		expect(screen.getByTestId('EditableProfileCard.CancelBtn')).toBeInTheDocument();
 	});
 
 	test('Change inputs value', async () => {
@@ -72,13 +64,8 @@ describe('widgets/EditableProfileCard', () => {
 		await userEvent.click(screen.getByTestId('EditableProfileCard.EditBtn'));
 
 		await userEvent.clear(screen.getByTestId('EditableProfileCard.Username'));
-		await userEvent.type(
-			screen.getByTestId('EditableProfileCard.Username'),
-			'user',
-		);
-		expect(screen.getByTestId('EditableProfileCard.Username')).toHaveValue(
-			'user',
-		);
+		await userEvent.type(screen.getByTestId('EditableProfileCard.Username'), 'user');
+		expect(screen.getByTestId('EditableProfileCard.Username')).toHaveValue('user');
 
 		await userEvent.clear(screen.getByTestId('EditableProfileCard.Age'));
 		await userEvent.type(screen.getByTestId('EditableProfileCard.Age'), '100');
@@ -91,13 +78,8 @@ describe('widgets/EditableProfileCard', () => {
 		await userEvent.click(screen.getByTestId('EditableProfileCard.EditBtn'));
 
 		await userEvent.clear(screen.getByTestId('EditableProfileCard.Username'));
-		await userEvent.type(
-			screen.getByTestId('EditableProfileCard.Username'),
-			'user',
-		);
-		expect(screen.getByTestId('EditableProfileCard.Username')).toHaveValue(
-			'user',
-		);
+		await userEvent.type(screen.getByTestId('EditableProfileCard.Username'), 'user');
+		expect(screen.getByTestId('EditableProfileCard.Username')).toHaveValue('user');
 
 		await userEvent.clear(screen.getByTestId('EditableProfileCard.Age'));
 		await userEvent.type(screen.getByTestId('EditableProfileCard.Age'), '100');
@@ -105,9 +87,7 @@ describe('widgets/EditableProfileCard', () => {
 
 		await userEvent.click(screen.getByTestId('EditableProfileCard.CancelBtn'));
 
-		expect(screen.getByTestId('EditableProfileCard.Username')).toHaveValue(
-			'admin',
-		);
+		expect(screen.getByTestId('EditableProfileCard.Username')).toHaveValue('admin');
 
 		expect(screen.getByTestId('EditableProfileCard.Age')).toHaveValue('22');
 	});
@@ -121,37 +101,18 @@ describe('widgets/EditableProfileCard', () => {
 		expect(screen.getByTestId('EditableProfileCard.Username')).toHaveValue('');
 
 		await userEvent.clear(screen.getByTestId('EditableProfileCard.Age'));
-		await userEvent.type(
-			screen.getByTestId('EditableProfileCard.Age'),
-			'some string',
-		);
+		await userEvent.type(screen.getByTestId('EditableProfileCard.Age'), 'some string');
 		expect(screen.getByTestId('EditableProfileCard.Age')).toHaveValue('');
 
 		await userEvent.click(screen.getByTestId('EditableProfileCard.SaveBtn'));
 
-		expect(
-			screen.getByTestId(
-				`EditableProfileCard.${ValidateProfileError.INCORRECT_USERNAME}`,
-			),
-		).toBeInTheDocument();
-		expect(
-			screen.getByTestId(
-				`EditableProfileCard.${ValidateProfileError.INCORRECT_AGE}`,
-			),
-		).toBeInTheDocument();
+		expect(screen.getByTestId(`EditableProfileCard.${ValidateProfileError.INCORRECT_USERNAME}`)).toBeInTheDocument();
+		expect(screen.getByTestId(`EditableProfileCard.${ValidateProfileError.INCORRECT_AGE}`)).toBeInTheDocument();
 
 		await userEvent.click(screen.getByTestId('EditableProfileCard.CancelBtn'));
 
-		expect(
-			screen.queryByTestId(
-				`EditableProfileCard.${ValidateProfileError.INCORRECT_USERNAME}`,
-			),
-		).not.toBeInTheDocument();
-		expect(
-			screen.queryByTestId(
-				`EditableProfileCard.${ValidateProfileError.INCORRECT_AGE}`,
-			),
-		).not.toBeInTheDocument();
+		expect(screen.queryByTestId(`EditableProfileCard.${ValidateProfileError.INCORRECT_USERNAME}`)).not.toBeInTheDocument();
+		expect(screen.queryByTestId(`EditableProfileCard.${ValidateProfileError.INCORRECT_AGE}`)).not.toBeInTheDocument();
 	});
 
 	test('Send edited data', async () => {
@@ -161,13 +122,8 @@ describe('widgets/EditableProfileCard', () => {
 		await userEvent.click(screen.getByTestId('EditableProfileCard.EditBtn'));
 
 		await userEvent.clear(screen.getByTestId('EditableProfileCard.Username'));
-		await userEvent.type(
-			screen.getByTestId('EditableProfileCard.Username'),
-			'user',
-		);
-		expect(screen.getByTestId('EditableProfileCard.Username')).toHaveValue(
-			'user',
-		);
+		await userEvent.type(screen.getByTestId('EditableProfileCard.Username'), 'user');
+		expect(screen.getByTestId('EditableProfileCard.Username')).toHaveValue('user');
 
 		await userEvent.clear(screen.getByTestId('EditableProfileCard.Age'));
 		await userEvent.type(screen.getByTestId('EditableProfileCard.Age'), '100');

@@ -9,18 +9,14 @@ describe('addCommentFormSlice', () => {
 			error: 'some error',
 		};
 
-		expect(
-			commentFormReducer(state, commentFormActions.setText('text')),
-		).toEqual({
+		expect(commentFormReducer(state, commentFormActions.setText('text'))).toEqual({
 			...state,
 			text: 'text',
 		});
 	});
 
 	test('undefined state', () => {
-		expect(
-			commentFormReducer(undefined, commentFormActions.setText('text')),
-		).toEqual({
+		expect(commentFormReducer(undefined, commentFormActions.setText('text'))).toEqual({
 			text: 'text',
 		});
 	});

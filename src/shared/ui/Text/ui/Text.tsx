@@ -46,21 +46,10 @@ export const Text = memo(
 	}: TextProps) => (
 		<div
 			data-testid={dataTestId}
-			className={classNames('', { [cls.invert]: invert, [cls.w100]: w100 }, [
-				className,
-				cls[theme],
-				cls[size],
-				cls[align],
-			])}
+			className={classNames('', { [cls.invert]: invert, [cls.w100]: w100 }, [className, cls[theme], cls[size], cls[align]])}
 		>
-			{title && (
-				<TitleTag className={classNames(cls.title, { [cls.noWrap]: noWrap })}>
-					{title}
-				</TitleTag>
-			)}
-			{text && (
-				<p className={classNames(cls.text, { [cls.noWrap]: noWrap })}>{text}</p>
-			)}
+			{title && <TitleTag className={classNames(cls.title, { [cls.noWrap]: noWrap })}>{title}</TitleTag>}
+			{text && <p className={classNames(cls.text, { [cls.noWrap]: noWrap })}>{text}</p>}
 		</div>
 	),
 );

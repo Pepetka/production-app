@@ -58,10 +58,7 @@ describe('updateProfileData', () => {
 		expect(thunk.api.put).not.toHaveBeenCalled();
 		expect(result.meta.requestStatus).toEqual('rejected');
 		expect((result.payload as Array<ValidateProfileError>).sort()).toEqual(
-			[
-				ValidateProfileError.INCORRECT_USERNAME,
-				ValidateProfileError.INCORRECT_AGE,
-			].sort(),
+			[ValidateProfileError.INCORRECT_USERNAME, ValidateProfileError.INCORRECT_AGE].sort(),
 		);
 	});
 });

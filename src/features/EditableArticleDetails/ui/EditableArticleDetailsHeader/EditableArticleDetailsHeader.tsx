@@ -6,26 +6,26 @@ import { Tabs } from '@/shared/ui/Tabs';
 import { ArticleType } from '@/entities/Article';
 
 interface IEditableArticleDetailsHeaderProps {
-	avatarValue: string;
-	titleValue: string;
-	subtitleValue: string;
+	avatarValue?: string;
+	titleValue?: string;
+	subtitleValue?: string;
 	onAvatarChange?: (text: string) => void;
 	onTitleChange?: (text: string) => void;
 	onSubtitleChange?: (text: string) => void;
-	types: Array<ArticleType>;
+	types?: Array<ArticleType>;
 	onSelectTab?: (tab: ArticleType) => void;
 }
 
 export const EditableArticleDetailsHeader = memo(
 	({
-		avatarValue,
-		subtitleValue,
-		titleValue,
+		avatarValue = '',
+		subtitleValue = '',
+		titleValue = '',
 		onAvatarChange,
 		onSubtitleChange,
 		onTitleChange,
 		onSelectTab,
-		types,
+		types = [],
 	}: IEditableArticleDetailsHeaderProps) => {
 		const { t } = useTranslation('articles');
 
@@ -42,27 +42,9 @@ export const EditableArticleDetailsHeader = memo(
 			<VStack align="start" w100>
 				<Tabs tabs={tabs} selected={types} onClick={onSelectTab} />
 				<VStack w100>
-					<Input
-						theme={InputTheme.INVERT}
-						textInvert
-						floatPlaceholder={t('Post image')}
-						value={avatarValue}
-						onChange={onAvatarChange}
-					/>
-					<Input
-						theme={InputTheme.INVERT}
-						textInvert
-						floatPlaceholder={t('Title')}
-						value={titleValue}
-						onChange={onTitleChange}
-					/>
-					<Input
-						theme={InputTheme.INVERT}
-						textInvert
-						floatPlaceholder={t('SubTitle')}
-						value={subtitleValue}
-						onChange={onSubtitleChange}
-					/>
+					<Input theme={InputTheme.INVERT} textInvert floatPlaceholder={t('Article image')} value={avatarValue} onChange={onAvatarChange} />
+					<Input theme={InputTheme.INVERT} textInvert floatPlaceholder={t('Article title')} value={titleValue} onChange={onTitleChange} />
+					<Input theme={InputTheme.INVERT} textInvert floatPlaceholder={t('SubTitle')} value={subtitleValue} onChange={onSubtitleChange} />
 				</VStack>
 			</VStack>
 		);

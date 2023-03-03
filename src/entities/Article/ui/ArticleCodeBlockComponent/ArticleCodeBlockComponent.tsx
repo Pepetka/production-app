@@ -12,42 +12,38 @@ interface ArticleCodeBlockComponentProps {
 	block: ArticleCodeBlock;
 }
 
-export const ArticleCodeBlockComponent = memo(
-	({ className, block }: ArticleCodeBlockComponentProps) => {
-		const [coped, setCoped] = useState(false);
-		const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+export const ArticleCodeBlockComponent = memo(({ className, block }: ArticleCodeBlockComponentProps) => {
+	const [coped, setCoped] = useState(false);
+	const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-		useEffect(
-			() => () => {
-				clearTimeout(timerRef.current!);
-			},
-			[],
-		);
+	useEffect(
+		() => () => {
+			clearTimeout(timerRef.current!);
+		},
+		[],
+	);
 
-		const onCopy = useCallback(() => {
-			navigator.clipboard.writeText(block.code).then(() => {
-				setCoped(true);
-				timerRef.current = setTimeout(() => setCoped(false), 3000);
-			});
-		}, [block.code]);
+	const onCopy = useCallback(() => {
+		navigator.clipboard.writeText(block.code).then(() => {
+			setCoped(true);
+			timerRef.current = setTimeout(() => setCoped(false), 3000);
+		});
+	}, [block.code]);
 
-		return (
-			<div
-				className={classNames(cls.ArticleCodeBlockComponent, {}, [className])}
-			>
-				<div className={cls.copy}>
-					{coped ? (
-						<Icon stroke SvgIcon={DoneIcon} />
-					) : (
-						<Button onClick={onCopy} theme={ButtonTheme.CLEAR}>
-							<Icon stroke SvgIcon={CopyIcon} />
-						</Button>
-					)}
-				</div>
-				<pre className={cls.codeWrapper}>
-					<code>{block.code}</code>
-				</pre>
+	return (
+		<div className={classNames(cls.ArticleCodeBlockComponent, {}, [className])}>
+			<div className={cls.copy}>
+				{coped ? (
+					<Icon stroke SvgIcon={DoneIcon} />
+				) : (
+					<Button onClick={onCopy} theme={ButtonTheme.CLEAR}>
+						<Icon stroke SvgIcon={CopyIcon} />
+					</Button>
+				)}
 			</div>
-		);
-	},
-);
+			<pre className={cls.codeWrapper}>
+				<code>{block.code}</code>
+			</pre>
+		</div>
+	);
+});

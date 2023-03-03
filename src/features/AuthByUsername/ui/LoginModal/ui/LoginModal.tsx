@@ -11,17 +11,8 @@ interface LoginModalProps {
 	onCloseModal: () => void;
 }
 
-export const LoginModal = ({
-	className,
-	onCloseModal,
-	isOpen,
-}: LoginModalProps) => (
-	<Modal
-		lazy
-		isOpen={isOpen}
-		onCloseModal={onCloseModal}
-		className={classNames(cls.LoginModal, {}, [className])}
-	>
+export const LoginModal = ({ className, onCloseModal, isOpen }: LoginModalProps) => (
+	<Modal lazy isOpen={isOpen} onCloseModal={onCloseModal} className={classNames(cls.LoginModal, {}, [className])}>
 		<Suspense fallback={<Spinner />}>
 			<LoginFormLazy />
 		</Suspense>

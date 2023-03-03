@@ -2,10 +2,7 @@ import { memo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { DynamicModuleLoader } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import {
-	EditableProfileCard,
-	profileReducer,
-} from '@/features/EditableProfileCard';
+import { EditableProfileCard, profileReducer } from '@/features/EditableProfileCard';
 import { Page } from '@/widgets/Page';
 import { ProfileRating } from '@/features/ProfileRating';
 import { getAuthData } from '@/entities/User';
@@ -23,9 +20,7 @@ const ProfilePage = memo(({ storybookId }: ProfilePageProps) => {
 			<DynamicModuleLoader reducerKey="profile" reducer={profileReducer}>
 				<EditableProfileCard />
 			</DynamicModuleLoader>
-			{authData?.id === (storybookId ?? params.id!) || (
-				<ProfileRating profileId={storybookId ?? params.id!} />
-			)}
+			{authData?.id === (storybookId ?? params.id!) || <ProfileRating profileId={storybookId ?? params.id!} />}
 		</Page>
 	);
 });

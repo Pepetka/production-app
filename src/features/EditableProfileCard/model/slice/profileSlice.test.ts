@@ -10,12 +10,7 @@ describe('profileSlice', () => {
 			},
 		};
 
-		expect(
-			profileReducer(
-				state as ProfileSchema,
-				profileActions.setProfileData({ age: '22' }),
-			),
-		).toEqual({
+		expect(profileReducer(state as ProfileSchema, profileActions.setProfileData({ age: '22' }))).toEqual({
 			...state,
 			formData: {
 				username: 'Some username',
@@ -36,9 +31,7 @@ describe('profileSlice', () => {
 			validateErrors: [],
 		};
 
-		expect(
-			profileReducer(state as ProfileSchema, profileActions.cancelEdit()),
-		).toEqual({
+		expect(profileReducer(state as ProfileSchema, profileActions.cancelEdit())).toEqual({
 			readOnly: true,
 			formData: {
 				age: '22',
@@ -54,17 +47,13 @@ describe('profileSlice', () => {
 			readOnly: true,
 		};
 
-		expect(
-			profileReducer(state as ProfileSchema, profileActions.changeReadOnly()),
-		).toEqual({
+		expect(profileReducer(state as ProfileSchema, profileActions.changeReadOnly())).toEqual({
 			readOnly: false,
 		});
 	});
 
 	test('undefined state', () => {
-		expect(
-			profileReducer(undefined, profileActions.setProfileData({ age: '22' })),
-		).toEqual({
+		expect(profileReducer(undefined, profileActions.setProfileData({ age: '22' }))).toEqual({
 			loading: false,
 			readOnly: true,
 			formData: {

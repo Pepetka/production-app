@@ -55,42 +55,21 @@ export const Select = typedMemo(
 					[className, cls[theme]],
 				)}
 			>
-				{placeholder && (
-					<span className={classNames(cls.label)}>{placeholder}</span>
-				)}
-				<Listbox
-					value={selected}
-					defaultValue={label}
-					onChange={onChange}
-					disabled={disabled}
-				>
+				{placeholder && <span className={classNames(cls.label)}>{placeholder}</span>}
+				<Listbox value={selected} defaultValue={label} onChange={onChange} disabled={disabled}>
 					{({ open }) => (
 						<>
 							<Listbox.Button as="div" className={cls.trigger}>
-								<Button
-									hover={false}
-									theme={ButtonTheme.PRIMARY}
-									inverted={theme === SelectTheme.INVERT}
-								>
+								<Button hover={false} theme={ButtonTheme.PRIMARY} inverted={theme === SelectTheme.INVERT}>
 									<HStack w100 justify="between">
 										{selected ? options[selected] : label}
-										<div
-											className={classNames(cls.arrow, { [cls.open]: open })}
-										>
-											{'<'}
-										</div>
+										<div className={classNames(cls.arrow, { [cls.open]: open })}>{'<'}</div>
 									</HStack>
 								</Button>
 							</Listbox.Button>
-							<Listbox.Options
-								className={classNames(cls.options, {}, [cls[popupPosition]])}
-							>
+							<Listbox.Options className={classNames(cls.options, {}, [cls[popupPosition]])}>
 								{optionsList.map(([key, value]) => (
-									<Listbox.Option
-										key={key}
-										value={key}
-										disabled={key === 'label'}
-									>
+									<Listbox.Option key={key} value={key} disabled={key === 'label'}>
 										{({ active, selected, disabled }) => (
 											<div
 												className={classNames(cls.option, {

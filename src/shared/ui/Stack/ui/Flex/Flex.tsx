@@ -60,22 +60,10 @@ export const Flex = ({
 	Tag = 'div',
 	'data-testid': dataTestId,
 }: FlexProps) => {
-	const classes = [
-		alignClasses[align],
-		justifyClasses[justify],
-		directionClasses[direction],
-		className,
-	];
+	const classes = [alignClasses[align], justifyClasses[justify], directionClasses[direction], className];
 
 	return (
-		<Tag
-			data-testid={dataTestId}
-			className={classNames(
-				cls.Flex,
-				{ [gapClasses[gap!]]: gap, [cls.w100]: w100, [cls.h100]: h100 },
-				classes,
-			)}
-		>
+		<Tag data-testid={dataTestId} className={classNames(cls.Flex, { [gapClasses[gap!]]: gap, [cls.w100]: w100, [cls.h100]: h100 }, classes)}>
 			{children}
 		</Tag>
 	);

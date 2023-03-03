@@ -13,9 +13,7 @@ export default {
 	},
 } as ComponentMeta<typeof ArticleDetailsPageHeader>;
 
-const Template: ComponentStory<typeof ArticleDetailsPageHeader> = (args) => (
-	<ArticleDetailsPageHeader {...args} />
-);
+const Template: ComponentStory<typeof ArticleDetailsPageHeader> = (args) => <ArticleDetailsPageHeader {...args} />;
 
 const state: DeepPartial<StateSchema> = {
 	user: {
@@ -38,12 +36,7 @@ const reducers: DeepPartial<ReducersMapObject<StateSchema>> = {
 
 export const ArticleDetailsPageHeaderWithAuth = Template.bind({});
 ArticleDetailsPageHeaderWithAuth.args = {};
-ArticleDetailsPageHeaderWithAuth.decorators = [
-	StoreDecorator(
-		state as StateSchema,
-		reducers as ReducersMapObject<StateSchema>,
-	),
-];
+ArticleDetailsPageHeaderWithAuth.decorators = [StoreDecorator(state as StateSchema, reducers as ReducersMapObject<StateSchema>)];
 
 export const ArticleDetailsPageHeaderWithoutAuth = Template.bind({});
 ArticleDetailsPageHeaderWithoutAuth.args = {};

@@ -19,27 +19,10 @@ interface AppLinkProps extends NavLinkProps {
 }
 export const AppLink = forwardRef(
 	(
-		{
-			className,
-			to,
-			theme = AppLinkTheme.PRIMARY,
-			children,
-			w100,
-			hover = true,
-			...otherProps
-		}: AppLinkProps,
+		{ className, to, theme = AppLinkTheme.PRIMARY, children, w100, hover = true, ...otherProps }: AppLinkProps,
 		ref: ForwardedRef<HTMLAnchorElement>,
 	) => (
-		<NavLink
-			ref={ref}
-			to={to}
-			className={classNames(
-				cls.AppLink,
-				{ [cls.hover]: hover, [cls.w100]: w100 },
-				[className, cls[theme]],
-			)}
-			{...otherProps}
-		>
+		<NavLink ref={ref} to={to} className={classNames(cls.AppLink, { [cls.hover]: hover, [cls.w100]: w100 }, [className, cls[theme]])} {...otherProps}>
 			{children}
 		</NavLink>
 	),

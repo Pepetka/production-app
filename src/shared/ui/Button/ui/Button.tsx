@@ -1,9 +1,4 @@
-import {
-	ButtonHTMLAttributes,
-	ForwardedRef,
-	forwardRef,
-	ReactNode,
-} from 'react';
+import { ButtonHTMLAttributes, ForwardedRef, forwardRef, ReactNode } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 
 import cls from './Button.module.scss';
@@ -45,11 +40,7 @@ export const Button = forwardRef(
 			data-testid={dataTestId}
 			ref={ref}
 			type="button"
-			className={classNames(
-				cls.Button,
-				{ [cls.inverted]: inverted, [cls.hover]: hover, [cls.w100]: w100 },
-				[className, cls[theme]],
-			)}
+			className={classNames(cls.Button, { [cls.inverted]: inverted, [cls.hover]: hover, [cls.w100]: w100 }, [className, cls[theme]])}
 			{...buttonProps}
 		>
 			{children}
