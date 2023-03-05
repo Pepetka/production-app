@@ -3,8 +3,8 @@ import { Popover as HPopover } from '@headlessui/react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { PopupPosition } from '@/shared/types/uiTypes';
 import { Button, ButtonTheme } from '../../../../Button';
-import cls from './Popover.module.scss';
 import clsPopups from '../../../style/Popups.module.scss';
+import cls from './Popover.module.scss';
 
 interface PopoverProps {
 	className?: string;

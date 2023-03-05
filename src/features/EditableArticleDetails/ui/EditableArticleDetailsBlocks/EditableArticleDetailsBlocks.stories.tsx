@@ -1,33 +1,19 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { UserRole } from '@/shared/const/role';
-import { ArticleBlockType, ArticlesView, ArticleType } from '../../model/consts/consts';
-import type { Article } from '../../model/types/article';
-import { ArticlesList } from './ArticlesList';
+import { ArticleBlockType } from '@/entities/Article';
+import { EditableArticleDetailsBlocks } from './EditableArticleDetailsBlocks';
 
 export default {
-	title: 'entities/ArticlesList/ArticlesList',
-	component: ArticlesList,
+	title: 'features/EditableArticleDetailsBlocks/EditableArticleDetailsBlocks',
+	component: EditableArticleDetailsBlocks,
 	argTypes: {
 		backgroundColor: { control: 'color' },
 	},
-} as ComponentMeta<typeof ArticlesList>;
+} as ComponentMeta<typeof EditableArticleDetailsBlocks>;
 
-const Template: ComponentStory<typeof ArticlesList> = (args) => <ArticlesList {...args} />;
+const Template: ComponentStory<typeof EditableArticleDetailsBlocks> = (args) => <EditableArticleDetailsBlocks {...args} />;
 
-const articles: Array<Article> = new Array(10).fill(0).map((_, i) => ({
-	title: `Some title ${i}`,
-	id: i.toString(),
-	type: [ArticleType.IT],
-	img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
-	userId: 'some user id',
-	user: {
-		id: 'some user id',
-		username: 'some username',
-		role: UserRole.USER,
-	},
-	createdAt: 'date',
-	views: 100,
-	subtitle: 'Subtitle',
+export const EditableArticleDetailsBlocksStory = Template.bind({});
+EditableArticleDetailsBlocksStory.args = {
 	blocks: [
 		{
 			title: 'Some title',
@@ -53,51 +39,4 @@ const articles: Array<Article> = new Array(10).fill(0).map((_, i) => ({
 			type: ArticleBlockType.CODE,
 		},
 	],
-}));
-
-export const ArticlesListSmall = Template.bind({});
-ArticlesListSmall.args = {
-	articles,
-	loading: false,
-	wrapperRef: { current: document.querySelector('body') },
-	limit: 10,
-};
-
-export const ArticlesListBig = Template.bind({});
-ArticlesListBig.args = {
-	articles,
-	loading: false,
-	view: ArticlesView.BIG,
-	wrapperRef: { current: document.querySelector('body') },
-	limit: 10,
-};
-
-export const ArticlesListSmallLoading = Template.bind({});
-ArticlesListSmallLoading.args = {
-	articles,
-	loading: true,
-	limit: 10,
-};
-
-export const ArticlesListBigLoading = Template.bind({});
-ArticlesListBigLoading.args = {
-	articles,
-	loading: true,
-	view: ArticlesView.BIG,
-	limit: 10,
-};
-
-export const ArticlesListRecommendations = Template.bind({});
-ArticlesListRecommendations.args = {
-	articles: articles.slice(0, 4),
-	loading: false,
-	recommendations: true,
-	limit: 4,
-};
-
-export const ArticlesListRecommendationsLoading = Template.bind({});
-ArticlesListRecommendationsLoading.args = {
-	loading: true,
-	recommendations: true,
-	limit: 4,
 };

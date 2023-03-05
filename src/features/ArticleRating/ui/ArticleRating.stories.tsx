@@ -1,8 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { ArticleRating } from './ArticleRating';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { StateSchema } from '@/app/provider/Store';
 import { ArticleRatingType } from '../model/types/articleRating';
+import { ArticleRating } from './ArticleRating';
 
 export default {
 	title: 'features/ArticleRating',

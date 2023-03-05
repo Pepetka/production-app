@@ -59,6 +59,7 @@ const comments: Array<Comment> = [
 
 const articles: Array<Article> = [
 	{
+		userId: 'user',
 		user: {
 			username: 'user',
 			role: UserRole.USER,
@@ -84,6 +85,7 @@ const articles: Array<Article> = [
 		views: 10101,
 	},
 	{
+		userId: 'user',
 		user: {
 			username: 'user',
 			role: UserRole.USER,
@@ -109,6 +111,7 @@ const articles: Array<Article> = [
 		views: 10101,
 	},
 	{
+		userId: 'admin',
 		user: {
 			username: 'admin',
 			role: UserRole.ADMIN,
@@ -134,6 +137,7 @@ const articles: Array<Article> = [
 		views: 10101,
 	},
 	{
+		userId: 'user',
 		user: {
 			username: 'user',
 			role: UserRole.USER,

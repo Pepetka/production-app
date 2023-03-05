@@ -24,6 +24,19 @@ module.exports = {
 	},
 	plugins: ['ulbi-tv-plugin', 'react', 'jsx-a11y', '@typescript-eslint', 'i18next', 'react-hooks', 'unused-imports'],
 	rules: {
+		'import/order': [
+			'error',
+			{
+				'newlines-between': 'never',
+				pathGroups: [
+					{
+						pattern: '@/**',
+						group: 'external',
+						position: 'after',
+					},
+				],
+			},
+		],
 		'max-len': 'off',
 		'react/jsx-max-props-per-line': ['error', { maximum: 3, when: 'multiline' }],
 		'unused-imports/no-unused-imports': 'error',

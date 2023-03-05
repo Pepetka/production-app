@@ -5,21 +5,16 @@ import { HStack, VStack } from '@/shared/ui/Stack';
 import { Tabs } from '@/shared/ui/Tabs';
 import { Text } from '@/shared/ui/Text';
 import { Card } from '@/shared/ui/Card';
+import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { EditableArticleDetailsTextBlock } from '../EditableArticleDetailsTextBlock/EditableArticleDetailsTextBlock';
 import { EditableArticleDetailsCodeBlock } from '../EditableArticleDetailsCodeBlock/EditableArticleDetailsCodeBlock';
 import { EditableArticleDetailsImgBlock } from '../EditableArticleDetailsImgBlock/EditableArticleDetailsImgBlock';
 import cls from './EditableArticleDetailsBlocks.module.scss';
-import { Button, ButtonTheme } from '@/shared/ui/Button';
 
 interface IEditableArticleDetailsBlocksProps {
 	blocks?: Array<ArticleBlock>;
 	onAddBlock?: (tab: ArticleBlockType) => void;
 	onDeleteBlock?: (id: string) => void;
-	textTitle: (id: string) => string;
-	textParagraphs: (id: string) => string;
-	code: (id: string) => string;
-	imgTitle: (id: string) => string;
-	img: (id: string) => string;
 	onTextTitleChange?: (id: string, text: string) => void;
 	onTextParagraphsChange?: (id: string, text: string) => void;
 	onCodeChange?: (id: string, text: string) => void;
@@ -33,11 +28,6 @@ export const EditableArticleDetailsBlocks = memo(
 		onAddBlock,
 		onTextParagraphsChange,
 		onTextTitleChange,
-		textParagraphs,
-		textTitle,
-		code,
-		img,
-		imgTitle,
 		onCodeChange,
 		onImgChange,
 		onImgTitleChange,
@@ -57,26 +47,12 @@ export const EditableArticleDetailsBlocks = memo(
 			switch (block.type) {
 				case ArticleBlockType.TEXT:
 					return (
-						<EditableArticleDetailsTextBlock
-							block={block}
-							textTitle={textTitle}
-							textParagraphs={textParagraphs}
-							onTextTitleChange={onTextTitleChange}
-							onTextParagraphsChange={onTextParagraphsChange}
-						/>
+						<EditableArticleDetailsTextBlock block={block} onTextTitleChange={onTextTitleChange} onTextParagraphsChange={onTextParagraphsChange} />
 					);
 				case ArticleBlockType.CODE:
-					return <EditableArticleDetailsCodeBlock block={block} code={code} onCodeChange={onCodeChange} />;
+					return <EditableArticleDetailsCodeBlock block={block} onCodeChange={onCodeChange} />;
 				case ArticleBlockType.IMG:
-					return (
-						<EditableArticleDetailsImgBlock
-							block={block}
-							imgTitle={imgTitle}
-							img={img}
-							onImgChange={onImgChange}
-							onImgTitleChange={onImgTitleChange}
-						/>
-					);
+					return <EditableArticleDetailsImgBlock block={block} onImgChange={onImgChange} onImgTitleChange={onImgTitleChange} />;
 				default:
 					break;
 			}

@@ -6,10 +6,10 @@ import { useScroll } from '@/shared/lib/hooks/useScroll/useScroll';
 import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll';
 import { StateSchema } from '@/app/provider/Store';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppEffect } from '@/shared/lib/hooks/useAppEffect/useAppEffect';
 import { scrollSafeActions } from '../model/slice/scrollSaveSclice';
 import { getScrollSaveScrollByPath } from '../model/selectors/getScrollSaveScrollByPath/getScrollSaveScrollByPath';
 import cls from './Page.module.scss';
-import { useAppEffect } from '@/shared/lib/hooks/useAppEffect/useAppEffect';
 
 interface PageProps {
 	className?: string;

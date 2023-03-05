@@ -3,11 +3,13 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { VStack } from '@/shared/ui/Stack';
-import { Article, ArticleBlock, ArticleBlockType, ArticleDetails, ArticleType } from '@/entities/Article';
+import { Article, ArticleBlockType, ArticleDetails, ArticleType } from '@/entities/Article';
 import { useAppEffect } from '@/shared/lib/hooks/useAppEffect/useAppEffect';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { DynamicModuleLoader } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { getArticleDetailsPagePath, getArticlesPagePath } from '@/shared/const/router';
+import { getArticleDetailsPagePath, getArticlesPagePath, getForbiddenPagePath } from '@/shared/const/router';
+import { Text, TextTheme } from '@/shared/ui/Text';
+import { getCanEditArticleDetails } from '../../model/selectors/getCanEditArticleDetails/getCanEditArticleDetails';
 import { EditableArticleDetailsHeader } from '../EditableArticleDetailsHeader/EditableArticleDetailsHeader';
 import { EditableArticleDetailsControls } from '../EditableArticleDetailsControls/EditableArticleDetailsControls';
 import { fetchArticleDetailsData } from '../../model/services/fetchArticleDetailsData/fetchArticleDetailsData';
@@ -20,7 +22,6 @@ import { EditableArticleDetailsBlocks } from '../EditableArticleDetailsBlocks/Ed
 import { updateArticleDetailsData } from '../../model/services/updateArticleDetailsData/updateArticleDetailsData';
 import { deleteArticleDetailsData } from '../../model/services/deleteArticleDetailsData/deleteArticleDetailsData';
 import { getEditableArticleDetailsValidationErrors } from '../../model/selectors/getEditableArticleDetailsValidationErrors/getEditableArticleDetailsValidationErrors';
-import { Text, TextTheme } from '@/shared/ui/Text';
 
 interface IEditableArticleDetailsProps {
 	articleId?: string;
@@ -34,23 +35,45 @@ export const EditableArticleDetails = memo(({ articleId }: IEditableArticleDetai
 	const error = useSelector(getEditableArticleDetailsError);
 	const loading = useSelector(getEditableArticleDetailsLoading);
 	const validationErrors = useSelector(getEditableArticleDetailsValidationErrors);
+	const canEdit = useSelector(getCanEditArticleDetails);
 	const navigate = useNavigate();
 
 	const effect = useCallback(() => {
-		dispatch(fetchArticleDetailsData(articleId));
-	}, [articleId, dispatch]);
-
-	useEffect(() => {
 		dispatch(editableArticleDetailsActions.changeReadOnly(!!articleId));
+		dispatch(fetchArticleDetailsData(articleId));
 	}, [articleId, dispatch]);
 
 	useAppEffect(effect);
 
+	useEffect(() => {
+		if (!canEdit) {
+			navigate(getForbiddenPagePath());
+		}
+	}, [canEdit, navigate]);
+
+	const { onSave, onDelete } = useMemo(
+		() => ({
+			onSave: () => {
+				dispatch(updateArticleDetailsData()).then((data) => {
+					if (data.meta.requestStatus === 'fulfilled') {
+						navigate(getArticleDetailsPagePath((data.payload as Article).id));
+						window.location.reload();
+					}
+				});
+			},
+			onDelete: () => {
+				dispatch(deleteArticleDetailsData()).then(() => {
+					navigate(getArticlesPagePath());
+					window.location.reload();
+				});
+			},
+		}),
+		[dispatch, navigate],
+	);
+
 	const {
 		onEdit,
 		onPreview,
-		onSave,
-		onDelete,
 		onSelectTab,
 		onTitleChange,
 		onSubtitleChange,
@@ -67,19 +90,6 @@ export const EditableArticleDetails = memo(({ articleId }: IEditableArticleDetai
 			},
 			onPreview: () => {
 				dispatch(editableArticleDetailsActions.changeReadOnly(true));
-			},
-			onSave: () => {
-				dispatch(updateArticleDetailsData()).then((data) => {
-					if (data.meta.requestStatus === 'fulfilled') {
-						navigate(getArticleDetailsPagePath((data.payload as Article).id));
-					}
-				});
-			},
-			onDelete: () => {
-				dispatch(deleteArticleDetailsData()).then(() => {
-					navigate(getArticlesPagePath());
-					window.location.reload();
-				});
 			},
 			onSelectTab: (type: ArticleType) => {
 				dispatch(editableArticleDetailsActions.setTypes(type));
@@ -115,42 +125,6 @@ export const EditableArticleDetails = memo(({ articleId }: IEditableArticleDetai
 			},
 		}),
 		[dispatch],
-	);
-
-	const { code, img, imgTitle, textParagraphs, textTitle } = useMemo(
-		() => ({
-			textParagraphs: (id: string) =>
-				(
-					article?.blocks.find((block) => block.id === id) as ArticleBlock & {
-						type: ArticleBlockType.TEXT;
-					}
-				).paragraphs.join('\n'),
-			textTitle: (id: string) =>
-				(
-					article?.blocks.find((block) => block.id === id) as ArticleBlock & {
-						type: ArticleBlockType.TEXT;
-					}
-				).title ?? '',
-			code: (id: string) =>
-				(
-					article?.blocks.find((block) => block.id === id) as ArticleBlock & {
-						type: ArticleBlockType.CODE;
-					}
-				).code ?? '',
-			imgTitle: (id: string) =>
-				(
-					article?.blocks.find((block) => block.id === id) as ArticleBlock & {
-						type: ArticleBlockType.IMG;
-					}
-				).title ?? '',
-			img: (id: string) =>
-				(
-					article?.blocks.find((block) => block.id === id) as ArticleBlock & {
-						type: ArticleBlockType.IMG;
-					}
-				).src ?? '',
-		}),
-		[article?.blocks],
 	);
 
 	const onAddBlock = useCallback(
@@ -192,11 +166,6 @@ export const EditableArticleDetails = memo(({ articleId }: IEditableArticleDetai
 							blocks={article?.blocks}
 							onAddBlock={onAddBlock}
 							onDeleteBlock={onDeleteBlock}
-							textParagraphs={textParagraphs}
-							textTitle={textTitle}
-							code={code}
-							imgTitle={imgTitle}
-							img={img}
 							onTextParagraphsChange={onTextParagraphsChange}
 							onTextTitleChange={onTextTitleChange}
 							onCodeChange={onCodeChange}

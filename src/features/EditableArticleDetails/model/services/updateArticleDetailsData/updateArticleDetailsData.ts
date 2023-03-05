@@ -17,12 +17,12 @@ export const updateArticleDetailsData = createAsyncThunk<
 
 		if (validateErrors.length > 0) return rejectWithValue(validateErrors);
 
-		let response: AxiosResponse<Omit<Article, 'user'> & { userId: string }>;
+		let response: AxiosResponse<Omit<Article, 'user'>>;
 
 		if (!newArticleData?.id) {
-			response = await extra.api.post<Omit<Article, 'user'> & { userId: string }>('/articles', newArticleData);
+			response = await extra.api.post<Omit<Article, 'user'>>('/articles', { ...newArticleData, user: undefined });
 		} else {
-			response = await extra.api.put<Omit<Article, 'user'> & { userId: string }>(`/articles/${newArticleData?.id}`, newArticleData);
+			response = await extra.api.put<Omit<Article, 'user'>>(`/articles/${newArticleData?.id}`, { ...newArticleData, user: undefined });
 		}
 
 		if (!response.data) {

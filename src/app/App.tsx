@@ -5,8 +5,8 @@ import { useTheme } from '@/shared/lib/hooks/useTheme/useTheme';
 import { NavBar } from '@/widgets/NavBar';
 import { SideBar } from '@/widgets/SideBar';
 import { getAuthInit, userActions } from '@/entities/User';
-import { AppRouter } from './provider/Router';
 import { HStack } from '@/shared/ui/Stack';
+import { AppRouter } from './provider/Router';
 
 const App = () => {
 	const { theme } = useTheme();

@@ -1,5 +1,5 @@
-import { ValidateProfileError } from '../../consts/consts';
 import { Profile } from '@/entities/Profile';
+import { ValidateProfileError } from '../../consts/consts';
 
 export const validateProfileData = (profileData: Profile): Array<ValidateProfileError> => {
 	const validateErrors: Array<ValidateProfileError> = [];

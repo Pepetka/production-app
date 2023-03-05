@@ -6,8 +6,8 @@ import { Button, ButtonTheme } from '../../../../Button';
 import { HStack } from '../../../../Stack';
 import { PopupPosition } from '../../../../../types/uiTypes';
 import { MenuItem } from '../model/types/menu';
-import cls from './Menu.module.scss';
 import clsPopups from '../../../style/Popups.module.scss';
+import cls from './Menu.module.scss';
 
 interface MenuProps {
 	className?: string;

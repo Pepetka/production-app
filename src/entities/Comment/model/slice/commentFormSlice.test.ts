@@ -1,6 +1,6 @@
 import { describe, expect, test } from '@jest/globals';
-import { commentFormReducer, commentFormActions } from './commentFormSlice';
 import { CommentFormSchema } from '../types/commentFormSchema';
+import { commentFormReducer, commentFormActions } from './commentFormSlice';
 
 describe('addCommentFormSlice', () => {
 	test('setText', () => {

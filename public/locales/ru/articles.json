@@ -39,5 +39,8 @@
 	"Image block": "Блок с изображением",
 	"Image title": "Заголовок изображения",
 	"Delete": "Удалить",
-	"Article title": "Заголовок статьи"
+	"Article title": "Заголовок статьи",
+	"Require blocks data": "Заполните содержимое статьи",
+	"Require article header data": "Заполните заголовок статьи",
+	"Require article types": "Выберите темы статьи"
 }

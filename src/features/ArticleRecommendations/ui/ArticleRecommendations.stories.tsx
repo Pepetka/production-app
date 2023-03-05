@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Article, ArticleBlockType, ArticleType } from '@/entities/Article';
-import { ArticleRecommendations } from './ArticleRecommendations';
 import { UserRole } from '@/shared/const/role';
+import { ArticleRecommendations } from './ArticleRecommendations';
 
 export default {
 	title: 'features/ArticleRecommendations',
@@ -15,6 +15,7 @@ const Template: ComponentStory<typeof ArticleRecommendations> = (args) => <Artic
 
 const articles: Array<Article> = [
 	{
+		userId: 'user',
 		user: {
 			username: 'user',
 			role: UserRole.USER,
@@ -40,6 +41,7 @@ const articles: Array<Article> = [
 		views: 10101,
 	},
 	{
+		userId: 'user',
 		user: {
 			username: 'user',
 			role: UserRole.USER,
@@ -65,6 +67,7 @@ const articles: Array<Article> = [
 		views: 10101,
 	},
 	{
+		userId: 'admin',
 		user: {
 			username: 'admin',
 			role: UserRole.ADMIN,
@@ -90,6 +93,7 @@ const articles: Array<Article> = [
 		views: 10101,
 	},
 	{
+		userId: 'user',
 		user: {
 			username: 'user',
 			role: UserRole.USER,

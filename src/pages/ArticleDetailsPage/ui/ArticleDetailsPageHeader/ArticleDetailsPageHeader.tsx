@@ -5,8 +5,8 @@ import { useSelector } from 'react-redux';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { getArticleData } from '@/entities/Article';
 import { HStack } from '@/shared/ui/Stack';
-import { getCanEditArticle } from '../../model/selectors/getCanEditArticle/getCanEditArticle';
 import { getArticleEditPagePath, getArticlesPagePath } from '@/shared/const/router';
+import { getCanEditArticle } from '../../model/selectors/getCanEditArticle/getCanEditArticle';
 import cls from './ArticleDetailsPageHeader.module.scss';
 
 interface ArticleDetailsPageHeaderProps {

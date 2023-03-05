@@ -1,9 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { UserRole } from '@/shared/const/role';
 import { ArticleBlockType, ArticlesView, ArticleType } from '../../model/consts/consts';
 import type { Article } from '../../model/types/article';
-
 import { ArticlesListItem } from './ArticlesListItem';
-import { UserRole } from '@/shared/const/role';
 
 export default {
 	title: 'entities/ArticlesList/ArticlesListItem',
@@ -23,6 +22,7 @@ const article: Article = {
 	views: 1000,
 	createdAt: 'date',
 	img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
+	userId: 'some id',
 	user: {
 		username: 'username',
 		id: 'some id',

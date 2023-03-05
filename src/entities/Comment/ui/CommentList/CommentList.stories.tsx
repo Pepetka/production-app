@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { CommentList } from './CommentList';
 import { UserRole } from '@/shared/const/role';
+import { CommentList } from './CommentList';
 
 export default {
 	title: 'entities/Comment/CommentList',

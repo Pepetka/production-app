@@ -1,6 +1,6 @@
 import { describe, expect, test } from '@jest/globals';
 import { StateSchema } from '@/app/provider/Store';
-import { getArticleLoading } from './getEditableArticleDetailsLoading';
+import { getEditableArticleDetailsLoading } from './getEditableArticleDetailsLoading';
 
 describe('getProfileLoading', () => {
 	test('return profile loading', () => {
@@ -10,6 +10,6 @@ describe('getProfileLoading', () => {
 			},
 		};
 
-		expect(getArticleLoading(state as StateSchema)).toEqual(true);
+		expect(getEditableArticleDetailsLoading(state as StateSchema)).toEqual(true);
 	});
 });

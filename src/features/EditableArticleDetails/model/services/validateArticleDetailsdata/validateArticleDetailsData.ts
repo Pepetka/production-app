@@ -1,5 +1,5 @@
-import { ValidateEditableArticleDetailsError } from '../../consts/consts';
 import { Article, ArticleBlockType } from '@/entities/Article';
+import { ValidateEditableArticleDetailsError } from '../../consts/consts';
 
 export const validateArticleDetailsData = (articleData: Article): Array<ValidateEditableArticleDetailsError> => {
 	const validateErrors: Array<ValidateEditableArticleDetailsError> = [];

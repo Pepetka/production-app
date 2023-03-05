@@ -5,8 +5,8 @@ import { StateSchema } from '@/app/provider/Store';
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
 import { profileReducer } from '../../model/slice/profileSlice';
-import { EditableProfileCard } from './EditableProfileCard';
 import { ValidateProfileError } from '../../model/consts/consts';
+import { EditableProfileCard } from './EditableProfileCard';
 
 export default {
 	title: 'features/EditableProfileCard/EditableProfileCard',

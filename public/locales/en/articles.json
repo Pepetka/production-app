@@ -39,5 +39,8 @@
 	"Image block": "Image block",
 	"Image title": "Image title",
 	"Delete": "Delete",
-	"Article title": "Article title"
+	"Article title": "Article title",
+	"Require blocks data": "Require blocks data",
+	"Require article header data": "Require article header data",
+	"Require article types": "Require article types"
 }

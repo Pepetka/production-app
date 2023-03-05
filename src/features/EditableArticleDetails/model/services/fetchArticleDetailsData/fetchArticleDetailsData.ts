@@ -3,7 +3,7 @@ import { ThunkConfig } from '@/app/provider/Store';
 import { Article } from '@/entities/Article';
 import { getAuthData } from '@/entities/User';
 
-export const fetchArticleDetailsData = createAsyncThunk<Omit<Article, 'user'>, string | undefined, ThunkConfig<string>>(
+export const fetchArticleDetailsData = createAsyncThunk<Article, string | undefined, ThunkConfig<string>>(
 	'editableArticleDetails/fetchArticleDetailsData',
 	async (articleId, { rejectWithValue, extra, getState }) => {
 		const authData = getAuthData(getState());
@@ -14,6 +14,7 @@ export const fetchArticleDetailsData = createAsyncThunk<Omit<Article, 'user'>, s
 				title: '',
 				subtitle: '',
 				userId: authData!.id,
+				user: authData!,
 				type: [],
 				blocks: [],
 				views: 0,
@@ -22,7 +23,11 @@ export const fetchArticleDetailsData = createAsyncThunk<Omit<Article, 'user'>, s
 		}
 
 		try {
-			const response = await extra.api.get<Omit<Article, 'user'>>(`/articles/${articleId}`);
+			const response = await extra.api.get<Article>(`/articles/${articleId}`, {
+				params: {
+					_expand: 'user',
+				},
+			});
 
 			if (!response.data) {
 				throw new Error('error');

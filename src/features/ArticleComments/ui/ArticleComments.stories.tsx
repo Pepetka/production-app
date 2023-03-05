@@ -3,8 +3,8 @@ import { ReducersMapObject } from '@reduxjs/toolkit';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { Comment, commentFormReducer } from '@/entities/Comment';
 import { StateSchema } from '@/app/provider/Store';
-import { ArticleComments } from './ArticleComments';
 import { UserRole } from '@/shared/const/role';
+import { ArticleComments } from './ArticleComments';
 
 export default {
 	title: 'features/ArticleComments',

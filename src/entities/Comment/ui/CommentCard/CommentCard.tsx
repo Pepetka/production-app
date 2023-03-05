@@ -4,8 +4,8 @@ import { Text } from '@/shared/ui/Text';
 import { Avatar, AvatarSize } from '@/shared/ui/Avatar';
 import { AppLink } from '@/shared/ui/AppLink';
 import { HStack, VStack } from '@/shared/ui/Stack';
-import { Comment } from '../../model/types/comment';
 import { getProfilePagePath } from '@/shared/const/router';
+import { Comment } from '../../model/types/comment';
 import cls from './CommentCard.module.scss';
 
 interface CommentCardProps {

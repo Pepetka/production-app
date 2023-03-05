@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { NotificationList } from './NotificationList';
 import { Notification } from '../../model/types/notification';
+import { NotificationList } from './NotificationList';
 
 export default {
 	title: 'entities/Notification/NotificationList',

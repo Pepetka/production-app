@@ -9,12 +9,12 @@ import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { Avatar, AvatarSize } from '@/shared/ui/Avatar';
 import { AppLink } from '@/shared/ui/AppLink';
 import { HStack, VStack } from '@/shared/ui/Stack';
-import type { Article, ArticleTextBlock } from '../../model/types/article';
-import { ArticleBlockType, ArticlesView, ArticleType } from '../../model/consts/consts';
-import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { AppImg } from '@/shared/ui/AppImg';
 import { Skeleton } from '@/shared/ui/Skeleton';
 import { getArticleDetailsPagePath, getProfilePagePath } from '@/shared/const/router';
+import type { Article, ArticleTextBlock } from '../../model/types/article';
+import { ArticleBlockType, ArticlesView, ArticleType } from '../../model/consts/consts';
+import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import cls from './ArticlesListItem.module.scss';
 
 interface ArticlesListItemProps {

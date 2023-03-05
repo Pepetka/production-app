@@ -1,9 +1,9 @@
 import 'whatwg-fetch';
 import { screen } from '@testing-library/react';
 import { componentTestRender } from '@/shared/lib/componentTestRender/comopnentTestRender';
-import { AppRouter } from './AppRouter';
-import { routeConfig } from '../routeConfig/routeConfig';
 import { UserRole } from '@/shared/const/role';
+import { routeConfig } from '../routeConfig/routeConfig';
+import { AppRouter } from './AppRouter';
 
 describe('AppRouter', () => {
 	test('Be in the document', async () => {
