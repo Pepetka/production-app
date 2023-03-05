@@ -42,5 +42,7 @@
 	"Article title": "Заголовок статьи",
 	"Require blocks data": "Заполните содержимое статьи",
 	"Require article header data": "Заполните заголовок статьи",
-	"Require article types": "Выберите темы статьи"
+	"Require article types": "Выберите темы статьи",
+	"Loading": "Загрузка...",
+	"Load more": "Больше статей"
 }

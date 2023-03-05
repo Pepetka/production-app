@@ -42,5 +42,7 @@
 	"Article title": "Article title",
 	"Require blocks data": "Require blocks data",
 	"Require article header data": "Require article header data",
-	"Require article types": "Require article types"
+	"Require article types": "Require article types",
+	"Loading": "Loading...",
+	"Load more": "Load more"
 }
