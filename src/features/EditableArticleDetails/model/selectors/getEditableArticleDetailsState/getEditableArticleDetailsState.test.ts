@@ -2,15 +2,15 @@ import { describe, expect, test } from '@jest/globals';
 import { StateSchema } from '@/app/provider/Store';
 import { getEditableArticleDetailsState } from './getEditableArticleDetailsState';
 
-describe('getProfileState', () => {
-	test('return profile state', () => {
+describe('getEditableArticleDetailsState', () => {
+	test('return EditableArticleDetails state', () => {
 		const state: DeepPartial<StateSchema> = {
-			profile: {
+			editableArticleDetails: {
 				readOnly: false,
 				error: 'some error',
 				loading: true,
 				data: {
-					username: 'some username',
+					title: 'some title',
 				},
 			},
 		};
@@ -20,7 +20,7 @@ describe('getProfileState', () => {
 			error: 'some error',
 			loading: true,
 			data: {
-				username: 'some username',
+				title: 'some title',
 			},
 		});
 	});

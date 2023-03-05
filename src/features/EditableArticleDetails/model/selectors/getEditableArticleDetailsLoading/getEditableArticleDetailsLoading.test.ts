@@ -2,10 +2,10 @@ import { describe, expect, test } from '@jest/globals';
 import { StateSchema } from '@/app/provider/Store';
 import { getEditableArticleDetailsLoading } from './getEditableArticleDetailsLoading';
 
-describe('getProfileLoading', () => {
-	test('return profile loading', () => {
+describe('getEditableArticleDetailsLoading', () => {
+	test('return EditableArticleDetails loading', () => {
 		const state: DeepPartial<StateSchema> = {
-			profile: {
+			editableArticleDetails: {
 				loading: true,
 			},
 		};

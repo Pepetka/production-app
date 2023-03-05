@@ -2,10 +2,10 @@ import { describe, expect, test } from '@jest/globals';
 import { StateSchema } from '@/app/provider/Store';
 import { getEditableArticleDetailsReadOnly } from './getEditableArticleDetailsReadOnly';
 
-describe('getProfileReadOnly', () => {
-	test('return profile read only', () => {
+describe('getEditableArticleDetailsReadOnly', () => {
+	test('return EditableArticleDetails readOnly', () => {
 		const state: DeepPartial<StateSchema> = {
-			profile: {
+			editableArticleDetails: {
 				readOnly: false,
 			},
 		};

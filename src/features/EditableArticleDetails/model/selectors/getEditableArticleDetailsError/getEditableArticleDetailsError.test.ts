@@ -2,10 +2,10 @@ import { describe, expect, test } from '@jest/globals';
 import { StateSchema } from '@/app/provider/Store';
 import { getEditableArticleDetailsError } from './getEditableArticleDetailsError';
 
-describe('getProfileError', () => {
-	test('return profile error', () => {
+describe('getEditableArticleDetailsError', () => {
+	test('return EditableArticleDetails error', () => {
 		const state: DeepPartial<StateSchema> = {
-			profile: {
+			editableArticleDetails: {
 				error: 'Some error',
 			},
 		};

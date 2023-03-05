@@ -3,8 +3,8 @@ import type { StateSchema } from '@/app/provider/Store';
 import { ValidateEditableArticleDetailsError } from '../../consts/consts';
 import { getEditableArticleDetailsValidationErrors } from './getEditableArticleDetailsValidationErrors';
 
-describe('getProfileValidationErrors', () => {
-	test('return profile validation error', () => {
+describe('getEditableArticleDetailsValidationErrors', () => {
+	test('return EditableArticleDetails validation errors', () => {
 		const state: DeepPartial<StateSchema> = {
 			editableArticleDetails: {
 				validateErrors: [ValidateEditableArticleDetailsError.REQUIRE_BLOCKS_DATA, ValidateEditableArticleDetailsError.REQUIRE_ARTICLE_TYPES],

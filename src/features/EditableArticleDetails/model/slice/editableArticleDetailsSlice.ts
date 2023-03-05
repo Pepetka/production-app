@@ -125,11 +125,6 @@ export const editableArticleDetailsSlice = createSlice({
 			});
 			state.formData = { ...state.formData, blocks: newBlocks };
 		},
-		cancelEdit: (state) => {
-			state.readOnly = true;
-			state.formData = state.data;
-			state.validateErrors = undefined;
-		},
 		changeReadOnly: (state, { payload }: PayloadAction<boolean>) => {
 			state.readOnly = payload;
 		},

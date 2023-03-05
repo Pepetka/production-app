@@ -2,18 +2,18 @@ import { describe, expect, test } from '@jest/globals';
 import { StateSchema } from '@/app/provider/Store';
 import { getEditableArticleDetailsFormData } from './getEditableArticleDetailsFormData';
 
-describe('getProfileFormData', () => {
-	test('return profile form data', () => {
+describe('getEditableArticleDetailsFormData', () => {
+	test('return EditableArticleDetails FormData', () => {
 		const state: DeepPartial<StateSchema> = {
-			profile: {
+			editableArticleDetails: {
 				formData: {
-					username: 'Some username',
+					title: 'Some title',
 				},
 			},
 		};
 
 		expect(getEditableArticleDetailsFormData(state as StateSchema)).toEqual({
-			username: 'Some username',
+			title: 'Some title',
 		});
 	});
 });
