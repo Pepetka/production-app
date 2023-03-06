@@ -6,39 +6,50 @@ import { Textarea, TextareaTheme } from '@/shared/ui/Textarea';
 import { ArticleTextBlock } from '@/entities/Article';
 
 interface IEditableArticleDetailsTextBlockProps {
+	'data-testid'?: string;
 	block: ArticleTextBlock;
 	onTextTitleChange?: (id: string, text: string) => void;
 	onTextParagraphsChange?: (id: string, text: string) => void;
 }
 
-export const EditableArticleDetailsTextBlock = memo(({ block, onTextParagraphsChange, onTextTitleChange }: IEditableArticleDetailsTextBlockProps) => {
-	const { t } = useTranslation('articles');
+export const EditableArticleDetailsTextBlock = memo(
+	({ block, onTextParagraphsChange, onTextTitleChange, 'data-testid': dataTestId }: IEditableArticleDetailsTextBlockProps) => {
+		const { t } = useTranslation('articles');
 
-	const onTextTitleChangeHandle = useCallback(
-		(text: string) => {
-			onTextTitleChange?.(block.id, text);
-		},
-		[block.id, onTextTitleChange],
-	);
+		const onTextTitleChangeHandle = useCallback(
+			(text: string) => {
+				onTextTitleChange?.(block.id, text);
+			},
+			[block.id, onTextTitleChange],
+		);
 
-	const onTextParagraphsChangeHandle = useCallback(
-		(text: string) => {
-			onTextParagraphsChange?.(block.id, text);
-		},
-		[block.id, onTextParagraphsChange],
-	);
+		const onTextParagraphsChangeHandle = useCallback(
+			(text: string) => {
+				onTextParagraphsChange?.(block.id, text);
+			},
+			[block.id, onTextParagraphsChange],
+		);
 
-	return (
-		<>
-			<Text title={t('Text block')} w100 align="center" />
-			<Input value={block.title} onChange={onTextTitleChangeHandle} theme={InputTheme.INVERT} textInvert floatPlaceholder={t('Block title')} />
-			<Textarea
-				value={block.paragraphs.join('\n')}
-				onChange={onTextParagraphsChangeHandle}
-				theme={TextareaTheme.INVERT}
-				textInvert
-				floatPlaceholder={t('Paragraphs')}
-			/>
-		</>
-	);
-});
+		return (
+			<>
+				<Text title={t('Text block')} w100 align="center" />
+				<Input
+					data-testid={`${dataTestId}.title`}
+					value={block.title}
+					onChange={onTextTitleChangeHandle}
+					theme={InputTheme.INVERT}
+					textInvert
+					floatPlaceholder={t('Block title')}
+				/>
+				<Textarea
+					data-testid={`${dataTestId}.paragraphs`}
+					value={block.paragraphs.join('\n')}
+					onChange={onTextParagraphsChangeHandle}
+					theme={TextareaTheme.INVERT}
+					textInvert
+					floatPlaceholder={t('Paragraphs')}
+				/>
+			</>
+		);
+	},
+);

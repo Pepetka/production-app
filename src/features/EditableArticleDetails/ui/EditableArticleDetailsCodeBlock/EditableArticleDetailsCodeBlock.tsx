@@ -5,11 +5,12 @@ import { Textarea, TextareaTheme } from '@/shared/ui/Textarea';
 import { ArticleCodeBlock } from '@/entities/Article';
 
 interface IEditableArticleDetailsCodeBlockProps {
+	'data-testid'?: string;
 	block: ArticleCodeBlock;
 	onCodeChange?: (id: string, text: string) => void;
 }
 
-export const EditableArticleDetailsCodeBlock = memo(({ block, onCodeChange }: IEditableArticleDetailsCodeBlockProps) => {
+export const EditableArticleDetailsCodeBlock = memo(({ block, onCodeChange, 'data-testid': dataTestId }: IEditableArticleDetailsCodeBlockProps) => {
 	const { t } = useTranslation('articles');
 
 	const onCodeChangeHandle = useCallback(
@@ -22,7 +23,14 @@ export const EditableArticleDetailsCodeBlock = memo(({ block, onCodeChange }: IE
 	return (
 		<>
 			<Text title={t('Code block')} w100 align="center" />
-			<Textarea value={block.code} onChange={onCodeChangeHandle} theme={TextareaTheme.INVERT} textInvert floatPlaceholder={t('Code')} />
+			<Textarea
+				data-testid={`${dataTestId}.code`}
+				value={block.code}
+				onChange={onCodeChangeHandle}
+				theme={TextareaTheme.INVERT}
+				textInvert
+				floatPlaceholder={t('Code')}
+			/>
 		</>
 	);
 });

@@ -6,6 +6,7 @@ import { Tabs } from '@/shared/ui/Tabs';
 import { ArticleType } from '@/entities/Article';
 
 interface IEditableArticleDetailsHeaderProps {
+	'data-testid'?: string;
 	avatarValue?: string;
 	titleValue?: string;
 	subtitleValue?: string;
@@ -26,6 +27,7 @@ export const EditableArticleDetailsHeader = memo(
 		onTitleChange,
 		onSelectTab,
 		types = [],
+		'data-testid': dataTestId,
 	}: IEditableArticleDetailsHeaderProps) => {
 		const { t } = useTranslation('articles');
 
@@ -40,11 +42,32 @@ export const EditableArticleDetailsHeader = memo(
 
 		return (
 			<VStack align="start" w100>
-				<Tabs tabs={tabs} selected={types} onClick={onSelectTab} />
+				<Tabs data-testid={`${dataTestId}.tabs`} tabs={tabs} selected={types} onClick={onSelectTab} />
 				<VStack w100>
-					<Input theme={InputTheme.INVERT} textInvert floatPlaceholder={t('Article image')} value={avatarValue} onChange={onAvatarChange} />
-					<Input theme={InputTheme.INVERT} textInvert floatPlaceholder={t('Article title')} value={titleValue} onChange={onTitleChange} />
-					<Input theme={InputTheme.INVERT} textInvert floatPlaceholder={t('SubTitle')} value={subtitleValue} onChange={onSubtitleChange} />
+					<Input
+						data-testid={`${dataTestId}.article.img`}
+						theme={InputTheme.INVERT}
+						textInvert
+						floatPlaceholder={t('Article image')}
+						value={avatarValue}
+						onChange={onAvatarChange}
+					/>
+					<Input
+						data-testid={`${dataTestId}.article.title`}
+						theme={InputTheme.INVERT}
+						textInvert
+						floatPlaceholder={t('Article title')}
+						value={titleValue}
+						onChange={onTitleChange}
+					/>
+					<Input
+						data-testid={`${dataTestId}.article.subtitle`}
+						theme={InputTheme.INVERT}
+						textInvert
+						floatPlaceholder={t('SubTitle')}
+						value={subtitleValue}
+						onChange={onSubtitleChange}
+					/>
 				</VStack>
 			</VStack>
 		);

@@ -12,6 +12,7 @@ import { EditableArticleDetailsImgBlock } from '../EditableArticleDetailsImgBloc
 import cls from './EditableArticleDetailsBlocks.module.scss';
 
 interface IEditableArticleDetailsBlocksProps {
+	'data-testid'?: string;
 	blocks?: Array<ArticleBlock>;
 	onAddBlock?: (tab: ArticleBlockType) => void;
 	onDeleteBlock?: (id: string) => void;
@@ -32,6 +33,7 @@ export const EditableArticleDetailsBlocks = memo(
 		onImgChange,
 		onImgTitleChange,
 		onDeleteBlock,
+		'data-testid': dataTestId,
 	}: IEditableArticleDetailsBlocksProps) => {
 		const { t } = useTranslation('articles');
 		const tabs: Record<ArticleBlockType, string> = useMemo(
@@ -47,12 +49,24 @@ export const EditableArticleDetailsBlocks = memo(
 			switch (block.type) {
 				case ArticleBlockType.TEXT:
 					return (
-						<EditableArticleDetailsTextBlock block={block} onTextTitleChange={onTextTitleChange} onTextParagraphsChange={onTextParagraphsChange} />
+						<EditableArticleDetailsTextBlock
+							data-testid={`${dataTestId}.textBlock`}
+							block={block}
+							onTextTitleChange={onTextTitleChange}
+							onTextParagraphsChange={onTextParagraphsChange}
+						/>
 					);
 				case ArticleBlockType.CODE:
-					return <EditableArticleDetailsCodeBlock block={block} onCodeChange={onCodeChange} />;
+					return <EditableArticleDetailsCodeBlock data-testid={`${dataTestId}.codeBlock`} block={block} onCodeChange={onCodeChange} />;
 				case ArticleBlockType.IMG:
-					return <EditableArticleDetailsImgBlock block={block} onImgChange={onImgChange} onImgTitleChange={onImgTitleChange} />;
+					return (
+						<EditableArticleDetailsImgBlock
+							data-testid={`${dataTestId}.imgBlock`}
+							block={block}
+							onImgChange={onImgChange}
+							onImgTitleChange={onImgTitleChange}
+						/>
+					);
 				default:
 					break;
 			}
@@ -63,7 +77,7 @@ export const EditableArticleDetailsBlocks = memo(
 				{blocks?.map((block) => (
 					<Card className={cls.blockWrapper} w100 key={block.id}>
 						<HStack justify="end">
-							<Button theme={ButtonTheme.OUTLINE_PRIMARY} onClick={() => onDeleteBlock?.(block.id)}>
+							<Button data-testid={`${dataTestId}.deleteBlock`} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={() => onDeleteBlock?.(block.id)}>
 								{/* eslint-disable-next-line */}
 								<span>&#10006;</span>
 							</Button>
@@ -74,7 +88,7 @@ export const EditableArticleDetailsBlocks = memo(
 				<HStack w100 justify="center">
 					<HStack gap="8">
 						<Text title={t('Add block')} TitleTag="p" />
-						<Tabs tabs={tabs} onClick={onAddBlock} />
+						<Tabs data-testid={`${dataTestId}.tabs`} tabs={tabs} onClick={onAddBlock} />
 					</HStack>
 				</HStack>
 			</VStack>

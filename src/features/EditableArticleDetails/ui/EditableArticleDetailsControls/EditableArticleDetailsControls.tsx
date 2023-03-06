@@ -5,6 +5,7 @@ import { HStack } from '@/shared/ui/Stack';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 
 interface IEditableArticleDetailsControlsProps {
+	'data-testid'?: string;
 	className?: string;
 	isEdit?: boolean;
 	onEdit?: () => void;
@@ -14,25 +15,25 @@ interface IEditableArticleDetailsControlsProps {
 }
 
 export const EditableArticleDetailsControls = memo(
-	({ className, onEdit, onPreview, onSave, isEdit, onDelete }: IEditableArticleDetailsControlsProps) => {
+	({ className, onEdit, onPreview, onSave, isEdit, onDelete, 'data-testid': dataTestId }: IEditableArticleDetailsControlsProps) => {
 		const { t } = useTranslation('articles');
 
 		return (
 			<HStack w100 justify="between" className={classNames('', {}, [className])}>
 				{isEdit ? (
-					<Button theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onPreview}>
+					<Button data-testid={`${dataTestId}.preview`} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onPreview}>
 						{t('Preview')}
 					</Button>
 				) : (
-					<Button theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onEdit}>
+					<Button data-testid={`${dataTestId}.edit`} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onEdit}>
 						{t('Edit')}
 					</Button>
 				)}
 				<HStack gap="8">
-					<Button theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onDelete}>
+					<Button data-testid={`${dataTestId}.delete`} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onDelete}>
 						{t('Delete')}
 					</Button>
-					<Button theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onSave}>
+					<Button data-testid={`${dataTestId}.save`} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onSave}>
 						{t('Save')}
 					</Button>
 				</HStack>

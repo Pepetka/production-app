@@ -1,6 +1,6 @@
 export const updateProfile = () => {
 	cy.getByTestId('EditableProfileCard.EditBtn').click();
-	cy.getByTestId('EditableProfileCard.Username').clear().type('newTestUser');
+	cy.getByTestId('EditableProfileCard.Username').wait(500).clear().type('newTestUser', { delay: 500 });
 	cy.getByTestId('EditableProfileCard.SaveBtn').click();
 };
 

@@ -7,7 +7,7 @@ const ArticleEditPage = memo(() => {
 	const params = useParams<{ id: string }>();
 
 	return (
-		<Page>
+		<Page data-testid="ArticleEditPage">
 			<EditableArticleDetails articleId={params.id} />
 		</Page>
 	);

@@ -31,8 +31,8 @@ const ArticleDetailsPage = memo(({ storybookId }: ArticleDetailsPageProps) => {
 	useAppEffect(effect);
 
 	return (
-		<DynamicModuleLoader reducerKey="article" reducer={articleReducer}>
-			<Page>
+		<Page data-testid="ArticleDetailsPage">
+			<DynamicModuleLoader reducerKey="article" reducer={articleReducer}>
 				<VStack w100 align="start" gap="32">
 					<ArticleDetailsPageHeader />
 					<ArticleDetails article={article} loading={loading} error={error} />
@@ -44,8 +44,8 @@ const ArticleDetailsPage = memo(({ storybookId }: ArticleDetailsPageProps) => {
 						</>
 					)}
 				</VStack>
-			</Page>
-		</DynamicModuleLoader>
+			</DynamicModuleLoader>
+		</Page>
 	);
 });
 

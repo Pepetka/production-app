@@ -143,8 +143,15 @@ export const EditableArticleDetails = memo(({ articleId }: IEditableArticleDetai
 
 	return (
 		<DynamicModuleLoader reducerKey="editableArticleDetails" reducer={editableArticleDetailsReducer}>
-			<VStack gap="16" w100>
-				<EditableArticleDetailsControls isEdit={!readOnly} onEdit={onEdit} onSave={onSave} onPreview={onPreview} onDelete={onDelete} />
+			<VStack gap="16" w100 data-testid="EditableArticleDetails">
+				<EditableArticleDetailsControls
+					data-testid="EditableArticleDetails"
+					isEdit={!readOnly}
+					onEdit={onEdit}
+					onSave={onSave}
+					onPreview={onPreview}
+					onDelete={onDelete}
+				/>
 				{validationErrors?.map((error) => (
 					<Text data-testid={`EditableArticleDetails.${error}`} key={error} title={t(error)} theme={TextTheme.ERROR} align="center" />
 				))}
@@ -153,6 +160,7 @@ export const EditableArticleDetails = memo(({ articleId }: IEditableArticleDetai
 				) : (
 					<>
 						<EditableArticleDetailsHeader
+							data-testid="EditableArticleDetails"
 							types={article?.type}
 							avatarValue={article?.img}
 							titleValue={article?.title}
@@ -163,6 +171,7 @@ export const EditableArticleDetails = memo(({ articleId }: IEditableArticleDetai
 							onSubtitleChange={onSubtitleChange}
 						/>
 						<EditableArticleDetailsBlocks
+							data-testid="EditableArticleDetails"
 							blocks={article?.blocks}
 							onAddBlock={onAddBlock}
 							onDeleteBlock={onDeleteBlock}
