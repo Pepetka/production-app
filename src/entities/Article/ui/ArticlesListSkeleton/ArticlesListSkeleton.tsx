@@ -31,16 +31,16 @@ export const ArticlesListSkeleton = memo(({ className, view }: ArticlesListSkele
 					</HStack>
 				</VStack>
 				<Skeleton width="100%" height={200} />
-				<div className={cls.wrapper}>
-					<VStack gap="16">
-						<Skeleton width="100%" height={80} />
-						<Skeleton width="100%" height={80} />
+				<VStack w100 justify="between" className={cls.wrapper}>
+					<VStack w100 gap="16">
+						<Skeleton width="100%" height={60} />
+						<Skeleton width="100%" height={60} />
 					</VStack>
-					<HStack justify="between" className={cls.btnBlock}>
+					<HStack w100 justify="between" className={cls.btnBlock}>
 						<Skeleton width={150} height={50} />
 						<Skeleton width={100} height={16} />
 					</HStack>
-				</div>
+				</VStack>
 			</Card>
 		);
 	}
