@@ -9,7 +9,7 @@ describe('Edit profile', () => {
 			profileId = data.id;
 			cy.visit(getProfilePagePath(profileId));
 		});
-		cy.wait('getProfile');
+		cy.wait('@getProfile');
 	});
 
 	afterEach(() => {
@@ -22,7 +22,7 @@ describe('Edit profile', () => {
 
 	it('Edit profile', () => {
 		cy.updateProfile();
-		cy.wait('getProfile');
+		cy.wait('@getProfile');
 		cy.getByTestId('EditableProfileCard.Username').should('have.value', 'newTestUser');
 	});
 });
