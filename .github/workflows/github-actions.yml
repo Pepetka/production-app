@@ -59,6 +59,12 @@ jobs:
         id: deployment
         if: always()
         uses: actions/deploy-pages@v1
+      - name: e2e testing
+        uses: cypress-io/github-action@v5
+        with:
+          start: npm run start:dev:vite
+          wait-on: 'http://localhost:5173'
+          config: baseUrl=http://localhost:5173/
 
   checks:
     runs-on: ubuntu-latest
