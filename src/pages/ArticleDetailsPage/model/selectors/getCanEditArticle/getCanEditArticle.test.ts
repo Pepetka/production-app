@@ -42,12 +42,14 @@ describe('getCanEditArticle', () => {
 	});
 
 	test('empty state', () => {
-		expect(getCanEditArticle({
-			user: {
-				authData: {
-					id: 'some user id 1',
+		expect(
+			getCanEditArticle({
+				user: {
+					authData: {
+						id: 'some user id 1',
+					},
 				},
-			},
-		} as StateSchema)).toEqual(false);
+			} as StateSchema),
+		).toEqual(false);
 	});
 });

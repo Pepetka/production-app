@@ -11,9 +11,8 @@ describe('getProfileValidationErrors', () => {
 			},
 		};
 
-		expect(getProfileValidationErrors(state as StateSchema)?.sort()).toEqual([
-			ValidateProfileError.INCORRECT_AGE,
-			ValidateProfileError.INCORRECT_USERNAME,
-		].sort());
+		expect(getProfileValidationErrors(state as StateSchema)?.sort()).toEqual(
+			[ValidateProfileError.INCORRECT_AGE, ValidateProfileError.INCORRECT_USERNAME].sort(),
+		);
 	});
 });

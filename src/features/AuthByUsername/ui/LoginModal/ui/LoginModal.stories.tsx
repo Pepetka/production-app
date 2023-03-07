@@ -33,6 +33,4 @@ LoginModalStory.args = {
 	isOpen: true,
 	onCloseModal: () => {},
 };
-LoginModalStory.decorators = [
-	StoreDecorator(initialState as StateSchema, asyncReducers as ReducersMapObject<StateSchema>),
-];
+LoginModalStory.decorators = [StoreDecorator(initialState as StateSchema, asyncReducers as ReducersMapObject<StateSchema>)];

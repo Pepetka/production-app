@@ -9,9 +9,14 @@ export default {
 	},
 	decorators: [
 		(StoryComponent) => (
-			<div style={{
-				width: '500px', height: '300px', display: 'flex', justifyContent: 'center', alignItems: 'center',
-			}}
+			<div
+				style={{
+					width: '500px',
+					height: '300px',
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+				}}
 			>
 				<StoryComponent />
 			</div>

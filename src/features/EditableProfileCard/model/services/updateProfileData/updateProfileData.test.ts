@@ -2,9 +2,9 @@ import { describe, expect, test } from '@jest/globals';
 import { TestAsyncThunk } from '@/shared/lib/testAsyncThunk/testAsyncThunk';
 import { Country } from '@/entities/Country';
 import { Currency } from '@/entities/Currency';
-import { updateProfileData } from './updateProfileData';
-import { ValidateProfileError } from '../../consts/consts';
 import { Profile } from '@/entities/Profile';
+import { ValidateProfileError } from '../../consts/consts';
+import { updateProfileData } from './updateProfileData';
 
 describe('updateProfileData', () => {
 	const data: Profile = {
@@ -57,9 +57,8 @@ describe('updateProfileData', () => {
 
 		expect(thunk.api.put).not.toHaveBeenCalled();
 		expect(result.meta.requestStatus).toEqual('rejected');
-		expect((result.payload as Array<ValidateProfileError>).sort()).toEqual([
-			ValidateProfileError.INCORRECT_USERNAME,
-			ValidateProfileError.INCORRECT_AGE,
-		].sort());
+		expect((result.payload as Array<ValidateProfileError>).sort()).toEqual(
+			[ValidateProfileError.INCORRECT_USERNAME, ValidateProfileError.INCORRECT_AGE].sort(),
+		);
 	});
 });

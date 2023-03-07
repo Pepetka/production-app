@@ -48,18 +48,12 @@ const asyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
 
 export const LoginFormStory = Template.bind({});
 LoginFormStory.args = {};
-LoginFormStory.decorators = [
-	StoreDecorator(initialState as StateSchema, asyncReducers as ReducersMapObject<StateSchema>),
-];
+LoginFormStory.decorators = [StoreDecorator(initialState as StateSchema, asyncReducers as ReducersMapObject<StateSchema>)];
 
 export const LoginFormError = Template.bind({});
 LoginFormError.args = {};
-LoginFormError.decorators = [
-	StoreDecorator(initialStateError as StateSchema, asyncReducers as ReducersMapObject<StateSchema>),
-];
+LoginFormError.decorators = [StoreDecorator(initialStateError as StateSchema, asyncReducers as ReducersMapObject<StateSchema>)];
 
 export const LoginFormLoading = Template.bind({});
 LoginFormLoading.args = {};
-LoginFormLoading.decorators = [
-	StoreDecorator(initialStateLoading as StateSchema, asyncReducers as ReducersMapObject<StateSchema>),
-];
+LoginFormLoading.decorators = [StoreDecorator(initialStateLoading as StateSchema, asyncReducers as ReducersMapObject<StateSchema>)];

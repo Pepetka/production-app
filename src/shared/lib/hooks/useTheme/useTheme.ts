@@ -4,9 +4,9 @@ import { Theme } from '@/shared/const/theme';
 import { ThemeContext } from '@/shared/context/ThemeContext/ThemeContext';
 
 export interface ThemeHook {
-	theme: Theme
-	onThemeChange: () => void
-	setTheme: (theme: Theme) => void
+	theme: Theme;
+	onThemeChange: () => void;
+	setTheme: (theme: Theme) => void;
 }
 
 export const useTheme = (): ThemeHook => {

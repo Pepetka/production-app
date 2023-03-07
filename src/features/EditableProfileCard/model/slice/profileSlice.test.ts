@@ -10,10 +10,7 @@ describe('profileSlice', () => {
 			},
 		};
 
-		expect(profileReducer(
-			state as ProfileSchema,
-			profileActions.setProfileData({ age: '22' }),
-		)).toEqual({
+		expect(profileReducer(state as ProfileSchema, profileActions.setProfileData({ age: '22' }))).toEqual({
 			...state,
 			formData: {
 				username: 'Some username',
@@ -56,10 +53,7 @@ describe('profileSlice', () => {
 	});
 
 	test('undefined state', () => {
-		expect(profileReducer(
-			undefined,
-			profileActions.setProfileData({ age: '22' }),
-		)).toEqual({
+		expect(profileReducer(undefined, profileActions.setProfileData({ age: '22' }))).toEqual({
 			loading: false,
 			readOnly: true,
 			formData: {

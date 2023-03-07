@@ -1,6 +1,4 @@
-import {
-	FC, memo, SVGProps, useCallback, useState,
-} from 'react';
+import { FC, memo, SVGProps, useCallback, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
@@ -12,9 +10,9 @@ import ProfileIcon from '@/shared/assets/icons/profile_icon.svg';
 import ArticlesIcon from '@/shared/assets/icons/articles_icon.svg';
 import { getAuthData } from '@/entities/User';
 import { Flex, VStack } from '@/shared/ui/Stack';
-import { SideBarLink } from '../SideBarLink/SideBarLink';
-import { AppRoutes, routePaths } from '@/shared/const/router';
+import { AppRoutes, getAboutPagePath, getArticlesPagePath, getMainPagePath, getProfilePagePath } from '@/shared/const/router';
 import { AppRoutesProps } from '@/shared/types/router';
+import { SideBarLink } from '../SideBarLink/SideBarLink';
 import cls from './SideBar.module.scss';
 
 const navIcons: Record<string, FC<SVGProps<SVGSVGElement>>> = {
@@ -25,7 +23,7 @@ const navIcons: Record<string, FC<SVGProps<SVGSVGElement>>> = {
 };
 
 interface SideBarProps {
-	className?: string
+	className?: string;
 }
 export const SideBar = memo(({ className }: SideBarProps) => {
 	const [collapsed, setCollapsed] = useState(true);
@@ -36,35 +34,25 @@ export const SideBar = memo(({ className }: SideBarProps) => {
 	}, []);
 
 	const links: DeepPartial<Record<AppRoutes, AppRoutesProps>> = {
-		[AppRoutes.MAIN]: { path: routePaths.Main, authOnly: false },
-		[AppRoutes.ABOUT]: { path: routePaths.About, authOnly: false },
-		[AppRoutes.PROFILE]: { path: routePaths.Profile + (authData?.id ?? ''), authOnly: true },
-		[AppRoutes.ARTICLES]: { path: routePaths.Articles, authOnly: true },
+		[AppRoutes.MAIN]: { path: getMainPagePath(), authOnly: false },
+		[AppRoutes.ABOUT]: { path: getAboutPagePath(), authOnly: false },
+		[AppRoutes.PROFILE]: {
+			path: getProfilePagePath(authData?.id),
+			authOnly: true,
+		},
+		[AppRoutes.ARTICLES]: { path: getArticlesPagePath(), authOnly: true },
 	};
 
 	return (
 		<VStack data-testid="SideBar" Tag="aside" justify="between" className={classNames(cls.SideBar, { [cls.collapsed]: collapsed }, [className])}>
 			<VStack w100 gap="32">
-				<Button
-					theme={ButtonTheme.CLEAR}
-					className={cls.toggle}
-					onClick={onCollapse}
-					data-testid="SideBar.Toggle"
-					inverted
-				>
-					{collapsed ? '>' : '<'}
+				<Button theme={ButtonTheme.CLEAR} className={cls.toggle} onClick={onCollapse} data-testid="SideBar.Toggle" inverted>
+					{collapsed ? <span>&gt;</span> : <span>&lt;</span>}
 				</Button>
 
 				<VStack Tag="nav" gap="16" align="start">
 					{Object.entries(links).map(([routeName, { path, authOnly }]) => (
-						<SideBarLink
-							authOnly={authOnly}
-							key={path}
-							path={path!}
-							icon={navIcons[routeName]}
-							routeName={routeName}
-							collapsed={collapsed}
-						/>
+						<SideBarLink authOnly={authOnly} key={path} path={path!} icon={navIcons[routeName]} routeName={routeName} collapsed={collapsed} />
 					))}
 				</VStack>
 			</VStack>

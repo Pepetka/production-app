@@ -1,7 +1,7 @@
 import { describe, expect, test } from '@jest/globals';
 import { StateSchema } from '@/app/provider/Store';
+import { UserRole } from '@/shared/const/role';
 import { getIsAdmin, getAuthRole } from './getAuthRole';
-import { UserRole } from '@/shared/const';
 
 describe('getAuthRole', () => {
 	test('return auth role', () => {

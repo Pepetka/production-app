@@ -10,16 +10,14 @@ import cls from './SideBarLink.module.scss';
 
 interface SideBarLinkProps {
 	className?: string;
-	path: string
-	icon: FC<SVGProps<SVGSVGElement>>
-	collapsed: boolean
-	routeName: string
-	authOnly?: boolean
+	path: string;
+	icon: FC<SVGProps<SVGSVGElement>>;
+	collapsed: boolean;
+	routeName: string;
+	authOnly?: boolean;
 }
 
-export const SideBarLink = memo(({
-	className, path, icon, collapsed, routeName, authOnly,
-}: SideBarLinkProps) => {
+export const SideBarLink = memo(({ className, path, icon, collapsed, routeName, authOnly }: SideBarLinkProps) => {
 	const { t } = useTranslation();
 	const auth = useSelector(getAuthData);
 

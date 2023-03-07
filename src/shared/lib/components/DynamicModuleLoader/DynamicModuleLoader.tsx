@@ -4,14 +4,14 @@ import { Reducer } from '@reduxjs/toolkit';
 import { ReduxStoreWithManager, StateSchemaKey } from '@/app/provider/Store';
 
 interface DynamicModuleLoaderProps {
-	reducerKey: StateSchemaKey
-	reducer: Reducer
-	removeOnUnmount?: boolean
-	children: ReactNode
+	reducerKey: StateSchemaKey;
+	reducer: Reducer;
+	removeOnUnmount?: boolean;
+	children: ReactNode;
 }
 
 interface EffectProps {
-	effect: () => void
+	effect: () => void;
 }
 
 const Effect = ({ effect }: EffectProps) => {
@@ -19,9 +19,7 @@ const Effect = ({ effect }: EffectProps) => {
 	return null;
 };
 
-export const DynamicModuleLoader = ({
-	children, reducer, reducerKey, removeOnUnmount = true,
-}: DynamicModuleLoaderProps) => {
+export const DynamicModuleLoader = ({ children, reducer, reducerKey, removeOnUnmount = true }: DynamicModuleLoaderProps) => {
 	const store = useStore() as ReduxStoreWithManager;
 	const dispatch = useDispatch();
 

@@ -1,9 +1,9 @@
 import { useCallback, useMemo, useState } from 'react';
 
 interface UseHoverReturn {
-	hover: boolean
-	onMouseEnter: () => void
-	onMouseLeave: () => void
+	hover: boolean;
+	onMouseEnter: () => void;
+	onMouseLeave: () => void;
 }
 
 export const useHover = (): UseHoverReturn => {
@@ -17,11 +17,12 @@ export const useHover = (): UseHoverReturn => {
 		setHover(false);
 	}, []);
 
-	return useMemo(() => (
-		{
+	return useMemo(
+		() => ({
 			hover,
 			onMouseEnter,
 			onMouseLeave,
-		}
-	), [hover, onMouseEnter, onMouseLeave]);
+		}),
+		[hover, onMouseEnter, onMouseLeave],
+	);
 };

@@ -12,6 +12,8 @@ describe('getProfileFormData', () => {
 			},
 		};
 
-		expect(getProfileFormData(state as StateSchema)).toEqual({ username: 'Some username' });
+		expect(getProfileFormData(state as StateSchema)).toEqual({
+			username: 'Some username',
+		});
 	});
 });

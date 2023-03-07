@@ -20,12 +20,12 @@ const tabs = {
 export const TabsStory = Template.bind({});
 TabsStory.args = {
 	tabs,
-	selected: '1',
+	selected: ['1'],
 };
 
 export const TabsInvert = Template.bind({});
 TabsInvert.args = {
 	tabs,
-	selected: '1',
+	selected: ['1'],
 	inverted: true,
 };

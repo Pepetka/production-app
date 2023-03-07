@@ -1,15 +1,12 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ReducersMapObject } from '@reduxjs/toolkit';
-import withMock from 'storybook-addon-mock';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { StateSchema } from '@/app/provider/Store';
-import {
-	articleReducer, ArticleType, ArticleBlockType, Article,
-} from '@/entities/Article';
+import { articleReducer, ArticleType, ArticleBlockType, Article } from '@/entities/Article';
 import { Comment } from '@/entities/Comment';
 import { ArticleRatingType } from '@/features/ArticleRating';
+import { UserRole } from '@/shared/const/role';
 import ArticleDetailsPage from './ArticleDetailsPage';
-import { UserRole } from '@/shared/const';
 
 export default {
 	title: 'pages/ArticleDetailsPage/ArticleDetailsPage',
@@ -18,7 +15,6 @@ export default {
 		backgroundColor: { control: 'color' },
 	},
 	decorators: [
-		withMock,
 		StoreDecorator({
 			user: {
 				authData: {
@@ -63,6 +59,7 @@ const comments: Array<Comment> = [
 
 const articles: Array<Article> = [
 	{
+		userId: 'user',
 		user: {
 			username: 'user',
 			role: UserRole.USER,
@@ -75,8 +72,8 @@ const articles: Array<Article> = [
 				id: '1',
 				title: 'Title',
 				paragraphs: [
-					'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consectetur culpa distinctio et placeat'
-					+ ' praesentium, quasi tempora? Fugiat quasi, voluptatum.',
+					'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consectetur culpa distinctio et placeat' +
+						' praesentium, quasi tempora? Fugiat quasi, voluptatum.',
 				],
 				type: ArticleBlockType.TEXT,
 			},
@@ -88,6 +85,7 @@ const articles: Array<Article> = [
 		views: 10101,
 	},
 	{
+		userId: 'user',
 		user: {
 			username: 'user',
 			role: UserRole.USER,
@@ -100,8 +98,8 @@ const articles: Array<Article> = [
 				id: '1',
 				title: 'Title',
 				paragraphs: [
-					'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consectetur culpa distinctio et placeat'
-					+ ' praesentium, quasi tempora? Fugiat quasi, voluptatum.',
+					'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consectetur culpa distinctio et placeat' +
+						' praesentium, quasi tempora? Fugiat quasi, voluptatum.',
 				],
 				type: ArticleBlockType.TEXT,
 			},
@@ -113,6 +111,7 @@ const articles: Array<Article> = [
 		views: 10101,
 	},
 	{
+		userId: 'admin',
 		user: {
 			username: 'admin',
 			role: UserRole.ADMIN,
@@ -125,8 +124,8 @@ const articles: Array<Article> = [
 				id: '1',
 				title: 'Title',
 				paragraphs: [
-					'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consectetur culpa distinctio et placeat'
-					+ ' praesentium, quasi tempora? Fugiat quasi, voluptatum.',
+					'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consectetur culpa distinctio et placeat' +
+						' praesentium, quasi tempora? Fugiat quasi, voluptatum.',
 				],
 				type: ArticleBlockType.TEXT,
 			},
@@ -138,6 +137,7 @@ const articles: Array<Article> = [
 		views: 10101,
 	},
 	{
+		userId: 'user',
 		user: {
 			username: 'user',
 			role: UserRole.USER,
@@ -150,8 +150,8 @@ const articles: Array<Article> = [
 				id: '1',
 				title: 'Title',
 				paragraphs: [
-					'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consectetur culpa distinctio et placeat'
-					+ ' praesentium, quasi tempora? Fugiat quasi, voluptatum.',
+					'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consectetur culpa distinctio et placeat' +
+						' praesentium, quasi tempora? Fugiat quasi, voluptatum.',
 				],
 				type: ArticleBlockType.TEXT,
 			},
@@ -208,9 +208,7 @@ export const ArticleDetailsPageStory = Template.bind({});
 ArticleDetailsPageStory.args = {
 	storybookId: '1',
 };
-ArticleDetailsPageStory.decorators = [
-	StoreDecorator(state(false) as StateSchema, reducers as ReducersMapObject<StateSchema>),
-];
+ArticleDetailsPageStory.decorators = [StoreDecorator(state(false) as StateSchema, reducers as ReducersMapObject<StateSchema>)];
 ArticleDetailsPageStory.parameters = {
 	mockData: [
 		{
@@ -238,9 +236,7 @@ export const ArticleDetailsPageLoading = Template.bind({});
 ArticleDetailsPageLoading.args = {
 	storybookId: '1',
 };
-ArticleDetailsPageLoading.decorators = [
-	StoreDecorator(state(true) as StateSchema, reducers as ReducersMapObject<StateSchema>),
-];
+ArticleDetailsPageLoading.decorators = [StoreDecorator(state(true) as StateSchema, reducers as ReducersMapObject<StateSchema>)];
 ArticleDetailsPageLoading.parameters = {
 	mockData: [
 		{
@@ -268,9 +264,7 @@ export const ArticleDetailsPageError = Template.bind({});
 ArticleDetailsPageError.args = {
 	storybookId: '1',
 };
-ArticleDetailsPageError.decorators = [
-	StoreDecorator(state(false, 'some error') as StateSchema, reducers as ReducersMapObject<StateSchema>),
-];
+ArticleDetailsPageError.decorators = [StoreDecorator(state(false, 'some error') as StateSchema, reducers as ReducersMapObject<StateSchema>)];
 ArticleDetailsPageError.parameters = {
 	mockData: [
 		{

@@ -32,6 +32,4 @@ const reducers: DeepPartial<ReducersMapObject<StateSchema>> = {
 
 export const ArticlesPageFiltersStory = Template.bind({});
 ArticlesPageFiltersStory.args = {};
-ArticlesPageFiltersStory.decorators = [
-	StoreDecorator(state as StateSchema, reducers as ReducersMapObject<StateSchema>),
-];
+ArticlesPageFiltersStory.decorators = [StoreDecorator(state as StateSchema, reducers as ReducersMapObject<StateSchema>)];

@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { UserRole } from '@/shared/const/role';
 import { CommentList } from './CommentList';
-import { UserRole } from '@/shared/const';
 
 export default {
 	title: 'entities/Comment/CommentList',
@@ -22,7 +22,6 @@ CommentListStory.args = {
 				id: '1',
 				username: 'username',
 				role: UserRole.USER,
-
 			},
 		},
 		{
@@ -32,7 +31,6 @@ CommentListStory.args = {
 				id: '2',
 				username: 'some username',
 				role: UserRole.USER,
-
 			},
 		},
 		{
@@ -42,7 +40,6 @@ CommentListStory.args = {
 				id: '1',
 				username: 'username',
 				role: UserRole.USER,
-
 			},
 		},
 	],

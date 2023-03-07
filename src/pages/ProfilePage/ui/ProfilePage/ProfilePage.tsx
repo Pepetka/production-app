@@ -8,15 +8,15 @@ import { ProfileRating } from '@/features/ProfileRating';
 import { getAuthData } from '@/entities/User';
 
 interface ProfilePageProps {
-	storybookId?: string
+	storybookId?: string;
 }
 
 const ProfilePage = memo(({ storybookId }: ProfilePageProps) => {
-	const params = useParams<{id: string}>();
+	const params = useParams<{ id: string }>();
 	const authData = useSelector(getAuthData);
 
 	return (
-		<Page>
+		<Page data-testid="ProfilePage">
 			<DynamicModuleLoader reducerKey="profile" reducer={profileReducer}>
 				<EditableProfileCard />
 			</DynamicModuleLoader>

@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { UserRole } from '@/shared/const/role';
 import { CommentCard } from './CommentCard';
-import { UserRole } from '@/shared/const';
 
 export default {
 	title: 'entities/Comment/CommentCard',

@@ -1,6 +1,4 @@
-import {
-	HTMLAttributeAnchorTarget, memo, MutableRefObject, useCallback, useEffect, useRef, useState,
-} from 'react';
+import { HTMLAttributeAnchorTarget, memo, MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { VirtuosoGrid, VirtuosoGridHandle } from 'react-virtuoso';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -12,51 +10,48 @@ import { ArticlesView } from '../../model/consts/consts';
 import cls from './ArticlesList.module.scss';
 
 interface FooterProps {
-	view: ArticlesView
-	loading: boolean
-	recommendations?: boolean
-	articlesNumSmall: number
+	view: ArticlesView;
+	loading: boolean;
+	recommendations?: boolean;
+	limit: number;
 }
 
-const ListFooter = memo(({
-	view, loading, recommendations, articlesNumSmall,
-}: FooterProps) => {
+const ListFooter = memo(({ view, loading, recommendations, limit }: FooterProps) => {
 	const getSkeletons = (view: ArticlesView) => {
 		const skeletonNumRecommendations = recommendations ? 4 : null;
 		if (!loading) return null;
 
-		return (
-			new Array(skeletonNumRecommendations ?? (view === ArticlesView.SMALL ? articlesNumSmall : 3))
-				.fill(0)
-				.map((el, i) => (
-					<ArticlesListSkeleton key={i} view={view} />
-				))
-		);
+		return new Array(skeletonNumRecommendations ?? limit).fill(0).map((el, i) => <ArticlesListSkeleton key={i} view={view} />);
 	};
 
-	return (
-		<>
-			{getSkeletons(view)}
-		</>
-	);
+	return <>{getSkeletons(view)}</>;
 });
 
 interface ArticlesListProps {
-	className?: string
-	loading: boolean
-	view?: ArticlesView
-	articles: Array<Article>
-	error?: string
-	target?: HTMLAttributeAnchorTarget
-	onScrollEnd?: () => void
-	recommendations?: boolean
-	wrapperRef?: MutableRefObject<HTMLElement | null>
-	articlesNumSmall: number
+	className?: string;
+	loading: boolean;
+	view?: ArticlesView;
+	articles: Array<Article>;
+	error?: string;
+	target?: HTMLAttributeAnchorTarget;
+	onScrollEnd?: () => void;
+	recommendations?: boolean;
+	wrapperRef?: MutableRefObject<HTMLElement | null>;
+	limit: number;
 }
 
 export const ArticlesList = memo(
 	({
-		className, view = ArticlesView.SMALL, loading, articles, target, error, onScrollEnd, recommendations, wrapperRef, articlesNumSmall,
+		className,
+		view = ArticlesView.SMALL,
+		loading,
+		articles,
+		target,
+		error,
+		onScrollEnd,
+		recommendations,
+		wrapperRef,
+		limit,
 	}: ArticlesListProps) => {
 		const { t } = useTranslation('articles');
 		const virtuoso = useRef<VirtuosoGridHandle>(null);
@@ -66,28 +61,23 @@ export const ArticlesList = memo(
 			if (wrapperRef?.current) setRerender((prev) => prev + 1);
 		}, [wrapperRef]);
 
-		const renderArticle = useCallback((index: number) => (
-			<ArticlesListItem
-				target={target}
-				key={articles[index].id}
-				view={view}
-				article={articles[index]}
-			/>
-		), [articles, target, view]);
+		const renderArticle = useCallback(
+			(index: number) => <ArticlesListItem target={target} key={articles[index].id} view={view} article={articles[index]} />,
+			[articles, target, view],
+		);
 
-		const ScrollSeekPlaceholder = useCallback(() => (
-			<ArticlesListSkeleton view={view} />
-		), [view]);
+		const ScrollSeekPlaceholder = useCallback(() => <ArticlesListSkeleton view={view} />, [view]);
 
-		const Footer = useCallback(() => (
-			<div className={classNames(cls.ArticlesList, {}, [cls[view]])}>
-				<ListFooter view={view} loading={loading} recommendations={recommendations} articlesNumSmall={articlesNumSmall} />
-			</div>
-		), [articlesNumSmall, loading, recommendations, view]);
+		const Footer = useCallback(
+			() => (
+				<div className={classNames(cls.ArticlesList, {}, [cls[view]])}>
+					<ListFooter view={view} loading={loading} recommendations={recommendations} limit={limit} />
+				</div>
+			),
+			[limit, loading, recommendations, view],
+		);
 
-		const ItemContent = useCallback((index: number) => (
-			renderArticle(index)
-		), [renderArticle]);
+		const ItemContent = useCallback((index: number) => renderArticle(index), [renderArticle]);
 
 		if (error) {
 			return (
@@ -106,7 +96,13 @@ export const ArticlesList = memo(
 		}
 
 		return (
-			<div className={classNames('', { [cls.wrapper]: !recommendations, [cls.recommendations]: recommendations })}>
+			<div
+				data-testid="ArticlesList"
+				className={classNames('', {
+					[cls.wrapper]: !recommendations,
+					[cls.recommendations]: recommendations,
+				})}
+			>
 				{((recommendations && !loading) || !recommendations) && (
 					<VirtuosoGrid
 						data={articles}
@@ -116,7 +112,7 @@ export const ArticlesList = memo(
 							ScrollSeekPlaceholder,
 						}}
 						customScrollParent={!recommendations ? wrapperRef?.current! : undefined}
-						overscan={view === ArticlesView.SMALL ? articlesNumSmall : 2}
+						overscan={limit}
 						itemContent={ItemContent}
 						ref={virtuoso}
 						scrollSeekConfiguration={{

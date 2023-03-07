@@ -1,7 +1,7 @@
 import { describe, expect, test } from '@jest/globals';
-import { userActions, userReducer } from './userSlice';
+import { UserRole } from '@/shared/const/role';
 import { UserSchema } from '../types/userSchema';
-import { UserRole } from '@/shared/const';
+import { userActions, userReducer } from './userSlice';
 
 describe('userSlice', () => {
 	test('setAuthData', () => {
@@ -14,12 +14,17 @@ describe('userSlice', () => {
 			_init: true,
 		};
 
-		expect(userReducer(state, userActions.setAuthData({
-			username: 'username',
-			id: 'id',
-			avatar: 'avatar',
-			role: UserRole.USER,
-		}))).toEqual({
+		expect(
+			userReducer(
+				state,
+				userActions.setAuthData({
+					username: 'username',
+					id: 'id',
+					avatar: 'avatar',
+					role: UserRole.USER,
+				}),
+			),
+		).toEqual({
 			...state,
 			authData: {
 				username: 'username',
@@ -63,12 +68,17 @@ describe('userSlice', () => {
 	});
 
 	test('undefined state', () => {
-		expect(userReducer(undefined, userActions.setAuthData({
-			username: 'username',
-			id: 'id',
-			avatar: 'avatar',
-			role: UserRole.USER,
-		}))).toEqual({
+		expect(
+			userReducer(
+				undefined,
+				userActions.setAuthData({
+					username: 'username',
+					id: 'id',
+					avatar: 'avatar',
+					role: UserRole.USER,
+				}),
+			),
+		).toEqual({
 			authData: {
 				username: 'username',
 				id: 'id',

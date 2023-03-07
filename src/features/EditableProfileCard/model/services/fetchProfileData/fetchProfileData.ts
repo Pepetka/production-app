@@ -3,7 +3,7 @@ import { ThunkConfig } from '@/app/provider/Store';
 import { Profile } from '@/entities/Profile';
 
 export const fetchProfileData = createAsyncThunk<Profile, string, ThunkConfig<string>>(
-	'profile/fetchProfileData',
+	'profile/fetchArticleDetailsData',
 	async (profileId, { rejectWithValue, extra }) => {
 		try {
 			const response = await extra.api.get<Profile>(`/profile/${profileId}`);

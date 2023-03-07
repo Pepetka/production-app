@@ -1,9 +1,9 @@
 import 'whatwg-fetch';
 import { screen } from '@testing-library/react';
 import { componentTestRender } from '@/shared/lib/componentTestRender/comopnentTestRender';
-import { AppRouter } from './AppRouter';
+import { UserRole } from '@/shared/const/role';
 import { routeConfig } from '../routeConfig/routeConfig';
-import { UserRole } from '@/shared/const';
+import { AppRouter } from './AppRouter';
 
 describe('AppRouter', () => {
 	test('Be in the document', async () => {
@@ -25,19 +25,32 @@ describe('AppRouter', () => {
 	});
 
 	test('Auth only route with auth', async () => {
-		componentTestRender(<AppRouter />, { route: routeConfig.Articles.path, initialState: { user: { _init: true, authData: {} } } });
+		componentTestRender(<AppRouter />, {
+			route: routeConfig.Articles.path,
+			initialState: { user: { _init: true, authData: {} } },
+		});
 		const page = await screen.findByTestId('ArticlesPage');
 		expect(page).toBeInTheDocument();
 	});
 
 	test('Forbidden route', async () => {
-		componentTestRender(<AppRouter />, { route: routeConfig.Admin.path, initialState: { user: { _init: true, authData: { role: UserRole.USER } } } });
+		componentTestRender(<AppRouter />, {
+			route: routeConfig.Admin.path,
+			initialState: {
+				user: { _init: true, authData: { role: UserRole.USER } },
+			},
+		});
 		const page = await screen.findByTestId('ForbiddenPage');
 		expect(page).toBeInTheDocument();
 	});
 
 	test('Forbidden route', async () => {
-		componentTestRender(<AppRouter />, { route: routeConfig.Admin.path, initialState: { user: { _init: true, authData: { role: UserRole.ADMIN } } } });
+		componentTestRender(<AppRouter />, {
+			route: routeConfig.Admin.path,
+			initialState: {
+				user: { _init: true, authData: { role: UserRole.ADMIN } },
+			},
+		});
 		const page = await screen.findByTestId('AdminPanelPage');
 		expect(page).toBeInTheDocument();
 	});

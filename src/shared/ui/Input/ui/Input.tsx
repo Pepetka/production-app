@@ -1,44 +1,40 @@
-import {
-	ChangeEvent, HTMLInputTypeAttribute, InputHTMLAttributes, useEffect, useRef, useState,
-} from 'react';
+import { ChangeEvent, HTMLInputTypeAttribute, InputHTMLAttributes, useEffect, useRef, useState } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
 
 export enum InputTheme {
 	PRIMARY = 'primary',
-	INVERT = 'invert'
+	INVERT = 'invert',
 }
 
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'>
+type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'>;
 
 interface InputProps extends HTMLInputProps {
 	className?: string;
-	type?: HTMLInputTypeAttribute
-	autoFocus?: boolean
-	floatPlaceholder?: string
-	textInvert?: boolean
-	theme?: InputTheme
-	value?: string
-	readonly?: boolean
-	onChange?: (value: string) => void
-	'data-testid'?: string
+	type?: HTMLInputTypeAttribute;
+	autoFocus?: boolean;
+	floatPlaceholder?: string;
+	textInvert?: boolean;
+	theme?: InputTheme;
+	value?: string;
+	readonly?: boolean;
+	onChange?: (value: string) => void;
+	'data-testid'?: string;
 }
 
-export const Input = (
-	{
-		className,
-		floatPlaceholder,
-		readonly = false,
-		textInvert = false,
-		value = '',
-		theme = InputTheme.PRIMARY,
-		autoFocus = false,
-		type = 'text',
-		onChange,
-		'data-testid': dataTestId,
-		...otherProps
-	}: InputProps,
-) => {
+export const Input = ({
+	className,
+	floatPlaceholder,
+	readonly = false,
+	textInvert = false,
+	value = '',
+	theme = InputTheme.PRIMARY,
+	autoFocus = false,
+	type = 'text',
+	onChange,
+	'data-testid': dataTestId,
+	...otherProps
+}: InputProps) => {
 	const inputRef = useRef<HTMLInputElement>(null);
 	const [isPlaceholder, setIsPlaceholder] = useState(true);
 	const [isFocused, setIsFocused] = useState(false);
@@ -80,17 +76,16 @@ export const Input = (
 
 	return (
 		<div
-			className={
-				classNames(
-					cls.inputWrapper,
-					{ [cls.withPlaceholder]: floatPlaceholder, [cls.textInvert]: textInvert },
-					[className, cls[theme]],
-				)
-			}
+			className={classNames(
+				cls.inputWrapper,
+				{
+					[cls.withPlaceholder]: floatPlaceholder,
+					[cls.textInvert]: textInvert,
+				},
+				[className, cls[theme]],
+			)}
 		>
-			<span className={classNames(cls.label, { [cls.placeholder]: isPlaceholder })}>
-				{floatPlaceholder}
-			</span>
+			<span className={classNames(cls.label, { [cls.placeholder]: isPlaceholder })}>{floatPlaceholder}</span>
 			<input
 				data-testid={dataTestId}
 				ref={inputRef}

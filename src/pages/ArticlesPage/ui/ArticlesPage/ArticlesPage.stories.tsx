@@ -19,8 +19,9 @@ const Template: ComponentStory<typeof ArticlesPage> = (args) => <ArticlesPage />
 const state = (view: ArticlesView): DeepPartial<StateSchema> => {
 	const entities: Record<string, any> = {};
 
-	new Array(8).fill(0).map((_, i) => (
-		{
+	new Array(8)
+		.fill(0)
+		.map((_, i) => ({
 			title: `some title ${i}`,
 			id: i.toString(),
 			type: [ArticleType.IT],
@@ -41,10 +42,10 @@ const state = (view: ArticlesView): DeepPartial<StateSchema> => {
 					type: ArticleBlockType.TEXT,
 				},
 			],
-		}
-	)).forEach((el) => {
-		entities[el.id] = el;
-	});
+		}))
+		.forEach((el) => {
+			entities[el.id] = el;
+		});
 
 	return {
 		articlesPage: {
@@ -71,24 +72,16 @@ const reducers: DeepPartial<ReducersMapObject<StateSchema>> = {
 
 export const ArticlesPageSmall = Template.bind({});
 ArticlesPageSmall.args = {};
-ArticlesPageSmall.decorators = [
-	StoreDecorator(state(ArticlesView.SMALL) as StateSchema, reducers as ReducersMapObject<StateSchema>),
-];
+ArticlesPageSmall.decorators = [StoreDecorator(state(ArticlesView.SMALL) as StateSchema, reducers as ReducersMapObject<StateSchema>)];
 
 export const ArticlesPageSmallLoading = Template.bind({});
 ArticlesPageSmallLoading.args = {};
-ArticlesPageSmallLoading.decorators = [
-	StoreDecorator(stateLoading(ArticlesView.SMALL) as StateSchema, reducers as ReducersMapObject<StateSchema>),
-];
+ArticlesPageSmallLoading.decorators = [StoreDecorator(stateLoading(ArticlesView.SMALL) as StateSchema, reducers as ReducersMapObject<StateSchema>)];
 
 export const ArticlesPageBig = Template.bind({});
 ArticlesPageBig.args = {};
-ArticlesPageBig.decorators = [
-	StoreDecorator(state(ArticlesView.BIG) as StateSchema, reducers as ReducersMapObject<StateSchema>),
-];
+ArticlesPageBig.decorators = [StoreDecorator(state(ArticlesView.BIG) as StateSchema, reducers as ReducersMapObject<StateSchema>)];
 
 export const ArticlesPageBigLoading = Template.bind({});
 ArticlesPageBigLoading.args = {};
-ArticlesPageBigLoading.decorators = [
-	StoreDecorator(stateLoading(ArticlesView.BIG) as StateSchema, reducers as ReducersMapObject<StateSchema>),
-];
+ArticlesPageBigLoading.decorators = [StoreDecorator(stateLoading(ArticlesView.BIG) as StateSchema, reducers as ReducersMapObject<StateSchema>)];

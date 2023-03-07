@@ -1,8 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import withMock from 'storybook-addon-mock';
 import { Article, ArticleBlockType, ArticleType } from '@/entities/Article';
+import { UserRole } from '@/shared/const/role';
 import { ArticleRecommendations } from './ArticleRecommendations';
-import { UserRole } from '@/shared/const';
 
 export default {
 	title: 'features/ArticleRecommendations',
@@ -10,13 +9,13 @@ export default {
 	argTypes: {
 		backgroundColor: { control: 'color' },
 	},
-	decorators: [withMock],
 } as ComponentMeta<typeof ArticleRecommendations>;
 
 const Template: ComponentStory<typeof ArticleRecommendations> = (args) => <ArticleRecommendations {...args} />;
 
 const articles: Array<Article> = [
 	{
+		userId: 'user',
 		user: {
 			username: 'user',
 			role: UserRole.USER,
@@ -29,8 +28,8 @@ const articles: Array<Article> = [
 				id: '1',
 				title: 'Title',
 				paragraphs: [
-					'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consectetur culpa distinctio et placeat'
-					+ ' praesentium, quasi tempora? Fugiat quasi, voluptatum.',
+					'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consectetur culpa distinctio et placeat' +
+						' praesentium, quasi tempora? Fugiat quasi, voluptatum.',
 				],
 				type: ArticleBlockType.TEXT,
 			},
@@ -42,6 +41,7 @@ const articles: Array<Article> = [
 		views: 10101,
 	},
 	{
+		userId: 'user',
 		user: {
 			username: 'user',
 			role: UserRole.USER,
@@ -54,8 +54,8 @@ const articles: Array<Article> = [
 				id: '1',
 				title: 'Title',
 				paragraphs: [
-					'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consectetur culpa distinctio et placeat'
-					+ ' praesentium, quasi tempora? Fugiat quasi, voluptatum.',
+					'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consectetur culpa distinctio et placeat' +
+						' praesentium, quasi tempora? Fugiat quasi, voluptatum.',
 				],
 				type: ArticleBlockType.TEXT,
 			},
@@ -67,6 +67,7 @@ const articles: Array<Article> = [
 		views: 10101,
 	},
 	{
+		userId: 'admin',
 		user: {
 			username: 'admin',
 			role: UserRole.ADMIN,
@@ -79,8 +80,8 @@ const articles: Array<Article> = [
 				id: '1',
 				title: 'Title',
 				paragraphs: [
-					'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consectetur culpa distinctio et placeat'
-					+ ' praesentium, quasi tempora? Fugiat quasi, voluptatum.',
+					'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consectetur culpa distinctio et placeat' +
+						' praesentium, quasi tempora? Fugiat quasi, voluptatum.',
 				],
 				type: ArticleBlockType.TEXT,
 			},
@@ -92,6 +93,7 @@ const articles: Array<Article> = [
 		views: 10101,
 	},
 	{
+		userId: 'user',
 		user: {
 			username: 'user',
 			role: UserRole.USER,
@@ -104,8 +106,8 @@ const articles: Array<Article> = [
 				id: '1',
 				title: 'Title',
 				paragraphs: [
-					'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consectetur culpa distinctio et placeat'
-					+ ' praesentium, quasi tempora? Fugiat quasi, voluptatum.',
+					'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi consectetur culpa distinctio et placeat' +
+						' praesentium, quasi tempora? Fugiat quasi, voluptatum.',
 				],
 				type: ArticleBlockType.TEXT,
 			},

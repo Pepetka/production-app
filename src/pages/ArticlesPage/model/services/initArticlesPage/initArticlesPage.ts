@@ -16,12 +16,7 @@ export const initArticlesPage = createAsyncThunk<void, number, ThunkConfig<strin
 	'articlesPage/initArticlesPage',
 	async (limit, { dispatch, getState }) => {
 		const inited = getArticlesPageInit(getState());
-		const {
-			sort,
-			order,
-			search,
-			type,
-		} = getQueryParams();
+		const { sort, order, search, type } = getQueryParams();
 
 		if (!inited) {
 			dispatch(articlesPageActions.initView(limit));

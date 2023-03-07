@@ -11,6 +11,8 @@ module.exports = {
 		'plugin:i18next/recommended',
 		'plugin:import/recommended',
 		'plugin:import/typescript',
+		'plugin:storybook/recommended',
+		'prettier',
 	],
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
@@ -20,29 +22,51 @@ module.exports = {
 		ecmaVersion: 'latest',
 		sourceType: 'module',
 	},
-	plugins: [
-		'ulbi-tv-plugin',
-		'react',
-		'jsx-a11y',
-		'@typescript-eslint',
-		'i18next',
-		'react-hooks',
-		'unused-imports',
-	],
+	plugins: ['ulbi-tv-plugin', 'react', 'jsx-a11y', '@typescript-eslint', 'i18next', 'react-hooks', 'unused-imports'],
 	rules: {
+		'import/order': [
+			'error',
+			{
+				'newlines-between': 'never',
+				pathGroups: [
+					{
+						pattern: '@/**',
+						group: 'external',
+						position: 'after',
+					},
+				],
+			},
+		],
+		'max-len': 'off',
+		'react/jsx-max-props-per-line': ['error', { maximum: 3, when: 'multiline' }],
 		'unused-imports/no-unused-imports': 'error',
-		'ulbi-tv-plugin/path-checker': ['error', { alias: '@' }],
-		'ulbi-tv-plugin/public-api-imports': ['error', { alias: '@' }],
-		'ulbi-tv-plugin/layer-imports': ['error', {
-			alias: '@',
-			ignoreImportPatterns: ['**/Store'],
-		}],
+		'ulbi-tv-plugin/path-checker': [
+			'error',
+			{
+				alias: '@',
+			},
+		],
+		'ulbi-tv-plugin/public-api-imports': [
+			'error',
+			{
+				alias: '@',
+			},
+		],
+		'ulbi-tv-plugin/layer-imports': [
+			'error',
+			{
+				alias: '@',
+				ignoreImportPatterns: ['**/Store'],
+			},
+		],
 		'react/no-array-index-key': 'off',
-		'react/jsx-indent': [2, 'tab'],
-		'react/jsx-indent-props': [2, 'tab'],
 		'no-tabs': 'off',
-		indent: [2, 'tab'],
-		'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.tsx'] }],
+		'react/jsx-filename-extension': [
+			2,
+			{
+				extensions: ['.js', '.jsx', '.tsx'],
+			},
+		],
 		'import/no-unresolved': 'off',
 		'import/prefer-default-export': 'off',
 		'no-unused-vars': 'warn',
@@ -54,13 +78,13 @@ module.exports = {
 		'import/extensions': 'off',
 		'import/no-extraneous-dependencies': 'off',
 		'no-underscore-dangle': 'off',
-		'max-len': ['error', { code: 150 }],
-		'i18next/no-literal-string': ['error', {
-			markupOnly: true,
-			ignoreAttribute: [
-				'size', 'popupPosition', 'as', 'TitleTag', 'Tag', 'data-testid', 'align', 'reducerKey', 'target', 'direction', 'justify',
-			],
-		}],
+		'i18next/no-literal-string': [
+			'error',
+			{
+				markupOnly: true,
+				ignoreAttribute: ['size', 'popupPosition', 'as', 'TitleTag', 'Tag', 'data-testid', 'align', 'reducerKey', 'target', 'direction', 'justify'],
+			},
+		],
 		'no-console': 'off',
 		'linebreak-style': ['error', 'unix'],
 		'react/display-name': 'off',
@@ -80,9 +104,7 @@ module.exports = {
 	},
 	overrides: [
 		{
-			files: [
-				'**/src/**/*.{test,stories}.{ts,tsx}',
-			],
+			files: ['**/src/**/*.{test,stories}.{ts,tsx}'],
 			rules: {
 				'i18next/no-literal-string': 'off',
 				'max-len': 'off',

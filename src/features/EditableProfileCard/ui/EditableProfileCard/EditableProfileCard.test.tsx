@@ -6,8 +6,8 @@ import { Currency } from '@/entities/Currency';
 import { Country } from '@/entities/Country';
 import { $api } from '@/shared/api/api';
 import { profileReducer } from '../../model/slice/profileSlice';
-import { EditableProfileCard } from './EditableProfileCard';
 import { ValidateProfileError } from '../../model/consts/consts';
+import { EditableProfileCard } from './EditableProfileCard';
 
 describe('widgets/EditableProfileCard', () => {
 	const data = {

@@ -1399,6 +1399,146 @@
           "title": "Рисунок 1 - скриншот сайта"
         }
       ]
+    },
+    {
+      "img": "https://wus-www.sway-cdn.com/s/OSpeaWK1uAPBefkZ/images/BNsLdhbcAA2CCQ?quality=1080&amp;isThumbnail=True",
+      "title": "New article",
+      "subtitle": "Some subtitle for new article",
+      "userId": "1",
+      "type": [
+        "Math"
+      ],
+      "blocks": [
+        {
+          "id": "0",
+          "type": "TEXT",
+          "title": "Заголовок этого блока",
+          "paragraphs": [
+            "JavaScript — это язык, программы на котором можно выполнять в разных средах. В нашем случае речь идёт о браузерах и о серверной платформе Node.js. Если до сих пор вы не написали ни строчки кода на JS и читаете этот текст в браузере, на настольном компьютере, это значит, что вы буквально в считанных секундах от своей первой JavaScript-программы.",
+            "Существуют и другие способы запуска JS-кода в браузере. Так, если говорить об обычном использовании программ на JavaScript, они загружаются в браузер для обеспечения работы веб-страниц. Как правило, код оформляют в виде отдельных файлов с расширением .js, которые подключают к веб-страницам, но программный код можно включать и непосредственно в код страницы. Всё это делается с помощью тега <script>. Когда браузер обнаруживает такой код, он выполняет его. Подробности о теге script можно посмотреть на сайте w3school.com. В частности, рассмотрим пример, демонстрирующий работу с веб-страницей средствами JavaScript, приведённый на этом ресурсе. Этот пример можно запустить и средствами данного ресурса (ищите кнопку Try it Yourself), но мы поступим немного иначе. А именно, создадим в каком-нибудь текстовом редакторе (например — в VS Code или в Notepad++) новый файл, который назовём hello.html, и добавим в него следующий код:"
+          ]
+        },
+        {
+          "id": "1",
+          "type": "CODE",
+          "code": "<!DOCTYPE html>\n<html>\n  <body>\n    <p id=\"hello\"></p>\n\n    <script>\n      document.getElementById(\"hello\").innerHTML = \"Hello, world!\";\n    </script>\n  </body>\n</html>;"
+        }
+      ],
+      "views": 0,
+      "createdAt": "04.03.2023",
+      "id": "qNhgCTp"
+    },
+    {
+      "title": "Javascript news",
+      "subtitle": "Что нового в JS за 2022 год?",
+      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
+      "views": 1022,
+      "userId": "2",
+      "createdAt": "26.02.2022",
+      "type": [
+        "IT",
+        "Math"
+      ],
+      "blocks": [],
+      "id": "2MfK6TG"
+    },
+    {
+      "title": "Javascript news",
+      "subtitle": "Что нового в JS за 2022 год?",
+      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
+      "views": 1022,
+      "userId": "2",
+      "createdAt": "26.02.2022",
+      "type": [
+        "IT",
+        "Math"
+      ],
+      "blocks": [],
+      "id": "QOxR2bW"
+    },
+    {
+      "title": "Javascript news",
+      "subtitle": "Что нового в JS за 2022 год?",
+      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
+      "views": 1022,
+      "userId": "2",
+      "createdAt": "26.02.2022",
+      "type": [
+        "IT",
+        "Math"
+      ],
+      "blocks": [],
+      "id": "YyQ6nUU"
+    },
+    {
+      "title": "Javascript news",
+      "subtitle": "Что нового в JS за 2022 год?",
+      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
+      "views": 1022,
+      "userId": "2",
+      "createdAt": "26.02.2022",
+      "type": [
+        "IT",
+        "Math"
+      ],
+      "blocks": [],
+      "id": "U1KpE8v"
+    },
+    {
+      "title": "Javascript news",
+      "subtitle": "Что нового в JS за 2022 год?",
+      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
+      "views": 1022,
+      "userId": "2",
+      "createdAt": "26.02.2022",
+      "type": [
+        "IT",
+        "Math"
+      ],
+      "blocks": [],
+      "id": "PPDXLwn"
+    },
+    {
+      "title": "Javascript news",
+      "subtitle": "Что нового в JS за 2022 год?",
+      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
+      "views": 1022,
+      "userId": "2",
+      "createdAt": "26.02.2022",
+      "type": [
+        "IT",
+        "Math"
+      ],
+      "blocks": [],
+      "id": "XOzjaCJ"
+    },
+    {
+      "title": "Javascript news",
+      "subtitle": "Что нового в JS за 2022 год?",
+      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
+      "views": 1022,
+      "userId": "2",
+      "createdAt": "26.02.2022",
+      "type": [
+        "IT",
+        "Math"
+      ],
+      "blocks": [],
+      "id": "pGXxocm"
+    },
+    {
+      "title": "Javascript news",
+      "subtitle": "Что нового в JS за 2022 год?",
+      "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
+      "views": 1022,
+      "userId": "2",
+      "createdAt": "26.02.2022",
+      "type": [
+        "IT",
+        "Math"
+      ],
+      "blocks": [],
+      "id": "WtX6qW7"
     }
   ],
   "comments": [
@@ -1575,6 +1715,28 @@
       "city": "Minsk",
       "username": "user",
       "avatar": "https://miro.medium.com/max/2400/1*1WCjO1iYMo7J7Upp8KMfLA@2x.jpeg"
+    },
+    {
+      "id": "2",
+      "first": "testFirst",
+      "lastname": "testLast",
+      "age": "18",
+      "currency": "RUB",
+      "country": "Belarus",
+      "city": "Minsk",
+      "username": "testUser",
+      "avatar": "https://miro.medium.com/max/2400/1*1WCjO1iYMo7J7Upp8KMfLA@2x.jpeg"
+    },
+    {
+      "id": "3",
+      "first": "testFirst",
+      "lastname": "testLast",
+      "age": "18",
+      "currency": "RUB",
+      "country": "Belarus",
+      "city": "Minsk",
+      "username": "testAdmin",
+      "avatar": "https://cdn1.iconfinder.com/data/icons/avatars-55/100/avatar_profile_user_music_headphones_shirt_cool-512.png"
     }
   ],
   "users": [
@@ -1591,6 +1753,20 @@
       "id": "1",
       "role": "USER",
       "avatar": "https://miro.medium.com/max/2400/1*1WCjO1iYMo7J7Upp8KMfLA@2x.jpeg"
+    },
+    {
+      "username": "testUser",
+      "password": "123",
+      "id": "2",
+      "role": "USER",
+      "avatar": "https://miro.medium.com/max/2400/1*1WCjO1iYMo7J7Upp8KMfLA@2x.jpeg"
+    },
+    {
+      "username": "testAdmin",
+      "password": "123",
+      "id": "3",
+      "role": "ADMIN",
+      "avatar": "https://cdn1.iconfinder.com/data/icons/avatars-55/100/avatar_profile_user_music_headphones_shirt_cool-512.png"
     }
   ]
 }

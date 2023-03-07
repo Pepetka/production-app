@@ -33,12 +33,8 @@ const asyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
 
 export const ProfilePageHeaderStory = Template.bind({});
 ProfilePageHeaderStory.args = {};
-ProfilePageHeaderStory.decorators = [
-	StoreDecorator(state as StateSchema, asyncReducers as ReducersMapObject<StateSchema>),
-];
+ProfilePageHeaderStory.decorators = [StoreDecorator(state as StateSchema, asyncReducers as ReducersMapObject<StateSchema>)];
 
 export const ProfilePageHeaderReadOnly = Template.bind({});
 ProfilePageHeaderReadOnly.args = {};
-ProfilePageHeaderReadOnly.decorators = [
-	StoreDecorator(stateReadOnly as StateSchema, asyncReducers as ReducersMapObject<StateSchema>),
-];
+ProfilePageHeaderReadOnly.decorators = [StoreDecorator(stateReadOnly as StateSchema, asyncReducers as ReducersMapObject<StateSchema>)];

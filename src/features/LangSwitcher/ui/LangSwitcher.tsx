@@ -7,7 +7,7 @@ import cls from './LangSwitcher.module.scss';
 
 enum Languages {
 	RU = 'ru',
-	EN = 'en'
+	EN = 'en',
 }
 
 interface LangSwitcherProps {
@@ -35,7 +35,9 @@ export const LangSwitcher = memo(({ className }: LangSwitcherProps) => {
 
 	return (
 		<div className={classNames(cls.LangSwitcher, {}, [className])}>
-			<Button theme={ButtonTheme.CLEAR} onClick={onToggle} inverted>{t('en')}</Button>
+			<Button theme={ButtonTheme.CLEAR} onClick={onToggle} inverted>
+				{t('en')}
+			</Button>
 		</div>
 	);
 });

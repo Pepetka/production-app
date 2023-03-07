@@ -1,7 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import withMock from 'storybook-addon-mock';
-import { NotificationList } from './NotificationList';
 import { Notification } from '../../model/types/notification';
+import { NotificationList } from './NotificationList';
 
 export default {
 	title: 'entities/Notification/NotificationList',
@@ -9,7 +8,6 @@ export default {
 	argTypes: {
 		backgroundColor: { control: 'color' },
 	},
-	decorators: [withMock],
 } as ComponentMeta<typeof NotificationList>;
 
 const Template: ComponentStory<typeof NotificationList> = (args) => <NotificationList {...args} />;

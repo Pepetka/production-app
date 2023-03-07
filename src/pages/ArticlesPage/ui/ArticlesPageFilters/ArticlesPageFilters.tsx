@@ -21,30 +21,27 @@ import { getArticlesPageType } from '../../model/selectors/getArticlesPageType/g
 import cls from './ArticlesPageFilters.module.scss';
 
 interface ArticlesPageFiltersProps {
-	className?: string
+	className?: string;
+	onChangeView?: () => void;
 }
 
-export const ArticlesPageFilters = memo(
-	({ className }: ArticlesPageFiltersProps) => {
-		const dispatch = useAppDispatch();
-		const view = useSelector(getArticlesPageView);
-		const sort = useSelector(getArticlesPageSort);
-		const order = useSelector(getArticlesPageOrder);
-		const search = useSelector(getArticlesPageSearch);
-		const type = useSelector(getArticlesPageType);
-		const { t } = useTranslation('articles');
+export const ArticlesPageFilters = memo(({ className, onChangeView }: ArticlesPageFiltersProps) => {
+	const dispatch = useAppDispatch();
+	const view = useSelector(getArticlesPageView);
+	const sort = useSelector(getArticlesPageSort);
+	const order = useSelector(getArticlesPageOrder);
+	const search = useSelector(getArticlesPageSearch);
+	const type = useSelector(getArticlesPageType);
+	const { t } = useTranslation('articles');
 
-		const onFetchSortedData = useCallback(() => {
-			dispatch(fetchArticlesList({ replace: true }));
-		}, [dispatch]);
+	const onFetchSortedData = useCallback(() => {
+		dispatch(fetchArticlesList({ replace: true }));
+	}, [dispatch]);
 
-		const debounceFetchSortedData = useDebounce(onFetchSortedData);
+	const debounceFetchSortedData = useDebounce(onFetchSortedData);
 
-		const {
-			onChangeSort,
-			onChangeOrder,
-			onChangeType,
-		} = useMemo(() => ({
+	const { onChangeSort, onChangeOrder, onChangeType } = useMemo(
+		() => ({
 			onChangeSort: (value: ArticleSortField) => {
 				dispatch(articlesPageActions.changeSort(value));
 				dispatch(articlesPageActions.changePage(1));
@@ -60,27 +57,35 @@ export const ArticlesPageFilters = memo(
 				dispatch(articlesPageActions.changePage(1));
 				onFetchSortedData();
 			},
-		}), [dispatch, onFetchSortedData]);
+		}),
+		[dispatch, onFetchSortedData],
+	);
 
-		const onChangeSearch = useCallback((value: string) => {
+	const onChangeSearch = useCallback(
+		(value: string) => {
 			dispatch(articlesPageActions.changeSearch(value));
 			dispatch(articlesPageActions.changePage(1));
 			debounceFetchSortedData();
-		}, [debounceFetchSortedData, dispatch]);
+		},
+		[debounceFetchSortedData, dispatch],
+	);
 
-		const onChangeView = useCallback((view: ArticlesView) => {
+	const onChangeViewHandle = useCallback(
+		(view: ArticlesView) => {
 			dispatch(articlesPageActions.changeView(view));
-		}, [dispatch]);
+			onChangeView?.();
+		},
+		[dispatch, onChangeView],
+	);
 
-		return (
-			<VStack w100 justify="between" align="start" className={classNames(cls.ArticlesPageFilters, {}, [className])}>
-				<HStack justify="between" w100>
-					<ArticlesSortSelector sort={sort} order={order} onChangeSort={onChangeSort} onChangeOrder={onChangeOrder} />
-					<ArticleViewSelector activeView={view} onChangeView={onChangeView} />
-				</HStack>
-				<Input theme={InputTheme.INVERT} value={search} onChange={onChangeSearch} placeholder={t('Search')} />
-				<ArticlesTypeTabs type={type} onChangeType={onChangeType} />
-			</VStack>
-		);
-	},
-);
+	return (
+		<VStack w100 justify="between" align="start" className={classNames(cls.ArticlesPageFilters, {}, [className])}>
+			<HStack justify="between" w100>
+				<ArticlesSortSelector sort={sort} order={order} onChangeSort={onChangeSort} onChangeOrder={onChangeOrder} />
+				<ArticleViewSelector activeView={view} onChangeView={onChangeViewHandle} />
+			</HStack>
+			<Input theme={InputTheme.INVERT} value={search} onChange={onChangeSearch} placeholder={t('Search')} />
+			<ArticlesTypeTabs type={type} onChangeType={onChangeType} />
+		</VStack>
+	);
+});

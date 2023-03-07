@@ -1,6 +1,4 @@
-import {
-	memo, useEffect, useMemo, useState,
-} from 'react';
+import { memo, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -14,7 +12,7 @@ import { MenuAvatar } from '@/features/MenuAvatar';
 import cls from './NavBar.module.scss';
 
 interface NavBarProps {
-	className?: string
+	className?: string;
 }
 
 export const NavBar = memo(({ className }: NavBarProps) => {
@@ -40,22 +38,21 @@ export const NavBar = memo(({ className }: NavBarProps) => {
 		};
 	}, [authData]);
 
-	const {
-		onOpenModal,
-		onCloseModal,
-		onLogoutCallback,
-	} = useMemo(() => ({
-		onCloseModal: () => {
-			setIsAuthModal(false);
-		},
-		onOpenModal: () => {
-			setIsAuthModal(true);
-		},
-		onLogoutCallback: () => {
-			setIsAuth(false);
-			setIsAuthModal(false);
-		},
-	}), []);
+	const { onOpenModal, onCloseModal, onLogoutCallback } = useMemo(
+		() => ({
+			onCloseModal: () => {
+				setIsAuthModal(false);
+			},
+			onOpenModal: () => {
+				setIsAuthModal(true);
+			},
+			onLogoutCallback: () => {
+				setIsAuth(false);
+				setIsAuthModal(false);
+			},
+		}),
+		[],
+	);
 
 	return (
 		<HStack Tag="header" justify="between" className={classNames(cls.NavBar, {}, [className])}>

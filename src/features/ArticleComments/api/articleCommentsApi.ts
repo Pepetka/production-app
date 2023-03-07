@@ -13,7 +13,7 @@ const commentsApi = rtkApi.injectEndpoints({
 			}),
 			providesTags: (result) => ['comments'],
 		}),
-		addComment: build.mutation<void, {articleId: string, userId: string, text: string}>({
+		addComment: build.mutation<void, { articleId: string; userId: string; text: string }>({
 			query: (comment) => ({
 				method: 'POST',
 				url: '/comments',

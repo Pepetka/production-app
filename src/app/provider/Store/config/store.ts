@@ -1,6 +1,4 @@
-import {
-	CombinedState, configureStore, Reducer, ReducersMapObject,
-} from '@reduxjs/toolkit';
+import { CombinedState, configureStore, Reducer, ReducersMapObject } from '@reduxjs/toolkit';
 import { userReducer } from '@/entities/User';
 import { $api } from '@/shared/api/api';
 import { scrollSafeReducer } from '@/widgets/Page';
@@ -8,10 +6,7 @@ import { rtkApi } from '@/shared/api/rtkApi';
 import { StateSchema } from './StateSchema';
 import { createReducerManager } from './reducerManager';
 
-export const createReduxStore = (
-	initialState?: StateSchema,
-	asyncReducers?: ReducersMapObject<StateSchema>,
-) => {
+export const createReduxStore = (initialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) => {
 	const rootReducer: ReducersMapObject<StateSchema> = {
 		user: userReducer,
 		scrollSafe: scrollSafeReducer,
@@ -25,13 +20,14 @@ export const createReduxStore = (
 		reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
 		devTools: __IS_DEV__,
 		preloadedState: initialState,
-		middleware: (getDefaultMiddleware) => getDefaultMiddleware({
-			thunk: {
-				extraArgument: {
-					api: $api,
+		middleware: (getDefaultMiddleware) =>
+			getDefaultMiddleware({
+				thunk: {
+					extraArgument: {
+						api: $api,
+					},
 				},
-			},
-		}).concat(rtkApi.middleware),
+			}).concat(rtkApi.middleware),
 	});
 
 	// @ts-ignore

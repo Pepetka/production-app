@@ -1,11 +1,10 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import withMock from 'storybook-addon-mock';
 import { ReducersMapObject } from '@reduxjs/toolkit';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { Comment, commentFormReducer } from '@/entities/Comment';
 import { StateSchema } from '@/app/provider/Store';
+import { UserRole } from '@/shared/const/role';
 import { ArticleComments } from './ArticleComments';
-import { UserRole } from '@/shared/const';
 
 export default {
 	title: 'features/ArticleComments',
@@ -13,7 +12,6 @@ export default {
 	argTypes: {
 		backgroundColor: { control: 'color' },
 	},
-	decorators: [withMock],
 } as ComponentMeta<typeof ArticleComments>;
 
 const Template: ComponentStory<typeof ArticleComments> = (args) => <ArticleComments {...args} />;
@@ -64,9 +62,7 @@ export const ArticleCommentsStory = Template.bind({});
 ArticleCommentsStory.args = {
 	articleId: '1',
 };
-ArticleCommentsStory.decorators = [
-	StoreDecorator(state as StateSchema, reducers as ReducersMapObject<StateSchema>),
-];
+ArticleCommentsStory.decorators = [StoreDecorator(state as StateSchema, reducers as ReducersMapObject<StateSchema>)];
 ArticleCommentsStory.parameters = {
 	mockData: [
 		{

@@ -4,25 +4,24 @@ import { Select, SelectTheme } from '@/shared/ui/Popups/ui/Select';
 import { Currency } from '../../model/types/currency';
 
 interface CurrencySelectProps {
-	className?: string
-	readonly?: boolean
-	onChangeCurrency?: (value: Currency) => void
-	selected?: Currency
-	theme?: SelectTheme
+	className?: string;
+	readonly?: boolean;
+	onChangeCurrency?: (value: Currency) => void;
+	selected?: Currency;
+	theme?: SelectTheme;
 }
 
-export const CurrencySelect = ({
-	className, onChangeCurrency, selected, readonly, theme,
-}: CurrencySelectProps) => {
+export const CurrencySelect = ({ className, onChangeCurrency, selected, readonly, theme }: CurrencySelectProps) => {
 	const { t } = useTranslation('profile');
 
-	const currencyOptions: Record<Currency, string> = useMemo(() => (
-		{
+	const currencyOptions: Record<Currency, string> = useMemo(
+		() => ({
 			[Currency.EUR]: 'EUR',
 			[Currency.RUB]: 'RUB',
 			[Currency.USD]: 'USD',
-		}
-	), []);
+		}),
+		[],
+	);
 
 	return (
 		<Select

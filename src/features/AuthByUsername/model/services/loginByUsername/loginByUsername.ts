@@ -4,8 +4,8 @@ import { LOCAL_STORAGE_AUTH_KEY } from '@/shared/const/localstorage';
 import { ThunkConfig } from '@/app/provider/Store';
 
 interface LoginByUsernameProps {
-	username: string
-	password: string
+	username: string;
+	password: string;
 }
 
 export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, ThunkConfig<string>>(

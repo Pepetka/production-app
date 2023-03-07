@@ -10,7 +10,7 @@ import { getArticlesPageSort } from '../../selectors/getArticlesPageSort/getArti
 import { getArticlesPagePage } from '../../selectors/getArticlesPagePage/getArticlesPagePage';
 
 interface FetchArticlesListProps {
-	replace?: boolean
+	replace?: boolean;
 }
 
 export const fetchArticlesList = createAsyncThunk<Array<Article>, FetchArticlesListProps, ThunkConfig<string>>(
@@ -25,7 +25,10 @@ export const fetchArticlesList = createAsyncThunk<Array<Article>, FetchArticlesL
 			const page = getArticlesPagePage(getState());
 
 			addQueryParams({
-				sort, order, search, type,
+				sort,
+				order,
+				search,
+				type,
 			});
 
 			const response = await extra.api.get<Array<Article>>('/articles', {

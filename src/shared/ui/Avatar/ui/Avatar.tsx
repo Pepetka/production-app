@@ -22,21 +22,19 @@ const SkeletonSize: Record<AvatarSize, number> = {
 
 interface AvatarProps {
 	className?: string;
-	avatar?: string
-	size?: AvatarSize
-	alt?: string
-	inverted?: boolean
-	border?: boolean
+	avatar?: string;
+	size?: AvatarSize;
+	alt?: string;
+	inverted?: boolean;
+	border?: boolean;
 }
 
-export const Avatar = memo(({
-	className, avatar = DefaultAvatar, size = AvatarSize.SIZE_M, alt, inverted = false, border = true,
-}: AvatarProps) => {
+export const Avatar = memo(({ className, avatar, size = AvatarSize.SIZE_M, alt, inverted = false, border = true }: AvatarProps) => {
 	const { t } = useTranslation('profile');
 
 	return (
 		<AppImg
-			src={avatar}
+			src={avatar || DefaultAvatar}
 			alt={alt ?? t('Profile avatar')}
 			className={classNames(cls.Avatar, { [cls.inverted]: inverted, [cls.border]: border }, [className, cls[size]])}
 			fallback={<Skeleton width={SkeletonSize[size]} circle />}

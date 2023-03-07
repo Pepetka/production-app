@@ -41,6 +41,12 @@ jobs:
       - name: unit testing
         if: always()
         run: npm run test:unit
+      - name: e2e testing
+        uses: cypress-io/github-action@v5
+        with:
+          start: npm run start:dev
+          wait-on: 'http://localhost:3000'
+          config: baseUrl=http://localhost:3000/
       - name: Generate HTML report
         run: npm run test:ui:report
         if: always()

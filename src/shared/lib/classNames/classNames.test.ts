@@ -14,7 +14,6 @@ describe('classNames', () => {
 		expect(classNames('', {}, ['additionalClass'])).toBe('additionalClass');
 	});
 	test('with all arguments', () => {
-		expect(classNames('someClass', { trueClass: true, falseClass: false }, ['additionalClass'])).toBe('someClass'
-			+ ' additionalClass trueClass');
+		expect(classNames('someClass', { trueClass: true, falseClass: false }, ['additionalClass'])).toBe('someClass additionalClass trueClass');
 	});
 });

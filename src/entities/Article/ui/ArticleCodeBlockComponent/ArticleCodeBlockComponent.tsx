@@ -1,6 +1,4 @@
-import {
-	memo, useCallback, useEffect, useRef, useState,
-} from 'react';
+import { memo, useCallback, useEffect, useRef, useState } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import CopyIcon from '@/shared/assets/icons/copy_icon.svg';
@@ -10,43 +8,41 @@ import { ArticleCodeBlock } from '../../model/types/article';
 import cls from './ArticleCodeBlockComponent.module.scss';
 
 interface ArticleCodeBlockComponentProps {
-	className?: string
-	block: ArticleCodeBlock
+	className?: string;
+	block: ArticleCodeBlock;
 }
 
 export const ArticleCodeBlockComponent = memo(({ className, block }: ArticleCodeBlockComponentProps) => {
 	const [coped, setCoped] = useState(false);
 	const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-	useEffect(() => () => {
-		clearTimeout(timerRef.current!);
-	}, []);
-
-	const onCopy = useCallback(
-		() => {
-			navigator.clipboard.writeText(block.code).then(() => {
-				setCoped(true);
-				timerRef.current = setTimeout(() => setCoped(false), 3000);
-			});
+	useEffect(
+		() => () => {
+			clearTimeout(timerRef.current!);
 		},
-		[block.code],
+		[],
 	);
+
+	const onCopy = useCallback(() => {
+		navigator.clipboard.writeText(block.code).then(() => {
+			setCoped(true);
+			timerRef.current = setTimeout(() => setCoped(false), 3000);
+		});
+	}, [block.code]);
 
 	return (
 		<div className={classNames(cls.ArticleCodeBlockComponent, {}, [className])}>
 			<div className={cls.copy}>
-				{coped
-					?	<Icon stroke SvgIcon={DoneIcon} />
-					:	(
-						<Button onClick={onCopy} theme={ButtonTheme.CLEAR}>
-							<Icon stroke SvgIcon={CopyIcon} />
-						</Button>
-					)}
+				{coped ? (
+					<Icon stroke SvgIcon={DoneIcon} />
+				) : (
+					<Button onClick={onCopy} theme={ButtonTheme.CLEAR}>
+						<Icon stroke SvgIcon={CopyIcon} />
+					</Button>
+				)}
 			</div>
 			<pre className={cls.codeWrapper}>
-				<code>
-					{block.code}
-				</code>
+				<code>{block.code}</code>
 			</pre>
 		</div>
 	);

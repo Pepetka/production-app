@@ -9,7 +9,7 @@ import '@/app/styles/index.scss';
 
 import './Storybook.scss';
 
-const StoryComponentWithTheme = ({ StoryComponent, globalTheme }: {StoryComponent: Story, globalTheme: Theme}) => {
+const StoryComponentWithTheme = ({ StoryComponent, globalTheme }: { StoryComponent: Story; globalTheme: Theme }) => {
 	const { setTheme, theme } = useTheme();
 
 	useEffect(() => {

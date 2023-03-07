@@ -29,6 +29,4 @@ export const AddCommentFormStory = Template.bind({});
 AddCommentFormStory.args = {
 	onSendComment: () => {},
 };
-AddCommentFormStory.decorators = [
-	StoreDecorator(state as StateSchema, reducers as ReducersMapObject<StateSchema>),
-];
+AddCommentFormStory.decorators = [StoreDecorator(state as StateSchema, reducers as ReducersMapObject<StateSchema>)];

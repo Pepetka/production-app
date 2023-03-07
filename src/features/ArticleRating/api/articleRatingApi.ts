@@ -3,7 +3,7 @@ import { ArticleRatingType, ArticleRatingDB } from '../model/types/articleRating
 
 const articleRatingApi = rtkApi.injectEndpoints({
 	endpoints: (build) => ({
-		fetchArticleRating: build.query<Array<ArticleRatingType>, {articleId: string, userId: string}>({
+		fetchArticleRating: build.query<Array<ArticleRatingType>, { articleId: string; userId: string }>({
 			query: ({ articleId, userId }) => ({
 				url: '/rating-article',
 				params: {

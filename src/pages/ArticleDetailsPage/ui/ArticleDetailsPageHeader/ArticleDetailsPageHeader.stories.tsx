@@ -36,18 +36,19 @@ const reducers: DeepPartial<ReducersMapObject<StateSchema>> = {
 
 export const ArticleDetailsPageHeaderWithAuth = Template.bind({});
 ArticleDetailsPageHeaderWithAuth.args = {};
-ArticleDetailsPageHeaderWithAuth.decorators = [
-	StoreDecorator(state as StateSchema, reducers as ReducersMapObject<StateSchema>),
-];
+ArticleDetailsPageHeaderWithAuth.decorators = [StoreDecorator(state as StateSchema, reducers as ReducersMapObject<StateSchema>)];
 
 export const ArticleDetailsPageHeaderWithoutAuth = Template.bind({});
 ArticleDetailsPageHeaderWithoutAuth.args = {};
 ArticleDetailsPageHeaderWithoutAuth.decorators = [
-	StoreDecorator({
-		user: {
-			authData: {
-				id: 'some another id',
+	StoreDecorator(
+		{
+			user: {
+				authData: {
+					id: 'some another id',
+				},
 			},
-		},
-	} as StateSchema, reducers as ReducersMapObject<StateSchema>),
+		} as StateSchema,
+		reducers as ReducersMapObject<StateSchema>,
+	),
 ];

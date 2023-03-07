@@ -1,11 +1,9 @@
-import {
-	useCallback, useEffect, useRef, useState,
-} from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 interface UseModalProps {
-	isOpen: boolean
-	onClose?: () => void
-	callback?: () => void
+	isOpen: boolean;
+	onClose?: () => void;
+	callback?: () => void;
 }
 
 export const useModal = ({ isOpen, onClose, callback }: UseModalProps) => {
@@ -35,28 +33,28 @@ export const useModal = ({ isOpen, onClose, callback }: UseModalProps) => {
 		};
 	}, [isOpen]);
 
-	const onCloseHandler = useCallback(
-		() => {
-			if (onClose) {
-				setIsClosing(true);
+	const onCloseHandler = useCallback(() => {
+		if (onClose) {
+			setIsClosing(true);
 
-				closeTimeoutRef.current = setTimeout(() => {
-					onCloseWithCallback();
-					setIsClosing(false);
-					setIsOpening(false);
-				}, 300);
-			}
-		},
-		[onClose, onCloseWithCallback],
-	);
+			closeTimeoutRef.current = setTimeout(() => {
+				onCloseWithCallback();
+				setIsClosing(false);
+				setIsOpening(false);
+			}, 300);
+		}
+	}, [onClose, onCloseWithCallback]);
 
 	useEffect(() => {
 		if (!isOpen) onCloseHandler();
 	}, [isOpen, onCloseHandler]);
 
-	const onKeyDown = useCallback((event: KeyboardEvent) => {
-		if (event.key === 'Escape' && onClose) onClose();
-	}, [onClose]);
+	const onKeyDown = useCallback(
+		(event: KeyboardEvent) => {
+			if (event.key === 'Escape' && onClose) onClose();
+		},
+		[onClose],
+	);
 
 	useEffect(() => {
 		if (isOpen) {
