@@ -35,7 +35,7 @@ export const ArticlesSortSelector = memo(({ className, onChangeSort, onChangeOrd
 	);
 
 	return (
-		<HStack gap="8" className={className}>
+		<HStack wrap gap="8" className={className}>
 			<Select theme={SelectTheme.INVERT} selected={sort} onChange={onChangeSort} className={cls.sort} options={SortOptions} label={t('Sort by')} />
 			<Select theme={SelectTheme.INVERT} selected={order} onChange={onChangeOrder} className={cls.sort} options={SortOrderOptions} label={t('By')} />
 		</HStack>

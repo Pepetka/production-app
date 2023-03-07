@@ -50,7 +50,7 @@ const CommentForm = memo(({ className, onSendComment }: AddCommentFormProps) => 
 						theme={InputTheme.INVERT}
 						textInvert
 						value={text}
-						floatPlaceholder={t('Enter comment text')}
+						floatPlaceholder={t('Enter comment')}
 					/>
 					<Button data-testid="CommentForm.SendBtn" type="submit" theme={ButtonTheme.OUTLINE_PRIMARY}>
 						{t('Send')}

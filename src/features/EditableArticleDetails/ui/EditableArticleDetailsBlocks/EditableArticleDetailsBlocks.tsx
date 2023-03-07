@@ -86,7 +86,7 @@ export const EditableArticleDetailsBlocks = memo(
 					</Card>
 				))}
 				<HStack w100 justify="center">
-					<HStack gap="8">
+					<HStack wrap gap="8">
 						<Text title={t('Add block')} TitleTag="p" />
 						<Tabs data-testid={`${dataTestId}.tabs`} tabs={tabs} onClick={onAddBlock} />
 					</HStack>

@@ -22,7 +22,7 @@ export const Tabs = typedMemo(<T extends string>({ className, tabs, selected, on
 	);
 
 	return (
-		<HStack gap="8" justify="start" className={className}>
+		<HStack wrap gap="8" justify="start" className={className}>
 			{Object.entries(tabs).map(([key, value]) => (
 				<Button
 					key={key}

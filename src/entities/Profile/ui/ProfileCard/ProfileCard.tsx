@@ -71,11 +71,11 @@ export const ProfileCard = memo(
 		}
 
 		return (
-			<HStack data-testid={dataTestId} align="start" className={classNames(cls.ProfileCard, {}, [className])}>
+			<HStack wrap data-testid={dataTestId} align="start" className={classNames(cls.ProfileCard, {}, [className])}>
 				<VStack gap="16" justify="start" className={cls.column}>
 					<Avatar size={AvatarSize.SIZE_L} avatar={data?.avatar} />
 				</VStack>
-				<HStack gap="32" align="start" className={cls.profileData}>
+				<HStack wrap gap="32" align="start" className={cls.profileData}>
 					<VStack gap="16" justify="start" className={cls.column}>
 						<Input
 							data-testid={`${dataTestId}.Username`}

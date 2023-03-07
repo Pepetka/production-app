@@ -28,7 +28,7 @@ export const ArticleDetailsPageHeader = memo(({ className }: ArticleDetailsPageH
 	}, [article?.id, navigate]);
 
 	return (
-		<HStack justify="between" w100 className={className}>
+		<HStack wrap gap="8" justify="between" w100 className={className}>
 			<Button className={cls.btn} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onBack}>
 				{t('Back to list')}
 			</Button>

@@ -1,10 +1,10 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { StateSchema } from '@/app/provider/Store';
-import { SideBar } from './SideBar';
+import { SideBar } from './SideBarDesktop';
 
 export default {
-	title: 'widgets/SideBar',
+	title: 'widgets/SideBarMobile',
 	component: SideBar,
 	argTypes: {
 		backgroundColor: { control: 'color' },

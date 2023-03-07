@@ -57,7 +57,7 @@ export const EditableProfileCardHeader = memo(({ className }: ProfilePageHeaderP
 	}
 
 	return (
-		<HStack gap="16" align="start" justify="between" className={className}>
+		<HStack wrap gap="16" align="start" justify="between" className={className}>
 			<Text size={TextSize.L} title={t('Profile page')} TitleTag="h1" />
 			{content}
 		</HStack>

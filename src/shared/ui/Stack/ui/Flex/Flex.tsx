@@ -45,6 +45,7 @@ export interface FlexProps {
 	w100?: boolean;
 	h100?: boolean;
 	Tag?: TagType;
+	wrap?: boolean;
 	'data-testid'?: string;
 }
 
@@ -57,13 +58,17 @@ export const Flex = ({
 	gap,
 	w100,
 	h100,
+	wrap,
 	Tag = 'div',
 	'data-testid': dataTestId,
 }: FlexProps) => {
 	const classes = [alignClasses[align], justifyClasses[justify], directionClasses[direction], className];
 
 	return (
-		<Tag data-testid={dataTestId} className={classNames(cls.Flex, { [gapClasses[gap!]]: gap, [cls.w100]: w100, [cls.h100]: h100 }, classes)}>
+		<Tag
+			data-testid={dataTestId}
+			className={classNames(cls.Flex, { [gapClasses[gap!]]: gap, [cls.w100]: w100, [cls.wrap]: wrap, [cls.h100]: h100 }, classes)}
+		>
 			{children}
 		</Tag>
 	);

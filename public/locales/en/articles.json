@@ -3,7 +3,6 @@
 	"Article img": "Article img",
 	"Comments": "Comments",
 	"Something wrong": "Something wrong",
-	"Enter comment text": "Enter comment text",
 	"Send": "Send",
 	"Read more": "Read more",
 	"Back to list": "Back to list",
@@ -44,5 +43,6 @@
 	"Require article header data": "Require article header data",
 	"Require article types": "Require article types",
 	"Loading": "Loading...",
-	"Load more": "Load more"
+	"Load more": "Load more",
+	"Enter comment": "Enter comment"
 }
