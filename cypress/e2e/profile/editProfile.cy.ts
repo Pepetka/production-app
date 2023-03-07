@@ -4,10 +4,12 @@ describe('Edit profile', () => {
 	let profileId: string;
 
 	beforeEach(() => {
+		cy.intercept('GET', '**/profile/**').as('getProfile');
 		cy.login().then((data) => {
 			profileId = data.id;
 			cy.visit(getProfilePagePath(profileId));
 		});
+		cy.wait('getProfile');
 	});
 
 	afterEach(() => {
@@ -20,6 +22,7 @@ describe('Edit profile', () => {
 
 	it('Edit profile', () => {
 		cy.updateProfile();
+		cy.wait('getProfile');
 		cy.getByTestId('EditableProfileCard.Username').should('have.value', 'newTestUser');
 	});
 });
