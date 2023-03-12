@@ -7,11 +7,29 @@ import { Overlay } from '../../Overlay';
 import cls from './Drawer.module.scss';
 
 interface DrawerProps {
+	/**
+	 * Дополнительные классы
+	 */
 	className?: string;
+	/**
+	 * Дочерний элемент окна
+	 */
 	children?: ReactNode;
+	/**
+	 * Флаг, отвечающий за открытие окна
+	 */
 	isOpen: boolean;
+	/**
+	 * Функция, закрывающая окно
+	 */
 	onCloseDrawer?: () => void;
+	/**
+	 * Функция, вызывающаяся при закрытии окна
+	 */
 	callback?: () => void;
+	/**
+	 * Высота окна в пикселях
+	 */
 	height?: number;
 }
 

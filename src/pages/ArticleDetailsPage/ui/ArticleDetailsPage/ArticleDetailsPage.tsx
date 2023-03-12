@@ -1,7 +1,6 @@
 import { memo, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { ArticleDetails, articleReducer, fetchArticleById, getArticleData, getArticleError } from '@/entities/Article';
 import { ArticleComments } from '@/features/ArticleComments';
 import { Page } from '@/widgets/Page';
 import { ArticleRecommendations } from '@/features/ArticleRecommendations';
@@ -10,8 +9,13 @@ import { ArticleRating } from '@/features/ArticleRating';
 import { useAppEffect } from '@/shared/lib/hooks/useAppEffect/useAppEffect';
 import { DynamicModuleLoader } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { ArticleDetails } from '@/entities/Article';
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import { getArticleLoading } from '../../model/selectors/getArticleLoading/getArticleLoading';
+import { getArticleError } from '../../model/selectors/getArticleError/getArticleError';
+import { getArticleData } from '../../model/selectors/getArticleData/getArticleData';
+import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
+import { articleReducer } from '../../model/slice/articleSlice';
 
 interface ArticleDetailsPageProps {
 	storybookId?: string;

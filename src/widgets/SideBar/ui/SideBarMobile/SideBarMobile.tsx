@@ -1,57 +1,28 @@
-import { FC, memo, SVGProps, useCallback, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { memo, useCallback, useState } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { ThemeSwitcher } from '@/features/ThemeSwitcher';
 import { LangSwitcher } from '@/features/LangSwitcher';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
-import AboutIcon from '@/shared/assets/icons/about_icon.svg';
-import HomeIcon from '@/shared/assets/icons/home_icon.svg';
-import ProfileIcon from '@/shared/assets/icons/profile_icon.svg';
-import ArticlesIcon from '@/shared/assets/icons/articles_icon.svg';
-import { getAuthData } from '@/entities/User';
 import { HStack, VStack } from '@/shared/ui/Stack';
-import { AppRoutes, getAboutPagePath, getArticlesPagePath, getMainPagePath, getProfilePagePath } from '@/shared/const/router';
-import { AppRoutesProps } from '@/shared/types/router';
-import { SideBarLink } from '../SideBarLink/SideBarLink';
+import { SideBarLinksList } from '../SideBarLinksList/SideBarLinksList';
 import cls from './SideBarMobile.module.scss';
-
-const navIcons: Record<string, FC<SVGProps<SVGSVGElement>>> = {
-	[AppRoutes.MAIN]: HomeIcon,
-	[AppRoutes.ABOUT]: AboutIcon,
-	[AppRoutes.PROFILE]: ProfileIcon,
-	[AppRoutes.ARTICLES]: ArticlesIcon,
-};
 
 interface SideBarMobileProps {
 	className?: string;
+	defaultCollapsed?: boolean;
 }
-export const SideBarMobile = memo(({ className }: SideBarMobileProps) => {
-	const [collapsed, setCollapsed] = useState(true);
-	const authData = useSelector(getAuthData);
+export const SideBarMobile = memo(({ className, defaultCollapsed = true }: SideBarMobileProps) => {
+	const [collapsed, setCollapsed] = useState(defaultCollapsed);
 
 	const onCollapse = useCallback(() => {
 		setCollapsed((collapsed) => !collapsed);
 	}, []);
 
-	const links: DeepPartial<Record<AppRoutes, AppRoutesProps>> = {
-		[AppRoutes.MAIN]: { path: getMainPagePath(), authOnly: false },
-		[AppRoutes.ABOUT]: { path: getAboutPagePath(), authOnly: false },
-		[AppRoutes.PROFILE]: {
-			path: getProfilePagePath(authData?.id),
-			authOnly: true,
-		},
-		[AppRoutes.ARTICLES]: { path: getArticlesPagePath(), authOnly: true },
-	};
-
 	return (
-		<HStack align="start" className={classNames(cls.SideBarWrapper, { [cls.collapsed]: collapsed }, [className])}>
-			<VStack data-testid="SideBarMobile" Tag="aside" justify="between" className={cls.SideBar}>
+		<HStack data-testid="SideBarMobile" align="start" className={classNames(cls.SideBarWrapper, { [cls.collapsed]: collapsed }, [className])}>
+			<VStack Tag="aside" justify="between" className={cls.SideBar}>
 				<VStack w100>
-					<VStack Tag="nav" gap="16" align="start">
-						{Object.entries(links).map(([routeName, { path, authOnly }]) => (
-							<SideBarLink authOnly={authOnly} key={path} path={path!} icon={navIcons[routeName]} routeName={routeName} collapsed={false} />
-						))}
-					</VStack>
+					<SideBarLinksList collapsed={collapsed} />
 				</VStack>
 
 				<HStack justify="between" gap="8">

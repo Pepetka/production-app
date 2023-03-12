@@ -8,11 +8,29 @@ import { Portal } from '../../Portal';
 import cls from './Modal.module.scss';
 
 interface ModalProps {
+	/**
+	 * Дополнительные классы
+	 */
 	className?: string;
+	/**
+	 * Дочерний элемент модального окна
+	 */
 	children: ReactNode;
+	/**
+	 * Флаг, отвечающий за открытие окна
+	 */
 	isOpen: boolean;
+	/**
+	 * Функция, закрывающая окно
+	 */
 	onCloseModal?: () => void;
+	/**
+	 * Функция, вызывающаяся при закрытии окна
+	 */
 	callback?: () => void;
+	/**
+	 * Флаг, отвечающий за удаление окна из DOM
+	 */
 	lazy?: boolean;
 }
 

@@ -37,7 +37,7 @@ const ArticlesPage = memo(() => {
 
 	const callback = useCallback(() => {
 		dispatch(initArticlesPage(getArticlesLimit(wrapperRef.current)));
-	}, []);
+	}, [dispatch]);
 
 	useAppEffect(callback);
 

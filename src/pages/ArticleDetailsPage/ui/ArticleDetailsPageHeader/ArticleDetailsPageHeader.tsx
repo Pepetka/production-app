@@ -3,10 +3,10 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
-import { getArticleData } from '@/entities/Article';
 import { HStack } from '@/shared/ui/Stack';
 import { getArticleEditPagePath, getArticlesPagePath } from '@/shared/const/router';
 import { getCanEditArticle } from '../../model/selectors/getCanEditArticle/getCanEditArticle';
+import { getArticleData } from '../../model/selectors/getArticleData/getArticleData';
 import cls from './ArticleDetailsPageHeader.module.scss';
 
 interface ArticleDetailsPageHeaderProps {

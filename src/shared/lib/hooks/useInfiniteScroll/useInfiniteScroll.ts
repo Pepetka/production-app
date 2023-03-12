@@ -6,6 +6,12 @@ export interface UseInfiniteScrollProps {
 	wrapperRef: MutableRefObject<HTMLElement>;
 }
 
+/**
+ * Хук, вызывающий callback функцию, когда trigger пересечется с wrapper
+ * @param callback - функция, вызывающаяся, когда trigger пересечется с wrapper
+ * @param wrapperRef - ref на контейнер, с которым trigger должен пересечься
+ * @param triggerRef - ref на элемент, который должен пересечься с wrapper
+ */
 export const useInfiniteScroll = ({ callback, wrapperRef, triggerRef }: UseInfiniteScrollProps) => {
 	useEffect(() => {
 		const wrapperRefElement = wrapperRef.current;
@@ -30,7 +36,6 @@ export const useInfiniteScroll = ({ callback, wrapperRef, triggerRef }: UseInfin
 		}
 
 		return () => {
-			// eslint-disable-next-line react-hooks/exhaustive-deps
 			if (observer) observer.unobserve(triggerRefElement);
 		};
 		// eslint-disable-next-line

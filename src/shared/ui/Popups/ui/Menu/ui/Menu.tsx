@@ -1,19 +1,34 @@
 import { memo, ReactNode } from 'react';
 import { Menu as DropDown } from '@headlessui/react';
 import { classNames } from '@/shared/lib/classNames/classNames';
+import { PopupPosition } from '@/shared/types/uiTypes';
 import { AppLink, AppLinkTheme } from '../../../../AppLink';
 import { Button, ButtonTheme } from '../../../../Button';
 import { HStack } from '../../../../Stack';
-import { PopupPosition } from '../../../../../types/uiTypes';
 import { MenuItem } from '../model/types/menu';
 import clsPopups from '../../../style/Popups.module.scss';
 import cls from './Menu.module.scss';
 
 interface MenuProps {
+	/**
+	 * Дополнительные классы
+	 */
 	className?: string;
+	/**
+	 * Элемент, клик на который должен вызывать открытие меню
+	 */
 	trigger: ReactNode;
+	/**
+	 * Флаг, отвечающий за наличие стрелки
+	 */
 	arrow?: boolean;
+	/**
+	 * Массив элементов, появляющихся при открытии меню
+	 */
 	menuItems: Array<MenuItem>;
+	/**
+	 * Направление открытия меню
+	 */
 	popupPosition?: PopupPosition;
 }
 

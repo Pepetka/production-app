@@ -15,11 +15,10 @@ interface PageProps {
 	className?: string;
 	children: ReactNode;
 	onScrollEnd?: () => void;
-	infiniteScroll?: boolean;
 	'data-testid'?: string;
 }
 
-export const Page = forwardRef<HTMLElement, PageProps>(({ className, children, onScrollEnd, infiniteScroll, 'data-testid': dataTestId }, ref) => {
+export const Page = forwardRef<HTMLElement, PageProps>(({ className, children, onScrollEnd, 'data-testid': dataTestId }, ref) => {
 	const dispatch = useAppDispatch();
 	const location = useLocation();
 	const wrapperRef = useRef() as MutableRefObject<HTMLElement>;
@@ -49,6 +48,7 @@ export const Page = forwardRef<HTMLElement, PageProps>(({ className, children, o
 		return () => {
 			clearTimeout(timeout);
 		};
+		// eslint-disable-next-line
 	}, []);
 
 	useAppEffect(callback);
@@ -56,7 +56,7 @@ export const Page = forwardRef<HTMLElement, PageProps>(({ className, children, o
 	useInfiniteScroll({
 		wrapperRef,
 		triggerRef,
-		callback: infiniteScroll ? onScrollEnd : undefined,
+		callback: onScrollEnd,
 	});
 
 	useImperativeHandle(ref, () => wrapperRef.current);
@@ -64,7 +64,7 @@ export const Page = forwardRef<HTMLElement, PageProps>(({ className, children, o
 	return (
 		<main ref={wrapperRef} className={classNames(cls.Page, {}, [className])} onScroll={onScroll} data-testid={dataTestId}>
 			{children}
-			{infiniteScroll ? onScrollEnd && <div className={cls.observer} ref={triggerRef} /> : null}
+			{onScrollEnd && <div className={cls.observer} ref={triggerRef} />}
 		</main>
 	);
 });

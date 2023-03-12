@@ -3,8 +3,17 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Card.module.scss';
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
+	/**
+	 * Дополнительные классы
+	 */
 	className?: string;
+	/**
+	 * Дочерний элемент карточки
+	 */
 	children: ReactNode;
+	/**
+	 * Флаг, отвечающий за возможность компонента занять 100% ширины контейнера
+	 */
 	w100?: boolean;
 }
 

@@ -7,8 +7,17 @@ import { Button, ButtonTheme } from '../../Button';
 import cls from './StarRating.module.scss';
 
 interface StarRatingProps {
+	/**
+	 * Дополнительные классы
+	 */
 	className?: string;
+	/**
+	 * Функция, вызывающаяся при клике на звезду
+	 */
 	onSelect?: (rating: number) => void;
+	/**
+	 * Номер выбранной звезды
+	 */
 	rating?: number;
 }
 

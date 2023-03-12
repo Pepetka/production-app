@@ -1,20 +1,20 @@
 import 'whatwg-fetch';
 import { fireEvent, screen } from '@testing-library/react';
 import { componentTestRender } from '@/shared/lib/componentTestRender/comopnentTestRender';
-import { SideBar } from './SideBarDesktop';
+import { SideBarDesktop } from './SideBarDesktop';
 
 describe('widgets/SideBarMobile', () => {
 	test('Be in the document', () => {
-		const sidebar = componentTestRender(<SideBar />);
-		expect(sidebar.getByTestId('SideBar')).toBeInTheDocument();
+		const sidebar = componentTestRender(<SideBarDesktop />);
+		expect(sidebar.getByTestId('SideBarDesktop')).toBeInTheDocument();
 	});
 
 	test('Toggle sideBar', () => {
-		const sidebar = componentTestRender(<SideBar />);
-		const toggle = sidebar.getByTestId('SideBarMobile.Toggle');
+		const sidebar = componentTestRender(<SideBarDesktop />);
+		const toggle = sidebar.getByTestId('SideBarDesktop.Toggle');
 
-		expect(screen.getByTestId('SideBar')).toHaveClass('collapsed');
+		expect(screen.getByTestId('SideBarDesktop')).toHaveClass('collapsed');
 		fireEvent.click(toggle);
-		expect(screen.getByTestId('SideBar')).not.toHaveClass('collapsed');
+		expect(screen.getByTestId('SideBarDesktop')).not.toHaveClass('collapsed');
 	});
 });

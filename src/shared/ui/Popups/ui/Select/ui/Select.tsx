@@ -11,15 +11,46 @@ export enum SelectTheme {
 }
 
 interface SelectProps<T extends string> {
+	/**
+	 * Дополнительные классы
+	 */
 	className?: string;
+	/**
+	 * Placeholder селекта
+	 */
 	placeholder?: string;
+	/**
+	 * Флаг, отвечающий за инвертирование цвета текста
+	 */
 	textInvert?: boolean;
+	/**
+	 * Тема компонента
+	 */
 	theme?: SelectTheme;
+	/**
+	 * Флаг, отвечающий за возможность изменения выбранной опции
+	 */
 	disabled?: boolean;
+	/**
+	 * Функция, вызывающаяся при изменении выбранной опции
+	 * @param value - новая выбранная опция
+	 */
 	onChange?: (value: T) => void;
+	/**
+	 * Опции селекта
+	 */
 	options: Record<string, string>;
+	/**
+	 * Выбранная опция
+	 */
 	selected?: T;
+	/**
+	 * Лейбл селекта
+	 */
 	label?: string;
+	/**
+	 * Направление открытия селекта
+	 */
 	popupPosition?: 'top' | 'bottom';
 }
 

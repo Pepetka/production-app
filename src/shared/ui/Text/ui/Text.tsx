@@ -17,17 +17,50 @@ export enum TextSize {
 type TagType = 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 interface TextProps {
+	/**
+	 * Дополнительные классы
+	 */
 	className?: string;
+	/**
+	 * Текст заголовка
+	 */
 	title?: string;
+	/**
+	 * Текст
+	 */
 	text?: string;
+	/**
+	 * Тема компонента
+	 */
 	theme?: TextTheme;
+	/**
+	 * Пропс, отвечающий за значение свойства text-align
+	 */
 	align?: TextAlign;
+	/**
+	 * Размер текста
+	 */
 	size?: TextSize;
+	/**
+	 * Флаг, отвечающий за инвертирование темы
+	 */
 	invert?: boolean;
+	/**
+	 * Тэг заголовка
+	 */
 	TitleTag?: TagType;
-	'data-testid'?: string;
+	/**
+	 * Флаг, отвечающий за принудительное помещение текста в одной строке
+	 */
 	noWrap?: boolean;
+	/**
+	 * Флаг, отвечающий за возможность компонента занять 100% ширины контейнера
+	 */
 	w100?: boolean;
+	/**
+	 * ID компонента при тестировании
+	 */
+	'data-testid'?: string;
 }
 
 export const Text = memo(

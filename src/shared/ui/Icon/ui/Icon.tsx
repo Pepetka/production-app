@@ -12,10 +12,25 @@ export enum IconTheme {
 }
 
 interface IconProps {
+	/**
+	 * Дополнительные классы
+	 */
 	className?: string;
-	SvgIcon: React.VFC<React.SVGProps<SVGSVGElement>>;
+	/**
+	 * SVG иконка
+	 */
+	SvgIcon: React.FC<React.SVGProps<SVGSVGElement>>;
+	/**
+	 * Тема компонента
+	 */
 	theme?: IconTheme;
+	/**
+	 * Флаг, отвечающий за добавления к стилям свойства stroke
+	 */
 	stroke?: boolean;
+	/**
+	 * Размер компонента
+	 */
 	size?: 'size_s' | 'size_m' | 'size_l' | 'size_xs';
 }
 
