@@ -2,10 +2,11 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ReducersMapObject } from '@reduxjs/toolkit';
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { StateSchema } from '@/app/provider/Store';
-import { articleReducer, ArticleType, ArticleBlockType, Article } from '@/entities/Article';
+import { ArticleType, ArticleBlockType, Article } from '@/entities/Article';
 import { Comment } from '@/entities/Comment';
 import { ArticleRatingType } from '@/features/ArticleRating';
 import { UserRole } from '@/shared/const/role';
+import { articleReducer } from '../../model/slice/articleSlice';
 import ArticleDetailsPage from './ArticleDetailsPage';
 
 export default {

@@ -37,6 +37,7 @@ interface ArticlesListProps {
 	onScrollEnd?: () => void;
 	recommendations?: boolean;
 	wrapperRef?: MutableRefObject<HTMLElement | null>;
+	virtualization?: boolean;
 	limit: number;
 }
 
@@ -51,6 +52,7 @@ export const ArticlesList = memo(
 		onScrollEnd,
 		recommendations,
 		wrapperRef,
+		virtualization = true,
 		limit,
 	}: ArticlesListProps) => {
 		const { t } = useTranslation('articles');
@@ -95,7 +97,7 @@ export const ArticlesList = memo(
 			);
 		}
 
-		return (
+		return virtualization ? (
 			<div
 				data-testid="ArticlesList"
 				className={classNames('', {
@@ -123,6 +125,24 @@ export const ArticlesList = memo(
 					/>
 				)}
 				{loading && <Footer />}
+			</div>
+		) : (
+			<div
+				data-testid="ArticlesList"
+				className={classNames('', {
+					[cls.wrapper]: !recommendations,
+					[cls.recommendations]: recommendations,
+				})}
+			>
+				{articles && !loading ? (
+					<div className={classNames(cls.ArticlesList, {}, [className, cls[view]])}>{articles.map((_, i) => renderArticle(i))}</div>
+				) : (
+					<div className={classNames(cls.ArticlesList, {}, [cls[view]])}>
+						{new Array(limit).fill(0).map((_, i) => (
+							<ArticlesListSkeleton key={i} view={view} />
+						))}
+					</div>
+				)}
 			</div>
 		);
 	},

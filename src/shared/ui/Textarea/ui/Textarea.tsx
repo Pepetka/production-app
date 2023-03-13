@@ -10,14 +10,33 @@ export enum TextareaTheme {
 type HTMLTextareaProps = Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'onChange'>;
 
 interface TextareaProps extends HTMLTextareaProps {
+	/**
+	 * Дополнительные классы
+	 */
 	className?: string;
-	autoFocus?: boolean;
+	/**
+	 * Текст плавающего placeholder
+	 */
 	floatPlaceholder?: string;
+	/**
+	 * Флаг, отвечающий за инвертирование текста
+	 */
 	textInvert?: boolean;
+	/**
+	 * Тема компонента
+	 */
 	theme?: TextareaTheme;
-	value?: string;
+	/**
+	 * Флаг, отвечающий за возможность изменять содержимое текстового поля
+	 */
 	readonly?: boolean;
+	/**
+	 * Функция, вызывающаяся при изменении содержимого текстового поля
+	 */
 	onChange?: (value: string) => void;
+	/**
+	 * ID компонента при тестировании
+	 */
 	'data-testid'?: string;
 }
 

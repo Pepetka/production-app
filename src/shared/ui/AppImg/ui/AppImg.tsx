@@ -1,8 +1,17 @@
 import { ImgHTMLAttributes, memo, ReactElement, useLayoutEffect, useState } from 'react';
 
 interface AppImgProps extends ImgHTMLAttributes<HTMLImageElement> {
+	/**
+	 * Дополнительные классы
+	 */
 	className?: string;
+	/**
+	 * Элемент, который отрисовывается при загрузке
+	 */
 	fallback?: ReactElement;
+	/**
+	 * Элемент, который отрисовывается при ошибке
+	 */
 	errorFallback?: ReactElement;
 }
 

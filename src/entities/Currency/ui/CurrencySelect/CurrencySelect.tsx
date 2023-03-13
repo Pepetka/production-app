@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Select, SelectTheme } from '@/shared/ui/Popups/ui/Select';
-import { Currency } from '../../model/types/currency';
+import { Currency } from '../../model/consts/currency';
 
 interface CurrencySelectProps {
 	className?: string;

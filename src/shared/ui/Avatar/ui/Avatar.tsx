@@ -21,11 +21,29 @@ const SkeletonSize: Record<AvatarSize, number> = {
 };
 
 interface AvatarProps {
+	/**
+	 * Дополнительные классы
+	 */
 	className?: string;
+	/**
+	 * Источник изображения
+	 */
 	avatar?: string;
+	/**
+	 * Размер компонента
+	 */
 	size?: AvatarSize;
+	/**
+	 * Alt аттрибут изображения
+	 */
 	alt?: string;
+	/**
+	 * Флаг, отвечающий за инвертирование border изображения
+	 */
 	inverted?: boolean;
+	/**
+	 * Флаг, отвечающий за наличие border изображения
+	 */
 	border?: boolean;
 }
 

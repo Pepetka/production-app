@@ -10,11 +10,29 @@ export enum AppLinkTheme {
 }
 
 interface AppLinkProps extends NavLinkProps {
+	/**
+	 * Дополнительные классы
+	 */
 	className?: string;
+	/**
+	 * Эндпоинт ссылки
+	 */
 	to: string;
+	/**
+	 * Тема компонента
+	 */
 	theme?: AppLinkTheme;
+	/**
+	 * Дочерний элемент компонента
+	 */
 	children: ReactNode;
+	/**
+	 * Флаг, отвечающий за наличие эффекта наведения
+	 */
 	hover?: boolean;
+	/**
+	 * Флаг, отвечающий за возможность компонента занять 100% ширины контейнера
+	 */
 	w100?: boolean;
 }
 export const AppLink = forwardRef(

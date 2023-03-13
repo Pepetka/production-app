@@ -1,4 +1,4 @@
-import { ChangeEvent, HTMLInputTypeAttribute, InputHTMLAttributes, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, InputHTMLAttributes, useEffect, useRef, useState } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Input.module.scss';
 
@@ -10,15 +10,34 @@ export enum InputTheme {
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'>;
 
 interface InputProps extends HTMLInputProps {
+	/**
+	 * Дополнительные классы
+	 */
 	className?: string;
-	type?: HTMLInputTypeAttribute;
-	autoFocus?: boolean;
+	/**
+	 * Текст плавающего placeholder (при его наличии)
+	 */
 	floatPlaceholder?: string;
+	/**
+	 * Флаг, отвечающий за инвертирование текста
+	 */
 	textInvert?: boolean;
+	/**
+	 * Тема компонента
+	 */
 	theme?: InputTheme;
-	value?: string;
+	/**
+	 * Флаг, отвечающий за возможность изменять значение инпута
+	 */
 	readonly?: boolean;
+	/**
+	 * Функция, вызывающаяся при изменении содержимого инпута
+	 * @param value - содержимое инпута
+	 */
 	onChange?: (value: string) => void;
+	/**
+	 * ID компонента при тестировании
+	 */
 	'data-testid'?: string;
 }
 

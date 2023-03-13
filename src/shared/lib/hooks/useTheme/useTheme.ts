@@ -4,11 +4,24 @@ import { Theme } from '@/shared/const/theme';
 import { ThemeContext } from '@/shared/context/ThemeContext/ThemeContext';
 
 export interface ThemeHook {
+	/**
+	 * Текущая тема приложения
+	 */
 	theme: Theme;
+	/**
+	 * Функция, изменяющая тему
+	 */
 	onThemeChange: () => void;
+	/**
+	 * Функция, изменяющая тему на заданную
+	 * @param theme - тема, на которую поменяется тема приложения
+	 */
 	setTheme: (theme: Theme) => void;
 }
 
+/**
+ * Хук, возвращающий текущую тему приложения, а также функции для изменения темы
+ */
 export const useTheme = (): ThemeHook => {
 	const { theme, setTheme } = useContext(ThemeContext);
 

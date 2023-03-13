@@ -12,10 +12,7 @@
 .recommendations {
 	width: 100%;
 	height: 260px;
-
-	& > div {
-		overflow-y: hidden !important;
-	}
+	overflow-y: hidden;
 
 	.ArticlesList {
 		height: 100%;

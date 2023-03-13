@@ -3,7 +3,6 @@
 	"Article img": "Картинка статьи",
 	"Comments": "Комментарии",
 	"Something wrong": "Что-то пошло не так",
-	"Enter comment text": "Введите текст комментария",
 	"Send": "Отправить",
 	"Read more": "Читать далее",
 	"Back to list": "Вернуться к списку",
@@ -44,5 +43,6 @@
 	"Require article header data": "Заполните заголовок статьи",
 	"Require article types": "Выберите темы статьи",
 	"Loading": "Загрузка...",
-	"Load more": "Больше статей"
+	"Load more": "Больше статей",
+	"Enter comment": "Комментарий"
 }

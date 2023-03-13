@@ -36,15 +36,49 @@ const gapClasses: Record<FlexGap, string> = {
 type TagType = 'a' | 'div' | 'nav' | 'aside' | 'button' | 'header' | 'footer';
 
 export interface FlexProps {
+	/**
+	 * Дополнительные классы
+	 */
 	className?: string;
+	/**
+	 * Дочерний элемент компонента
+	 */
 	children: ReactNode;
+	/**
+	 * Пропс, влияющий на значение свойства align-items
+	 */
 	align?: FlexAlign;
+	/**
+	 * Пропс, влияющий на значение свойства justify-content
+	 */
 	justify?: FlexJustify;
+	/**
+	 * Пропс, влияющий на значение свойства flex-direction
+	 */
 	direction: FlexDirection;
+	/**
+	 * Пропс, влияющий на значение свойства gap
+	 */
 	gap?: FlexGap;
+	/**
+	 * Флаг, отвечающий за возможность компонента занять 100% ширины контейнера
+	 */
 	w100?: boolean;
+	/**
+	 * Флаг, отвечающий за возможность компонента занять 100% высоты контейнера
+	 */
 	h100?: boolean;
+	/**
+	 * Тэг компонента
+	 */
 	Tag?: TagType;
+	/**
+	 * Флаг, отвечающий за возможность содержимого компонента переносится на несколько линий
+	 */
+	wrap?: boolean;
+	/**
+	 * ID компонента при тестировании
+	 */
 	'data-testid'?: string;
 }
 
@@ -57,13 +91,17 @@ export const Flex = ({
 	gap,
 	w100,
 	h100,
+	wrap,
 	Tag = 'div',
 	'data-testid': dataTestId,
 }: FlexProps) => {
 	const classes = [alignClasses[align], justifyClasses[justify], directionClasses[direction], className];
 
 	return (
-		<Tag data-testid={dataTestId} className={classNames(cls.Flex, { [gapClasses[gap!]]: gap, [cls.w100]: w100, [cls.h100]: h100 }, classes)}>
+		<Tag
+			data-testid={dataTestId}
+			className={classNames(cls.Flex, { [gapClasses[gap!]]: gap, [cls.w100]: w100, [cls.wrap]: wrap, [cls.h100]: h100 }, classes)}
+		>
 			{children}
 		</Tag>
 	);

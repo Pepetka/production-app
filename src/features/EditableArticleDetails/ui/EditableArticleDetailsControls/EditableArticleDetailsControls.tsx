@@ -19,7 +19,7 @@ export const EditableArticleDetailsControls = memo(
 		const { t } = useTranslation('articles');
 
 		return (
-			<HStack w100 justify="between" className={classNames('', {}, [className])}>
+			<HStack wrap gap="8" w100 justify="between" className={classNames('', {}, [className])}>
 				{isEdit ? (
 					<Button data-testid={`${dataTestId}.preview`} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onPreview}>
 						{t('Preview')}

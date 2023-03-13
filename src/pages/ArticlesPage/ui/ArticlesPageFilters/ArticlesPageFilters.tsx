@@ -1,7 +1,6 @@
 import { memo, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { ArticleViewSelector } from '@/features/ArticleViewSelector';
 import { ArticleSortField, ArticlesView, ArticleType } from '@/entities/Article';
@@ -18,7 +17,6 @@ import { articlesPageActions } from '../../model/slice/articlesPageSlice';
 import { getArticlesPageSort } from '../../model/selectors/getArticlesPageSort/getArticlesPageSort';
 import { getArticlesPageOrder } from '../../model/selectors/getArticlesPageOrder/getArticlesPageOrder';
 import { getArticlesPageType } from '../../model/selectors/getArticlesPageType/getArticlesPageType';
-import cls from './ArticlesPageFilters.module.scss';
 
 interface ArticlesPageFiltersProps {
 	className?: string;
@@ -79,8 +77,8 @@ export const ArticlesPageFilters = memo(({ className, onChangeView }: ArticlesPa
 	);
 
 	return (
-		<VStack w100 justify="between" align="start" className={classNames(cls.ArticlesPageFilters, {}, [className])}>
-			<HStack justify="between" w100>
+		<VStack w100 align="start" gap="8" className={className}>
+			<HStack wrap gap="8" justify="between" align="start" w100>
 				<ArticlesSortSelector sort={sort} order={order} onChangeSort={onChangeSort} onChangeOrder={onChangeOrder} />
 				<ArticleViewSelector activeView={view} onChangeView={onChangeViewHandle} />
 			</HStack>

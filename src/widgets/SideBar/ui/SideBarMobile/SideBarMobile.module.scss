@@ -1,0 +1,33 @@
+.SideBar {
+	flex: 0 0 var(--sidebar-width);
+	height: calc(100vh - var(--navbar-height));
+	max-width: var(--sidebar-width);
+	background-color: var(--invert-bg-color);
+	padding-block: 30px;
+}
+
+.SideBarWrapper {
+	z-index: var(--sidebar-z-index);
+	position: absolute;
+	top: var(--navbar-height);
+	transition: all 0.2s linear;
+	left: 0;
+}
+
+.toggle {
+	width: 50px;
+	height: 50px;
+	border: none;
+	margin-top: 20px;
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
+	opacity: 1;
+}
+
+.collapsed {
+	left: calc(-1 * var(--sidebar-width));
+
+	.toggle {
+		opacity: 0.3;
+	}
+}

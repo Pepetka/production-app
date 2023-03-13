@@ -34,5 +34,5 @@ export const SkeletonWithBorderRadius = Template.bind({});
 SkeletonWithBorderRadius.args = {
 	height: 50,
 	width: 200,
-	border: 5,
+	borderRadius: 5,
 };

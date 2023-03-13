@@ -12,12 +12,33 @@ export enum ButtonTheme {
 }
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+	/**
+	 * Дополнительные классы
+	 */
 	className?: string;
+	/**
+	 * Тема кнопки
+	 */
 	theme?: ButtonTheme;
+	/**
+	 * Флаг, отвечающий за инвертирования темы кнопки
+	 */
 	inverted?: boolean;
+	/**
+	 * Дочерний элемент кнопки
+	 */
 	children: ReactNode;
+	/**
+	 * Флаг, отвечающий за наличие hover эффекта у кнопки
+	 */
 	hover?: boolean;
+	/**
+	 * Флаг, отвечающий за возможность кнопки занять 100% ширины контейнера
+	 */
 	w100?: boolean;
+	/**
+	 * ID компонента для тестирования
+	 */
 	'data-testid'?: string;
 }
 

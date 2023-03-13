@@ -3,6 +3,9 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './Spinner.module.scss';
 
 interface SpinnerProps {
+	/**
+	 * Дополнительные классы
+	 */
 	className?: string;
 }
 export const Spinner = memo(({ className }: SpinnerProps) => (

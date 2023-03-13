@@ -7,9 +7,21 @@ import clsPopups from '../../../style/Popups.module.scss';
 import cls from './Popover.module.scss';
 
 interface PopoverProps {
+	/**
+	 * Дополнительные классы
+	 */
 	className?: string;
+	/**
+	 * Элемент, появляющийся при открытии меню
+	 */
 	children: ReactNode;
+	/**
+	 * Элемент, клик на который должен вызывать открытие меню
+	 */
 	trigger: ReactNode;
+	/**
+	 * Направление открытия меню
+	 */
 	popupPosition?: PopupPosition;
 }
 

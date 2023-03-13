@@ -3,12 +3,30 @@ import { HStack } from '../../Stack';
 import { Button, ButtonTheme } from '../../Button';
 
 interface TabsProps<T extends string> {
-	'data-testid'?: string;
+	/**
+	 * Дополнительные классы
+	 */
 	className?: string;
+	/**
+	 * Объект табов
+	 */
 	tabs: Record<string, string>;
+	/**
+	 * Выбранные табы
+	 */
 	selected?: Array<T>;
+	/**
+	 * Функция, вызывающаяся при клике на таб
+	 */
 	onClick?: (tab: T) => void;
+	/**
+	 * Флаг, отвечающий за инвертирование цвета табов
+	 */
 	inverted?: boolean;
+	/**
+	 * ID компонента при тестировании
+	 */
+	'data-testid'?: string;
 }
 
 const typedMemo: <T>(c: T) => T = memo;
@@ -22,7 +40,7 @@ export const Tabs = typedMemo(<T extends string>({ className, tabs, selected, on
 	);
 
 	return (
-		<HStack gap="8" justify="start" className={className}>
+		<HStack wrap gap="8" justify="start" className={className}>
 			{Object.entries(tabs).map(([key, value]) => (
 				<Button
 					key={key}
