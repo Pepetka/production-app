@@ -5,7 +5,6 @@
 	"Something wrong": "Что-то пошло не так",
 	"Send": "Отправить",
 	"Read more": "Читать далее",
-	"Back to list": "Вернуться к списку",
 	"Sort by": "Сортировать ПО",
 	"Search": "Поиск",
 	"Views": "Просмотрам",
@@ -44,5 +43,6 @@
 	"Require article types": "Выберите темы статьи",
 	"Loading": "Загрузка...",
 	"Load more": "Больше статей",
-	"Enter comment": "Комментарий"
+	"Enter comment": "Комментарий",
+	"Back": "Назад"
 }

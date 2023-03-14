@@ -4,8 +4,8 @@ import { ArticleSortField, ArticlesView, ArticleType } from '@/entities/Article'
 import type { Article } from '@/entities/Article';
 import { LOCAL_STORAGE_ARTICLES_VIEW_KEY } from '@/shared/const/localstorage';
 import { SortOrder } from '@/shared/types';
-import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList';
 import { ArticlesPageSchema } from '../types/articlesPageSchema';
+import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList';
 
 const initialState: ArticlesPageSchema = {
 	loading: false,

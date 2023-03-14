@@ -28,7 +28,6 @@ export const ArticleRecommendations = memo(({ className }: ArticleRecommendation
 			<Text title={t('Recommendations')} align="center" />
 			<ArticlesList
 				virtualization={false}
-				recommendations
 				target="_blank"
 				className={classNames(cls.ArticleRecommendations, {}, [className])}
 				loading={isLoading}

@@ -11,7 +11,7 @@ import { AppLink } from '@/shared/ui/AppLink';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { AppImg } from '@/shared/ui/AppImg';
 import { Skeleton } from '@/shared/ui/Skeleton';
-import { getArticleDetailsPagePath, getProfilePagePath } from '@/shared/const/router';
+import { getArticleDetailsPagePath, getArticleEditPagePath, getProfilePagePath } from '@/shared/const/router';
 import type { Article, ArticleTextBlock } from '../../model/types/article';
 import { ArticleBlockType, ArticlesView, ArticleType } from '../../model/consts/consts';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
@@ -22,9 +22,10 @@ interface ArticlesListItemProps {
 	article: Article;
 	view: ArticlesView;
 	target?: HTMLAttributeAnchorTarget;
+	editArticle?: boolean;
 }
 
-export const ArticlesListItem = memo(({ className, article, view, target }: ArticlesListItemProps) => {
+export const ArticlesListItem = memo(({ className, article, view, target, editArticle = false }: ArticlesListItemProps) => {
 	const { t } = useTranslation('articles');
 	const textContent = article.blocks.find((block) => block.type === ArticleBlockType.TEXT) as ArticleTextBlock;
 
@@ -59,7 +60,7 @@ export const ArticlesListItem = memo(({ className, article, view, target }: Arti
 						<div className={cls.content}>{textContent && <ArticleTextBlockComponent block={textContent} />}</div>
 					</VStack>
 					<HStack justify="between" w100>
-						<AppLink target={target} to={getArticleDetailsPagePath(article.id)}>
+						<AppLink target={target} to={editArticle ? getArticleEditPagePath(article.id) : getArticleDetailsPagePath(article.id)}>
 							<Button theme={ButtonTheme.OUTLINE_PRIMARY}>{t('Read more')}</Button>
 						</AppLink>
 						<HStack gap="8">
@@ -73,7 +74,11 @@ export const ArticlesListItem = memo(({ className, article, view, target }: Arti
 	}
 
 	return (
-		<AppLink data-testid="ArticlesListItem" target={target} to={getArticleDetailsPagePath(article.id)}>
+		<AppLink
+			data-testid="ArticlesListItem"
+			target={target}
+			to={editArticle ? getArticleEditPagePath(article.id) : getArticleDetailsPagePath(article.id)}
+		>
 			<Card className={classNames(cls.Small, {}, [className])}>
 				<VStack className={cls.smallWrapper}>
 					<Text className={cls.date} text={article.createdAt} />

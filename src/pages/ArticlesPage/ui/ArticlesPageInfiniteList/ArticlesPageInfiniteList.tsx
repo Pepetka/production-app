@@ -29,7 +29,7 @@ export const ArticlesPageInfiniteList = memo(({ wrapperRef }: ArticlesPageInfini
 	const articles = useSelector(getArticles.selectAll);
 
 	const onScrollEnd = useCallback(() => {
-		if (__PROJECT__ !== 'storybook') dispatch(fetchNextArticles());
+		if (__PROJECT__ !== 'storybook') dispatch(fetchNextArticles({}));
 	}, [dispatch]);
 
 	return (

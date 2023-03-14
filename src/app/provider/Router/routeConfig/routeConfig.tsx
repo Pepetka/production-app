@@ -7,6 +7,7 @@ import { ArticleDetailsPage } from '@/pages/ArticleDetailsPage';
 import { ArticleEditPage } from '@/pages/ArticleEditPage';
 import { AdminPanelPage } from '@/pages/AdminPanelPage';
 import { ForbiddenPage } from '@/pages/ForbiddenPage';
+import { UserArticlesPage } from '@/pages/UserArticlesPage';
 import {
 	AppRoutes,
 	getAboutPagePath,
@@ -19,6 +20,7 @@ import {
 	getMainPagePath,
 	getNotFoundPagePath,
 	getProfilePagePath,
+	getUserArticlesPagePath,
 } from '@/shared/const/router';
 import { AppRoutesProps } from '@/shared/types/router';
 import { UserRole } from '@/shared/const/role';
@@ -45,6 +47,11 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
 	[AppRoutes.PROFILE]: {
 		path: getProfilePagePath(),
 		element: <ProfilePage />,
+		authOnly: true,
+	},
+	[AppRoutes.USER_ARTICLES]: {
+		path: getUserArticlesPagePath(),
+		element: <UserArticlesPage />,
 		authOnly: true,
 	},
 	[AppRoutes.ARTICLES]: {

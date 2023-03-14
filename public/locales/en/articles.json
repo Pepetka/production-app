@@ -5,7 +5,6 @@
 	"Something wrong": "Something wrong",
 	"Send": "Send",
 	"Read more": "Read more",
-	"Back to list": "Back to list",
 	"Sort by": "Sort by",
 	"Search": "Search",
 	"Views": "Views",
@@ -44,5 +43,6 @@
 	"Require article types": "Require article types",
 	"Loading": "Loading...",
 	"Load more": "Load more",
-	"Enter comment": "Enter comment"
+	"Enter comment": "Enter comment",
+	"Back": "Back"
 }
