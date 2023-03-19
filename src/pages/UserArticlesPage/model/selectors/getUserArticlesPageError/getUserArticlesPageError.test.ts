@@ -2,10 +2,10 @@ import { describe, expect, test } from '@jest/globals';
 import { StateSchema } from '@/app/provider/Store';
 import { getUserArticlesPageError } from './getUserArticlesPageError';
 
-describe('getArticlesPageError', () => {
-	test('return articles page error', () => {
+describe('getUserArticlesPageError', () => {
+	test('return user articles page error', () => {
 		const state: DeepPartial<StateSchema> = {
-			articlesPage: {
+			userArticlesPage: {
 				error: 'some error',
 			},
 		};

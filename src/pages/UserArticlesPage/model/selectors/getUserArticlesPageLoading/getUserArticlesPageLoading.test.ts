@@ -2,10 +2,10 @@ import { describe, expect, test } from '@jest/globals';
 import { StateSchema } from '@/app/provider/Store';
 import { getUserArticlesPageLoading } from './getUserArticlesPageLoading';
 
-describe('getArticlesPageLoading', () => {
-	test('return articles page loading', () => {
+describe('getUserArticlesPageLoading', () => {
+	test('return user articles page loading', () => {
 		const state: DeepPartial<StateSchema> = {
-			articlesPage: {
+			userArticlesPage: {
 				loading: true,
 			},
 		};

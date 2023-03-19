@@ -1,4 +1,4 @@
-import { memo, MutableRefObject, useCallback } from 'react';
+import { memo, MutableRefObject, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { ArticlesList } from '@/entities/Article';
@@ -29,19 +29,31 @@ export const ArticlesPageInfiniteList = memo(({ wrapperRef }: ArticlesPageInfini
 	const articles = useSelector(getArticles.selectAll);
 
 	const onScrollEnd = useCallback(() => {
-		if (__PROJECT__ !== 'storybook') dispatch(fetchNextArticles({}));
-	}, [dispatch]);
+		if (__PROJECT__ !== 'storybook' && hasMore && !loading) dispatch(fetchNextArticles({}));
+	}, [dispatch, hasMore, loading]);
 
-	return (
-		<>
-			<ArticlesList error={error} loading={loading} view={view} articles={articles} onScrollEnd={onScrollEnd} wrapperRef={wrapperRef} limit={limit} />
-			{hasMore && (
+	const additionalFooter = useMemo(
+		() =>
+			hasMore && (
 				<HStack w100 justify="center">
 					<Button onClick={onScrollEnd} theme={ButtonTheme.OUTLINE_PRIMARY} disabled={loading}>
 						{loading ? <Text text={t('Loading')} /> : <Text text={t('Load more')} />}
 					</Button>
 				</HStack>
-			)}
-		</>
+			),
+		[hasMore, loading, onScrollEnd, t],
+	);
+
+	return (
+		<ArticlesList
+			additionalFooter={additionalFooter}
+			error={error}
+			loading={loading}
+			view={view}
+			articles={articles}
+			onScrollEnd={onScrollEnd}
+			wrapperRef={wrapperRef}
+			limit={limit}
+		/>
 	);
 });

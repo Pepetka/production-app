@@ -3,10 +3,10 @@ import { StateSchema } from '@/app/provider/Store';
 import { ArticlesView } from '@/entities/Article';
 import { getUserArticlesPageView } from './getUserArticlesPageView';
 
-describe('getArticlesPageView', () => {
-	test('return articles page view', () => {
+describe('getUserArticlesPageView', () => {
+	test('return user articles page view', () => {
 		const state: DeepPartial<StateSchema> = {
-			articlesPage: {
+			userArticlesPage: {
 				view: ArticlesView.BIG,
 			},
 		};

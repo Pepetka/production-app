@@ -7,10 +7,12 @@ describe('Edit article', () => {
 		cy.login();
 		cy.intercept('GET', '**/articles/**').as('getArticle');
 		cy.intercept('PUT', '**/articles/**').as('putArticle');
+		cy.intercept('POST', '**/articles').as('postArticle');
 		cy.createTestArticle().then((data) => {
 			articleId = data.id;
-			cy.visit(getArticleEditPagePath(articleId));
 		});
+		cy.wait('@postArticle');
+		cy.visit(getArticleEditPagePath(articleId));
 		cy.wait('@getArticle');
 	});
 

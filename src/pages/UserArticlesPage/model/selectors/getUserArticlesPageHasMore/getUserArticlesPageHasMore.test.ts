@@ -2,10 +2,10 @@ import { describe, expect, test } from '@jest/globals';
 import { StateSchema } from '@/app/provider/Store';
 import { getUserArticlesPageHasMore } from './getUserArticlesPageHasMore';
 
-describe('getArticlesPageHasMore', () => {
-	test('return articles page hasMore', () => {
+describe('getUserArticlesPageHasMore', () => {
+	test('return user articles page hasMore', () => {
 		const state: DeepPartial<StateSchema> = {
-			articlesPage: {
+			userArticlesPage: {
 				hasMore: false,
 			},
 		};

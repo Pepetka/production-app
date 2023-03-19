@@ -2,11 +2,11 @@ import { describe, expect, test } from '@jest/globals';
 import { StateSchema } from '@/app/provider/Store';
 import { ArticlesView } from '@/entities/Article';
 import { UserArticlesPageSchema } from '../types/userArticlesPageSchema';
-import { userArticlesPageActions, userArticlesPageReducer, getArticles } from './userArticlesPageSlice';
+import { getUserArticles, userArticlesPageActions, userArticlesPageReducer } from './userArticlesPageSlice';
 
-describe('getArticles', () => {
+describe('getUserArticles', () => {
 	const state: DeepPartial<StateSchema> = {
-		articlesPage: {
+		userArticlesPage: {
 			ids: ['1', '2', '3'],
 			entities: {
 				1: {
@@ -26,7 +26,7 @@ describe('getArticles', () => {
 	};
 
 	test('selectAll', () => {
-		expect(getArticles.selectAll(state as StateSchema)).toEqual([
+		expect(getUserArticles.selectAll(state as StateSchema)).toEqual([
 			{
 				id: 'id 1',
 				title: 'title 1',
@@ -43,11 +43,11 @@ describe('getArticles', () => {
 	});
 
 	test('selectIds', () => {
-		expect(getArticles.selectIds(state as StateSchema)).toEqual(['1', '2', '3']);
+		expect(getUserArticles.selectIds(state as StateSchema)).toEqual(['1', '2', '3']);
 	});
 
 	test('selectEntities', () => {
-		expect(getArticles.selectEntities(state as StateSchema)).toEqual({
+		expect(getUserArticles.selectEntities(state as StateSchema)).toEqual({
 			1: {
 				id: 'id 1',
 				title: 'title 1',
@@ -64,11 +64,11 @@ describe('getArticles', () => {
 	});
 
 	test('selectTotal', () => {
-		expect(getArticles.selectTotal(state as StateSchema)).toEqual(3);
+		expect(getUserArticles.selectTotal(state as StateSchema)).toEqual(3);
 	});
 
 	test('selectById', () => {
-		expect(getArticles.selectById(state as StateSchema, 2)).toEqual({
+		expect(getUserArticles.selectById(state as StateSchema, 2)).toEqual({
 			id: 'id 2',
 			title: 'title 2',
 		});
@@ -144,6 +144,7 @@ describe('articlesPageSlice', () => {
 
 			page: 1,
 			hasMore: true,
+			_init: false,
 		};
 
 		expect(userArticlesPageReducer(undefined, userArticlesPageActions.changePage(10))).toEqual({

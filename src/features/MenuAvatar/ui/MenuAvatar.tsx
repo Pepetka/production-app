@@ -25,7 +25,7 @@ export const MenuAvatar = memo(({ onLogoutCallback }: MenuAvatarProps) => {
 		[AppRoutes.ADMIN]: t('Admin'),
 		[AppRoutes.PROFILE]: t('Profile'),
 		[AppRoutes.ARTICLE_CREATE]: t('Create article'),
-		[AppRoutes.USER_ARTICLES]: t('User articles'),
+		[AppRoutes.USER_ARTICLES]: t('My articles'),
 	};
 
 	const menuItems: Array<MenuItem> = useMemo(
