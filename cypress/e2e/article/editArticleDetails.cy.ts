@@ -28,7 +28,7 @@ describe('Edit article', () => {
 		cy.updateArticle();
 		cy.getByTestId('EditableArticleDetails.save').click();
 		cy.wait('@putArticle');
-		cy.visit(getArticleEditPagePath(articleId));
+		cy.getByTestId('ArticleDetailsPage.Edit').click();
 		cy.wait('@getArticle');
 		cy.getByTestId('EditableArticleDetails.edit').click();
 		cy.getByTestId('EditableArticleDetails.article.title').should('have.value', 'new title');

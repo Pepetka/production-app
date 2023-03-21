@@ -33,7 +33,7 @@ export const ArticleDetailsPageHeader = memo(({ className }: ArticleDetailsPageH
 				{t('Back')}
 			</Button>
 			{canEditArticle && (
-				<Button className={cls.btn} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onEdit}>
+				<Button data-testid="ArticleDetailsPage.Edit" className={cls.btn} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onEdit}>
 					{t('Edit')}
 				</Button>
 			)}
