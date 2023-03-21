@@ -1,4 +1,4 @@
-export const createTestArticle = () =>
+export const createTestArticle = (userId: string = '2') =>
 	cy
 		.request({
 			method: 'POST',
@@ -7,11 +7,11 @@ export const createTestArticle = () =>
 				Authorization: 'auth',
 			},
 			body: {
-				title: 'Javascript news',
+				title: 'Test article',
 				subtitle: 'Что нового в JS за 2022 год?',
 				img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
 				views: 1022,
-				userId: '2',
+				userId,
 				createdAt: '26.02.2022',
 				type: ['IT', 'Math'],
 				blocks: [],
@@ -36,12 +36,17 @@ export const updateArticle = () => {
 	cy.getByTestId('EditableArticleDetails.textBlock.title').wait(1500).clear().type('new textBlock title', { delay: 300 });
 };
 
+export const searchArticle = (text: string) => {
+	cy.getByTestId('ArticlesPage.Search').clear().type(text);
+};
+
 declare global {
 	namespace Cypress {
 		interface Chainable {
-			createTestArticle(): Chainable<{ id: string }>;
+			createTestArticle(userId?: string): Chainable<{ id: string }>;
 			deleteTestArticle(id: string): Chainable<void>;
 			updateArticle(): Chainable<void>;
+			searchArticle(text: string): Chainable<void>;
 		}
 	}
 }

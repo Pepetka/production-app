@@ -5,14 +5,12 @@ describe('Edit article', () => {
 
 	beforeEach(() => {
 		cy.login();
-		cy.intercept('GET', '**/articles/**').as('getArticle');
-		cy.intercept('PUT', '**/articles/**').as('putArticle');
-		cy.intercept('POST', '**/articles').as('postArticle');
+		cy.intercept('GET', 'http://localhost:8000/articles/**').as('getArticle');
+		cy.intercept('PUT', 'http://localhost:8000/articles/**').as('putArticle');
 		cy.createTestArticle().then((data) => {
 			articleId = data.id;
+			cy.visit(getArticleEditPagePath(articleId));
 		});
-		cy.wait('@postArticle');
-		cy.visit(getArticleEditPagePath(articleId));
 		cy.wait('@getArticle');
 	});
 
@@ -23,7 +21,7 @@ describe('Edit article', () => {
 	it('Article exist', () => {
 		cy.getByTestId('EditableArticleDetails').should('exist');
 		cy.getByTestId('EditableArticleDetails.edit').click();
-		cy.getByTestId('EditableArticleDetails.article.title').should('have.value', 'Javascript news');
+		cy.getByTestId('EditableArticleDetails.article.title').should('have.value', 'Test article');
 	});
 
 	it('Edit article', () => {

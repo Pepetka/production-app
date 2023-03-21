@@ -7,6 +7,7 @@ import {
 	getArticlesPagePath,
 	getMainPagePath,
 	getProfilePagePath,
+	getUserArticlesPagePath,
 } from '../../../src/shared/const/router';
 
 describe('Routing', () => {
@@ -64,6 +65,11 @@ describe('Routing', () => {
 				cy.getByTestId('ArticlesPage').should('exist');
 			});
 
+			it('User articles page', () => {
+				cy.visit(getUserArticlesPagePath());
+				cy.getByTestId('UserArticlesPage').should('exist');
+			});
+
 			it('Article create page', () => {
 				cy.visit(getArticleCreatePagePath());
 				cy.getByTestId('ArticleEditPage').should('exist');
@@ -77,7 +83,6 @@ describe('Routing', () => {
 				cy.login();
 				cy.createTestArticle().then((data) => {
 					articleId = data.id;
-					cy.log(JSON.stringify(data));
 				});
 			});
 

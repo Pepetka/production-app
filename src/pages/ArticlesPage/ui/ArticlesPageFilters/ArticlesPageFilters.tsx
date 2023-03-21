@@ -82,7 +82,7 @@ export const ArticlesPageFilters = memo(({ className, onChangeView }: ArticlesPa
 				<ArticlesSortSelector sort={sort} order={order} onChangeSort={onChangeSort} onChangeOrder={onChangeOrder} />
 				<ArticleViewSelector activeView={view} onChangeView={onChangeViewHandle} />
 			</HStack>
-			<Input theme={InputTheme.INVERT} value={search} onChange={onChangeSearch} placeholder={t('Search')} />
+			<Input data-testid="ArticlesPage.Search" theme={InputTheme.INVERT} value={search} onChange={onChangeSearch} placeholder={t('Search')} />
 			<ArticlesTypeTabs type={type} onChangeType={onChangeType} />
 		</VStack>
 	);
