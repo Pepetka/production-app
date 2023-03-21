@@ -13,7 +13,7 @@ interface ArticleRecommendationsProps {
 
 export const ArticleRecommendations = memo(({ className }: ArticleRecommendationsProps) => {
 	const { t } = useTranslation('articles');
-	const { error, isLoading, data: recommendations } = useFetchRecommendationsQuery(4);
+	const { error, isLoading, data: recommendations = [] } = useFetchRecommendationsQuery(4);
 
 	if (error) {
 		return <Text title={t('Something wrong')} align="center" />;
@@ -26,15 +26,16 @@ export const ArticleRecommendations = memo(({ className }: ArticleRecommendation
 	return (
 		<VStack w100 gap="16" data-testid="ArticleRecommendations">
 			<Text title={t('Recommendations')} align="center" />
-			<ArticlesList
-				virtualization={false}
-				recommendations
-				target="_blank"
-				className={classNames(cls.ArticleRecommendations, {}, [className])}
-				loading={isLoading}
-				articles={recommendations!}
-				limit={4}
-			/>
+			<div className={cls.recommendations}>
+				<ArticlesList
+					virtualization={false}
+					target="_blank"
+					className={classNames(cls.ArticleRecommendations, {}, [className])}
+					loading={isLoading}
+					articles={recommendations}
+					limit={4}
+				/>
+			</div>
 		</VStack>
 	);
 });

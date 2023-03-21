@@ -11,11 +11,12 @@ import { getArticlesPagePage } from '../../selectors/getArticlesPagePage/getArti
 
 interface FetchArticlesListProps {
 	replace?: boolean;
+	userId?: string;
 }
 
 export const fetchArticlesList = createAsyncThunk<Array<Article>, FetchArticlesListProps, ThunkConfig<string>>(
 	'articlesPage/fetchArticlesList',
-	async ({ replace = false }, { rejectWithValue, getState, extra }) => {
+	async ({ replace = false, userId }, { rejectWithValue, getState, extra }) => {
 		try {
 			const limit = getArticlesPageLimit(getState());
 			const sort = getArticlesPageSort(getState());
@@ -38,6 +39,7 @@ export const fetchArticlesList = createAsyncThunk<Array<Article>, FetchArticlesL
 					_page: page,
 					_sort: sort,
 					_order: order,
+					userId,
 					q: search,
 					type: type === ArticleType.ALL ? undefined : type,
 				},

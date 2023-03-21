@@ -5,6 +5,7 @@ export enum AppRoutes {
 	FORBIDDEN = 'Forbidden',
 	PROFILE = 'Profile',
 	ARTICLES = 'Articles',
+	USER_ARTICLES = 'User_articles',
 	ARTICLE_DETAILS = 'Article_details',
 	ARTICLE_EDIT = 'Article_edit',
 	ARTICLE_CREATE = 'Article_create',
@@ -16,6 +17,7 @@ export const getAboutPagePath = () => '/about';
 export const getAdminPagePath = () => '/admin';
 export const getForbiddenPagePath = () => '/forbidden';
 export const getProfilePagePath = (id: string = ':id') => `/profile/${id}`;
+export const getUserArticlesPagePath = (id: string = ':id') => `/profile/${id}/articles`;
 export const getArticlesPagePath = () => '/articles';
 export const getArticleDetailsPagePath = (id: string = ':id') => `/articles/${id}`;
 export const getArticleEditPagePath = (id: string = ':id') => `/articles/${id}/edit`;

@@ -9,6 +9,7 @@ import { ScrollSafeSchema } from '@/widgets/Page';
 import { CommentFormSchema } from '@/entities/Comment';
 import { rtkApi } from '@/shared/api/rtkApi';
 import { EditableArticleDetailsSchema } from '@/features/EditableArticleDetails';
+import { UserArticlesPageSchema } from '@/pages/UserArticlesPage';
 
 export interface StateSchema {
 	user: UserSchema;
@@ -20,6 +21,7 @@ export interface StateSchema {
 	editableArticleDetails?: EditableArticleDetailsSchema;
 	commentForm?: CommentFormSchema;
 	articlesPage?: ArticlesPageSchema;
+	userArticlesPage?: UserArticlesPageSchema;
 }
 
 export type StateSchemaKey = keyof StateSchema;

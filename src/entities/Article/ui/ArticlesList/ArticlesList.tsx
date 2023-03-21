@@ -1,4 +1,4 @@
-import { HTMLAttributeAnchorTarget, memo, MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
+import { HTMLAttributeAnchorTarget, memo, MutableRefObject, ReactNode, useCallback, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { VirtuosoGrid, VirtuosoGridHandle } from 'react-virtuoso';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -9,36 +9,19 @@ import type { Article } from '../../model/types/article';
 import { ArticlesView } from '../../model/consts/consts';
 import cls from './ArticlesList.module.scss';
 
-interface FooterProps {
-	view: ArticlesView;
-	loading: boolean;
-	recommendations?: boolean;
-	limit: number;
-}
-
-const ListFooter = memo(({ view, loading, recommendations, limit }: FooterProps) => {
-	const getSkeletons = (view: ArticlesView) => {
-		const skeletonNumRecommendations = recommendations ? 4 : null;
-		if (!loading) return null;
-
-		return new Array(skeletonNumRecommendations ?? limit).fill(0).map((el, i) => <ArticlesListSkeleton key={i} view={view} />);
-	};
-
-	return <>{getSkeletons(view)}</>;
-});
-
 interface ArticlesListProps {
 	className?: string;
 	loading: boolean;
 	view?: ArticlesView;
-	articles: Array<Article>;
+	articles?: Array<Article>;
 	error?: string;
 	target?: HTMLAttributeAnchorTarget;
 	onScrollEnd?: () => void;
-	recommendations?: boolean;
 	wrapperRef?: MutableRefObject<HTMLElement | null>;
 	virtualization?: boolean;
+	editArticle?: boolean;
 	limit: number;
+	additionalFooter?: ReactNode;
 }
 
 export const ArticlesList = memo(
@@ -46,37 +29,42 @@ export const ArticlesList = memo(
 		className,
 		view = ArticlesView.SMALL,
 		loading,
-		articles,
+		articles = [],
 		target,
 		error,
 		onScrollEnd,
-		recommendations,
 		wrapperRef,
 		virtualization = true,
+		editArticle,
 		limit,
+		additionalFooter,
 	}: ArticlesListProps) => {
 		const { t } = useTranslation('articles');
 		const virtuoso = useRef<VirtuosoGridHandle>(null);
-		const [_, setRerender] = useState(0);
-
-		useEffect(() => {
-			if (wrapperRef?.current) setRerender((prev) => prev + 1);
-		}, [wrapperRef]);
 
 		const renderArticle = useCallback(
-			(index: number) => <ArticlesListItem target={target} key={articles[index].id} view={view} article={articles[index]} />,
-			[articles, target, view],
+			(index: number) => (
+				<ArticlesListItem editArticle={editArticle} target={target} key={articles[index].id} view={view} article={articles[index]} />
+			),
+			[articles, editArticle, target, view],
 		);
 
 		const ScrollSeekPlaceholder = useCallback(() => <ArticlesListSkeleton view={view} />, [view]);
 
 		const Footer = useCallback(
 			() => (
-				<div className={classNames(cls.ArticlesList, {}, [cls[view]])}>
-					<ListFooter view={view} loading={loading} recommendations={recommendations} limit={limit} />
-				</div>
+				<>
+					{loading && (
+						<div className={classNames(cls.ArticlesList, {}, [className, cls[view]])}>
+							{new Array(limit).fill(0).map((el, i) => (
+								<ArticlesListSkeleton key={i} view={view} />
+							))}
+						</div>
+					)}
+					{additionalFooter}
+				</>
 			),
-			[limit, loading, recommendations, view],
+			[additionalFooter, className, limit, loading, view],
 		);
 
 		const ItemContent = useCallback((index: number) => renderArticle(index), [renderArticle]);
@@ -97,51 +85,34 @@ export const ArticlesList = memo(
 			);
 		}
 
-		return virtualization ? (
-			<div
-				data-testid="ArticlesList"
-				className={classNames('', {
-					[cls.wrapper]: !recommendations,
-					[cls.recommendations]: recommendations,
-				})}
-			>
-				{((recommendations && !loading) || !recommendations) && (
+		return (
+			<div data-testid="ArticlesList" className={cls.wrapper}>
+				{virtualization ? (
 					<VirtuosoGrid
 						data={articles}
-						endReached={loading ? undefined : onScrollEnd}
-						listClassName={classNames(cls.ArticlesList, {}, [className, cls[view]])}
+						endReached={onScrollEnd}
+						listClassName={articles?.length !== 0 ? classNames(cls.ArticlesList, {}, [className, cls[view]]) : undefined}
 						components={{
 							ScrollSeekPlaceholder,
+							Footer,
 						}}
-						customScrollParent={!recommendations ? wrapperRef?.current! : undefined}
 						overscan={limit}
+						customScrollParent={wrapperRef?.current ?? (document.querySelector('body') as HTMLElement)}
 						itemContent={ItemContent}
 						ref={virtuoso}
 						scrollSeekConfiguration={{
-							enter: (velocity: number) => Math.abs(velocity) > 1000,
-							exit: (velocity: number) => Math.abs(velocity) < 200,
+							enter: (velocity: number) => Math.abs(velocity) > 800,
+							exit: (velocity: number) => Math.abs(velocity) < 50,
 							change: (_, range) => {},
 						}}
 					/>
-				)}
-				{loading && <Footer />}
-			</div>
-		) : (
-			<div
-				data-testid="ArticlesList"
-				className={classNames('', {
-					[cls.wrapper]: !recommendations,
-					[cls.recommendations]: recommendations,
-				})}
-			>
-				{articles && !loading ? (
-					<div className={classNames(cls.ArticlesList, {}, [className, cls[view]])}>{articles.map((_, i) => renderArticle(i))}</div>
 				) : (
-					<div className={classNames(cls.ArticlesList, {}, [cls[view]])}>
-						{new Array(limit).fill(0).map((_, i) => (
-							<ArticlesListSkeleton key={i} view={view} />
-						))}
-					</div>
+					<>
+						{articles?.length !== 0 && (
+							<div className={classNames(cls.ArticlesList, {}, [className, cls[view]])}>{articles?.map((_, i) => renderArticle(i))}</div>
+						)}
+						<Footer />
+					</>
 				)}
 			</div>
 		);

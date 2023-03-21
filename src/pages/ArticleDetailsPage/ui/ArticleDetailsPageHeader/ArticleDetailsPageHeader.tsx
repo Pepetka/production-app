@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { HStack } from '@/shared/ui/Stack';
-import { getArticleEditPagePath, getArticlesPagePath } from '@/shared/const/router';
+import { getArticleEditPagePath } from '@/shared/const/router';
 import { getCanEditArticle } from '../../model/selectors/getCanEditArticle/getCanEditArticle';
 import { getArticleData } from '../../model/selectors/getArticleData/getArticleData';
 import cls from './ArticleDetailsPageHeader.module.scss';
@@ -20,7 +20,7 @@ export const ArticleDetailsPageHeader = memo(({ className }: ArticleDetailsPageH
 	const article = useSelector(getArticleData);
 
 	const onBack = useCallback(() => {
-		navigate(getArticlesPagePath());
+		navigate(-1);
 	}, [navigate]);
 
 	const onEdit = useCallback(() => {
@@ -30,10 +30,10 @@ export const ArticleDetailsPageHeader = memo(({ className }: ArticleDetailsPageH
 	return (
 		<HStack wrap gap="8" justify="between" w100 className={className}>
 			<Button className={cls.btn} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onBack}>
-				{t('Back to list')}
+				{t('Back')}
 			</Button>
 			{canEditArticle && (
-				<Button className={cls.btn} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onEdit}>
+				<Button data-testid="ArticleDetailsPage.Edit" className={cls.btn} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onEdit}>
 					{t('Edit')}
 				</Button>
 			)}

@@ -53,6 +53,7 @@ const state = (view: ArticlesView): DeepPartial<StateSchema> => {
 			loading: false,
 			ids: ['0', '1', '2', '3', '4', '5', '6', '7'],
 			entities,
+			hasMore: false,
 		},
 	};
 };

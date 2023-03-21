@@ -7,8 +7,6 @@ describe('Article details', () => {
 		cy.login().then(() => {
 			cy.createTestArticle().then((data) => {
 				articleId = data.id;
-				cy.log(JSON.stringify(data));
-
 				cy.visit(getArticleDetailsPagePath(articleId));
 			});
 		});

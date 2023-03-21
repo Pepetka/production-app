@@ -13,7 +13,7 @@ import { articlesPageActions } from '../../slice/articlesPageSlice';
 import { fetchArticlesList } from '../fetchArticlesList/fetchArticlesList';
 
 export const initArticlesPage = createAsyncThunk<void, number, ThunkConfig<string>>(
-	'articlesPage/initArticlesPage',
+	'articlesPage/initUserArticlesPage',
 	async (limit, { dispatch, getState }) => {
 		const inited = getArticlesPageInit(getState());
 		const { sort, order, search, type } = getQueryParams();

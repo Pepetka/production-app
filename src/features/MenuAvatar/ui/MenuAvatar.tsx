@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Avatar, AvatarSize } from '@/shared/ui/Avatar';
 import { Menu, MenuItem } from '@/shared/ui/Popups';
 import { getAuthData, getIsAdmin, userActions } from '@/entities/User';
-import { AppRoutes, getAdminPagePath, getArticleCreatePagePath, getProfilePagePath } from '@/shared/const/router';
+import { AppRoutes, getAdminPagePath, getArticleCreatePagePath, getProfilePagePath, getUserArticlesPagePath } from '@/shared/const/router';
 
 interface MenuAvatarProps {
 	onLogoutCallback: () => void;
@@ -25,6 +25,7 @@ export const MenuAvatar = memo(({ onLogoutCallback }: MenuAvatarProps) => {
 		[AppRoutes.ADMIN]: t('Admin'),
 		[AppRoutes.PROFILE]: t('Profile'),
 		[AppRoutes.ARTICLE_CREATE]: t('Create article'),
+		[AppRoutes.USER_ARTICLES]: t('My articles'),
 	};
 
 	const menuItems: Array<MenuItem> = useMemo(
@@ -46,11 +47,24 @@ export const MenuAvatar = memo(({ onLogoutCallback }: MenuAvatarProps) => {
 				href: getArticleCreatePagePath(),
 			},
 			{
+				content: nameWithTranslation.User_articles!,
+				href: getUserArticlesPagePath(authData?.id),
+			},
+			{
 				content: t('LogOut'),
 				onClick: onLogout,
 			},
 		],
-		[authData, isAdmin, nameWithTranslation.Admin, nameWithTranslation.Article_create, nameWithTranslation.Profile, onLogout, t],
+		[
+			authData?.id,
+			isAdmin,
+			nameWithTranslation.Admin,
+			nameWithTranslation.Article_create,
+			nameWithTranslation.Profile,
+			nameWithTranslation.User_articles,
+			onLogout,
+			t,
+		],
 	);
 
 	return <Menu popupPosition="bottom_left" trigger={<Avatar inverted avatar={authData?.avatar} size={AvatarSize.SIZE_XS} />} menuItems={menuItems} />;

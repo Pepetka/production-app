@@ -5,8 +5,8 @@ describe('Edit article', () => {
 
 	beforeEach(() => {
 		cy.login();
-		cy.intercept('GET', '**/articles/**').as('getArticle');
-		cy.intercept('PUT', '**/articles/**').as('putArticle');
+		cy.intercept('GET', 'http://localhost:8000/articles/**').as('getArticle');
+		cy.intercept('PUT', 'http://localhost:8000/articles/**').as('putArticle');
 		cy.createTestArticle().then((data) => {
 			articleId = data.id;
 			cy.visit(getArticleEditPagePath(articleId));
@@ -21,14 +21,14 @@ describe('Edit article', () => {
 	it('Article exist', () => {
 		cy.getByTestId('EditableArticleDetails').should('exist');
 		cy.getByTestId('EditableArticleDetails.edit').click();
-		cy.getByTestId('EditableArticleDetails.article.title').should('have.value', 'Javascript news');
+		cy.getByTestId('EditableArticleDetails.article.title').should('have.value', 'Test article');
 	});
 
 	it('Edit article', () => {
 		cy.updateArticle();
 		cy.getByTestId('EditableArticleDetails.save').click();
 		cy.wait('@putArticle');
-		cy.visit(getArticleEditPagePath(articleId));
+		cy.getByTestId('ArticleDetailsPage.Edit').click();
 		cy.wait('@getArticle');
 		cy.getByTestId('EditableArticleDetails.edit').click();
 		cy.getByTestId('EditableArticleDetails.article.title').should('have.value', 'new title');

@@ -2,21 +2,11 @@
 	margin-inline: auto;
 	display: grid;
 	justify-content: center;
-	padding: 10px;
+	margin: 15px;
 }
 
 .wrapper {
 	width: 100%;
-}
-
-.recommendations {
-	width: 100%;
-	height: 260px;
-	overflow-y: hidden;
-
-	.ArticlesList {
-		height: 100%;
-	}
 }
 
 .small {
