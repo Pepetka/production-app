@@ -34,5 +34,6 @@
 }
 
 .overlay {
-	height: calc(100% - var(--navbar-height));
+	top: var(--navbar-height);
+	height: calc(100vh - var(--navbar-height));
 }

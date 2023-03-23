@@ -1,4 +1,4 @@
-import { HTMLAttributeAnchorTarget, memo, MutableRefObject, ReactNode, useCallback, useRef } from 'react';
+import { HTMLAttributeAnchorTarget, memo, MutableRefObject, ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { VirtuosoGrid, VirtuosoGridHandle } from 'react-virtuoso';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -41,6 +41,13 @@ export const ArticlesList = memo(
 	}: ArticlesListProps) => {
 		const { t } = useTranslation('articles');
 		const virtuoso = useRef<VirtuosoGridHandle>(null);
+		const [_, setRerender] = useState(0);
+
+		useEffect(() => {
+			if (wrapperRef?.current) {
+				setRerender(1);
+			}
+		}, [wrapperRef?.current]);
 
 		const renderArticle = useCallback(
 			(index: number) => (
