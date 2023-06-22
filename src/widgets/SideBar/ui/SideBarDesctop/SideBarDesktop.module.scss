@@ -1,6 +1,6 @@
 .SideBar {
 	flex: 0 0 var(--sidebar-width);
-	height: calc(100vh - var(--navbar-height));
+	height: calc(100dvh - var(--navbar-height));
 	max-width: var(--sidebar-width);
 	background-color: var(--invert-bg-color);
 	padding-block: 30px;

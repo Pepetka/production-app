@@ -130,7 +130,7 @@ const DrawerContent = memo(({ className, children, isOpen, onCloseDrawer, callba
 		<Portal>
 			<div className={classNames(cls.Drawer, {}, [className, theme, 'app_drawer'])}>
 				<Overlay onClick={() => closeDrawer()} />
-				<Spring.a.div {...bind()} style={{ display, bottom: `calc(-100vh + ${height - 100}px)`, y }} className={cls.content}>
+				<Spring.a.div {...bind()} style={{ display, bottom: `calc(-100dvh + ${height - 100}px)`, y }} className={cls.content}>
 					{children}
 				</Spring.a.div>
 			</div>

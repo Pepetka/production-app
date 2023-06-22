@@ -15,7 +15,8 @@
 		"isolatedModules": true,
 		"paths": {
 			"@/*": ["./src/*"]
-		}
+		},
+		"types": ["node", "vite/client"]
 	},
 	"ts-node": {
 		"compilerOptions": {
