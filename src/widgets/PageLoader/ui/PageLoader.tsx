@@ -7,7 +7,7 @@ interface PageLoaderProps {
 	className?: string;
 }
 export const PageLoader = ({ className }: PageLoaderProps) => (
-	<HStack justify="center" w100 className={classNames(cls.PageLoader, {}, [className])}>
+	<HStack justify="center" w100 className={classNames(cls.PageLoader, { Storybook_PageLoader: __PROJECT__ === 'storybook' }, [className])}>
 		<Spinner />
 	</HStack>
 );

@@ -3,10 +3,38 @@
 	justify-content: center;
 	align-items: center;
 	position: relative;
+	min-height: 100vh;
 
 	.App {
 		width: 100%;
 		padding: 10px;
+		min-height: 100vh;
+
+		.Storybook_Page {
+			min-height: 100vh;
+			height: auto;
+		}
+
+		.Storybook_SideBar {
+			height: 100vh;
+
+			&_Wrapper {
+				top: 0;
+			}
+		}
+
+		.Storybook_Overlay {
+			top: 0;
+			height: 100vh;
+		}
+
+		.Storybook_PageError {
+			height: 100vh;
+		}
+
+		.Storybook_PageLoader {
+			height: 100vh;
+		}
 	}
 
 	&__wrapper {

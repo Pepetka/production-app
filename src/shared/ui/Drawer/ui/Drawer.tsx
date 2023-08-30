@@ -33,7 +33,7 @@ interface DrawerProps {
 	height?: number;
 }
 
-const DrawerContent = memo(({ className, children, isOpen, onCloseDrawer, callback, height = window.innerHeight - 200 }: DrawerProps) => {
+const DrawerContent = memo(({ className, children, isOpen, onCloseDrawer, callback, height = window.innerHeight - 300 }: DrawerProps) => {
 	const { theme } = useTheme();
 	const { Spring, Gesture } = useAnimationsLib();
 	const [isOpened, setIsOpened] = useState(isOpen);
@@ -130,9 +130,10 @@ const DrawerContent = memo(({ className, children, isOpen, onCloseDrawer, callba
 		<Portal>
 			<div className={classNames(cls.Drawer, {}, [className, theme, 'app_drawer'])}>
 				<Overlay onClick={() => closeDrawer()} />
-				<Spring.a.div {...bind()} style={{ display, bottom: `calc(-100dvh + ${height - 100}px)`, y }} className={cls.content}>
-					{children}
+				<Spring.a.div {...bind()} style={{ display, bottom: `calc(-100vh + ${height}px)`, y }} className={cls.content}>
+					<div style={{ overflowY: 'auto', height: `${height + 100}px` }}>{children}</div>
 				</Spring.a.div>
+				`
 			</div>
 		</Portal>
 	);

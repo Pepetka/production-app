@@ -14,7 +14,7 @@
 	transition: transform 0.3s ease-out;
 	transform: translateY(100%);
 	z-index: var(--modal-z-index);
-	height: calc(100dvh + 100px);
+	height: calc(100vh + 100px + 30px);
 	position: fixed;
 	left: 2vw;
 	touch-action: none;

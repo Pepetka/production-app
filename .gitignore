@@ -3,6 +3,7 @@
 /storybook-static
 /reports/unit
 
+.env.LOCALDEV
 .idea/
 
 *.local

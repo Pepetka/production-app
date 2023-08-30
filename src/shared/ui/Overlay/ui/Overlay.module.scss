@@ -1,9 +1,6 @@
 .Overlay {
 	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100dvh;
+	inset: 0;
 	background: var(--overlay-color);
 	z-index: var(--overlay-z-index);
 }

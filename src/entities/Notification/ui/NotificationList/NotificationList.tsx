@@ -31,12 +31,12 @@ export const NotificationList = memo(({ className, w100, invert }: NotificationL
 	if (isLoading) {
 		return (
 			<VStack gap="8" className={classNames(cls.NotificationList, { [cls.w100]: w100 }, [className])} w100>
-				<NotificationSkeleton />
-				<NotificationSkeleton />
-				<NotificationSkeleton />
-				<NotificationSkeleton />
-				<NotificationSkeleton />
-				<NotificationSkeleton />
+				<NotificationSkeleton invert />
+				<NotificationSkeleton invert />
+				<NotificationSkeleton invert />
+				<NotificationSkeleton invert />
+				<NotificationSkeleton invert />
+				<NotificationSkeleton invert />
 			</VStack>
 		);
 	}
