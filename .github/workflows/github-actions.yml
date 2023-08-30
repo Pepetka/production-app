@@ -12,12 +12,8 @@ concurrency:
   group: "pages"
   cancel-in-progress: true
 jobs:
-  build-and-ui-testing:
+  building:
     runs-on: ubuntu-latest
-    concurrency: ci-${{ github.ref }}
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     strategy:
       matrix:
         node-version: [ 17.x ]
@@ -35,22 +31,52 @@ jobs:
       - name: build storybook
         run: npm run storybook:build
         if: always()
+
+  linting:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 17.x ]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Staring Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: install modules
+        run: npm ci
+      - name: linting typescript
+        run: npm run lint:ts
+        if: always()
+      - name: linting css
+        run: npm run lint:scss
+
+  unit-ui-testing:
+    runs-on: ubuntu-latest
+    concurrency: ci-${{ github.ref }}
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    strategy:
+      matrix:
+        node-version: [ 17.x ]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Staring Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: install modules
+        run: npm ci
+      - name: unit testing
+        run: npm run test:unit
+        if: always()
+      - name: build storybook
+        run: npm run storybook:build
+        if: always()
       - name: screenshot testing
         run: npm run test:ui:ci
         if: always()
-      - name: unit testing
-        if: always()
-        run: npm run test:unit
-      - name: e2e testing
-        uses: cypress-io/github-action@v5
-        with:
-          install: false
-          record: true
-          start: npm run start:dev
-          wait-on: 'http://localhost:3000'
-          config: baseUrl=http://localhost:3000/
-        env:
-          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
       - name: Generate HTML report
         run: npm run test:ui:report
         if: always()
@@ -70,8 +96,12 @@ jobs:
         if: always()
         uses: actions/deploy-pages@v1
 
-  checks:
+  end-to-end-testing:
     runs-on: ubuntu-latest
+    concurrency: ci-${{ github.ref }}
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     strategy:
       matrix:
         node-version: [ 17.x ]
@@ -81,10 +111,17 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      - uses: browser-actions/setup-chrome@v1
       - name: install modules
         run: npm ci
-      - name: linting typescript
-        run: npm run lint:ts
-        if: always()
-      - name: linting css
-        run: npm run lint:scss
+      - name: e2e testing
+        uses: cypress-io/github-action@v5
+        with:
+          install: false
+          record: true
+          start: npm run start:dev
+          wait-on: 'http://localhost:3000'
+          config: baseUrl=http://localhost:3000/
+          browser: chrome
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}

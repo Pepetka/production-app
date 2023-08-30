@@ -11,3 +11,10 @@ Cypress.Commands.addAll(profileCommon);
 Cypress.Commands.addAll(articleCommon);
 Cypress.Commands.addAll(commentCommon);
 Cypress.Commands.addAll(ratingCommon);
+
+const resizeObserverLoopErrRe = /^[^(ResizeObserver loop limit exceeded)]/;
+Cypress.on('uncaught:exception', (err) => {
+	if (resizeObserverLoopErrRe.test(err.message)) {
+		return false;
+	}
+});
