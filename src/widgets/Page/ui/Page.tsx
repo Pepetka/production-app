@@ -62,7 +62,12 @@ export const Page = forwardRef<HTMLElement, PageProps>(({ className, children, o
 	useImperativeHandle(ref, () => wrapperRef.current);
 
 	return (
-		<main ref={wrapperRef} className={classNames(cls.Page, {}, [className])} onScroll={onScroll} data-testid={dataTestId}>
+		<main
+			ref={wrapperRef}
+			className={classNames(cls.Page, { Storybook_Page: __PROJECT__ === 'storybook' }, [className])}
+			onScroll={onScroll}
+			data-testid={dataTestId}
+		>
 			{children}
 			{onScrollEnd && <div className={cls.observer} ref={triggerRef} />}
 		</main>

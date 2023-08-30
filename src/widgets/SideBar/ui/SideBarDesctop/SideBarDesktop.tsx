@@ -23,7 +23,7 @@ export const SideBarDesktop = memo(({ className, defaultCollapsed = true }: Side
 			data-testid="SideBarDesktop"
 			Tag="aside"
 			justify="between"
-			className={classNames(cls.SideBar, { [cls.collapsed]: collapsed }, [className])}
+			className={classNames(cls.SideBar, { [cls.collapsed]: collapsed, Storybook_SideBar: __PROJECT__ === 'storybook' }, [className])}
 		>
 			<VStack w100 gap="32">
 				<Button theme={ButtonTheme.CLEAR} className={cls.toggle} onClick={onCollapse} data-testid="SideBarDesktop.Toggle" inverted>

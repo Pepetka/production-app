@@ -1,4 +1,4 @@
-import { HTMLAttributeAnchorTarget, memo, MutableRefObject, ReactNode, useCallback, useEffect, useRef, useState } from 'react';
+import { HTMLAttributeAnchorTarget, memo, MutableRefObject, ReactNode, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { VirtuosoGrid, VirtuosoGridHandle } from 'react-virtuoso';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -47,7 +47,16 @@ export const ArticlesList = memo(
 			if (wrapperRef?.current) {
 				setRerender(1);
 			}
-		}, [wrapperRef?.current]);
+		}, [wrapperRef]);
+
+		const overscan = useMemo(() => {
+			const height = view === ArticlesView.SMALL ? 250 : 624;
+
+			return {
+				main: 2 * height,
+				reverse: 2 * height,
+			};
+		}, [view]);
 
 		const renderArticle = useCallback(
 			(index: number) => (
@@ -103,7 +112,7 @@ export const ArticlesList = memo(
 							ScrollSeekPlaceholder,
 							Footer,
 						}}
-						overscan={limit}
+						overscan={overscan}
 						customScrollParent={wrapperRef?.current ?? (document.querySelector('body') as HTMLElement)}
 						itemContent={ItemContent}
 						ref={virtuoso}

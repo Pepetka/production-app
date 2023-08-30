@@ -21,9 +21,15 @@ export const SideBarMobile = memo(({ className, defaultCollapsed = true }: SideB
 
 	return (
 		<>
-			{!collapsed && <Overlay className={cls.overlay} onClick={onCollapse} />}
-			<HStack data-testid="SideBarMobile" align="start" className={classNames(cls.SideBarWrapper, { [cls.collapsed]: collapsed }, [className])}>
-				<VStack Tag="aside" justify="between" className={cls.SideBar}>
+			{!collapsed && <Overlay className={classNames(cls.overlay, { Storybook_Overlay: __PROJECT__ === 'storybook' })} onClick={onCollapse} />}
+			<HStack
+				data-testid="SideBarMobile"
+				align="start"
+				className={classNames(cls.SideBarWrapper, { Storybook_SideBar_Wrapper: __PROJECT__ === 'storybook', [cls.collapsed]: collapsed }, [
+					className,
+				])}
+			>
+				<VStack Tag="aside" justify="between" className={classNames(cls.SideBar, { Storybook_SideBar: __PROJECT__ === 'storybook' }, [])}>
 					<VStack w100>
 						<SideBarLinksList collapsed={collapsed} />
 					</VStack>
