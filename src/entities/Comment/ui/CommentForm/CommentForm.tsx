@@ -44,6 +44,7 @@ const CommentForm = memo(({ className, onSendComment }: AddCommentFormProps) => 
 			<form onSubmit={onSend} className={classNames(cls.AddCommentForm, {}, [className])}>
 				<HStack align="end" justify="between" gap="8">
 					<Input
+						aria-label="Comment"
 						data-testid="CommentForm.Input"
 						onChange={onChange}
 						className={cls.input}
@@ -52,7 +53,7 @@ const CommentForm = memo(({ className, onSendComment }: AddCommentFormProps) => 
 						value={text}
 						floatPlaceholder={t('Enter comment')}
 					/>
-					<Button data-testid="CommentForm.SendBtn" type="submit" theme={ButtonTheme.OUTLINE_PRIMARY}>
+					<Button aria-label="Submit" data-testid="CommentForm.SendBtn" type="submit" theme={ButtonTheme.OUTLINE_PRIMARY}>
 						{t('Send')}
 					</Button>
 				</HStack>

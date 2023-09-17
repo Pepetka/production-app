@@ -34,6 +34,7 @@ export const EditableArticleDetailsTextBlock = memo(
 			<>
 				<Text title={t('Text block')} w100 align="center" />
 				<Input
+					aria-label="Add text"
 					data-testid={`${dataTestId}.title`}
 					value={block.title}
 					onChange={onTextTitleChangeHandle}
@@ -42,6 +43,7 @@ export const EditableArticleDetailsTextBlock = memo(
 					floatPlaceholder={t('Block title')}
 				/>
 				<Textarea
+					aria-label="Paragraphs"
 					data-testid={`${dataTestId}.paragraphs`}
 					value={block.paragraphs.join('\n')}
 					onChange={onTextParagraphsChangeHandle}

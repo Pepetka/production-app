@@ -52,6 +52,7 @@ export const Input = ({
 	type = 'text',
 	onChange,
 	'data-testid': dataTestId,
+	'aria-label': ariaLabel,
 	...otherProps
 }: InputProps) => {
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -115,6 +116,7 @@ export const Input = ({
 				value={value ?? ''}
 				readOnly={readonly}
 				onChange={onHandleChange}
+				aria-label={ariaLabel}
 				{...otherProps}
 			/>
 		</div>

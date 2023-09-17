@@ -63,6 +63,7 @@ export const RatingCard = memo(({ className, title, onSelectStar, modal = true, 
 			<VStack gap="16" align="end">
 				<Text w100 align="center" title={modalTitle} />
 				<Input
+					aria-label="Review"
 					data-testid="RatingCard.Review"
 					onChange={onReview}
 					value={review}
@@ -72,7 +73,7 @@ export const RatingCard = memo(({ className, title, onSelectStar, modal = true, 
 					floatPlaceholder={modalTitle}
 				/>
 				<HStack justify="end">
-					<Button data-testid="RatingCard.SendReviewBtn" type="submit" theme={ButtonTheme.OUTLINE_PRIMARY}>
+					<Button aria-label="Send" data-testid="RatingCard.SendReviewBtn" type="submit" theme={ButtonTheme.OUTLINE_PRIMARY}>
 						{t('Send')}
 					</Button>
 				</HStack>

@@ -41,15 +41,15 @@ export const EditableProfileCardHeader = memo(({ className }: ProfilePageHeaderP
 
 	if (profile?.id === userId) {
 		content = readOnly ? (
-			<Button data-testid="EditableProfileCard.EditBtn" onClick={onEdit} theme={ButtonTheme.OUTLINE_PRIMARY}>
+			<Button aria-label="Edit" data-testid="EditableProfileCard.EditBtn" onClick={onEdit} theme={ButtonTheme.OUTLINE_PRIMARY}>
 				{t('Edit')}
 			</Button>
 		) : (
 			<HStack gap="16">
-				<Button data-testid="EditableProfileCard.SaveBtn" onClick={onSave} theme={ButtonTheme.OUTLINE_PRIMARY}>
+				<Button aria-label="Save" data-testid="EditableProfileCard.SaveBtn" onClick={onSave} theme={ButtonTheme.OUTLINE_PRIMARY}>
 					{t('Save')}
 				</Button>
-				<Button data-testid="EditableProfileCard.CancelBtn" onClick={onCancelEdit} theme={ButtonTheme.OUTLINE_RED}>
+				<Button aria-label="Cancel" data-testid="EditableProfileCard.CancelBtn" onClick={onCancelEdit} theme={ButtonTheme.OUTLINE_RED}>
 					{t('Cancel')}
 				</Button>
 			</HStack>

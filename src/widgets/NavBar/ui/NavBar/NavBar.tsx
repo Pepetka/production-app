@@ -65,7 +65,7 @@ export const NavBar = memo(({ className }: NavBarProps) => {
 						<MenuAvatar onLogoutCallback={onLogoutCallback} />
 					</HStack>
 				) : (
-					<Button theme={ButtonTheme.OUTLINE_PRIMARY} inverted onClick={onOpenModal}>
+					<Button aria-label="Login" theme={ButtonTheme.OUTLINE_PRIMARY} inverted onClick={onOpenModal}>
 						{t('LogIn')}
 					</Button>
 				)}

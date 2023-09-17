@@ -33,6 +33,7 @@ export const EditableArticleDetailsImgBlock = memo(
 			<>
 				<Text title={t('Image block')} w100 align="center" />
 				<Input
+					aria-label="Title"
 					data-testid={`${dataTestId}.title`}
 					value={block.title}
 					onChange={onImgTitleChangeHandle}
@@ -41,6 +42,7 @@ export const EditableArticleDetailsImgBlock = memo(
 					floatPlaceholder={t('Image title')}
 				/>
 				<Input
+					aria-label="Image"
 					data-testid={`${dataTestId}.src`}
 					value={block.src}
 					onChange={onImgChangeHandle}

@@ -15,7 +15,7 @@ export const NotificationPopover = memo(() => {
 	return (
 		<>
 			<MobileView>
-				<Button theme={ButtonTheme.CLEAR} onClick={onOpenDrawer}>
+				<Button aria-label="Open notifications" theme={ButtonTheme.CLEAR} onClick={onOpenDrawer}>
 					<Icon theme={IconTheme.INVERT_PRIMARY} SvgIcon={NotificationIcon} />
 				</Button>
 				<Drawer isOpen={isOpen} onCloseDrawer={onCloseDrawer}>

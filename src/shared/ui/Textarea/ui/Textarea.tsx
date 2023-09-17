@@ -50,6 +50,7 @@ export const Textarea = ({
 	autoFocus = false,
 	onChange,
 	'data-testid': dataTestId,
+	'aria-label': ariaLabel,
 	...otherProps
 }: TextareaProps) => {
 	const TextareaRef = useRef<HTMLTextAreaElement>(null);
@@ -112,6 +113,7 @@ export const Textarea = ({
 				value={value ?? ''}
 				readOnly={readonly}
 				onChange={onHandleChange}
+				aria-label={ariaLabel}
 				{...otherProps}
 			/>
 		</div>

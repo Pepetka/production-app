@@ -77,7 +77,12 @@ export const EditableArticleDetailsBlocks = memo(
 				{blocks?.map((block) => (
 					<Card className={cls.blockWrapper} w100 key={block.id}>
 						<HStack justify="end">
-							<Button data-testid={`${dataTestId}.deleteBlock`} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={() => onDeleteBlock?.(block.id)}>
+							<Button
+								aria-label="Delete block"
+								data-testid={`${dataTestId}.deleteBlock`}
+								theme={ButtonTheme.OUTLINE_PRIMARY}
+								onClick={() => onDeleteBlock?.(block.id)}
+							>
 								{/* eslint-disable-next-line */}
 								<span>&#10006;</span>
 							</Button>

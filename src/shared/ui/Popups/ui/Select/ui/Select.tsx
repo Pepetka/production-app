@@ -91,7 +91,7 @@ export const Select = typedMemo(
 					{({ open }) => (
 						<>
 							<Listbox.Button as="div" className={cls.trigger}>
-								<Button hover={false} theme={ButtonTheme.PRIMARY} inverted={theme === SelectTheme.INVERT}>
+								<Button aria-label="Open select options" hover={false} theme={ButtonTheme.PRIMARY} inverted={theme === SelectTheme.INVERT}>
 									<HStack w100 justify="between">
 										{selected ? options[selected] : label}
 										<div className={classNames(cls.arrow, { [cls.open]: open })}>{'<'}</div>

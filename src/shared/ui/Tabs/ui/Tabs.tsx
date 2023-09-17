@@ -43,6 +43,7 @@ export const Tabs = typedMemo(<T extends string>({ className, tabs, selected, on
 		<HStack wrap gap="8" justify="start" className={className}>
 			{Object.entries(tabs).map(([key, value]) => (
 				<Button
+					aria-label={`Select ${value}`}
 					key={key}
 					data-testid={`${dataTestId}.${key}`}
 					onClick={onHandleClick(key as T)}

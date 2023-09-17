@@ -29,11 +29,11 @@ export const ArticleDetailsPageHeader = memo(({ className }: ArticleDetailsPageH
 
 	return (
 		<HStack wrap gap="8" justify="between" w100 className={className}>
-			<Button className={cls.btn} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onBack}>
+			<Button aria-label="Back" className={cls.btn} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onBack}>
 				{t('Back')}
 			</Button>
 			{canEditArticle && (
-				<Button data-testid="ArticleDetailsPage.Edit" className={cls.btn} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onEdit}>
+				<Button aria-label="Edit" data-testid="ArticleDetailsPage.Edit" className={cls.btn} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onEdit}>
 					{t('Edit')}
 				</Button>
 			)}

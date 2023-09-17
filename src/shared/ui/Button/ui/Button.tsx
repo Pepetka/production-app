@@ -52,12 +52,14 @@ export const Button = forwardRef(
 			hover = true,
 			w100 = false,
 			'data-testid': dataTestId,
+			'aria-label': ariaLabel,
 			...buttonProps
 		}: ButtonProps,
 		ref: ForwardedRef<HTMLButtonElement>,
 	) => (
 		<button
 			data-testid={dataTestId}
+			aria-label={ariaLabel}
 			ref={ref}
 			type="button"
 			className={classNames(cls.Button, { [cls.inverted]: inverted, [cls.hover]: hover, [cls.w100]: w100 }, [className, cls[theme]])}

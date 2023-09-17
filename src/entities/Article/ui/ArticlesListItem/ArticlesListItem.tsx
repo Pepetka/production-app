@@ -61,7 +61,9 @@ export const ArticlesListItem = memo(({ className, article, view, target, editAr
 					</VStack>
 					<HStack justify="between" w100>
 						<AppLink target={target} to={editArticle ? getArticleEditPagePath(article.id) : getArticleDetailsPagePath(article.id)}>
-							<Button theme={ButtonTheme.OUTLINE_PRIMARY}>{t('Read more')}</Button>
+							<Button aria-label="Read more" theme={ButtonTheme.OUTLINE_PRIMARY}>
+								{t('Read more')}
+							</Button>
 						</AppLink>
 						<HStack gap="8">
 							<Text text={article.views.toString()} />

@@ -37,7 +37,7 @@ export const Menu = memo(({ className, trigger, arrow, menuItems, popupPosition 
 		{({ open }) => (
 			<>
 				<DropDown.Button as="div" className={cls.trigger}>
-					<Button theme={ButtonTheme.CLEAR}>
+					<Button aria-label="Open menu" theme={ButtonTheme.CLEAR}>
 						<HStack w100 justify="between">
 							{trigger}
 							{arrow && <div className={classNames(cls.arrow, { [cls.open]: open })}>{'<'}</div>}

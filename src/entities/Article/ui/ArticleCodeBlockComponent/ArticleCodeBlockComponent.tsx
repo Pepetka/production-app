@@ -36,7 +36,7 @@ export const ArticleCodeBlockComponent = memo(({ className, block }: ArticleCode
 				{coped ? (
 					<Icon stroke SvgIcon={DoneIcon} />
 				) : (
-					<Button onClick={onCopy} theme={ButtonTheme.CLEAR}>
+					<Button aria-label="Copy code" onClick={onCopy} theme={ButtonTheme.CLEAR}>
 						<Icon stroke SvgIcon={CopyIcon} />
 					</Button>
 				)}

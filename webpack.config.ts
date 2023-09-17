@@ -11,6 +11,10 @@ export default (env: BuildEnv): Configuration => {
 		src: path.resolve(__dirname, 'src'),
 		locales: path.resolve(__dirname, 'public', 'locales'),
 		buildLocales: path.resolve(__dirname, 'build', 'locales'),
+		icons: path.resolve(__dirname, 'public', 'icons'),
+		buildIcons: path.resolve(__dirname, 'build', 'icons'),
+		robot: path.resolve(__dirname, 'public', 'robots.txt'),
+		buildRobot: path.resolve(__dirname, 'build', 'robots.txt'),
 	};
 
 	const mode = env.mode ?? 'development';

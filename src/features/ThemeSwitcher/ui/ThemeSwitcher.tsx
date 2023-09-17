@@ -15,7 +15,7 @@ export const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
 
 	return (
 		<div className={classNames(cls.ThemeSwitcher, {}, [className])}>
-			<Button theme={ButtonTheme.CLEAR} onClick={onThemeChange}>
+			<Button aria-label="Switch theme" theme={ButtonTheme.CLEAR} onClick={onThemeChange}>
 				{theme === Theme.DARK_THEME ? <ThemeDark /> : <ThemeLight />}
 			</Button>
 		</div>

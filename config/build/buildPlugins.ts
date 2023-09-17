@@ -5,6 +5,7 @@ import webpack, { ProgressPlugin, WebpackPluginInstance } from 'webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import CopyPlugin from 'copy-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import WorkboxPlugin from 'workbox-webpack-plugin';
 import { BuildOptions } from './types/config';
 
 export function buildPlugins({
@@ -28,6 +29,10 @@ export function buildPlugins({
 				},
 			},
 		}),
+		new WorkboxPlugin.GenerateSW({
+			clientsClaim: true,
+			skipWaiting: true,
+		}),
 	];
 
 	if (isDev) {
@@ -44,6 +49,8 @@ export function buildPlugins({
 		plugins.push(new CopyPlugin({
 			patterns: [
 				{ from: paths.locales, to: paths.buildLocales },
+				{ from: paths.icons, to: paths.buildIcons },
+				{ from: paths.robot, to: paths.buildRobot },
 			],
 		}));
 	}

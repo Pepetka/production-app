@@ -45,6 +45,7 @@ export const EditableArticleDetailsHeader = memo(
 				<Tabs data-testid={`${dataTestId}.tabs`} tabs={tabs} selected={types} onClick={onSelectTab} />
 				<VStack w100>
 					<Input
+						aria-label="Article image"
 						data-testid={`${dataTestId}.article.img`}
 						theme={InputTheme.INVERT}
 						textInvert
@@ -53,6 +54,7 @@ export const EditableArticleDetailsHeader = memo(
 						onChange={onAvatarChange}
 					/>
 					<Input
+						aria-label="Title"
 						data-testid={`${dataTestId}.article.title`}
 						theme={InputTheme.INVERT}
 						textInvert
@@ -61,6 +63,7 @@ export const EditableArticleDetailsHeader = memo(
 						onChange={onTitleChange}
 					/>
 					<Input
+						aria-label="Subtitle"
 						data-testid={`${dataTestId}.article.subtitle`}
 						theme={InputTheme.INVERT}
 						textInvert

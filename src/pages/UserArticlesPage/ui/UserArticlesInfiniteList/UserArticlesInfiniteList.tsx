@@ -38,7 +38,7 @@ export const UserArticlesInfiniteList = memo(({ wrapperRef, editArticle, userId 
 		() =>
 			hasMore && (
 				<HStack w100 justify="center">
-					<Button onClick={onScrollEnd} theme={ButtonTheme.OUTLINE_PRIMARY} disabled={loading}>
+					<Button aria-label="Load more" onClick={onScrollEnd} theme={ButtonTheme.OUTLINE_PRIMARY} disabled={loading}>
 						{loading ? <Text text={t('Loading')} /> : <Text text={t('Load more')} />}
 					</Button>
 				</HStack>

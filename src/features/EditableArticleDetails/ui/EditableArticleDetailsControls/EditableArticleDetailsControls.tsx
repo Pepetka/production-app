@@ -27,24 +27,24 @@ export const EditableArticleDetailsControls = memo(
 		return (
 			<HStack wrap gap="8" w100 justify="between" className={classNames('', {}, [className])}>
 				<HStack gap="8">
-					<Button data-testid={`${dataTestId}.back`} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onBack}>
+					<Button aria-label="Back" data-testid={`${dataTestId}.back`} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onBack}>
 						{t('Back')}
 					</Button>
 					{isEdit ? (
-						<Button data-testid={`${dataTestId}.preview`} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onPreview}>
+						<Button aria-label="Preview" data-testid={`${dataTestId}.preview`} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onPreview}>
 							{t('Preview')}
 						</Button>
 					) : (
-						<Button data-testid={`${dataTestId}.edit`} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onEdit}>
+						<Button aria-label="Edit" data-testid={`${dataTestId}.edit`} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onEdit}>
 							{t('Edit')}
 						</Button>
 					)}
 				</HStack>
 				<HStack gap="8">
-					<Button data-testid={`${dataTestId}.delete`} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onDelete}>
+					<Button aria-label="Delete" data-testid={`${dataTestId}.delete`} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onDelete}>
 						{t('Delete')}
 					</Button>
-					<Button data-testid={`${dataTestId}.save`} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onSave}>
+					<Button aria-label="Save" data-testid={`${dataTestId}.save`} theme={ButtonTheme.OUTLINE_PRIMARY} onClick={onSave}>
 						{t('Save')}
 					</Button>
 				</HStack>

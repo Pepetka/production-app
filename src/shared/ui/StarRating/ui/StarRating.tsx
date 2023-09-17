@@ -49,6 +49,7 @@ export const StarRating = memo(({ className, onSelect, rating }: StarRatingProps
 			{starsArray.map((star) => (
 				<Button
 					data-testid={`StarRating.${star}`}
+					aria-label={`Rate ${star}`}
 					data-selected={selectedStar === star ? `StarRating.${selectedStar}` : undefined}
 					className={classNames('', {
 						[cls.noPointer]: selectedStar !== undefined,

@@ -24,6 +24,7 @@ export const EditableArticleDetailsCodeBlock = memo(({ block, onCodeChange, 'dat
 		<>
 			<Text title={t('Code block')} w100 align="center" />
 			<Textarea
+				aria-label="Code"
 				data-testid={`${dataTestId}.code`}
 				value={block.code}
 				onChange={onCodeChangeHandle}

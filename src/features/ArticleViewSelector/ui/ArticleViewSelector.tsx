@@ -29,7 +29,12 @@ export const ArticleViewSelector = memo(({ className, onChangeView, activeView }
 	return (
 		<HStack gap="8" className={className}>
 			{viewTypes.map(({ view, svg }) => (
-				<Button key={view} theme={view === activeView ? ButtonTheme.OUTLINE_RED : ButtonTheme.OUTLINE_PRIMARY} onClick={onClick(view)}>
+				<Button
+					aria-label={`Switch to ${view}`}
+					key={view}
+					theme={view === activeView ? ButtonTheme.OUTLINE_RED : ButtonTheme.OUTLINE_PRIMARY}
+					onClick={onClick(view)}
+				>
 					<Icon theme={view === activeView ? IconTheme.RED : IconTheme.PRIMARY} SvgIcon={svg} />
 				</Button>
 			))}

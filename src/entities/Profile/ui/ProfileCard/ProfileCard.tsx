@@ -65,7 +65,9 @@ export const ProfileCard = memo(
 			return (
 				<VStack gap="16" justify="center" className={cls.template}>
 					<Text align="center" title={t('Something went wrong')} theme={TextTheme.ERROR} />
-					<Button onClick={onReloadPage}>{t('Reload Page')}</Button>
+					<Button aria-label="Reload page" onClick={onReloadPage}>
+						{t('Reload Page')}
+					</Button>
 				</VStack>
 			);
 		}
@@ -78,6 +80,7 @@ export const ProfileCard = memo(
 				<HStack wrap gap="32" align="start" className={cls.profileData}>
 					<VStack gap="16" justify="start" className={cls.column}>
 						<Input
+							aria-label="Username"
 							data-testid={`${dataTestId}.Username`}
 							readonly={readonly}
 							textInvert={readonly}
@@ -87,6 +90,7 @@ export const ProfileCard = memo(
 							floatPlaceholder={t('Username')}
 						/>
 						<Input
+							aria-label="Firstname"
 							readonly={readonly}
 							textInvert={readonly}
 							theme={readonly ? InputTheme.INVERT : InputTheme.PRIMARY}
@@ -95,6 +99,7 @@ export const ProfileCard = memo(
 							floatPlaceholder={t('Firstname')}
 						/>
 						<Input
+							aria-label="Lastname"
 							readonly={readonly}
 							textInvert={readonly}
 							theme={readonly ? InputTheme.INVERT : InputTheme.PRIMARY}
@@ -103,6 +108,7 @@ export const ProfileCard = memo(
 							floatPlaceholder={t('Lastname')}
 						/>
 						<Input
+							aria-label="Age"
 							data-testid={`${dataTestId}.Age`}
 							readonly={readonly}
 							textInvert={readonly}
@@ -114,6 +120,7 @@ export const ProfileCard = memo(
 					</VStack>
 					<VStack gap="16" justify="start" className={cls.column}>
 						<Input
+							aria-label="Avatar"
 							readonly={readonly}
 							textInvert={readonly}
 							theme={readonly ? InputTheme.INVERT : InputTheme.PRIMARY}
@@ -122,6 +129,7 @@ export const ProfileCard = memo(
 							floatPlaceholder={t('Avatar')}
 						/>
 						<Input
+							aria-label="City"
 							readonly
 							textInvert={readonly}
 							theme={readonly ? InputTheme.INVERT : InputTheme.PRIMARY}

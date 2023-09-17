@@ -39,7 +39,14 @@ export const SideBarMobile = memo(({ className, defaultCollapsed = true }: SideB
 						<LangSwitcher />
 					</HStack>
 				</VStack>
-				<Button hover={false} theme={ButtonTheme.PRIMARY} className={cls.toggle} onClick={onCollapse} data-testid="SideBarMobile.Toggle">
+				<Button
+					aria-label="Toggle sidebar"
+					hover={false}
+					theme={ButtonTheme.PRIMARY}
+					className={cls.toggle}
+					onClick={onCollapse}
+					data-testid="SideBarMobile.Toggle"
+				>
 					{collapsed ? <span>&gt;</span> : <span>&lt;</span>}
 				</Button>
 			</HStack>
