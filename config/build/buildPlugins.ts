@@ -32,6 +32,7 @@ export function buildPlugins({
 		new WorkboxPlugin.GenerateSW({
 			clientsClaim: true,
 			skipWaiting: true,
+			maximumFileSizeToCacheInBytes: isDev ? 100000000 : undefined
 		}),
 	];
 

@@ -19,6 +19,10 @@ export default {
 			output: '',
 			locales: '',
 			buildLocales: '',
+			icons: '',
+			buildIcons: '',
+			robot: '',
+			buildRobot: '',
 		};
 		config!.resolve!.modules!.push(paths.src);
 		config!.resolve!.extensions!.push('.ts', '.tsx');
